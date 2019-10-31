@@ -541,7 +541,7 @@ IMAGE_BACKGROUND = Image("assets/Background.jpg")
 IMAGE_PLAYER1 = Image("assets/Player1.png")
 IMAGE_PLAYER2 = Image("assets/Player2.png")
 IMAGE_ASTEROID = Image("assets/AsteroidLarge.png")
-IMAGE_ASTEROID_2 = Image("assets/AsteroidSmall.png")3
+IMAGE_ASTEROID_2 = Image("assets/AsteroidSmall.png")
 
 SPRITESHEET_PROJECTILE = [None,
                           SpriteSheet("assets/Player1Projectile.png", (36, 24)),
