@@ -4,9 +4,11 @@
     "\\Level1",
     "\\Level2",
     "\\Level4",
+    "\\Level4\\Challenges",
     "\\Solutions",
-    "\\Solutions\\Level2"
+    "\\Solutions\\Level2",
+    "\\Solutions\\Level4"
   ],
-  "SelectedNode": "\\Level4",
+  "SelectedNode": "\\Solutions\\Level4",
   "PreviewInSolutionExplorer": false
 }

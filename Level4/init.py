@@ -541,12 +541,7 @@ IMAGE_BACKGROUND = Image("assets/Background.jpg")
 IMAGE_PLAYER1 = Image("assets/Player1.png")
 IMAGE_PLAYER2 = Image("assets/Player2.png")
 IMAGE_ASTEROID = Image("assets/AsteroidLarge.png")
-IMAGE_ASTEROID_2 = Image("assets/AsteroidSmall.png")
-
-sound_explosions = [Sound("assets/Explosion1.wav"),
-                    Sound("assets/Explosion2.wav")]
-sound_laser = [Sound("assets/LaserShoot1.wav"),
-               Sound("assets/LaserShoot2.wav")]
+IMAGE_ASTEROID_2 = Image("assets/AsteroidSmall.png")3
 
 SPRITESHEET_PROJECTILE = [None,
                           SpriteSheet("assets/Player1Projectile.png", (36, 24)),
@@ -745,11 +740,9 @@ def check_collision(i):
     if MY.bullet_owner[i] == 1 and MY.bullets[i].collides_with(MY.player2):
         MY.player2_hp = MY.player2_hp - 1
         MY.bullets[i].active = False
-        sound_explosions[random.randint(0, len(sound_explosions) - 1)].play()
     elif MY.bullet_owner[i] == 2 and MY.bullets[i].collides_with(MY.player1):
         MY.player1_hp = MY.player1_hp - 1
         MY.bullets[i].active = False
-        sound_explosions[random.randint(0, len(sound_explosions) - 1)].play()
 
 def check_win():
     """Check win condition and change state if a player has won the game"""
