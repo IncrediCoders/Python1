@@ -61,8 +61,8 @@ def update(delta_time):
 
 
 # states
-import SpaceWars
-Manager.register(SpaceWars)
+import SpaceWarsChallenge1_Solution
+Manager.register(SpaceWarsChallenge1_Solution)
 Manager.register(GameOver)
 
 # run the game!
