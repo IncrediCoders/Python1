@@ -2,6 +2,7 @@
 from init import *
 import random
 import pygame
+import sys
 
 def update(delta_time):
     """The Update method checks for all the key presses and button clicks"""
@@ -68,8 +69,7 @@ def update(delta_time):
 
 
 # states
-import SpaceWarsChallenge2_Solution
-Manager.register(SpaceWarsChallenge2_Solution)
+Manager.register(sys.modules[__name__]) #The current file
 Manager.register(GameOver)
 
 # run the game!

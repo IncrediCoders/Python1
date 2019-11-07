@@ -1,5 +1,6 @@
 """Runs the Init.py file and imports the libraries"""
 from init import *
+import sys
 import random
 import pygame
 
@@ -56,8 +57,7 @@ def update(delta_time):
 
 
 # states
-import SpaceWars_Solution #In your file, this should be the name of your file, "SpaceWars"
-Manager.register(SpaceWars_Solution)
+Manager.register(sys.modules[__name__]) #The current file
 Manager.register(GameOver)
 
 # run the game!
