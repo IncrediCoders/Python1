@@ -1,7 +1,7 @@
 """Runs the Init.py file and imports the libraries"""
 from init import *
-import random
 import pygame
+import random
 import sys
 
 def update(delta_time):

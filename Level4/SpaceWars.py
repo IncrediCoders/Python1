@@ -1,6 +1,5 @@
 """Runs the Init.py file and imports the libraries"""
 from init import *
-import random
 import pygame
 import sys
 
