@@ -18,8 +18,8 @@ def update(delta_time):
             fire_bullet(2)           
 
     #Rotates the Player 1 ship
-    if key_held_down(pygame.K_a):
-        MY.player1.add_rotation(ship_rotate * delta_time)
+    #if key_held_down(pygame.K_a):
+        #MY.player1.add_rotation(ship_rotate * delta_time)
     #TODO: Copy the code here for the Player 1 ship to rotate clockwise
 
     #Moves the Player 1 ship forward and backward
