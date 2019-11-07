@@ -640,20 +640,6 @@ def initialize(window):
         MY.bullet_owner.append(1)
         count = count + 1
 
-    count = 0
-    while count < 5:
-        if (rand(0, 1) == 0):
-            image = IMAGE_ASTEROID
-        else:
-            image = IMAGE_ASTEROID_2
-        obj = Object(image)
-        obj.location = rand_location(0, MY.window.x)
-        obj.velocity = rand_location(-50, 50)
-        obj.scale = 2
-        obj.active = True
-        MY.asteroids.append(obj)
-        count = count + 1
-
 def fire_bullet(player_number):
     """fire a bullet for the player"""
     index = -1
@@ -693,14 +679,9 @@ def draw(screen):
         if MY.bullets[i].active:
             MY.bullets[i].draw(screen)
 
-    for i in range(len(MY.asteroids)):
-        if MY.asteroids[i].active:
-            MY.asteroids[i].draw(screen)
-
 def cleanup():
     """Cleans up the Intro State for SpaceWars."""
     MY.bullets = []
-    MY.asteroids = []
 
 class GameOver:
     """Restarter class to be loaded if Player 1 wins."""
@@ -782,22 +763,8 @@ def update_bullets(delta_time):
             if screen_wrap(MY.bullets[i], MY.window):
                 MY.bullets[i].active = False
                 continue
-            for j in range(len(MY.asteroids)):
-                if MY.bullets[i].collides_with(MY.asteroids[j]):
-                    MY.bullets[i].active = False
             #check collisions
             check_collision(i)
-
-def update_asteroids(delta_time):
-    """Updates the position of the asteroids in the game window."""
-    for asteroid in MY.asteroids:
-        if asteroid.active:
-            asteroid.update(delta_time)
-            screen_wrap(asteroid, MY.window)
-        if MY.player1.collides_with(asteroid):
-            MY.player1.velocity = pygame.math.Vector2(0, 0)
-        if MY.player2.collides_with(asteroid):
-            MY.player2.velocity = pygame.math.Vector2(0, 0)
 
 def update_players(delta_time):
     """Updates the position of the players in the game window."""

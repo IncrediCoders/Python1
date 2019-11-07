@@ -1,14 +1,17 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Level1",
-    "\\Level2",
+    "\\Level2\\Challenges",
+    "\\Level2\\Challenges\\ClassIntroductionsChallenge1",
+    "\\Level2\\Challenges\\ClassIntroductionsChallenge2",
     "\\Level4",
     "\\Level4\\Challenges",
+    "\\Level4\\Challenges\\Challenge1",
+    "\\Level4\\Challenges\\Challenge2",
     "\\Solutions",
-    "\\Solutions\\Level2",
-    "\\Solutions\\Level4"
+    "\\Solutions\\Level4",
+    "\\Solutions\\Level4\\Challenge2"
   ],
-  "SelectedNode": "\\Solutions\\Level4",
+  "SelectedNode": "\\Solutions\\Level4\\Challenge1\\init.py",
   "PreviewInSolutionExplorer": false
 }

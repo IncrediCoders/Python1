@@ -54,22 +54,14 @@ def update(delta_time):
     update_bullets(delta_time)
     
     #TODO: Write code to updates the position of the asteroids in the game window.
-    for asteroid in MY.asteroids:
-        if asteroid.active:
-            asteroid.update(delta_time)
-            screen_wrap(asteroid, MY.window)
-        if MY.player1.collides_with(asteroid):
-            MY.player1.velocity = pygame.math.Vector2(0, 0)
-        if MY.player2.collides_with(asteroid):
-            MY.player2.velocity = pygame.math.Vector2(0, 0)
 
     # Check win condition
     check_win()   
 
 
 # states
-import SpaceWarsChallenge2_Solution
-Manager.register(SpaceWarsChallenge2_Solution)
+import SpaceWarsChallenge2
+Manager.register(SpaceWarsChallenge2)
 Manager.register(GameOver)
 
 # run the game!
