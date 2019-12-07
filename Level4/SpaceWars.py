@@ -23,8 +23,8 @@ def update(delta_time):
     #TODO: Copy the code here for the Player 1 ship to rotate clockwise
 
     #Moves the Player 1 ship forward and backward
-    if key_held_down(pygame.K_w):
-        MY.player1.add_velocity(MY.player1.rotation, ship_accel, ship_max_speed)
+    #if key_held_down(pygame.K_w):
+        #MY.player1.add_velocity(MY.player1.rotation, ship_accel, ship_max_speed)
     #TODO: Copy the code here for the Player 1 ship to move backward
 
     #Rotates the Player 2 ship
