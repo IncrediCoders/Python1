@@ -76,6 +76,8 @@ while running:
     display(background, current_text, current_character)
     EVENTS = pygame.event.get()
     for event in EVENTS:
+        if event.type == pygame.QUIT:
+            running = False
         if event.type == pygame.KEYDOWN:
             #if pressed 1, go to next character
             if event.key == pygame.K_RIGHT:
@@ -83,6 +85,4 @@ while running:
     #if we reach the end of the array, start from the beginning again.
     if i == 14:
         i = 0
-    if event.type == pygame.QUIT:
-        running = False
 pygame.quit()

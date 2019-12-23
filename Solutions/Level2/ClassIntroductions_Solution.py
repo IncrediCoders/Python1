@@ -38,6 +38,8 @@ while running:
     display(background, current_text, current_character)
     EVENTS = pygame.event.get()
     for event in EVENTS:
+        if event.type == pygame.QUIT:
+            running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_1:
                 current_character = annie_conda
@@ -75,6 +77,4 @@ while running:
             if event.key == pygame.K_w:
                 current_character = syntax_turtle
                 current_text = text_syntax_turtle
-        if event.type == pygame.QUIT:
-            running = False
 pygame.quit()
