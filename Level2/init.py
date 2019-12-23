@@ -7,10 +7,10 @@ import textwrap
 #============================================================
 #PART 2: CREATING A FRAMEWORK OF GENERAL CLASSES AND FUNCTIONS
 
-def get_file(fileName):
+def load_file(fileName):
     """Returns the absolute path of a file."""
     #This grabs the image files from your folder.
-    return path.join(path.dirname(__file__), fileName)
+    return pygame.image.load(path.join(path.dirname(__file__), fileName))
 
 def display_text(screen, current_text):
     """Displays text to the screen"""
@@ -39,4 +39,3 @@ def display(background, current_text, current_character):
     screen.blit(current_character, (0,0))
     display_text(screen, current_text)
     pygame.display.flip()
-
