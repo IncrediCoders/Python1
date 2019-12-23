@@ -1,23 +1,5 @@
+from init import *
 import pygame #Gives us our gaming functions
-from os import path
-import textwrap
-
-"""Initialize Font Object"""
-#We pick our text style and size.
-pygame.init()
-myfont = pygame.font.SysFont('Arial', 20)
-
-def get_file(fileName):
-    """Returns the absolute path of a file."""
-    #This grabs your files from your folder.
-    return path.join(path.dirname(__file__), fileName)
-
-def display_text(screen, current_text):
-    WRAPPED_TEXT = textwrap.wrap(current_text, 30)
-    y = 230
-    for i in range(len(WRAPPED_TEXT)):
-        screen.blit(myfont.render(WRAPPED_TEXT[i], True, (0, 0, 0)), (230,y))
-        y = y + 30
 
 """Loads the background and images"""
 background = pygame.image.load(get_file("Assets/Background.png"))
@@ -51,11 +33,6 @@ text_sidewinder = "I'm SideWinder, from Salt-Snake City, Mewtah. I'm the best at
 text_syntax_turtle = "What's up? Syntax Turtle in the house. I'm from here, Red-Mutt, with my twin sis Grafika. My favorite actress is Natalie Porkman, and my favorite artist is Lizardnardo Da Vinci. My top games are \"Skate and Fly\" and Porkymon, and I'm looking forward to making a Codu Kids card game! "
 text_ram_rom = "Heya! We're RAM and ROM. We came from the other side of the country, Woolshington DC. We like Meryl Sheep, Dustin Hoofman, and Eva Longhornia. Our favorite musician is Lady Baa-Baa, and our sensei is the Dali Llama. We're working on a top-secret project! "
 text_amphib_ian  = "Yo, yo. What's hopping, peeps? Name's Amphib Ian. My launchpad is Croaklahoma City. My choice singer is Demi Lovatoad. And my fave artwork is \"Mourning Son\" by Edwart Hopper. My go-to game to code is Froggy Road. That's it. I'll catch you on the flip flop! "
-
-"""Displays character to the screen"""
-width = 600
-height = 800
-screen = pygame.display.set_mode((width,height))
 
 #initialize arrays
 CHARACTERS = []
@@ -96,20 +73,16 @@ i = 0
 while running:
     current_character = CHARACTERS[i]
     current_text = TEXT[i]
-    screen.blit(background,(0,0))
-    screen.blit(current_character, (0,0))
-    display_text(screen, current_text)
-    pygame.display.flip()
+    display(background, current_text, current_character)
     EVENTS = pygame.event.get()
     for event in EVENTS:
         if event.type == pygame.KEYDOWN:
             #if pressed 1, go to next character
             if event.key == pygame.K_RIGHT:
                 i = i+1
-            #press q to quit
-            if event.key == pygame.K_q:
-                running = False
     #if we reach the end of the array, start from the beginning again.
     if i == 14:
         i = 0
+    if event.type == pygame.QUIT:
+        running = False
 pygame.quit()

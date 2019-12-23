@@ -1,24 +1,5 @@
+from init import *
 import pygame #Gives us our gaming functions
-from os import path
-import textwrap
-
-"""Initialize Font Object"""
-#We pick our text style and size.
-pygame.init()
-myfont = pygame.font.SysFont('Arial', 20)
-
-def get_file(fileName):
-    """Returns the absolute path of a file."""
-    #This grabs the image files from your folder.
-    return path.join(path.dirname(__file__), fileName)
-
-def display_text(screen, current_text):
-    """Displays text to the screen"""
-    WRAPPED_TEXT = textwrap.wrap(current_text, 30)
-    y = 230
-    for i in range(len(WRAPPED_TEXT)):
-        screen.blit(myfont.render(WRAPPED_TEXT[i], True, (0, 0, 0)), (230,y))
-        y = y + 30
 
 """Loads the background and images"""
 background = pygame.image.load(get_file("Assets/Background.png"))
@@ -53,17 +34,8 @@ text_syntax_turtle = "What's up? Syntax Turtle in the house. I'm from here, Red-
 current_character = annie_conda
 current_text = text_annie_conda
 
-"""Displays character to the screen"""
-width = 600
-height = 800
-screen = pygame.display.set_mode((width,height))
-running = True
-
 while running:
-    screen.blit(background,(0,0))
-    screen.blit(current_character, (0,0))
-    display_text(screen, current_text)
-    pygame.display.flip()
+    display(background, current_text, current_character)
     EVENTS = pygame.event.get()
     for event in EVENTS:
         if event.type == pygame.KEYDOWN:
@@ -103,4 +75,6 @@ while running:
             if event.key == pygame.K_w:
                 current_character = syntax_turtle
                 current_text = text_syntax_turtle
+        if event.type == pygame.QUIT:
+            running = False
 pygame.quit()
