@@ -85,3 +85,13 @@ def display_end_screen():
     screen.blit(background, (0,0))
     screen.blit(kodala,(0,0))
     pygame.display.update()
+
+def check_game_started():
+    EVENTS = pygame.event.get()
+    for event in EVENTS:
+        mpos = pygame.mouse.get_pos()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if sample_click_rect.collidepoint(mpos):
+                return True
+    return False
+
