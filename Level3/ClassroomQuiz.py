@@ -22,9 +22,9 @@ questions_answered = 0
 display_intro_screen() #Gets the screen ready.
 running = False
 while running == False:
+    #We're waiting for the player to click "Click here to start the game."
     if check_game_started() == True:
         running = True
-    #We're waiting for the player to click "Click here to start the game."
 while running:
     display_question(question, ANSWER_CHOICES) #Displays the new question and the three answer choices.
     EVENTS = pygame.event.get()
