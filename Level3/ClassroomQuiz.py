@@ -34,8 +34,8 @@ while running:
             if answer_1_rect.collidepoint(mpos): #If the player clicks the first answer on the top.
                 if ANSWER_CHOICES[0] == answer: #If it's the correct answer.
                     screen.blit(correct_text,(300,0))
-                    kodala = correct_a
-                    screen.blit(kodala, (0,0))
+                    codala = correct_a
+                    screen.blit(codala, (0,0))
                     pygame.display.update()
                     time.sleep(5)
                     if i >= (number_of_questions * 4)-4: #If it's the last question.
@@ -52,8 +52,8 @@ while running:
                         randomize_answers(ANSWER_CHOICES)
                 else: #If it's an incorrect answer.
                     screen.blit(incorrect_text,(300,0))
-                    kodala = incorrect_a
-                    screen.blit(kodala, (0,0))
+                    codala = incorrect_a
+                    screen.blit(codala, (0,0))
                     pygame.display.update()
                     time.sleep(5)
                     if i >= (number_of_questions * 4)-4: #If it's the last question.
@@ -71,8 +71,8 @@ while running:
 #            if answer_2_rect.collidepoint(mpos): #If the player clicks the second answer.
 #                if ANSWER_CHOICES[1] == answer: #If it's the correct answer.
 #                    screen.blit(correct_text,(300,0))
-#                    kodala = correct_b
-#                    screen.blit(kodala, (0,0))
+#                    codala = correct_b
+#                    screen.blit(codala, (0,0))
 #                    pygame.display.update()
 #                    time.sleep(5)
 #                    if i >= (number_of_questions * 4)-4: #If it's the last question.
@@ -89,8 +89,8 @@ while running:
 #                        randomize_answers(ANSWER_CHOICES)    
 #                else: #If it's an incorrect answer.
 #                    screen.blit(incorrect_text,(300,0))
-#                    kodala = incorrect_b
-#                    screen.blit(kodala,(0,0))
+#                    codala = incorrect_b
+#                    screen.blit(codala,(0,0))
 #                    pygame.display.update()
 #                    time.sleep(5)
 #                    if i >= (number_of_questions * 4)-4: #If it's the last question.

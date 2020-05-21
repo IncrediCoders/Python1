@@ -81,9 +81,9 @@ def display_intro_screen():
 
 def display_end_screen():
     #This shows the image of Mrs. Codala telling you the game is done.
-    kodala = end_game
+    codala = end_game
     screen.blit(background, (0,0))
-    screen.blit(kodala,(0,0))
+    screen.blit(codala,(0,0))
     pygame.display.update()
 
 def check_game_started():
