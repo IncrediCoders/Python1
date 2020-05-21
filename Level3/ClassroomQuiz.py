@@ -79,7 +79,7 @@ while running:
 #                        display_end_screen()
 #                        time.sleep(5)
 #                        running = False
-#                    else:
+#                    else: #If it's not the last question, we display the next question.
 #                        i = i+4
 #                        question = TRIVIA[i]
 #                        answer = TRIVIA[i+1]
@@ -97,7 +97,7 @@ while running:
 #                        display_end_screen()
 #                        time.sleep(5)
 #                        running = False
-#                    else:
+#                    else: #If it's not the last question, we display the next question.
 #                        i = i+4
 #                        question = TRIVIA[i]
 #                        answer = TRIVIA[i+1]
