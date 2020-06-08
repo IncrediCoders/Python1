@@ -24,7 +24,7 @@ turtle.pendown()
 
 #TODO: Copy the two lines Grafika gives you here.
 
-#TODO: Write a couple more lines, following Grafika's instructions.
+#TODO: Write the last 4 lines, following Grafika's instructions.
 
 # This line stops the window from closing once we make it to the end.
 turtle.done()
