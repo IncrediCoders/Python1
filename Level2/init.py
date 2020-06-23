@@ -5,7 +5,7 @@ import pygame
 import textwrap
 
 #============================================================
-#PART 2: CREATING A FRAMEWORK OF GENERAL CLASSES AND FUNCTIONS
+#PART 2: CREATING A FRAMEWORK OF GENERAL CLASSES AND METHODS
 
 def load_file(fileName):
     """Returns the absolute path of a file."""
