@@ -26,7 +26,7 @@ turtle.forward(510)
 turtle.right(90)
 turtle.forward(220)
 
-# Write a couple more lines, following Grafika's instructions.
+# Write the last 4 lines, following Grafika's instructions.
 turtle.left(90)
 turtle.forward(490)
 turtle.right(90)
