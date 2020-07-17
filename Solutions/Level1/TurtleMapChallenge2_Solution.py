@@ -19,7 +19,7 @@ turtle.sety(-275)
 turtle.pendown()
 
 # Write a loop to go back and forth 5 times.
-# If you don't know what to do, come back after you learn loops.
+# To learn more about loops, follow the instructions on the wiki page.
 for i in range(5):
     # Write code to go to the school and then back
     # (You can use your easy solution for a lot of this!)
