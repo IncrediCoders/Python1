@@ -34,7 +34,7 @@ for i in range(5):
     turtle.right(90)
     turtle.forward(250)
 
-    # Reached the school
+    # Reached the school. Go back to the house.
     turtle.left(180)
     turtle.forward(250)
     turtle.left(90)
