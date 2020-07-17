@@ -21,8 +21,8 @@ turtle.pendown()
 # Write a loop to go back and forth 5 times.
 # To learn more about loops, follow the instructions on the wiki page.
 for i in range(5):
-    # Write code to go to the school and then back
-    # (You can use your easy solution for a lot of this!)
+    # In your loop, write the code to go to the school and then to get back.
+    # (You can use your code you wrote from the instructions in the book!)
     turtle.left(180)
     turtle.forward(510)
 
