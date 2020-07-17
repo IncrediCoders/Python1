@@ -22,7 +22,7 @@ turtle.pendown()
 # To learn more about loops, follow the instructions on the wiki page.
 
     #TODO: In your loop, write code to go to the school and then back
-    # (You can use your easy solution for a lot of this!)
+    # (You can use your code you wrote from the instructions in the book!)
 
 #TODO: End the loop here.
 
