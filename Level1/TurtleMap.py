@@ -6,11 +6,11 @@ import turtle
 SCREEN = turtle.Screen()
 SCREEN.title("Mapster Spacebook")
 SCREEN.setup(1280, 800)
-SCREEN.bgpic(get_file("Assets\Background.gif"))
+SCREEN.bgpic(get_file("Assets/Background.gif"))
 
-# Set the shape to be a car.
-SCREEN.register_shape("car", ((-4, 10), (4, 10), (4, -10), (-4, -10)))
-turtle.shape("car")
+# Set the shape to be a green turtle.
+turtle.shape("turtle")
+turtle.color("green") 
 
 # This code moves the turtle to its starting location.
 turtle.penup()

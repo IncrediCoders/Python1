@@ -1,15 +1,16 @@
 """Turtle graphics project file."""
+from init import *
 import turtle
 
 # Create our screen
 SCREEN = turtle.Screen()
 SCREEN.title("Napster Spacebook")
 SCREEN.setup(1280, 800)
-SCREEN.bgpic("assets/Background.png")
+SCREEN.bgpic("Assets/Background.png")
 
-# Set the shape to be a car.
-SCREEN.register_shape("car", ((-4, 10), (4, 10), (4, -10), (-4, -10)))
-turtle.shape("car")
+# Set the shape to be a green turtle.
+turtle.shape("turtle")
+turtle.color("green") 
 
 # This code moves the turtle to its starting location.
 turtle.penup()
