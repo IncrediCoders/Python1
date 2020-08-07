@@ -11,10 +11,10 @@ for line in file:
 #display the text on the screen.
 question = TRIVIA[0]
 answer = TRIVIA[1]
-wrongchoice1 = TRIVIA[2]
-wrongchoice2 = TRIVIA[3]
+wrong_choice_1 = TRIVIA[2]
+wrong_choice_2 = TRIVIA[3]
 
-ANSWER_CHOICES = [answer, wrongchoice1, wrongchoice2]
+ANSWER_CHOICES = [answer, wrong_choice_1, wrong_choice_2]
 
 i = 0
 number_of_questions = 8
@@ -29,6 +29,8 @@ while running:
     display_question(question, ANSWER_CHOICES) #Displays the new question and the three answer choices.
     EVENTS = pygame.event.get()
     for event in EVENTS:
+        if event.type == pygame.QUIT:
+            running = False
         mpos = pygame.mouse.get_pos() 
         if event.type == pygame.MOUSEBUTTONDOWN: #If the player clicks the mouse.
             if answer_1_rect.collidepoint(mpos): #If the player clicks the first answer on the top.
@@ -143,3 +145,5 @@ while running:
                         wrong_choice_2 = TRIVIA[i+3]
                         ANSWER_CHOICES = [answer, wrong_choice_1, wrong_choice_2]
                         randomize_answers(ANSWER_CHOICES)
+
+pygame.quit()

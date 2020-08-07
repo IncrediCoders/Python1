@@ -11,10 +11,10 @@ for line in file:
 #display the text on the screen.
 question = TRIVIA[0]
 answer = TRIVIA[1]
-wrongchoice1 = TRIVIA[2]
-wrongchoice2 = TRIVIA[3]
+wrong_choice_1 = TRIVIA[2]
+wrong_choice_2 = TRIVIA[3]
 
-ANSWER_CHOICES = [answer, wrongchoice1, wrongchoice2]
+ANSWER_CHOICES = [answer, wrong_choice_1, wrong_choice_2]
 
 i = 0
 number_of_questions = 8
