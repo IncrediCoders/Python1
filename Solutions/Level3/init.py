@@ -27,8 +27,8 @@ answer_2_text = myfont.render("                         ", True, (0, 0, 0))
 answer_2_rect = answer_2_text.get_rect(topleft=(200,300))
 answer_3_text = myfont.render("                         ", True, (0, 0, 0))
 answer_3_rect = answer_3_text.get_rect(topleft=(200,370))
-sample_click = myfont.render("Click here to start the game.", True, (0,0,0))
-sample_click_rect = sample_click.get_rect(topleft=(200,230))
+start_click = myfont.render("Click here to start the game.", True, (0,0,0))
+start_click_rect = start_click.get_rect(topleft=(200,230))
 correct_text = myfont.render("That is correct.", True, (0,128,0))
 incorrect_text = myfont.render("That is incorrect.", True, (255,0,0))
 
@@ -72,11 +72,11 @@ def display_question(question, answer_choices):
 def display_intro_screen():
     #This shows the intro text (so we only run it once, at the beginning).
     intro_text = myfont.render("Welcome to the Trivia Game!", True, (0,0,0))
-    sample_click = myfont.render("Click here to start.", True, (0,0,0))
-    sample_click_rect = sample_click.get_rect(topleft=(200,230))
+    start_click = myfont.render("Click here to start.", True, (0,0,0))
+    start_click_rect = start_click.get_rect(topleft=(200,230))
     screen.blit(background,(0,0))
     screen.blit(intro_text, (200,150))
-    screen.blit(sample_click,sample_click_rect)
+    screen.blit(start_click,start_click_rect)
     pygame.display.update()
 
 def display_end_screen():
@@ -91,7 +91,7 @@ def check_game_started():
     for event in EVENTS:
         mpos = pygame.mouse.get_pos()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if sample_click_rect.collidepoint(mpos):
+            if start_click_rect.collidepoint(mpos):
                 return True
     return False
 
