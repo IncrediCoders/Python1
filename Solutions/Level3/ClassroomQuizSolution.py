@@ -109,6 +109,7 @@ while running:
                         wrong_choice_2 = TRIVIA[i+3]
                         ANSWER_CHOICES = [answer, wrong_choice_1, wrong_choice_2]
                         randomize_answers(ANSWER_CHOICES)
+# TODO:Write the code here for the third answer.
             if answer_3_rect.collidepoint(mpos): #If the player clicks the third answer.
                 if ANSWER_CHOICES[2] == answer: #If it's the correct answer.
                     screen.blit(correct_text,(300,0))
