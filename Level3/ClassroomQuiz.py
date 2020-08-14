@@ -29,9 +29,9 @@ while running:
     display_question(question, ANSWER_CHOICES) #Displays the new question and the three answer choices.
     EVENTS = pygame.event.get()
     for event in EVENTS:
-        mpos = pygame.mouse.get_pos() 
+        mouse_position = pygame.mouse.get_pos() 
         if event.type == pygame.MOUSEBUTTONDOWN: #If the player clicks the mouse.
-            if answer_1_rect.collidepoint(mpos): #If the player clicks the first answer on the top.
+            if answer_1_rect.collidepoint(mouse_position): #If the player clicks the first answer on the top.
                 if ANSWER_CHOICES[0] == answer: #If it's the correct answer.
                     screen.blit(correct_text,(300,0))
                     codala = correct_a
@@ -68,7 +68,7 @@ while running:
                         wrong_choice_2 = TRIVIA[i+3]
                         ANSWER_CHOICES = [answer, wrong_choice_1, wrong_choice_2]
                         randomize_answers(ANSWER_CHOICES)
-#            if answer_2_rect.collidepoint(mpos): #If the player clicks the second answer.
+#            if answer_2_rect.collidepoint(mouse_position): #If the player clicks the second answer.
 #                if ANSWER_CHOICES[1] == answer: #If it's the correct answer.
 #                    screen.blit(correct_text,(300,0))
 #                    codala = correct_b
