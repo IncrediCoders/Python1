@@ -89,8 +89,8 @@ def display_end_screen():
 def check_game_started():
     EVENTS = pygame.event.get()
     for event in EVENTS:
-        mpos = pygame.mouse.get_pos()
+        mouse_position = pygame.mouse.get_pos()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if start_click_rect.collidepoint(mpos):
+            if start_click_rect.collidepoint(mouse_position):
                 return True
     return False
