@@ -137,6 +137,7 @@ while running:
                     time.sleep(5)
                     if line_number >= (number_of_questions * 4)-4: #If it's the last question.
                         display_end_screen()
+                        time.sleep(5)
                         running = False
                     else: #If it's the not the last question, we display the next question.
                         line_number = line_number+4
