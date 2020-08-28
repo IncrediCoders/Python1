@@ -13,11 +13,11 @@ def get_file(fileName):
     #This grabs your files from your folder.
     return path.join(path.dirname(__file__), fileName)
 
-def read_file():
-    """Read txt file into a list and return it."""
+def read_file(fileName):
+    """Read txt file into a list line by line and return it."""
     TRIVIA = []
     #This puts the txt file into the file variable
-    file = open(get_file('Assets/trivia.txt'), 'r')
+    file = open(get_file(fileName), 'r')
     for line in file:
         TRIVIA.append(line.rstrip())
     return TRIVIA
