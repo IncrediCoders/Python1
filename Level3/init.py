@@ -93,6 +93,7 @@ def display_end_screen():
     screen.blit(background, (0,0))
     screen.blit(codala,(0,0))
     pygame.display.update()
+    pygame.event.get()
 
 def check_game_started():
     EVENTS = pygame.event.get()
@@ -102,3 +103,19 @@ def check_game_started():
             if start_click_rect.collidepoint(mouse_position):
                 return True
     return False
+
+def displayCodala(inputImage, textType):
+    if textType == "correct_text":
+        screen.blit(correct_text,(300,0))
+        codala = inputImage
+        screen.blit(codala, (0,0))
+        pygame.display.update()
+        pygame.event.get()
+        time.sleep(5)
+    if textType == "incorrect_text":
+        screen.blit(incorrect_text,(300,0))
+        codala = inputImage
+        screen.blit(codala, (0,0))
+        pygame.display.update()
+        pygame.event.get()
+        time.sleep(5)

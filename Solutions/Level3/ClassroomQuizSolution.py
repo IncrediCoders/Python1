@@ -32,12 +32,7 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN: #If the player clicks the mouse.
             if answer_1_rect.collidepoint(mouse_position): #If the player clicks the first answer on the top.
                 if ANSWER_CHOICES[0] == answer: #If it's the correct answer.
-                    screen.blit(correct_text,(300,0))
-                    codala = correct_a
-                    screen.blit(codala, (0,0))
-                    pygame.display.update()
-                    pygame.event.get()
-                    time.sleep(5)
+                    displayCodala(correct_a, "correct_text")
                     if line_number >= (number_of_questions * 4)-4: #If it's the last question.
                         display_end_screen()
                         time.sleep(5)
@@ -51,12 +46,7 @@ while running:
                         ANSWER_CHOICES = [answer, wrong_choice_1, wrong_choice_2]
                         randomize_answers(ANSWER_CHOICES)
                 else: #If it's an incorrect answer.
-                    screen.blit(incorrect_text,(300,0))
-                    codala = incorrect_a
-                    screen.blit(codala, (0,0))
-                    pygame.display.update()
-                    pygame.event.get()
-                    time.sleep(5)
+                    displayCodala(incorrect_a, "incorrect_text")
                     if line_number >= (number_of_questions * 4)-4: #If it's the last question.
                         display_end_screen()
                         time.sleep(5)
@@ -71,12 +61,7 @@ while running:
                         randomize_answers(ANSWER_CHOICES)
             if answer_2_rect.collidepoint(mouse_position): #If the player clicks the second answer.
                 if ANSWER_CHOICES[1] == answer: #If it's the correct answer.
-                    screen.blit(correct_text,(300,0))
-                    codala = correct_b
-                    screen.blit(codala, (0,0))
-                    pygame.display.update()
-                    pygame.event.get()
-                    time.sleep(5)
+                    displayCodala(correct_b, "correct_text")
                     if line_number >= (number_of_questions * 4)-4: #If it's the last question.
                         display_end_screen()
                         time.sleep(5)
@@ -91,12 +76,7 @@ while running:
                         ANSWER_CHOICES = [answer, wrong_choice_1, wrong_choice_2]
                         randomize_answers(ANSWER_CHOICES)
                 else: #If it's an incorrect answer.
-                    screen.blit(incorrect_text,(300,0))
-                    codala = incorrect_b
-                    screen.blit(codala,(0,0))
-                    pygame.display.update()
-                    pygame.event.get()
-                    time.sleep(5)
+                    displayCodala(incorrect_b, "incorrect_text")
                     if line_number >= (number_of_questions * 4)-4: #If it's the last question.
                         display_end_screen()
                         time.sleep(5)
@@ -113,12 +93,7 @@ while running:
 # TODO:Write the code here for the third answer.
             if answer_3_rect.collidepoint(mouse_position): #If the player clicks the third answer.
                 if ANSWER_CHOICES[2] == answer: #If it's the correct answer.
-                    screen.blit(correct_text,(300,0))
-                    codala = correct_a
-                    screen.blit(codala, (0,0))
-                    pygame.display.update()
-                    pygame.event.get()
-                    time.sleep(5)
+                    displayCodala(correct_a, "correct_text")
                     if line_number >= (number_of_questions * 4)-4: #If it's the last question.
                         display_end_screen()
                         time.sleep(5)
@@ -132,12 +107,7 @@ while running:
                         ANSWER_CHOICES = [answer, wrong_choice_1, wrong_choice_2]
                         randomize_answers(ANSWER_CHOICES)
                 else: #If it's an incorrect answer.
-                    screen.blit(incorrect_text,(300,0))
-                    codala = incorrect_a
-                    screen.blit(codala, (0,0))
-                    pygame.display.update()
-                    pygame.event.get()
-                    time.sleep(5)
+                    displayCodala(incorrect_a, "incorrect_text")
                     if line_number >= (number_of_questions * 4)-4: #If it's the last question.
                         display_end_screen()
                         time.sleep(5)
