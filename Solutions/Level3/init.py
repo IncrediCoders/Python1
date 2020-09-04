@@ -93,6 +93,7 @@ def display_end_screen():
     screen.blit(background, (0,0))
     screen.blit(codala,(0,0))
     pygame.display.update()
+    pygame.event.get()
 
 def check_game_started():
     EVENTS = pygame.event.get()

@@ -36,6 +36,7 @@ while running:
                     codala = correct_a
                     screen.blit(codala, (0,0))
                     pygame.display.update()
+                    pygame.event.get()
                     time.sleep(5)
                     if line_number >= (number_of_questions * 4)-4: #If it's the last question.
                         display_end_screen()
@@ -54,6 +55,7 @@ while running:
                     codala = incorrect_a
                     screen.blit(codala, (0,0))
                     pygame.display.update()
+                    pygame.event.get()
                     time.sleep(5)
                     if line_number >= (number_of_questions * 4)-4: #If it's the last question.
                         display_end_screen()
@@ -73,6 +75,7 @@ while running:
                     codala = correct_b
                     screen.blit(codala, (0,0))
                     pygame.display.update()
+                    pygame.event.get()
                     time.sleep(5)
                     if line_number >= (number_of_questions * 4)-4: #If it's the last question.
                         display_end_screen()
@@ -92,6 +95,7 @@ while running:
                     codala = incorrect_b
                     screen.blit(codala,(0,0))
                     pygame.display.update()
+                    pygame.event.get()
                     time.sleep(5)
                     if line_number >= (number_of_questions * 4)-4: #If it's the last question.
                         display_end_screen()
@@ -113,6 +117,7 @@ while running:
                     codala = correct_a
                     screen.blit(codala, (0,0))
                     pygame.display.update()
+                    pygame.event.get()
                     time.sleep(5)
                     if line_number >= (number_of_questions * 4)-4: #If it's the last question.
                         display_end_screen()
@@ -131,6 +136,7 @@ while running:
                     codala = incorrect_a
                     screen.blit(codala, (0,0))
                     pygame.display.update()
+                    pygame.event.get()
                     time.sleep(5)
                     if line_number >= (number_of_questions * 4)-4: #If it's the last question.
                         display_end_screen()
