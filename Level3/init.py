@@ -55,20 +55,20 @@ incorrect_a = pygame.image.load(get_file('Assets/IncorrectAnswerA.png'))
 incorrect_b = pygame.image.load(get_file('Assets/IncorrectAnswerB.png'))
 end_game = pygame.image.load(get_file('Assets/EndGame.png'))
 
-def randomize_answers(answerChoices):
+def randomize_answers(inputList):
     #This randomly shuffles the answers so the player doesn't know which one is the correct answer.
     random.shuffle(answerChoices)
     return answerChoices
 
-def display_question(question, answer_choices):
+def display_question(question, inputList):
     #This code loads and displays the next question and Mrs. Codala's reaction.
     question_text = myfont.render(question, True, (0, 0, 0))
     question_rect = question_text.get_rect(topleft=(200,150))
-    answer_1_text = myfont.render(answer_choices[0], True, (0,0,255))
+    answer_1_text = myfont.render(inputList[0], True, (0,0,255))
     answer_1_rect = answer_1_text.get_rect(topleft=(200,230))
-    answer_2_text = myfont.render(answer_choices[1], True, (0,0,255))
+    answer_2_text = myfont.render(inputList[1], True, (0,0,255))
     answer_2_rect = answer_2_text.get_rect(topleft=(200,300))
-    answer_3_text = myfont.render(answer_choices[2], True, (0,0,255))
+    answer_3_text = myfont.render(inputList[2], True, (0,0,255))
     answer_3_rect = answer_3_text.get_rect(topleft=(200,370))
     screen.blit(background, (0,0))
     screen.blit(question_text, question_rect)
@@ -104,7 +104,7 @@ def check_game_started():
                 return True
     return False
 
-def displayCodala(inputImage, textType):
+def display_codala(inputImage, textType):
     if textType == "correct_text":
         screen.blit(correct_text,(300,0))
     if textType == "incorrect_text":
@@ -114,3 +114,13 @@ def displayCodala(inputImage, textType):
     pygame.display.update()
     pygame.event.get()
     time.sleep(3)
+
+def move_to_next_question(inputList, lineNumber):
+    TRIVIA = inputList
+    lineNumber = lineNumber+4
+    question = TRIVIA[lineNumber]
+    answer = TRIVIA[lineNumber+1]
+    wrong_choice_1 = TRIVIA[lineNumber+2]
+    wrong_choice_2 = TRIVIA[lineNumber+3]
+    ANSWER_CHOICES = [answer, wrong_choice_1, wrong_choice_2]
+    randomize_answers(ANSWER_CHOICES)
