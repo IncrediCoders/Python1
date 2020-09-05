@@ -127,3 +127,11 @@ def move_to_next_question(inputList, question, lineNumber, inputList2):
     randomize_answers(inputList2)
     #Return new line number, next question and answer choice list.
     return lineNumber, question, inputList2
+
+def check_if_last_question(lineNumber, isRunning):
+    #This checks if it's the last question and displays end screen if so.
+    if lineNumber >= (8 * 4)-4: #When we have 8 questions
+        display_end_screen()
+        time.sleep(5)
+        isRunning = False
+    return isRunning
