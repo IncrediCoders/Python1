@@ -40,7 +40,7 @@ while running:
                 running = check_if_last_question(line_number, running, number_of_questions)
                 #If it's the not the last question, we display the next question.
                 line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
-            if answer_2_rect.collidepoint(mouse_position): 
+            if answer_2_rect.collidepoint(mouse_position): #If the player clicks the 2nd answer.
                 if ANSWER_CHOICES[1] == answer: 
                     display_codala(correct_b, "correct_text")
                 else:
@@ -48,7 +48,7 @@ while running:
                 running = check_if_last_question(line_number, running, number_of_questions)
                 line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
 # TODO:Write the code here for the third answer.
-            if answer_3_rect.collidepoint(mouse_position): 
+            if answer_3_rect.collidepoint(mouse_position): #If the player clicks the 3rd answer.
                 if ANSWER_CHOICES[2] == answer: 
                     display_codala(correct_a, "correct_text")
                 else:
