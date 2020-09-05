@@ -51,7 +51,7 @@ while running:
             if answer_3_rect.collidepoint(mouse_position): 
                 if ANSWER_CHOICES[2] == answer: 
                     display_codala(correct_a, "correct_text")
-                else: #If it's an incorrect answer.
+                else:
                     display_codala(incorrect_a, "incorrect_text")
                 running = check_if_last_question(line_number, running, number_of_questions)
                 line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)

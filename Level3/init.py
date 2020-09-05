@@ -125,7 +125,7 @@ def move_to_next_question(inputList, question, lineNumber, inputList2):
     wrong_choice_2 = inputList[lineNumber+3]
     inputList2 = [answer, wrong_choice_1, wrong_choice_2]
     randomize_answers(inputList2)
-    #Return new line number, next question and answer choice list.
+    #Return new line number, next question, correct answer and answer choice list.
     return lineNumber, question, answer, inputList2
 
 def check_if_last_question(lineNumber, isRunning, number_of_questions):
