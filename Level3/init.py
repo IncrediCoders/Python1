@@ -96,6 +96,7 @@ def display_end_screen():
     pygame.event.get()
 
 def check_game_started():
+    #This checks if the player clicks the text to start the game.
     EVENTS = pygame.event.get()
     for event in EVENTS:
         mouse_position = pygame.mouse.get_pos()

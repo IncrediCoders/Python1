@@ -12,22 +12,34 @@ wrong_choice_1 = TRIVIA[2]
 wrong_choice_2 = TRIVIA[3]
 
 ANSWER_CHOICES = [answer, wrong_choice_1, wrong_choice_2]
-randomize_answers(ANSWER_CHOICES) #Shuffles the answer choices
+randomize_answers(ANSWER_CHOICES) #Shuffles the first set of answer choices
 
 line_number = 0
 number_of_questions = 8
-questions_answered = 0
-display_intro_screen() #Gets the screen ready.
-running = False
-while running == False: 
-    #We're waiting for the player to click "Click here to start the game."
+
+display_intro_screen() #Displays the intro screen.
+
+intro = True 
+running = True 
+
+#First page: This displays intro screen until the player clicks close button or starts the game.
+while intro:
+    EVENTS = pygame.event.get() 
+    for event in EVENTS:
+        if event.type == pygame.QUIT: #If clicks the close button, it exits the game.
+            intro = False
+            pygame.quit()
+            exit()
+    #If the player clicks "Click here to start the game.", the screen changes to the first question.
     if check_game_started() == True:
-        running = True
+            intro = False
+
+#Second page: This displays question screen until the last question or the player closes the window.
 while running:
     display_question(question, ANSWER_CHOICES) #Displays the new question and the three answer choices.
     EVENTS = pygame.event.get()
     for event in EVENTS:
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT: #If clicks the close button, it exits the game.
             running = False
         mouse_position = pygame.mouse.get_pos() 
         if event.type == pygame.MOUSEBUTTONDOWN: #If the player clicks the mouse.
