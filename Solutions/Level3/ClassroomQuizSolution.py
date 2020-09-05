@@ -12,6 +12,7 @@ wrong_choice_1 = TRIVIA[2]
 wrong_choice_2 = TRIVIA[3]
 
 ANSWER_CHOICES = [answer, wrong_choice_1, wrong_choice_2]
+randomize_answers(ANSWER_CHOICES) #Shuffles the answer choices
 
 line_number = 0
 number_of_questions = 8
