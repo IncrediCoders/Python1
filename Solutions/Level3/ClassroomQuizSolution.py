@@ -32,57 +32,27 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN: #If the player clicks the mouse.
             if answer_1_rect.collidepoint(mouse_position): #If the player clicks the first answer on the top.
                 if ANSWER_CHOICES[0] == answer: #If it's the correct answer.
-                    display_codala(correct_a, "correct_text")
-                    if line_number >= (number_of_questions * 4)-4: #If it's the last question.
-                        display_end_screen()
-                        time.sleep(5)
-                        running = False
-                    else: #If it's the not the last question, we display the next question.
-                        move_to_next_question(TRIVIA, line_number)
+                    display_codala(correct_a, "correct_text") #Displays codala and text for correct answer.
                 else: #If it's an incorrect answer.
-                    display_codala(incorrect_a, "incorrect_text")
-                    if line_number >= (number_of_questions * 4)-4: #If it's the last question.
-                        display_end_screen()
-                        time.sleep(5)
-                        running = False
-                    else: #If it's the not the last question, we display the next question.
-                        move_to_next_question(TRIVIA, line_number)
-            if answer_2_rect.collidepoint(mouse_position): #If the player clicks the second answer.
-                if ANSWER_CHOICES[1] == answer: #If it's the correct answer.
+                    display_codala(incorrect_a, "incorrect_text") #Display codala and text for incorrect answer
+                #Checks if it's the last question and display end screen.
+                running = check_if_last_question(line_number, running)
+                #If it's the not the last question, we display the next question.
+                line_number, question, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
+            if answer_2_rect.collidepoint(mouse_position): 
+                if ANSWER_CHOICES[1] == answer: 
                     display_codala(correct_b, "correct_text")
-                    if line_number >= (number_of_questions * 4)-4: #If it's the last question.
-                        display_end_screen()
-                        time.sleep(5)
-                        running = False
-                    #Copy from the book to move to the next question.
-                    else: #If it's the not the last question, we display the next question.
-                        move_to_next_question(TRIVIA, line_number)
-                else: #If it's an incorrect answer.
+                else:
                     display_codala(incorrect_b, "incorrect_text")
-                    if line_number >= (number_of_questions * 4)-4: #If it's the last question.
-                        display_end_screen()
-                        time.sleep(5)
-                        running = False
-                    #Copy from the book to move to the next question.
-                    else: #If it's the not the last question, we display the next question.
-                        move_to_next_question(TRIVIA, line_number)
+                running = check_if_last_question(line_number, running)
+                line_number, question, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
 # TODO:Write the code here for the third answer.
-            if answer_3_rect.collidepoint(mouse_position): #If the player clicks the third answer.
-                if ANSWER_CHOICES[2] == answer: #If it's the correct answer.
+            if answer_3_rect.collidepoint(mouse_position): 
+                if ANSWER_CHOICES[2] == answer: 
                     display_codala(correct_a, "correct_text")
-                    if line_number >= (number_of_questions * 4)-4: #If it's the last question.
-                        display_end_screen()
-                        time.sleep(5)
-                        running = False
-                    else: #If it's the not the last question, we display the next question.
-                        move_to_next_question(TRIVIA, line_number)
                 else: #If it's an incorrect answer.
                     display_codala(incorrect_a, "incorrect_text")
-                    if line_number >= (number_of_questions * 4)-4: #If it's the last question.
-                        display_end_screen()
-                        time.sleep(5)
-                        running = False
-                    else: #If it's the not the last question, we display the next question.
-                        move_to_next_question(TRIVIA, line_number)
+                running = check_if_last_question(line_number, running)
+                line_number, question, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
 
 pygame.quit()

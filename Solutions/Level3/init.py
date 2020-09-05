@@ -57,8 +57,8 @@ end_game = pygame.image.load(get_file('Assets/EndGame.png'))
 
 def randomize_answers(inputList):
     #This randomly shuffles the answers so the player doesn't know which one is the correct answer.
-    random.shuffle(answerChoices)
-    return answerChoices
+    random.shuffle(inputList)
+    return inputList
 
 def display_question(question, inputList):
     #This code loads and displays the next question and Mrs. Codala's reaction.
@@ -105,6 +105,7 @@ def check_game_started():
     return False
 
 def display_codala(inputImage, textType):
+    #This displays the image of Mrs. Codala telling you if the choice is correct.
     if textType == "correct_text":
         screen.blit(correct_text,(300,0))
     if textType == "incorrect_text":
@@ -112,15 +113,25 @@ def display_codala(inputImage, textType):
     codala = inputImage
     screen.blit(codala, (0,0))
     pygame.display.update()
-    pygame.event.get()
+    pygame.event.get()  #To fix display of image above for Mac
     time.sleep(3)
 
-def move_to_next_question(inputList, lineNumber):
-    TRIVIA = inputList
+def move_to_next_question(inputList, question, lineNumber, inputList2):
+    #This changes question and three choices in input list to next question.
     lineNumber = lineNumber+4
-    question = TRIVIA[lineNumber]
-    answer = TRIVIA[lineNumber+1]
-    wrong_choice_1 = TRIVIA[lineNumber+2]
-    wrong_choice_2 = TRIVIA[lineNumber+3]
-    ANSWER_CHOICES = [answer, wrong_choice_1, wrong_choice_2]
-    randomize_answers(ANSWER_CHOICES)
+    question = inputList[lineNumber]
+    answer = inputList[lineNumber+1]
+    wrong_choice_1 = inputList[lineNumber+2]
+    wrong_choice_2 = inputList[lineNumber+3]
+    inputList2 = [answer, wrong_choice_1, wrong_choice_2]
+    randomize_answers(inputList2)
+    #Return new line number, next question and answer choice list.
+    return lineNumber, question, inputList2
+
+def check_if_last_question(lineNumber, isRunning):
+    #This checks if it's the last question and displays end screen if so.
+    if lineNumber >= (8 * 4)-4: #When we have 8 questions
+        display_end_screen()
+        time.sleep(5)
+        isRunning = False
+    return isRunning
