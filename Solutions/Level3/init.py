@@ -55,20 +55,20 @@ incorrect_a = pygame.image.load(get_file('Assets/IncorrectAnswerA.png'))
 incorrect_b = pygame.image.load(get_file('Assets/IncorrectAnswerB.png'))
 end_game = pygame.image.load(get_file('Assets/EndGame.png'))
 
-def randomize_answers(inputList):
+def randomize_answers(input_list):
     #This randomly shuffles the answers so the player doesn't know which one is the correct answer.
-    random.shuffle(inputList)
-    return inputList
+    random.shuffle(input_list)
+    return input_list
 
-def display_question(question, inputList):
+def display_question(question, input_list):
     #This code loads and displays the next question and Mrs. Codala's reaction.
     question_text = myfont.render(question, True, (0, 0, 0))
     question_rect = question_text.get_rect(topleft=(200,150))
-    answer_1_text = myfont.render(inputList[0], True, (0,0,255))
+    answer_1_text = myfont.render(input_list[0], True, (0,0,255))
     answer_1_rect = answer_1_text.get_rect(topleft=(200,230))
-    answer_2_text = myfont.render(inputList[1], True, (0,0,255))
+    answer_2_text = myfont.render(input_list[1], True, (0,0,255))
     answer_2_rect = answer_2_text.get_rect(topleft=(200,300))
-    answer_3_text = myfont.render(inputList[2], True, (0,0,255))
+    answer_3_text = myfont.render(input_list[2], True, (0,0,255))
     answer_3_rect = answer_3_text.get_rect(topleft=(200,370))
     screen.blit(background, (0,0))
     screen.blit(question_text, question_rect)
@@ -104,34 +104,34 @@ def check_game_started():
                 return True
     return False
 
-def display_codala(inputImage, textType):
+def display_codala(input_image, text_type):
     #This displays the image of Mrs. Codala telling you if the choice is correct.
-    if textType == "correct_text":
+    if text_type == "correct_text":
         screen.blit(correct_text,(300,0))
-    if textType == "incorrect_text":
+    if text_type == "incorrect_text":
         screen.blit(incorrect_text,(300,0))
-    codala = inputImage
+    codala = input_image
     screen.blit(codala, (0,0))
     pygame.display.update()
     pygame.event.get()  #To fix display of image above for Mac
     time.sleep(3)
 
-def move_to_next_question(inputList, question, lineNumber, inputList2):
+def move_to_next_question(input_list, question, line_number, input_list2):
     #This changes question and three choices in input list to next question.
-    lineNumber = lineNumber+4
-    question = inputList[lineNumber]
-    answer = inputList[lineNumber+1]
-    wrong_choice_1 = inputList[lineNumber+2]
-    wrong_choice_2 = inputList[lineNumber+3]
-    inputList2 = [answer, wrong_choice_1, wrong_choice_2]
-    randomize_answers(inputList2)
+    line_number = line_number+4
+    question = input_list[line_number]
+    answer = input_list[line_number+1]
+    wrong_choice_1 = input_list[line_number+2]
+    wrong_choice_2 = input_list[line_number+3]
+    input_list2 = [answer, wrong_choice_1, wrong_choice_2]
+    randomize_answers(input_list2)
     #Return new line number, next question, correct answer and answer choice list.
-    return lineNumber, question, answer, inputList2
+    return line_number, question, answer, input_list2
 
-def check_if_last_question(lineNumber, isRunning, number_of_questions):
+def check_if_last_question(line_number, running_status, number_of_questions):
     #This checks if it's the last question and displays end screen if so.
-    if lineNumber >= (number_of_questions * 4)-4:
+    if line_number >= (number_of_questions * 4)-4:
         display_end_screen()
         time.sleep(5)
-        isRunning = False
-    return isRunning
+        running_status = False
+    return running_status
