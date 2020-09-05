@@ -36,23 +36,23 @@ while running:
                 else: #If it's an incorrect answer.
                     display_codala(incorrect_a, "incorrect_text") #Display codala and text for incorrect answer
                 #Checks if it's the last question and display end screen.
-                running = check_if_last_question(line_number, running)
+                running = check_if_last_question(line_number, running, number_of_questions)
                 #If it's the not the last question, we display the next question.
-                line_number, question, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
+                line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
             if answer_2_rect.collidepoint(mouse_position): 
                 if ANSWER_CHOICES[1] == answer: 
                     display_codala(correct_b, "correct_text")
                 else:
                     display_codala(incorrect_b, "incorrect_text")
-                running = check_if_last_question(line_number, running)
-                line_number, question, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
+                running = check_if_last_question(line_number, running, number_of_questions)
+                line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
 # TODO:Write the code here for the third answer.
             if answer_3_rect.collidepoint(mouse_position): 
                 if ANSWER_CHOICES[2] == answer: 
                     display_codala(correct_a, "correct_text")
                 else: #If it's an incorrect answer.
                     display_codala(incorrect_a, "incorrect_text")
-                running = check_if_last_question(line_number, running)
-                line_number, question, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
+                running = check_if_last_question(line_number, running, number_of_questions)
+                line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
 
 pygame.quit()
