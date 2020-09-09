@@ -1,5 +1,4 @@
-from init import *
-import pygame #Gives us our gaming functions
+from init import * # Gives us our gaming functions
 
 """Loads the background and images"""
 background = load_file("Assets/Background.png")
