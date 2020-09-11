@@ -71,9 +71,9 @@ while running:
                 display_end_screen()
                 #Display the final score on the end screen.
                 if score == number_of_questions:
-                    score_text = myfont.render("Congratulations! You got all questions right!", True, (0,128,0))
+                    score_text = myfont.render("Congratulations! You got all questions right! " + str(score) + " / " + str(number_of_questions), True, (0,128,0))
                 elif score == 0:
-                    score_text = myfont.render("Woops! All questions got wrong.", True, (255,0,0))
+                    score_text = myfont.render("Woops! All questions got wrong. " + str(score) + " / " + str(number_of_questions), True, (255,0,0))
                 else:
                     score_text = myfont.render("You got " + str(score) + " / " + str(number_of_questions) + " right!", True, (0,128,0))
                 screen.blit(score_text, (200,90))
