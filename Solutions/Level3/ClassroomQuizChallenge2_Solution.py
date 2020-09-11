@@ -32,7 +32,7 @@ while intro:
             exit()
     #If the player clicks "Click here to start the game.", the screen changes to the first question.
     if check_game_started() == True:
-        #Extra: Change the color when click on start text.
+        #Extra: Change the color when click on start text (blue to green).
         start_click = myfont.render("Click here to start.", True, (0,128,0))
         screen.blit(start_click,start_click_rect)
         pygame.display.update()
