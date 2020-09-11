@@ -118,13 +118,13 @@ def display_codala(input_image, text_type):
     time.sleep(3)
 
 def move_to_next_question(input_list, question, line_number, input_list2):
-    #This changes question and three choices in input list to next question.
+    #This changes question and three choices from input list to next set of question and choices.
     line_number = line_number+4
-    question = input_list[line_number]
+    question = input_list[line_number] #input_list is the content from txt file
     answer = input_list[line_number+1]
     wrong_choice_1 = input_list[line_number+2]
     wrong_choice_2 = input_list[line_number+3]
-    input_list2 = [answer, wrong_choice_1, wrong_choice_2]
+    input_list2 = [answer, wrong_choice_1, wrong_choice_2] #input_list2 is the new answer choices for display
     randomize_answers(input_list2)
     #Return new line number, next question, correct answer and answer choice list.
     return line_number, question, answer, input_list2
