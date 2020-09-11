@@ -32,7 +32,7 @@ while intro:
             exit()
     #If the player clicks "Click here to start the game.", the screen changes to the first question.
     if check_game_started() == True:
-            intro = False
+        intro = False
 
 #Second page: This displays question screen until the last question or the player closes the window.
 while running:
