@@ -15,7 +15,7 @@ ANSWER_CHOICES = [answer, wrong_choice_1, wrong_choice_2]
 randomize_answers(ANSWER_CHOICES) #Shuffles the first set of answer choices
 
 line_number = 0
-number_of_questions = 3 #Should be 8 or more. Use 3 for short demo
+number_of_questions = 8
 score = 0 #Records the correct answering
 
 display_intro_screen() #Displays the intro screen.
