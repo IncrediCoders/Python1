@@ -1,7 +1,7 @@
 from init import *
 
 #We pull each line of text from the file into a list.
-TRIVIA = read_file('Assets/trivia.txt')
+TRIVIA = read_file('Assets/Trivia.txt')
 
 #We now have a list that holds our current question, correct answer,
 #and the two wrong answers, in that order. We use these variables to 
