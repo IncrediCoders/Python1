@@ -47,7 +47,7 @@ while running:
                 #current_character = bayo_wolf
                 #current_text = text_bayo_wolf
                 
-            #TODO: Copy the code here to add Grafika
+            #TODO: Copy the code here, to add Grafika
             
             #TODO: Type in the if statements and code for the rest of the classmates (#4-12)
 
