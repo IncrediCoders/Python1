@@ -3,9 +3,8 @@ from init import *
 #We pull each line of text from the file into a list
 TRIVIA = read_file('Assets/Trivia.txt')
 
-#We now have a list that holds our current question, correct answer,
-#and the two wrong answers, in that order. We use these variables to 
-#display the text on the screen
+#We now have a list that holds our current question, correct answer, and the two wrong answers, in that order
+#We use these variables to display the text on the screen
 question = TRIVIA[0]
 answer = TRIVIA[1]
 wrong_choice_1 = TRIVIA[2]
