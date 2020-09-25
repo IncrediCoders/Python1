@@ -3,9 +3,8 @@ from init import *
 #We pull each line of text from the file into a list
 TRIVIA = read_file('Assets/Trivia.txt')
 
-#We now have a list that holds our current question, correct answer,
-#and the two wrong answers, in that order. We use these variables to 
-#display the text on the screen
+#We now have a list that holds our current question, correct answer, and the two wrong choices, in that order
+#We use these variables to display the text on the screen
 question = TRIVIA[0]
 answer = TRIVIA[1]
 wrong_choice_1 = TRIVIA[2]
@@ -27,9 +26,7 @@ running = True
 while intro:
     EVENTS = pygame.event.get() 
     for event in EVENTS:
-        if event.type == pygame.QUIT: #If clicks the close button, it exits the game
-            pygame.quit()
-            exit()
+        quit_game(event) #If the player clicks the Close button, it exits the game
     #If the player clicks "Click here to start the game.", the screen changes to the first question
     if check_game_started() == True:
             intro = False

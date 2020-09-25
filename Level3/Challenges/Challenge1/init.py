@@ -136,3 +136,9 @@ def check_if_last_question(line_number, running_status, number_of_questions):
         time.sleep(5)
         running_status = False
     return running_status
+
+def quit_game(event):
+    #This exits the game if the player clicks the Close button.
+    if event.type == pygame.QUIT: 
+        pygame.quit()
+        exit()

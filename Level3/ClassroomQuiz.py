@@ -25,9 +25,7 @@ running = True
 while intro:
     EVENTS = pygame.event.get() 
     for event in EVENTS:
-        if event.type == pygame.QUIT: #If the player clicks the Close button, it exits the game
-            pygame.quit()
-            exit()
+        quit_game(event) #If the player clicks the Close button, it exits the game
     #If the player clicks "Click here to start the game.", the screen changes to the first question
     if check_game_started() == True:
         intro = False
