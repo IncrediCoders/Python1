@@ -50,7 +50,7 @@ while running:
             #     else:
             #         display_codala(incorrect_b, "incorrect_text")
 
-# TODO:Write the code here for the third answer
+#TODO:Write the code here for the third answer
 
             #If it's the last question, we display the end screen with Mrs. Codala
             running = check_if_last_question(line_number, running, number_of_questions)
