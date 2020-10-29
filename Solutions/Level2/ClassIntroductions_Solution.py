@@ -1,4 +1,4 @@
-from init import * # Gives us many helpful functions
+from init import * #Gives us many helpful functions
 
 """Loads the background and images"""
 background = load_file("Assets/Background.png")

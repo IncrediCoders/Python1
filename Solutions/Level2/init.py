@@ -8,7 +8,7 @@ import textwrap
 #PART 2: CREATING A FRAMEWORK OF GENERAL CLASSES AND FUNCTIONS
 
 def load_file(fileName):
-    """Returns the absolute path of a file."""
+    """Returns the absolute path of a file"""
     #This grabs the image files from your folder.
     return pygame.image.load(path.join(path.dirname(__file__), fileName))
 

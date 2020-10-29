@@ -1,7 +1,7 @@
 #============================================================
 #PART 1: IMPORTING DEPENDENCIES AND ASSIGNING GLOBAL VARIABLES
 from os import path
-import pygame # Gives us our gaming functions
+import pygame #Gives us our gaming functions
 import textwrap
 
 #============================================================
