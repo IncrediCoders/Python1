@@ -17,7 +17,7 @@ def display_text(screen, current_text):
     WRAPPED_TEXT = textwrap.wrap(current_text, 30)
     y = 230
     for i in range(len(WRAPPED_TEXT)):
-        screen.blit(myfont.render(WRAPPED_TEXT[i], True, (0, 0, 0)), (230,y))
+        screen.blit(my_font.render(WRAPPED_TEXT[i], True, (0, 0, 0)), (230,y))
         y = y + 30
 
 #============================================================
@@ -26,7 +26,7 @@ def display_text(screen, current_text):
 """Initialize Font Object"""
 #We pick our text style and size.
 pygame.init()
-myfont = pygame.font.SysFont('Arial', 20)
+my_font = pygame.font.SysFont('Arial', 20)
 
 """Displays character to the screen"""
 width = 600
