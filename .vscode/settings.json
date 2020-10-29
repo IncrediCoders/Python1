@@ -4,5 +4,8 @@
     // Since we have multiple files named "init" among the folders, we have to clarify the right paths to the init currently being used.
     // If we open the Python1 folder as root directory for VSCode, it confuses the python server analysis sometimes, although it executes OK.
     // Reference: https://github.com/microsoft/python-language-server/blob/master/TROUBLESHOOTING.md#unresolved-import-warnings
-    "python.autoComplete.extraPaths": ["./Level3", "./Solutions/Level3"] 
+    "python.autoComplete.extraPaths": ["./Level3", "./Solutions/Level3"] ,
+    "python.linting.pylintArgs": [
+        "--extension-pkg-whitelist=pygame"
+    ]
 }
