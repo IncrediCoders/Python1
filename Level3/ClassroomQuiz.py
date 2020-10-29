@@ -18,19 +18,9 @@ number_of_questions = 8
 
 display_intro_screen() #Displays the intro screen
 
-intro = True 
 running = True 
 
-#First page: This displays the intro screen until the player clicks the Close button or starts the game
-while intro:
-    EVENTS = pygame.event.get() 
-    for event in EVENTS:
-        quit_game(event) #If the player clicks the Close button, it exits the game
-    #If the player clicks "Click here to start the game.", the screen changes to the first question
-    if check_game_started() == True:
-        intro = False
-
-#Second page: This displays the question screen until the last question or until the player closes the window
+#This displays the question screen until the last question or until the player closes the window
 while running:
     display_question(question, ANSWER_CHOICES) #Displays the new question and the three answer choices
     EVENTS = pygame.event.get()

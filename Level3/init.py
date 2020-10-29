@@ -9,12 +9,12 @@ from os import path
 #PART 2: CREATING A FRAMEWORK OF GENERAL CLASSES AND FUNCTIONS
 
 def get_file(fileName):
-    """Returns the absolute path of a file."""
+    """Returns the absolute path of a file"""
     #This grabs your files from your folder
     return path.join(path.dirname(__file__), fileName)
 
 def read_file(fileName):
-    """Read txt file into a list line by line and return it."""
+    """Read txt file into a list line by line and return it"""
     TRIVIA = []
     #This puts the txt file into the file variable
     file = open(get_file(fileName), 'r')
@@ -28,7 +28,7 @@ def read_file(fileName):
 """Initialize Font Objects"""
 #We pick our text style and size
 pygame.init()
-pygame.display.set_caption('Classroom Quiz')
+pygame.display.set_caption('Classroom Quiz') #To add the title of game
 myfont = pygame.font.SysFont('Arial', 35)
 answer_1_text = myfont.render("                        ", True, (0,0,255))
 answer_1_rect = answer_1_text.get_rect(topleft=(200,230))
@@ -79,7 +79,7 @@ def display_question(question, input_list):
     pygame.display.update()
 
 def display_intro_screen():
-    #This shows the intro text (so we only run it once, at the beginning)
+    #This displays the intro screen until the player clicks the Close button or starts the game
     intro_text = myfont.render("Welcome to the Trivia Game!", True, (0,0,0))
     start_click = myfont.render("Click here to start.", True, (0,0,255))
     start_click_rect = start_click.get_rect(topleft=(200,230))
@@ -87,6 +87,14 @@ def display_intro_screen():
     screen.blit(intro_text, (200,150))
     screen.blit(start_click,start_click_rect)
     pygame.display.update()
+    intro = True 
+    while intro:
+        EVENTS = pygame.event.get() 
+        for event in EVENTS:
+            quit_game(event) #If the player clicks the Close button, it exits the game
+        #If the player clicks "Click here to start the game.", the screen changes to the first question
+        if check_game_started() == True:
+            intro = False
 
 def display_end_screen():
     #This shows the image of Mrs. Codala telling you the game is done

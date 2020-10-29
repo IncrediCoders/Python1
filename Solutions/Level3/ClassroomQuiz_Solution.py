@@ -18,39 +18,29 @@ number_of_questions = 8
 
 display_intro_screen() #Displays the intro screen
 
-intro = True 
 running = True 
 
-#First page: This displays intro screen until the player clicks close button or starts the game
-while intro:
-    EVENTS = pygame.event.get() 
-    for event in EVENTS:
-        quit_game(event) #If clicks the close button, it exits the game
-    #If the player clicks "Click here to start the game.", the screen changes to the first question
-    if check_game_started() == True:
-        intro = False
-
-#Second page: This displays question screen until the last question or the player closes the window
+#This displays the question screen until the last question or until the player closes the window
 while running:
     display_question(question, ANSWER_CHOICES) #Displays the new question and the three answer choices
     EVENTS = pygame.event.get()
     for event in EVENTS:
-        if event.type == pygame.QUIT: #If clicks the close button, it exits the game
+        if event.type == pygame.QUIT: #If the player clicks the Close button, it exits the game
             running = False
         mouse_position = pygame.mouse.get_pos() 
         if event.type == pygame.MOUSEBUTTONDOWN: #If the player clicks the mouse
             if answer_1_rect.collidepoint(mouse_position): #If the player clicks the 1st answer on the top
                 if ANSWER_CHOICES[0] == answer: #If it's the correct answer
-                    display_codala(correct_a, "correct_text") #Displays codala and text for correct answer
+                    display_codala(correct_a, "correct_text") #Displays Mrs. Codala and the text for the correct answer
                 else: #If it's an incorrect answer
-                    display_codala(incorrect_a, "incorrect_text") #Display codala and text for incorrect answer
+                    display_codala(incorrect_a, "incorrect_text") #Displays Mrs. Codala and the text for an incorrect answer
             if answer_2_rect.collidepoint(mouse_position): #If the player clicks the 2nd answer
                 if ANSWER_CHOICES[1] == answer: 
                     display_codala(correct_b, "correct_text")
                 else:
                     display_codala(incorrect_b, "incorrect_text")
 
-# TODO:Write the code here for the third answer
+#TODO:Write the code here for the third answer
             if answer_3_rect.collidepoint(mouse_position): #If the player clicks the 3rd answer
                 if ANSWER_CHOICES[2] == answer: 
                     display_codala(correct_a, "correct_text")
