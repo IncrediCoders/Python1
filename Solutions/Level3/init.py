@@ -29,6 +29,7 @@ def read_file(fileName):
 #We pick our text style and size
 pygame.init()
 pygame.display.set_caption('Classroom Quiz') #To add the title of game
+#Arial.ttf is only for making exe file for the solution, 'Arial' is also ok to use here
 myfont = pygame.font.SysFont('Arial.ttf', 35)
 answer_1_text = myfont.render("                        ", True, (0,0,255))
 answer_1_rect = answer_1_text.get_rect(topleft=(200,230))
