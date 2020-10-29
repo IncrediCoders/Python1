@@ -26,8 +26,7 @@ def display_text(screen, current_text):
 """Initialize Font Object"""
 #We pick our text style and size.
 pygame.init()
-#Arial.ttf is only for making exe file for the solution, 'Arial' is also ok to use here
-myfont = pygame.font.SysFont('Arial.ttf', 20) 
+myfont = pygame.font.SysFont('Arial', 20) #Change to 'Arial.ttf' if used for making exe file by Pyinstaller
 
 """Displays character to the screen"""
 width = 600
