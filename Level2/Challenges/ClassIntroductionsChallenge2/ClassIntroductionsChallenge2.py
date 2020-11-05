@@ -6,6 +6,7 @@ import textwrap
 #We pick our text style and size.
 pygame.init()
 my_font = pygame.font.SysFont('Arial', 20)
+pygame.display.set_caption('Class Introductions')
 
 def get_file(fileName):
     """Returns the absolute path of a file."""

@@ -27,6 +27,7 @@ def display_text(screen, current_text):
 #We pick our text style and size.
 pygame.init()
 my_font = pygame.font.SysFont('Arial', 20)
+pygame.display.set_caption('Class Introductions')
 
 """Displays character to the screen"""
 width = 600
