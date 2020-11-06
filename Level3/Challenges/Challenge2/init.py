@@ -9,12 +9,16 @@ from os import path
 #PART 2: CREATING A FRAMEWORK OF GENERAL CLASSES AND FUNCTIONS
 
 def get_file(fileName):
-    """Returns the absolute path of a file."""
-    #This grabs your files from your folder.
+    """
+    Returns the absolute path of a file
+    """
+    #This grabs your files from your folder
     return path.join(path.dirname(__file__), fileName)
 
 def read_file(fileName):
-    """Read txt file into a list line by line and return it."""
+    """
+    Read txt file into a list line by line and return it
+    """
     TRIVIA = []
     #This puts the txt file into the file variable
     file = open(get_file(fileName), 'r')
@@ -25,9 +29,12 @@ def read_file(fileName):
 #============================================================
 #PART 3: SETUP FOR THE CLASSROOM QUIZ GAME
 
-"""Initialize Font Objects"""
-#We pick our text style and size.
+"""
+Initialize Font Objects
+"""
+#We pick our text style and size
 pygame.init()
+pygame.display.set_caption('Classroom Quiz') #To add the title of game
 myfont = pygame.font.SysFont('Arial', 35)
 answer_1_text = myfont.render("                        ", True, (0,0,255))
 answer_1_rect = answer_1_text.get_rect(topleft=(200,230))
@@ -40,14 +47,18 @@ start_click_rect = start_click.get_rect(topleft=(200,230))
 correct_text = myfont.render("That is correct.", True, (0,128,0))
 incorrect_text = myfont.render("That is incorrect.", True, (255,0,0))
 
-"""Set Window Size"""
-#We set the window size for our game.
+"""
+Set Window Size
+"""
+#We set the window size for our game
 width = 960
 height = 540
 screen = pygame.display.set_mode((width,height))
 
-"""Load Sprites"""
-#We load the images and put them in variables.
+"""
+Load Sprites
+"""
+#We load the images and put them in variables
 background = pygame.image.load(get_file('Assets/Background.png'))
 correct_a = pygame.image.load(get_file('Assets/CorrectAnswerA.png'))
 correct_b = pygame.image.load(get_file('Assets/CorrectAnswerB.png'))
@@ -56,12 +67,12 @@ incorrect_b = pygame.image.load(get_file('Assets/IncorrectAnswerB.png'))
 end_game = pygame.image.load(get_file('Assets/EndGame.png'))
 
 def randomize_answers(input_list):
-    #This randomly shuffles the answers so the player doesn't know which one is the correct answer.
+    #This randomly shuffles the answers so the player doesn't know which one is the correct answer
     random.shuffle(input_list)
     return input_list
 
 def display_question(question, input_list):
-    #This code loads and displays the next question and Mrs. Codala's reaction.
+    #This code loads and displays the next question and Mrs. Codala's reaction
     question_text = myfont.render(question, True, (0, 0, 0))
     question_rect = question_text.get_rect(topleft=(200,150))
     answer_1_text = myfont.render(input_list[0], True, (0,0,255))
@@ -78,7 +89,7 @@ def display_question(question, input_list):
     pygame.display.update()
 
 def display_intro_screen():
-    #This shows the intro text (so we only run it once, at the beginning).
+    #This shows the intro text (so we only run it once, at the beginning)
     intro_text = myfont.render("Welcome to the Trivia Game!", True, (0,0,0))
     start_click = myfont.render("Click here to start.", True, (0,0,255))
     start_click_rect = start_click.get_rect(topleft=(200,230))
@@ -88,7 +99,7 @@ def display_intro_screen():
     pygame.display.update()
 
 def display_end_screen():
-    #This shows the image of Mrs. Codala telling you the game is done.
+    #This shows the image of Mrs. Codala telling you the game is done
     codala = end_game
     screen.blit(background, (0,0))
     screen.blit(codala,(0,0))
@@ -96,7 +107,7 @@ def display_end_screen():
     pygame.event.get()
 
 def check_game_started():
-    #This checks if the player clicks the text to start the game.
+    #This checks if the player clicks the text to start the game
     EVENTS = pygame.event.get()
     for event in EVENTS:
         mouse_position = pygame.mouse.get_pos()
@@ -106,7 +117,7 @@ def check_game_started():
     return False
 
 def display_codala(input_image, text_type):
-    #This displays the image of Mrs. Codala telling you if the choice is correct.
+    #This displays the image of Mrs. Codala telling you if the choice is correct
     if text_type == "correct_text":
         screen.blit(correct_text,(300,0))
     if text_type == "incorrect_text":
@@ -118,7 +129,7 @@ def display_codala(input_image, text_type):
     time.sleep(3)
 
 def move_to_next_question(input_list, question, line_number, input_list2):
-    #This changes question and three choices from input list to next set of question and choices.
+    #This changes question and three choices from input list to next set of question and choices
     line_number = line_number+4
     question = input_list[line_number] #input_list is the content from txt file
     answer = input_list[line_number+1]
@@ -126,11 +137,11 @@ def move_to_next_question(input_list, question, line_number, input_list2):
     wrong_choice_2 = input_list[line_number+3]
     input_list2 = [answer, wrong_choice_1, wrong_choice_2] #input_list2 is the new answer choices for display
     randomize_answers(input_list2)
-    #Return new line number, next question, correct answer and answer choice list.
+    #Return new line number, next question, correct answer and answer choice list
     return line_number, question, answer, input_list2
 
 def check_if_last_question(line_number, running_status, number_of_questions):
-    #This checks if it's the last question and displays end screen if so.
+    #This checks if it's the last question and displays end screen if so
     if line_number >= (number_of_questions * 4)-4:
         display_end_screen()
         time.sleep(5)
@@ -138,7 +149,7 @@ def check_if_last_question(line_number, running_status, number_of_questions):
     return running_status
 
 def quit_game(event):
-    #This exits the game if the player clicks the Close button.
+    #This exits the game if the player clicks the Close button
     if event.type == pygame.QUIT: 
         pygame.quit()
         exit()

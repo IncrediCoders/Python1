@@ -43,7 +43,7 @@ while running:
                 else:
                     display_codala(incorrect_b, "incorrect_text")
 
-# TODO:Write the code here for the third answer
+#TODO:Write the code here for the third answer
             if answer_3_rect.collidepoint(mouse_position): #If the player clicks the 3rd answer
                 if ANSWER_CHOICES[2] == answer: 
                     score += 1

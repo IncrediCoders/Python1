@@ -5,7 +5,7 @@ import textwrap
 """
 Initialize Font Object
 """
-#We pick our text style and size.
+#We pick our text style and size
 pygame.init()
 my_font = pygame.font.SysFont('Arial', 20)
 pygame.display.set_caption('Class Introductions')
@@ -15,7 +15,7 @@ def get_file(fileName):
     """
     Returns the absolute path of a file
     """
-    #This grabs the image files from your folder.
+    #This grabs the image files from your folder
     return path.join(path.dirname(__file__), fileName)
 
 def display_text(screen, current_text):

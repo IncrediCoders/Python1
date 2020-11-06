@@ -9,12 +9,16 @@ from os import path
 #PART 2: CREATING A FRAMEWORK OF GENERAL CLASSES AND FUNCTIONS
 
 def get_file(fileName):
-    """Returns the absolute path of a file"""
+    """
+    Returns the absolute path of a file
+    """
     #This grabs your files from your folder
     return path.join(path.dirname(__file__), fileName)
 
 def read_file(fileName):
-    """Read txt file into a list line by line and return it"""
+    """
+    Read txt file into a list line by line and return it
+    """
     TRIVIA = []
     #This puts the txt file into the file variable
     file = open(get_file(fileName), 'r')
@@ -25,7 +29,9 @@ def read_file(fileName):
 #============================================================
 #PART 3: SETUP FOR THE CLASSROOM QUIZ GAME
 
-"""Initialize Font Objects"""
+"""
+Initialize Font Objects
+"""
 #We pick our text style and size
 pygame.init()
 pygame.display.set_caption('Classroom Quiz') #To add the title of game
@@ -41,13 +47,17 @@ start_click_rect = start_click.get_rect(topleft=(200,230))
 correct_text = myfont.render("That is correct.", True, (0,128,0))
 incorrect_text = myfont.render("That is incorrect.", True, (255,0,0))
 
-"""Set Window Size"""
+"""
+Set Window Size
+"""
 #We set the window size for our game
 width = 960
 height = 540
 screen = pygame.display.set_mode((width,height))
 
-"""Load Sprites"""
+"""
+Load Sprites
+"""
 #We load the images and put them in variables
 background = pygame.image.load(get_file('Assets/Background.png'))
 correct_a = pygame.image.load(get_file('Assets/CorrectAnswerA.png'))
