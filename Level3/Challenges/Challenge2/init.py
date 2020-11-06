@@ -89,7 +89,7 @@ def display_question(question, input_list):
     pygame.display.update()
 
 def display_intro_screen():
-    #This shows the intro text (so we only run it once, at the beginning)
+    #This displays intro screen until the player clicks close button or starts the game
     intro_text = my_font.render("Welcome to the Trivia Game!", True, (0,0,0))
     start_click = my_font.render("Click here to start.", True, (0,0,255))
     start_click_rect = start_click.get_rect(topleft=(200,230))
@@ -97,6 +97,21 @@ def display_intro_screen():
     screen.blit(intro_text, (200,150))
     screen.blit(start_click,start_click_rect)
     pygame.display.update()
+    #First page: 
+    intro = True 
+    while intro:
+        EVENTS = pygame.event.get() 
+        for event in EVENTS:
+            quit_game(event) #If the player clicks the Close button, it exits the game
+        #If the player clicks "Click here to start the game.", the screen changes to the first question
+        if check_game_started() == True:
+            #Extra: Change the color when click on start text (blue to green)
+            start_click = my_font.render("Click here to start.", True, (0,128,0))
+            screen.blit(start_click,start_click_rect)
+            pygame.display.update()
+            pygame.event.get()
+            time.sleep(1)
+            intro = False
 
 def display_end_screen():
     #This shows the image of Mrs. Codala telling you the game is done
