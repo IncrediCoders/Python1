@@ -2,13 +2,13 @@
 from init import *
 import turtle
 
-#Create our screen
+#Creates our screen
 SCREEN = turtle.Screen()
 SCREEN.title("Napster Spacebook")
 SCREEN.setup(1280, 800)
 SCREEN.bgpic(get_file("Assets/Background.gif"))
 
-#Set the shape to be a green turtle
+#Sets the shape to be a green turtle
 turtle.shape("turtle")
 turtle.color("green") 
 
@@ -18,10 +18,10 @@ turtle.setx(460)
 turtle.sety(-275)
 turtle.pendown()
 
-#Write a loop to go back and forth 5 times
+#Wrote a loop to go back and forth 5 times
 #To learn more about loops, follow the instructions on the wiki page
 for i in range(5):
-    #In your loop, write the code to go to the school and then to get back
+    #In this loop, wrote the code to go to the school and then to get back
     #(You can use your code you wrote from the instructions in the book!)
     turtle.left(180)
     turtle.forward(510)
@@ -34,7 +34,7 @@ for i in range(5):
     turtle.right(90)
     turtle.forward(250)
 
-    #Reached the school. Go back to the house
+    #Reached the school, and then go back to the house
     turtle.left(180)
     turtle.forward(250)
     turtle.left(90)
