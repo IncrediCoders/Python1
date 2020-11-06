@@ -2,7 +2,9 @@ import pygame #Gives us our gaming functions
 from os import path
 import textwrap
 
-"""Initialize Font Object"""
+"""
+Initialize Font Object
+"""
 #We pick our text style and size.
 pygame.init()
 my_font = pygame.font.SysFont('Arial', 20)
@@ -10,19 +12,25 @@ pygame.display.set_caption('Class Introductions')
 
 
 def get_file(fileName):
-    """Returns the absolute path of a file."""
+    """
+    Returns the absolute path of a file
+    """
     #This grabs the image files from your folder.
     return path.join(path.dirname(__file__), fileName)
 
 def display_text(screen, current_text):
-    """Displays text to the screen"""
+    """
+    Displays text to the screen
+    """
     WRAPPED_TEXT = textwrap.wrap(current_text, 30)
     y = 230
     for i in range(len(WRAPPED_TEXT)):
         screen.blit(my_font.render(WRAPPED_TEXT[i], True, (0, 0, 0)), (230,y))
         y = y + 30
 
-"""Loads the background and images"""
+"""
+Loads the background and images
+"""
 background = pygame.image.load(get_file("Assets/Background.png"))
 annie_conda = pygame.image.load(get_file("Assets/AnnieConda.png"))
 bayo_wolf = pygame.image.load(get_file("Assets/BayoWolf.png"))
@@ -38,7 +46,9 @@ sidewinder = pygame.image.load(get_file("Assets/SideWinder.png"))
 syntax_turtle = pygame.image.load(get_file("Assets/SyntaxTurtle.png"))
 #TODO: add the images for RAM & ROM and one for Amphib Ian here
 
-"""Stores character text into variables"""
+"""
+Stores character text into variables
+"""
 text_annie_conda  = "Hello! I'm Annie Conda. \nI come from Sanfran-Hissco, Cowlifornia. I've done a little coding. My favorite musician is Justin Timbersnake. I'm also partial to Hissy Elliott. My favorite Pigxar movie is Rattle-toulle. I love to make trivia games and word games. "
 text_bayo_wolf  = "I'm Bayo Wolf, from Little Squawk, Barkansas. I'm the best at SpaceWars and great at Mega Mechs in my Grendel mech. My favorite movies are The Dogfather, Jurassic Bark, Citizen Canine, and Stall Wars: The Empire Strikes Cats. My top actors are Brad Pitbull, Howly Berry, and Sandra Bulldog. "
 text_grafika_turtle  = "My name is Grafika Turtle. I live here, in Red-mutt, Washeepton. Now I get to go to school with my best friend. Hi, Paul! I love the movie Wizard of Paws, and my favorite artist is Pablo Pigcasso. I like coding in Turtle Graphics, and my brother Syntax and I are pretty good at coding card games. "
@@ -55,11 +65,15 @@ text_syntax_turtle = "What's up? Syntax Turtle in the house. I'm from here, Red-
 ##text_ram_rom = "Heya! We're RAM and ROM. We came from the other side of the country, Woolshington DC. We like Meryl Sheep, Dustin Hoofman, and Eva Longhornia. Our favorite musician is Lady Baa-Baa, and our sensei is the Dali Llama. We're working on a top-secret project! "
 ##text_amphib_ian  = "Yo, yo. What's hopping, peeps? Name's Amphib Ian. My launchpad is Croaklahoma City. My choice singer is Demi Lovatoad. And my fave artwork is \"Mourning Son\" by Edwart Hopper. My go-to game to code is Froggy Road. That's it. I'll catch you on the flip flop! "
 
-"""We assign our character and text variables"""
+"""
+We assign our character and text variables
+"""
 current_character = annie_conda
 current_text = text_annie_conda
 
-"""Displays character to the screen"""
+"""
+Displays character to the screen
+"""
 width = 600
 height = 800
 screen = pygame.display.set_mode((width,height))
