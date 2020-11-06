@@ -35,17 +35,17 @@ Initialize Font Objects
 #We pick our text style and size
 pygame.init()
 pygame.display.set_caption('Classroom Quiz') #To add the title of game
-myfont = pygame.font.SysFont('Arial', 35) #Change to 'Arial.ttf' if used for making exe file by Pyinstaller
-answer_1_text = myfont.render("                        ", True, (0,0,255))
+my_font = pygame.font.SysFont('Arial', 35) #Change to 'Arial.ttf' if used for making exe file by Pyinstaller
+answer_1_text = my_font.render("                        ", True, (0,0,255))
 answer_1_rect = answer_1_text.get_rect(topleft=(200,230))
-answer_2_text = myfont.render("                         ", True, (0,0,255))
+answer_2_text = my_font.render("                         ", True, (0,0,255))
 answer_2_rect = answer_2_text.get_rect(topleft=(200,300))
-answer_3_text = myfont.render("                         ", True, (0,0,255))
+answer_3_text = my_font.render("                         ", True, (0,0,255))
 answer_3_rect = answer_3_text.get_rect(topleft=(200,370))
-start_click = myfont.render("Click here to start the game.", True, (0,0,255))
+start_click = my_font.render("Click here to start the game.", True, (0,0,255))
 start_click_rect = start_click.get_rect(topleft=(200,230))
-correct_text = myfont.render("That is correct.", True, (0,128,0))
-incorrect_text = myfont.render("That is incorrect.", True, (255,0,0))
+correct_text = my_font.render("That is correct.", True, (0,128,0))
+incorrect_text = my_font.render("That is incorrect.", True, (255,0,0))
 
 """
 Set Window Size
@@ -73,13 +73,13 @@ def randomize_answers(input_list):
 
 def display_question(question, input_list):
     #This code loads and displays the next question and Mrs. Codala's reaction
-    question_text = myfont.render(question, True, (0, 0, 0))
+    question_text = my_font.render(question, True, (0, 0, 0))
     question_rect = question_text.get_rect(topleft=(200,150))
-    answer_1_text = myfont.render(input_list[0], True, (0,0,255))
+    answer_1_text = my_font.render(input_list[0], True, (0,0,255))
     answer_1_rect = answer_1_text.get_rect(topleft=(200,230))
-    answer_2_text = myfont.render(input_list[1], True, (0,0,255))
+    answer_2_text = my_font.render(input_list[1], True, (0,0,255))
     answer_2_rect = answer_2_text.get_rect(topleft=(200,300))
-    answer_3_text = myfont.render(input_list[2], True, (0,0,255))
+    answer_3_text = my_font.render(input_list[2], True, (0,0,255))
     answer_3_rect = answer_3_text.get_rect(topleft=(200,370))
     screen.blit(background, (0,0))
     screen.blit(question_text, question_rect)
@@ -90,8 +90,8 @@ def display_question(question, input_list):
 
 def display_intro_screen():
     #This displays the intro screen until the player clicks the Close button or starts the game
-    intro_text = myfont.render("Welcome to the Trivia Game!", True, (0,0,0))
-    start_click = myfont.render("Click here to start.", True, (0,0,255))
+    intro_text = my_font.render("Welcome to the Trivia Game!", True, (0,0,0))
+    start_click = my_font.render("Click here to start.", True, (0,0,255))
     start_click_rect = start_click.get_rect(topleft=(200,230))
     screen.blit(background,(0,0))
     screen.blit(intro_text, (200,150))
