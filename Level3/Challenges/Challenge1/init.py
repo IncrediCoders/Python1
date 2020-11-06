@@ -17,7 +17,7 @@ def get_file(fileName):
 
 def read_file(fileName):
     """
-    Read txt file into a list line by line and return it
+    Reads the text file into a list, line by line, and returns it
     """
     TRIVIA = []
     #This puts the txt file into the file variable
@@ -30,7 +30,7 @@ def read_file(fileName):
 #PART 3: SETUP FOR THE CLASSROOM QUIZ GAME
 
 """
-Initialize Font Objects
+Initializes the font objects
 """
 #We pick our text style and size
 pygame.init()
@@ -48,7 +48,7 @@ correct_text = my_font.render("That is correct.", True, (0,128,0))
 incorrect_text = my_font.render("That is incorrect.", True, (255,0,0))
 
 """
-Set Window Size
+Sets the window size
 """
 #We set the window size for our game
 width = 960
@@ -56,7 +56,7 @@ height = 540
 screen = pygame.display.set_mode((width,height))
 
 """
-Load Sprites
+Loads the sprites
 """
 #We load the images and put them in variables
 background = pygame.image.load(get_file('Assets/Background.png'))
