@@ -18,15 +18,15 @@ turtle.setx(460)
 turtle.sety(-275)
 turtle.pendown()
 
-#Uncomment these lines by removing the hashtags
+#Uncommented these lines by removing the hashtags
 turtle.left(180)
 turtle.forward(510)
 
-#Copy the two lines Grafika gives you here
+#Copied the two lines Grafika gives you here
 turtle.right(90)
 turtle.forward(220)
 
-#Write the last 4 lines, following Grafika's instructions
+#Wrote the last 4 lines, following Grafika's instructions
 turtle.left(90)
 turtle.forward(490)
 turtle.right(90)
