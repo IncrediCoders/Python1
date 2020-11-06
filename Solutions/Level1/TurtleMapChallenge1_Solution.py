@@ -2,13 +2,13 @@
 from init import *
 import turtle
 
-#Create our screen
+#Creates our screen
 SCREEN = turtle.Screen()
 SCREEN.title("Mapster Spacebook")
 SCREEN.setup(1280, 800)
 SCREEN.bgpic(get_file("Assets/Background.gif"))
 
-#Set the shape to be a green turtle
+#Sets the shape to be a green turtle
 turtle.shape("turtle")
 turtle.color("green") 
 
@@ -18,28 +18,28 @@ turtle.setx(460)
 turtle.sety(-275)
 turtle.pendown()
 
-#Uncomment these lines by removing the hashtags
+#Uncommented these lines by removing the hashtags
 turtle.left(180)
 turtle.forward(125)
 
-#Turn right 90 degrees and move forward 105 steps
+#Turned right 90 degrees and moved forward 105 steps
 turtle.right(90)
 turtle.forward(105)
 
-#Turn right 90 degrees and move forward 185 steps
+#Turned right 90 degrees and moved forward 185 steps
 turtle.right(90)
 turtle.forward(185)
 
-#Turn left and move to the end of the road
+#Turned left and moved to the end of the road
 turtle.left(90)
 turtle.forward(385)
 
-#Turn left and move to the intersection
+#Turned left and moved to the intersection
 turtle.left(90)
 turtle.forward(65)
 
-#Write more lines here to navigate the alternate route to school
-#Cross the bridge and stay on the road!
+#Wrote more lines here to navigate the alternate route to school
+#Crossed the bridge and stayed on the road!
 turtle.right(90)
 turtle.forward(105)
 
