@@ -1,6 +1,5 @@
 {
-    "python.pythonPath": "/Applications/anaconda3/bin/python",
-    "python.autoComplete.extraPaths": ["./Level3", "./Solutions/Level3"] ,
+    "python.pythonPath": "/usr/local/bin/python3",
     "python.linting.pylintArgs": [
         "--extension-pkg-whitelist=pygame"
     ]
