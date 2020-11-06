@@ -8,12 +8,16 @@ import textwrap
 #PART 2: CREATING A FRAMEWORK OF GENERAL CLASSES AND FUNCTIONS
 
 def load_file(fileName):
-    """Returns the absolute path of a file"""
-    #This grabs the image files from your folder.
+    """
+    Returns the absolute path of a file
+    """
+    #This grabs the image files from your folder
     return pygame.image.load(path.join(path.dirname(__file__), fileName))
 
 def display_text(screen, current_text):
-    """Displays text to the screen"""
+    """
+    Displays text to the screen
+    """
     WRAPPED_TEXT = textwrap.wrap(current_text, 30)
     y = 230
     for i in range(len(WRAPPED_TEXT)):
@@ -23,12 +27,16 @@ def display_text(screen, current_text):
 #============================================================
 #PART 3: SETUP FOR THE CLASS INTRODUCTIONS GAME
 
-"""Initialize Font Object"""
-#We pick our text style and size.
+"""
+Initialize Font Object
+"""
+#We pick our text style and size
 pygame.init()
 myfont = pygame.font.SysFont('Arial', 20) #Change to 'Arial.ttf' if used for making exe file by Pyinstaller
 
-"""Displays character to the screen"""
+"""
+Displays character to the screen
+"""
 width = 600
 height = 800
 screen = pygame.display.set_mode((width,height))

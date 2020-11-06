@@ -1,6 +1,8 @@
 from init import * #Gives us many helpful functions
 
-"""Loads the background and images"""
+"""
+Loads the background and images
+"""
 background = load_file("Assets/Background.png")
 annie_conda = load_file("Assets/AnnieConda.png")
 bayo_wolf = load_file("Assets/BayoWolf.png")
@@ -15,7 +17,9 @@ sb_turtle = load_file("Assets/SBTurtle.png")
 sidewinder = load_file("Assets/SideWinder.png")
 syntax_turtle = load_file("Assets/SyntaxTurtle.png")
 
-"""Stores character text into variables"""
+"""
+Stores character text into variables
+"""
 text_annie_conda  = "Hello! I'm Annie Conda. \nI come from Sanfran-Hissco, Cowlifornia. I've done a little coding. My favorite musician is Justin Timbersnake. I'm also partial to Hissy Elliott. My favorite Pigxar movie is Rattle-toulle. I love to make trivia games and word games. "
 text_bayo_wolf  = "I'm Bayo Wolf, from Little Squawk, Barkansas. I'm the best at SpaceWars and great at Mega Mechs in my Grendel mech. My favorite movies are The Dogfather, Jurassic Bark, Citizen Canine, and Stall Wars: The Empire Strikes Cats. My top actors are Brad Pitbull, Howly Berry, and Sandra Bulldog. "
 text_grafika_turtle  = "My name is Grafika Turtle. I live here, in Red-mutt, Washeepton. Now I get to go to school with my best friend. Hi, Paul! I love the movie Wizard of Paws, and my favorite artist is Pablo Pigcasso. I like coding in Turtle Graphics, and my brother Syntax and I are pretty good at coding card games. "
@@ -29,7 +33,9 @@ text_sb_turtle = "Hey. I'm SB Turtle, from New-ark, Moo Jersey. My top actresses
 text_sidewinder = "I'm SideWinder, from Salt-Snake City, Mewtah. I'm the best at SpaceWars, despite what Bayo thinks. My favorite movie is Snakes on a Glider, my favorite actor is Sylvester Stallion, and my favorite musician is Nine-Inch Snails. Jitter Bug has good taste. "
 text_syntax_turtle = "What's up? Syntax Turtle in the house. I'm from here, Red-Mutt, with my twin sis Grafika. My favorite actress is Natalie Porkman, and my favorite artist is Lizardnardo Da Vinci. My top games are \"Skate and Fly\" and Porkymon, and I'm looking forward to making a Codu Kids card game! "
 
-"""We assign our character and text variables"""
+"""
+We assign our character and text variables
+"""
 current_character = annie_conda
 current_text = text_annie_conda
 
