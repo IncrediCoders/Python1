@@ -32,9 +32,9 @@ def read_file(fileName):
 """
 Initializes the font objects
 """
-#We pick our text style and size
+#Picks our text style and size
 pygame.init()
-pygame.display.set_caption('Classroom Quiz') #To add the title of game
+pygame.display.set_caption('Classroom Quiz') #Adds the title of the game
 my_font = pygame.font.SysFont('Arial', 35)
 answer_1_text = my_font.render("                        ", True, (0,0,255))
 answer_1_rect = answer_1_text.get_rect(topleft=(200,230))
@@ -50,7 +50,7 @@ incorrect_text = my_font.render("That is incorrect.", True, (255,0,0))
 """
 Sets the window size
 """
-#We set the window size for our game
+#Sets the window size for our game
 width = 960
 height = 540
 screen = pygame.display.set_mode((width,height))
@@ -58,7 +58,7 @@ screen = pygame.display.set_mode((width,height))
 """
 Loads the sprites
 """
-#We load the images and put them in variables
+#Loads the images and puts them in the variables
 background = pygame.image.load(get_file('Assets/Background.png'))
 correct_a = pygame.image.load(get_file('Assets/CorrectAnswerA.png'))
 correct_b = pygame.image.load(get_file('Assets/CorrectAnswerB.png'))
