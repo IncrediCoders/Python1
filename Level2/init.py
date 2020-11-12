@@ -28,11 +28,11 @@ def display_text(screen, current_text):
 #PART 3: SETUP FOR THE CLASS INTRODUCTIONS GAME
 
 """
-Initializes pygame, the font object, and window's title
+Initializes pygame, the font object, and the window's title
 """
 pygame.init() #Initializes all the imported pygame modules
 my_font = pygame.font.SysFont('Arial', 20) #Creates a font object from the system fonts
-pygame.display.set_caption('Class Introductions') #Adds the title of game
+pygame.display.set_caption('Class Introductions') #Adds the title of the game
 
 """
 Sets up the screen
