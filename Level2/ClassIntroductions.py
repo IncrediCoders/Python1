@@ -1,7 +1,7 @@
 from init import * #Gives us many helpful functions
 
 #Loads the background and images
-background = load_file("Assets/Background.png")
+background = load_file("Assets/Background.png") #Loads the background image
 annie_conda = load_file("Assets/AnnieConda.png")
 bayo_wolf = load_file("Assets/BayoWolf.png")
 grafika_turtle = load_file("Assets/GrafikaTurtle.png")
