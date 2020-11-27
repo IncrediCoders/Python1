@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
     "python.pythonPath": "/usr/local/bin/python3",
+=======
+    "python.autoComplete.extraPaths": ["./Level3", "./Solutions/Level3"] ,
+>>>>>>> 30981abce661bf560a383e62034d6edd79868e64
     "python.linting.pylintArgs": [
         "--extension-pkg-whitelist=pygame"
     ]

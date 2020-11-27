@@ -8,7 +8,7 @@ Initialize Font Object
 #We pick our text style and size
 pygame.init()
 my_font = pygame.font.SysFont('Arial', 20)
-pygame.display.set_caption('Class Introductions')
+pygame.display.set_caption('Class Introductions')#To add the title of game
 
 
 def get_file(fileName):

@@ -21,21 +21,21 @@ def display_text(screen, current_text):
     WRAPPED_TEXT = textwrap.wrap(current_text, 30)
     y = 230
     for i in range(len(WRAPPED_TEXT)):
-        screen.blit(myfont.render(WRAPPED_TEXT[i], True, (0, 0, 0)), (230,y))
+        screen.blit(my_font.render(WRAPPED_TEXT[i], True, (0, 0, 0)), (230,y))
         y = y + 30
 
 #============================================================
 #PART 3: SETUP FOR THE CLASS INTRODUCTIONS GAME
 
 """
-Initialize Font Object
+Initializes pygame, the font object, and the window's title
 """
-#We pick our text style and size
-pygame.init()
-myfont = pygame.font.SysFont('Arial', 20) #Change to 'Arial.ttf' if used for making exe file by Pyinstaller
+pygame.init() #Initializes all the imported pygame modules
+my_font = pygame.font.SysFont('Arial', 20)#Creates a font object from the system fonts
+pygame.display.set_caption('Class Introductions') #Adds the title of the game
 
 """
-Displays character to the screen
+Sets up the screen
 """
 width = 600
 height = 800
@@ -43,6 +43,9 @@ screen = pygame.display.set_mode((width,height))
 running = True
 
 def display(background, current_text, current_character):
+    """
+    Displays a character to the screen
+    """
     screen.blit(background,(0,0))
     screen.blit(current_character, (0,0))
     display_text(screen, current_text)
