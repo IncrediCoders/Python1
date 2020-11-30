@@ -4,7 +4,7 @@ import turtle
 
 #Creates our screen
 SCREEN = turtle.Screen()
-SCREEN.title("Napster Spacebook")
+SCREEN.title("Mapster Spacebook")
 SCREEN.setup(1280, 800)
 SCREEN.bgpic(get_file("Assets/Background.gif"))
 
@@ -20,7 +20,7 @@ turtle.pendown()
 
 #Wrote a loop to go back and forth 5 times
 #To learn more about loops, follow the instructions on the wiki page
-for i in range(5):
+for trip_number in range(5):
     #In this loop, wrote the code to go to the school and then to get back
     #(You can use your code you wrote from the instructions in the book!)
     turtle.left(180)

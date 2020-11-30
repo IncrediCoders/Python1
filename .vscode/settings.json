@@ -1,6 +1,10 @@
 {
+    // To remove the unwanted yellow alerts for importing init file when working on a certain level
+    // You may change it to the level you are working on
     "python.autoComplete.extraPaths": ["./Level3", "./Solutions/Level3"] ,
     "python.linting.pylintArgs": [
         "--extension-pkg-whitelist=pygame"
-    ]
+    ],
+    // This is the interpreter path for Yi, you may comment it out if you are using the default path
+    "python.pythonPath": "/Applications/anaconda3/bin/python"
 }

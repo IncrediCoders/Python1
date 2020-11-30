@@ -4,11 +4,11 @@ import turtle
 
 #Creates our screen
 SCREEN = turtle.Screen()
-SCREEN.title("Napster Spacebook")
+SCREEN.title("Mapster Spacebook")
 SCREEN.setup(1280, 800)
 SCREEN.bgpic(get_file("Assets/Background.gif"))
 
-#Sets the shape to be a green turtle.
+#Sets the shape to be a green turtle
 turtle.shape("turtle")
 turtle.color("green") 
 
