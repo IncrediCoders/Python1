@@ -1,4 +1,3 @@
-#Turtle graphics project file
 from init import *
 import turtle
 
@@ -10,7 +9,7 @@ SCREEN.bgpic(get_file("Assets/Background.gif"))
 
 #Sets the shape to be a green turtle
 turtle.shape("turtle")
-turtle.color("green") 
+turtle.color("green")
 
 #This code moves the turtle to its starting location
 turtle.penup()
