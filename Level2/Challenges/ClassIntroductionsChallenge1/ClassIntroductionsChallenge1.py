@@ -1,8 +1,6 @@
 from init import * #Gives us many helpful functions
 
-"""
-Loads the background and images
-"""
+#Loads the background and images
 background = pygame.image.load(get_file("Assets/Background.png"))
 annie_conda = pygame.image.load(get_file("Assets/AnnieConda.png"))
 bayo_wolf = pygame.image.load(get_file("Assets/BayoWolf.png"))
@@ -16,12 +14,9 @@ quackintosh = pygame.image.load(get_file("Assets/Quackintosh.png"))
 sb_turtle = pygame.image.load(get_file("Assets/SBTurtle.png"))
 sidewinder = pygame.image.load(get_file("Assets/SideWinder.png"))
 syntax_turtle = pygame.image.load(get_file("Assets/SyntaxTurtle.png"))
-#TODO: add the images for RAM & ROM and one for Amphib Ian here
+#TODO: Add the images for RAM & ROM and Amphib Ian here
 
-
-"""
-Stores character text into variables
-"""
+#Stores character text into variables
 text_annie_conda  = "Hello! I'm Annie Conda. \nI come from Sanfran-Hissco, Cowlifornia. I've done a little coding. My favorite musician is Justin Timbersnake. I'm also partial to Hissy Elliott. My favorite Pigxar movie is Rattle-toulle. I love to make trivia games and word games. "
 text_bayo_wolf  = "I'm Bayo Wolf, from Little Squawk, Barkansas. I'm the best at SpaceWars and great at Mega Mechs in my Grendel mech. My favorite movies are The Dogfather, Jurassic Bark, Citizen Canine, and Stall Wars: The Empire Strikes Cats. My top actors are Brad Pitbull, Howly Berry, and Sandra Bulldog. "
 text_grafika_turtle  = "My name is Grafika Turtle. I live here, in Red-mutt, Washeepton. Now I get to go to school with my best friend. Hi, Paul! I love the movie Wizard of Paws, and my favorite artist is Pablo Pigcasso. I like coding in Turtle Graphics, and my brother Syntax and I are pretty good at coding card games. "
@@ -34,18 +29,15 @@ text_quackintosh = "Hello. I'm Quackintosh, from nearby Bill-view, Washeepton. M
 text_sb_turtle = "Hey. I'm SB Turtle, from New-ark, Moo Jersey. My top actresses are Shelly Long and Zooey Deshell. I'm a founding member of the Shell Scouts, and my favorite programming language is Microsoft Small Basic. Oh, and I grow into a giant monster, but that's for a different book. "
 text_sidewinder = "I'm SideWinder, from Salt-Snake City, Mewtah. I'm the best at SpaceWars, despite what Bayo thinks. My favorite movie is Snakes on a Glider, my favorite actor is Sylvester Stallion, and my favorite musician is Nine-Inch Snails. Jitter Bug has good taste. "
 text_syntax_turtle = "What's up? Syntax Turtle in the house. I'm from here, Red-Mutt, with my twin sis Grafika. My favorite actress is Natalie Porkman, and my favorite artist is Lizardnardo Da Vinci. My top games are \"Skate and Fly\" and Porkymon, and I'm looking forward to making a Codu Kids card game! "
-#TODO: uncomment the introduction for RAM & ROM and one for Amphib Ian below:
+#TODO: Uncomment the introduction for RAM & ROM and one for Amphib Ian below:
 ##text_ram_rom = "Heya! We're RAM and ROM. We came from the other side of the country, Woolshington DC. We like Meryl Sheep, Dustin Hoofman, and Eva Longhornia. Our favorite musician is Lady Baa-Baa, and our sensei is the Dali Llama. We're working on a top-secret project! "
 ##text_amphib_ian  = "Yo, yo. What's hopping, peeps? Name's Amphib Ian. My launchpad is Croaklahoma City. My choice singer is Demi Lovatoad. And my fave artwork is \"Mourning Son\" by Edwart Hopper. My go-to game to code is Froggy Road. That's it. I'll catch you on the flip flop! "
-"""
-We assign our character and text variables
-"""
+
+#Assigns our character and text variables
 current_character = annie_conda
 current_text = text_annie_conda
 
-"""
-Displays character to the screen
-"""
+#Displays the character to the screen
 width = 600
 height = 800
 screen = pygame.display.set_mode((width,height))
@@ -95,5 +87,5 @@ while running:
             if event.key == pygame.K_w:
                 current_character = syntax_turtle
                 current_text = text_syntax_turtle
-            #TODO: Add the if statements for RAM & ROM and one for Amphib Ian here
+            #TODO: Add the if statements for RAM & ROM Amphib Ian here
 pygame.quit()
