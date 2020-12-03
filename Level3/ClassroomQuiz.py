@@ -32,15 +32,22 @@ while running:
             if answer_1_rect.collidepoint(mouse_position): #If the player clicks the 1st answer on the top
                 if ANSWER_CHOICES[0] == answer: #If it's the correct answer
                     display_codala(correct_a, "correct_text") #Displays Mrs. Codala and the text for the correct answer
-                else: #If it's an incorrect answer
-                    display_codala(incorrect_a, "incorrect_text") #Displays Mrs. Codala and the text for an incorrect answer
-            #if answer_2_rect.collidepoint(mouse_position): #If the player clicks the 2nd answer
-                #if ANSWER_CHOICES[1] == answer:
-                    #display_codala(correct_b, "correct_text")
-                #else:
-                    #display_codala(incorrect_b, "incorrect_text")
-
+                #else: #If it's an incorrect answer
+                    #display_codala(incorrect_a, "incorrect_text") #Displays Mrs. Codala and the text for an incorrect answer
+            
+            #TODO: Copy the code here for the second answer
+            
+            
+            
+            
+            
+            
             #TODO: Write the code here for the third answer
+            
+            
+            
+            
+            
 
             #If it's the last question, we display the end screen with Mrs. Codala
             running = check_if_last_question(line_number, running, number_of_questions)
