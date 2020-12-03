@@ -1,28 +1,4 @@
-import pygame #Gives us our gaming functions
-from os import path
-import textwrap
-
-"""
-Initialize Font Object
-"""
-#We pick our text style and size
-pygame.init()
-my_font = pygame.font.SysFont('Arial', 20)
-pygame.display.set_caption('Class Introductions')#To add the title of game
-
-def get_file(fileName):
-    """
-    Returns the absolute path of a file
-    """
-    #This grabs your files from your folder
-    return path.join(path.dirname(__file__), fileName)
-
-def display_text(screen, current_text):
-    WRAPPED_TEXT = textwrap.wrap(current_text, 30)
-    y = 230
-    for i in range(len(WRAPPED_TEXT)):
-        screen.blit(my_font.render(WRAPPED_TEXT[i], True, (0, 0, 0)), (230,y))
-        y = y + 30
+from init import * #Gives us many helpful functions
 
 """
 Loads the background and images
@@ -82,6 +58,17 @@ TEXT.append(text_annie_conda)
 ##TEXT.append(text_bayo_wolf)
 
 #TODO: add the rest of the characters to the lists
+
+
+
+
+
+
+
+
+
+
+
 
 running = True
 #Start at the first character in the list
