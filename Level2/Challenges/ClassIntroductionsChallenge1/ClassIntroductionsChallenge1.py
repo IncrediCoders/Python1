@@ -1,32 +1,4 @@
-import pygame #Gives us our gaming functions
-from os import path
-import textwrap
-
-"""
-Initialize Font Object
-"""
-#We pick our text style and size
-pygame.init()
-my_font = pygame.font.SysFont('Arial', 20)
-pygame.display.set_caption('Class Introductions')#To add the title of game
-
-
-def get_file(fileName):
-    """
-    Returns the absolute path of a file
-    """
-    #This grabs the image files from your folder
-    return path.join(path.dirname(__file__), fileName)
-
-def display_text(screen, current_text):
-    """
-    Displays text to the screen
-    """
-    WRAPPED_TEXT = textwrap.wrap(current_text, 30)
-    y = 230
-    for i in range(len(WRAPPED_TEXT)):
-        screen.blit(my_font.render(WRAPPED_TEXT[i], True, (0, 0, 0)), (230,y))
-        y = y + 30
+from init import * #Gives us many helpful functions
 
 """
 Loads the background and images
@@ -46,6 +18,7 @@ sidewinder = pygame.image.load(get_file("Assets/SideWinder.png"))
 syntax_turtle = pygame.image.load(get_file("Assets/SyntaxTurtle.png"))
 #TODO: add the images for RAM & ROM and one for Amphib Ian here
 
+
 """
 Stores character text into variables
 """
@@ -64,7 +37,6 @@ text_syntax_turtle = "What's up? Syntax Turtle in the house. I'm from here, Red-
 #TODO: uncomment the introduction for RAM & ROM and one for Amphib Ian below:
 ##text_ram_rom = "Heya! We're RAM and ROM. We came from the other side of the country, Woolshington DC. We like Meryl Sheep, Dustin Hoofman, and Eva Longhornia. Our favorite musician is Lady Baa-Baa, and our sensei is the Dali Llama. We're working on a top-secret project! "
 ##text_amphib_ian  = "Yo, yo. What's hopping, peeps? Name's Amphib Ian. My launchpad is Croaklahoma City. My choice singer is Demi Lovatoad. And my fave artwork is \"Mourning Son\" by Edwart Hopper. My go-to game to code is Froggy Road. That's it. I'll catch you on the flip flop! "
-
 """
 We assign our character and text variables
 """
