@@ -79,10 +79,10 @@ TEXT.append(text_annie_conda)
 
 running = True
 #Starts at the first character in the list
-i = 0
+index_number = 0
 while running:
-    current_character = CHARACTERS[i]
-    current_text = TEXT[i]
+    current_character = CHARACTERS[index_number]
+    current_text = TEXT[index_number]
     screen.blit(background,(0,0))
     screen.blit(current_character, (0,0))
     display_text(screen, current_text)
@@ -101,7 +101,7 @@ while running:
             if event.key == pygame.K_q:
                 running = False
     #If we reach the end of the list, we start from the beginning again
-    if i == #TODO: Finish this if-statement so that i equals the number of characters in the game
+    if index_number == #TODO: Finish this if-statement so that "index_number" equals the number of characters in the game
         #TODO: Add a statement that goes back to the first character in the list
         
 pygame.quit()

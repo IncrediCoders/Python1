@@ -79,10 +79,10 @@ TEXT.append(text_amphib_ian)
 
 running = True
 #Starts at the first character in the list
-i = 0
+index_number = 0
 while running:
-    current_character = CHARACTERS[i]
-    current_text = TEXT[i]
+    current_character = CHARACTERS[index_number]
+    current_text = TEXT[index_number]
     display(background, current_text, current_character)
     EVENTS = pygame.event.get()
     for event in EVENTS:
@@ -92,12 +92,12 @@ while running:
             
             #Wrote two lines that check if the player presses the RIGHT key, to go to the next character
             if event.key == pygame.K_RIGHT:
-                i = i+1
+                index_number = index_number + 1
             
             #Wrote two lines that check if the player presses the LEFT key, to go to the previous character
             
     #If we reach the end of the array, we start from the beginning again
-    if i == 14: #Finished this if-statement so that i equals the number of characters in the game
-        i = 0 #Added a statement that goes back to the first character in the list
+    if index_number == 14: #Finished this if-statement so that "index_number" equals the number of characters in the game
+        index_number = 0 #Added a statement that goes back to the first character in the list
         
 pygame.quit()
