@@ -39,19 +39,12 @@ text_syntax_turtle = "What's up? Syntax Turtle in the house. I'm from here, Red-
 current_character = annie_conda
 current_text = text_annie_conda
 
-#Displays the character to the screen
-width = 600
-height = 800
-screen = pygame.display.set_mode((width,height))
-running = True
-
 while running:
-    screen.blit(background,(0,0))
-    screen.blit(current_character, (0,0))
-    display_text(screen, current_text)
-    pygame.display.flip()
+    display(background, current_text, current_character)
     EVENTS = pygame.event.get()
     for event in EVENTS:
+        if event.type == pygame.QUIT:
+            running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_1:
                 current_character = annie_conda
