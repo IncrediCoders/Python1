@@ -5,6 +5,9 @@
     "python.linting.pylintArgs": [
         "--extension-pkg-whitelist=pygame"
     ],
-    // This is the interpreter path for Yi, you may comment it out if you are using the default path
-    "python.pythonPath": "/Applications/anaconda3/bin/python"
+    "python.linting.enabled": false
+    // Note: if you need to set your python path, set it in user settings, not here.
+    // To do this, press Ctrl+Shift+P (or Command+Shift+P on macOS) and type "Settings"
+    // and choose "Preferences: Open Settings (JSON)". Then add the python path there
+    // for example: "python.pythonPath": "/usr/local/opt/python@3.8/bin/python3.8"
 }
