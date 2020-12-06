@@ -1,21 +1,21 @@
 from init import * #Gives us many helpful functions
 
 #Loads the background and images
-background = pygame.image.load(get_file("Assets/Background.png"))
-annie_conda = pygame.image.load(get_file("Assets/AnnieConda.png"))
-bayo_wolf = pygame.image.load(get_file("Assets/BayoWolf.png"))
-grafika_turtle = pygame.image.load(get_file("Assets/GrafikaTurtle.png"))
-intelli_scents = pygame.image.load(get_file("Assets/IntelliScents.png"))
-java_lynn = pygame.image.load(get_file("Assets/JavaLynn.png"))
-captain_javo = pygame.image.load(get_file("Assets/CaptainJavo.png"))
-jitter_bug = pygame.image.load(get_file("Assets/JitterBug.png"))
-paul_python = pygame.image.load(get_file("Assets/PaulPython.png"))
-quackintosh = pygame.image.load(get_file("Assets/Quackintosh.png"))
-sb_turtle = pygame.image.load(get_file("Assets/SBTurtle.png"))
-sidewinder = pygame.image.load(get_file("Assets/SideWinder.png"))
-syntax_turtle = pygame.image.load(get_file("Assets/SyntaxTurtle.png"))
-ram_rom = pygame.image.load(get_file("Assets/RAMROM.png"))
-amphib_ian = pygame.image.load(get_file("Assets/AmphibIan.png"))
+background = load_file("Assets/Background.png")
+annie_conda = load_file("Assets/AnnieConda.png")
+bayo_wolf = load_file("Assets/BayoWolf.png")
+grafika_turtle = load_file("Assets/GrafikaTurtle.png")
+intelli_scents = load_file("Assets/IntelliScents.png")
+java_lynn = load_file("Assets/JavaLynn.png")
+captain_javo = load_file("Assets/CaptainJavo.png")
+jitter_bug = load_file("Assets/JitterBug.png")
+paul_python = load_file("Assets/PaulPython.png")
+quackintosh = load_file("Assets/Quackintosh.png")
+sb_turtle = load_file("Assets/SBTurtle.png")
+sidewinder = load_file("Assets/SideWinder.png")
+syntax_turtle = load_file("Assets/SyntaxTurtle.png")
+ram_rom = load_file("Assets/RAMROM.png")
+amphib_ian = load_file("Assets/AmphibIan.png")
 
 #Stores the character text into the variables
 text_annie_conda  = "Hello! I'm Annie Conda. \nI come from Sanfran-Hissco, Cowlifornia. I've done a little coding. My favorite musician is Justin Timbersnake. I'm also partial to Hissy Elliott. My favorite Pigxar movie is Rattle-toulle. I love to make trivia games and word games. "
