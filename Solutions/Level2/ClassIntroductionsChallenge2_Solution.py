@@ -86,8 +86,6 @@ while running:
     display(background, current_text, current_character)
     EVENTS = pygame.event.get()
     for event in EVENTS:
-        if event.type == pygame.QUIT:
-            running = False
         if event.type == pygame.KEYDOWN: #Checks if the player presses a key
             
             #Wrote two lines that check if the player presses the RIGHT key, to go to the next character
@@ -95,9 +93,20 @@ while running:
                 index_number = index_number + 1
             
             #Wrote two lines that check if the player presses the LEFT key, to go to the previous character
+            if event.key == pygame.K_LEFT:
+                index_number = index_number - 1
+
+            if event.type == pygame.QUIT:
+                running = False
+            #Press q to quit
+            if event.key == pygame.K_q:
+                running = False
             
     #If we reach the end of the array, we start from the beginning again
     if index_number == 14: #Finished this if-statement so that "index_number" equals the number of characters in the game
         index_number = 0 #Added a statement that goes back to the first character in the list
+    
+    if index_number == -1: #Finished this if-statement so that "index_number" equals the number of characters in the game
+        index_number = 13 #Added a statement that goes back to the last character in the list
         
 pygame.quit()
