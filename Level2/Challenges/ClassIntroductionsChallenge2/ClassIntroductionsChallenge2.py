@@ -83,10 +83,7 @@ index_number = 0
 while running:
     current_character = CHARACTERS[index_number]
     current_text = TEXT[index_number]
-    screen.blit(background,(0,0))
-    screen.blit(current_character, (0,0))
-    display_text(screen, current_text)
-    pygame.display.flip()
+    display(background, current_text, current_character)
     EVENTS = pygame.event.get()
     for event in EVENTS:
         if event.type == pygame.KEYDOWN: #Checks if the player presses a key
@@ -97,11 +94,18 @@ while running:
             
             #TODO: Write two lines that check if the player presses the LEFT key, to go to the previous character
             
+
+
+            #Is it required to add pygame.QUIT for quitting from the while loop as well as pygame.K_q? 
+            
             #Press q to quit
             if event.key == pygame.K_q:
                 running = False
+
     #If we reach the end of the list, we start from the beginning again
     if index_number == #TODO: Finish this if-statement so that "index_number" equals the number of characters in the game
         #TODO: Add a statement that goes back to the first character in the list
+    if index_number == #TODO: Finish this if-statement so that "index_number" equals the number of characters in the game
+        #TODO: Add a statement that goes back to the last character in the list
         
 pygame.quit()
