@@ -105,7 +105,6 @@ while running:
     #If we reach the end of the array, we start from the beginning again
     if index_number == 14: #Finished this if-statement so that "index_number" equals the number of characters in the game
         index_number = 0 #Added a statement that goes back to the first character in the list
-    
     if index_number == -1: #Finished this if-statement so that "index_number" equals the number of characters in the game
         index_number = 13 #Added a statement that goes back to the last character in the list
         
