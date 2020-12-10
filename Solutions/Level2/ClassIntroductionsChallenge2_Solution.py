@@ -103,9 +103,9 @@ while running:
                 running = False
             
     #If we reach the end of the array, we start from the beginning again
-    if index_number == 14: #Finished this if-statement so that "index_number" equals the number of characters in the game
-        index_number = 0 #Added a statement that goes back to the first character in the list
-    if index_number == -1: #Finished this if-statement so that "index_number" equals the number of characters in the game
-        index_number = 13 #Added a statement that goes back to the last character in the list
+    if index_number == 14: #This if-statement checks if "index_number" is set to the last character in the list
+        index_number = 0 #This statement sets "index_number" back to the first character in the list
+    if index_number == -1: #This if-statement checks if "index_number" is set to the first character in the list
+        index_number = 13 #This statement sets "index_number" to the last character in the list
         
 pygame.quit()
