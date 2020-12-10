@@ -265,7 +265,8 @@ class Animator:
 
 class Object:
     """
-    Object class used to organize and track common game object data, such as location and appearance.
+    Object class used to organize and track common game object data, such as location and
+    appearance.
 
         obj = Object(IMAGE);
     """
@@ -668,7 +669,7 @@ def draw(screen):
     rect.center = MY.player2.location
     health_bar(screen, MY.player2_hp,
                 PLAYER_MAX_HP, pygame.math.Vector2(rect.width, 10), rect.topleft)
-    
+
     for i in range(len(MY.bullets)):
         if MY.bullets[i].active:
             MY.bullets[i].draw(screen)
@@ -730,7 +731,7 @@ def check_win():
         Manager.current = 1
         MY.state = 1
         MY.display_text = TextObject(WHITE, 24, "Player 2 wins! Play again?")
-        
+
     elif MY.player2_hp < 1:
         Manager.current = 1
         MY.state = 1
@@ -742,7 +743,7 @@ def check_replay_click(event):
         pos = mouse_position()
         if MY.restart_button.collides_with_point(Object(pos[0], pos[1])):
             Manager.current = 0
-            MY.state = 0  
+            MY.state = 0
 
 def update_bullets(delta_time):
     """Update the bullets and check for collisions"""
