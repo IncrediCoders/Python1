@@ -103,9 +103,9 @@ while running:
                 running = False
 
     #If we reach the end of the list, we start from the beginning again
-    if index_number == #TODO: Finish this if-statement so that "index_number" equals the number of characters in the game
-        #TODO: Add a statement that goes back to the first character in the list
-    if index_number == #TODO: Finish this if-statement so that "index_number" equals the number of characters in the game
-        #TODO: Add a statement that goes back to the last character in the list
+    if index_number == #TODO: Finish this if-statement to check if "index_number" equals the last character in the list
+        #TODO: Add a statement to set "index_number" back to the first character in the list
+    if index_number == #TODO: Finish this if-statement to check if "index_number" equals the first character in the list
+        #TODO: Add a statement to set "index_number" to the last character in the list
         
 pygame.quit()
