@@ -29,7 +29,7 @@ _data = {}
 #PART 2: CREATING A FRAMEWORK OF GENERAL CLASSES AND FUNCTIONS
 class TextObject:
     """
-    Create an object that renders text. Assumes that the default font 
+    Create an object that renders text. Assumes that the default font
     freesansbold exists in the project directory as a true type font.
         #create a text object
         title = TextObject(color.RED, 12, "example");
@@ -216,11 +216,11 @@ class Animator:
 
         self.reset()
         self.set_duration(duration_seconds)
-    
+
     def set_duration(self, duration_seconds):
         self.duration = duration_seconds
         self.transition = self.duration / self.num_frames
-    
+
     def use_anim(self, sheet):
         self.sheet = sheet
         self.reset()
