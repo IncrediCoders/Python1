@@ -6,5 +6,5 @@
         "--extension-pkg-whitelist=pygame"
     ],
     // This is the interpreter path for Yi, you may comment it out if you are using the default path
-    "python.pythonPath": "/Applications/anaconda3/bin/python"
+    "python.pythonPath": "C:\\Users\\kidla\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
 }
