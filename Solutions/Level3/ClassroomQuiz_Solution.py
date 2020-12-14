@@ -34,20 +34,22 @@ while running:
                     display_codala(correct_a, "correct_text") #Displays Mrs. Codala and the text for the correct answer
                 else: #If it's an incorrect answer
                     display_codala(incorrect_a, "incorrect_text") #Displays Mrs. Codala and the text for an incorrect answer
+            
+            #Copied the code here for the second answer
             if answer_2_rect.collidepoint(mouse_position): #If the player clicks the 2nd answer
                 if ANSWER_CHOICES[1] == answer: 
                     display_codala(correct_b, "correct_text")
                 else:
                     display_codala(incorrect_b, "incorrect_text")
 
-            #TODO:Write the code here for the third answer
+            #Wrote the code here for the third answer
             if answer_3_rect.collidepoint(mouse_position): #If the player clicks the 3rd answer
                 if ANSWER_CHOICES[2] == answer: 
                     display_codala(correct_a, "correct_text")
                 else:
                     display_codala(incorrect_a, "incorrect_text")
 
-            #Checks if it's the last question and display end screen
+            #If it's the last question, we display the end screen with Mrs. Codala
             running = check_if_last_question(line_number, running, number_of_questions)
             #If it's the not the last question, we display the next question
             line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)

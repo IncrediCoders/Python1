@@ -3,8 +3,8 @@ from init import *
 #We pull each line of text from the file into a list
 TRIVIA = read_file('Assets/Trivia.txt')
 
-#We now have a list that holds our current question, correct answer, and the two wrong choices, in that order
-#We use these variables to display the text on the screen
+#We create a list of variables that holds the text for our current question, the correct answer, and
+#the two wrong choices, in that order. We use this list to display text on the screen
 question = TRIVIA[0]
 answer = TRIVIA[1]
 wrong_choice_1 = TRIVIA[2]
@@ -18,7 +18,7 @@ number_of_questions = 8
 
 display_intro_screen() #Displays the intro screen
 
-running = True 
+running = True
 
 #This displays the question screen until the last question or until the player closes the window
 while running:
@@ -27,20 +27,27 @@ while running:
     for event in EVENTS:
         if event.type == pygame.QUIT: #If the player clicks the Close button, it exits the game
             running = False
-        mouse_position = pygame.mouse.get_pos() 
+        mouse_position = pygame.mouse.get_pos()
         if event.type == pygame.MOUSEBUTTONDOWN: #If the player clicks the mouse
             if answer_1_rect.collidepoint(mouse_position): #If the player clicks the 1st answer on the top
                 if ANSWER_CHOICES[0] == answer: #If it's the correct answer
                     display_codala(correct_a, "correct_text") #Displays Mrs. Codala and the text for the correct answer
-                else: #If it's an incorrect answer
-                    display_codala(incorrect_a, "incorrect_text") #Displays Mrs. Codala and the text for an incorrect answer
-            #if answer_2_rect.collidepoint(mouse_position): #If the player clicks the 2nd answer
-                #if ANSWER_CHOICES[1] == answer: 
-                    #display_codala(correct_b, "correct_text")
-                #else:
-                    #display_codala(incorrect_b, "incorrect_text")
-
-            #TODO:Write the code here for the third answer
+                #else: #If it's an incorrect answer
+                    #display_codala(incorrect_a, "incorrect_text") #Displays Mrs. Codala and the text for an incorrect answer
+            
+            #TODO: Copy the code here for the second answer
+            
+            
+            
+            
+            
+            
+            #TODO: Write the code here for the third answer
+            
+            
+            
+            
+            
 
             #If it's the last question, we display the end screen with Mrs. Codala
             running = check_if_last_question(line_number, running, number_of_questions)

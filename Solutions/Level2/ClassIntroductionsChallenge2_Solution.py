@@ -1,8 +1,6 @@
 from init import * #Gives us many helpful functions
 
-"""
-Loads the background and images
-"""
+#Loads the background and images
 background = load_file("Assets/Background.png")
 annie_conda = load_file("Assets/AnnieConda.png")
 bayo_wolf = load_file("Assets/BayoWolf.png")
@@ -19,9 +17,7 @@ syntax_turtle = load_file("Assets/SyntaxTurtle.png")
 ram_rom = load_file("Assets/RAMROM.png")
 amphib_ian = load_file("Assets/AmphibIan.png")
 
-"""
-Stores character text into variables
-"""
+#Stores the character text into the variables
 text_annie_conda  = "Hello! I'm Annie Conda. \nI come from Sanfran-Hissco, Cowlifornia. I've done a little coding. My favorite musician is Justin Timbersnake. I'm also partial to Hissy Elliott. My favorite Pigxar movie is Rattle-toulle. I love to make trivia games and word games. "
 text_bayo_wolf  = "I'm Bayo Wolf, from Little Squawk, Barkansas. I'm the best at SpaceWars and great at Mega Mechs in my Grendel mech. My favorite movies are The Dogfather, Jurassic Bark, Citizen Canine, and Stall Wars: The Empire Strikes Cats. My top actors are Brad Pitbull, Howly Berry, and Sandra Bulldog. "
 text_grafika_turtle  = "My name is Grafika Turtle. I live here, in Red-mutt, Washeepton. Now I get to go to school with my best friend. Hi, Paul! I love the movie Wizard of Paws, and my favorite artist is Pablo Pigcasso. I like coding in Turtle Graphics, and my brother Syntax and I are pretty good at coding card games. "
@@ -37,14 +33,25 @@ text_syntax_turtle = "What's up? Syntax Turtle in the house. I'm from here, Red-
 text_ram_rom = "Heya! We're RAM and ROM. We came from the other side of the country, Woolshington DC. We like Meryl Sheep, Dustin Hoofman, and Eva Longhornia. Our favorite musician is Lady Baa-Baa, and our sensei is the Dali Llama. We're working on a top-secret project! "
 text_amphib_ian  = "Yo, yo. What's hopping, peeps? Name's Amphib Ian. My launchpad is Croaklahoma City. My choice singer is Demi Lovatoad. And my fave artwork is \"Mourning Son\" by Edwart Hopper. My go-to game to code is Froggy Road. That's it. I'll catch you on the flip flop! "
 
-#Initialize arrays
+
+
+
+
+
+#Initializes the lists
 CHARACTERS = []
+#Uncommented the line below to initialize the TEXT list
 TEXT = []
-#Add characters and text to arrays
+
+#Adds the characters and text to the lists
 CHARACTERS.append(annie_conda)
 TEXT.append(text_annie_conda)
+
+#Uncommented the two lines below
 CHARACTERS.append(bayo_wolf)
 TEXT.append(text_bayo_wolf)
+
+#Added the rest of the characters to the lists
 CHARACTERS.append(grafika_turtle)
 TEXT.append(text_grafika_turtle)
 CHARACTERS.append(intelli_scents)
@@ -71,21 +78,34 @@ CHARACTERS.append(amphib_ian)
 TEXT.append(text_amphib_ian)
 
 running = True
-#Start at the first character in the array
-i = 0
+#Starts at the first character in the list
+index_number = 0
 while running:
-    current_character = CHARACTERS[i]
-    current_text = TEXT[i]
+    current_character = CHARACTERS[index_number]
+    current_text = TEXT[index_number]
     display(background, current_text, current_character)
     EVENTS = pygame.event.get()
     for event in EVENTS:
-        if event.type == pygame.QUIT:
-            running = False
-        if event.type == pygame.KEYDOWN:
-            #if pressed 1, go to next character
+        if event.type == pygame.KEYDOWN: #Checks if the player presses a key
+            
+            #Wrote two lines that check if the player presses the RIGHT key, to go to the next character
             if event.key == pygame.K_RIGHT:
-                i = i+1
-    #If we reach the end of the array, start from the beginning again
-    if i == 14:
-        i = 0
+                index_number = index_number + 1
+            
+            #Wrote two lines that check if the player presses the LEFT key, to go to the previous character
+            if event.key == pygame.K_LEFT:
+                index_number = index_number - 1
+
+            if event.type == pygame.QUIT:
+                running = False
+            #Press q to quit
+            if event.key == pygame.K_q:
+                running = False
+            
+    #If we reach the end of the array, we start from the beginning again
+    if index_number == 14: #This if-statement checks if "index_number" is set to the last character in the list
+        index_number = 0 #This statement sets "index_number" back to the first character in the list
+    if index_number == -1: #This if-statement checks if "index_number" is set to the first character in the list
+        index_number = 13 #This statement sets "index_number" to the last character in the list
+        
 pygame.quit()

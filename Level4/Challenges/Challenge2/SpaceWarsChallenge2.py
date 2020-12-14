@@ -12,13 +12,13 @@ def update(delta_time):
         #Checks if you closed the window
         if event.type == pygame.QUIT:
             stop()
-        #Fires the two ships' weapons        
+        #Fires the two ships' weapons
         elif key_down(event, pygame.K_SPACE):
             sound_laser[random.randint(0, len(sound_laser) - 1)].play()
             fire_bullet(1)
         elif key_down(event, pygame.K_RETURN):
             sound_laser[random.randint(0, len(sound_laser) - 1)].play()
-            fire_bullet(2)           
+            fire_bullet(2)
 
     #Rotates the Player 1 ship
     if key_held_down(pygame.K_a):
@@ -47,17 +47,17 @@ def update(delta_time):
         MY.player2.add_velocity(MY.player2.rotation, ship_accel, ship_max_speed)
     elif key_held_down(pygame.K_DOWN):
         MY.player2.add_velocity(MY.player2.rotation, -ship_accel, ship_max_speed)
-    
+
     # Updates player objects on screen
     update_players(delta_time)
 
     # Checks if bullets have been fired and updates their behavior on screen
     update_bullets(delta_time)
-    
+
     #TODO: Write code to updates the position of the asteroids in the game window.
 
     # Check win condition
-    check_win()   
+    check_win()
 
 
 # states

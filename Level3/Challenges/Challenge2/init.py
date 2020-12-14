@@ -97,14 +97,14 @@ def display_intro_screen():
     screen.blit(intro_text, (200,150))
     screen.blit(start_click,start_click_rect)
     pygame.display.update()
-    #First page: 
-    intro = True 
+    #First page:
+    intro = True
     while intro:
-        EVENTS = pygame.event.get() 
+        EVENTS = pygame.event.get()
         for event in EVENTS:
             quit_game(event) #If the player clicks the Close button, it exits the game
         #If the player clicks "Click here to start the game.", the screen changes to the first question
-        if check_game_started() == True:
+        if check_game_started():
             #Extra: Change the color when click on start text (blue to green)
             start_click = my_font.render("Click here to start.", True, (0,128,0))
             screen.blit(start_click,start_click_rect)
@@ -165,6 +165,6 @@ def check_if_last_question(line_number, running_status, number_of_questions):
 
 def quit_game(event):
     #This exits the game if the player clicks the Close button
-    if event.type == pygame.QUIT: 
+    if event.type == pygame.QUIT:
         pygame.quit()
         exit()
