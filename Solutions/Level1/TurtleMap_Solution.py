@@ -1,4 +1,4 @@
-#Turtle graphics project file
+#Imports the init.py file and the turtle module
 from init import *
 import turtle
 
