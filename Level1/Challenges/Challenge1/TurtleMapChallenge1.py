@@ -1,4 +1,4 @@
-#Turtle graphics project file
+#Imports the init.py file and the turtle module
 from init import *
 import turtle
 
@@ -24,14 +24,39 @@ turtle.pendown()
 
 #TODO: Turn right 90 degrees and move forward 105 steps
 
+
+
 #TODO: Turn right 90 degrees and move forward 185 steps
+
+
 
 #TODO: Turn left and move to the end of the road
 
+
+
 #TODO: Turn left and move to the intersection
+
+
 
 #TODO: Write more lines here to navigate the alternate route to school
 #Cross the bridge and stay on the road!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #This line stops the window from closing once we make it to the end
 turtle.done()
