@@ -1,3 +1,4 @@
+#Imports the init.py file and the turtle module
 from init import *
 import turtle
 
