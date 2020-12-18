@@ -1,4 +1,4 @@
-#Turtle graphics project file
+#Imports the init.py file and the turtle module
 from init import *
 import turtle
 
@@ -23,8 +23,27 @@ turtle.pendown()
 
     #TODO: In your loop, write the code to go to the school and then to get back
     #(You can use your code you wrote from the instructions in the book!)
-
-#TODO: End the loop here
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    #After you reach the school, go back to the house
+    
+    
+    
+    
+    
+    
+    
+    
+    
+#End the loop here
 
 #This line stops the window from closing once we make it to the end
 turtle.done()
