@@ -1,4 +1,4 @@
-#Turtle graphics project file
+#Imports the init.py file and the turtle module
 from init import *
 import turtle
 
@@ -25,25 +25,23 @@ for trip_number in range(5):
     #(You can use your code you wrote from the instructions in the book!)
     turtle.left(180)
     turtle.forward(510)
-
     turtle.right(90)
     turtle.forward(220)
 
     turtle.left(90)
-    turtle.forward(490)
+    turtle.forward(490)    
     turtle.right(90)
     turtle.forward(250)
 
     #Reached the school, and then go back to the house
     turtle.left(180)
-    turtle.forward(250)
+    turtle.forward(250)    
     turtle.left(90)
     turtle.forward(490)
+    
     turtle.right(90)
-
     turtle.forward(220)
     turtle.left(90)
-
     turtle.forward(510)
 #End the loop here
 
