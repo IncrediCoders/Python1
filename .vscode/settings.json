@@ -2,9 +2,6 @@
     // To remove the unwanted yellow alerts for importing init file when working on a certain level
     // You may change it to the level you are working on
     "python.autoComplete.extraPaths": ["./Level3", "./Solutions/Level3"] ,
-    "python.linting.pylintArgs": [
-        "--extension-pkg-whitelist=pygame"
-    ],
     "python.linting.enabled": false
     // Note: if you need to set your python path, set it in user settings, not here.
     // To do this, press Ctrl+Shift+P (or Command+Shift+P on macOS) and type "Settings"
