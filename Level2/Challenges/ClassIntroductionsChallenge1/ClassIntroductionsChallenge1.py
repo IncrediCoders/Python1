@@ -83,4 +83,10 @@ while running:
                 current_character = syntax_turtle
                 current_text = text_syntax_turtle
             #TODO: Add the if statements for RAM & ROM and Amphib Ian here
+
+            
+            
+            
+            
+            
 pygame.quit()
