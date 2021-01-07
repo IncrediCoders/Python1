@@ -34,10 +34,6 @@ text_ram_rom = "Heya! We're RAM and ROM. We came from the other side of the coun
 text_amphib_ian  = "Yo, yo. What's hopping, peeps? Name's Amphib Ian. My launchpad is Croaklahoma City. My choice singer is Demi Lovatoad. And my fave artwork is \"Mourning Son\" by Edwart Hopper. My go-to game to code is Froggy Road. That's it. I'll catch you on the flip flop! "
 
 
-
-
-
-
 #Initializes the lists
 CHARACTERS = []
 #Uncommented the line below to initialize the TEXT list
@@ -86,26 +82,22 @@ while running:
     display(background, current_text, current_character)
     EVENTS = pygame.event.get()
     for event in EVENTS:
+        if event.type == pygame.QUIT:
+                running = False
         if event.type == pygame.KEYDOWN: #Checks if the player presses a key
-            
+
             #Wrote two lines that check if the player presses the RIGHT key, to go to the next character
             if event.key == pygame.K_RIGHT:
                 index_number = index_number + 1
-            
+
             #Wrote two lines that check if the player presses the LEFT key, to go to the previous character
             if event.key == pygame.K_LEFT:
                 index_number = index_number - 1
 
-            if event.type == pygame.QUIT:
-                running = False
-            #Press q to quit
-            if event.key == pygame.K_q:
-                running = False
-            
-    #If we reach the end of the array, we start from the beginning again
+    #If we reach the end of the list, we start from the beginning again
     if index_number == 14: #This if-statement checks if "index_number" is set to the last character in the list
         index_number = 0 #This statement sets "index_number" back to the first character in the list
     if index_number == -1: #This if-statement checks if "index_number" is set to the first character in the list
         index_number = 13 #This statement sets "index_number" to the last character in the list
-        
+
 pygame.quit()

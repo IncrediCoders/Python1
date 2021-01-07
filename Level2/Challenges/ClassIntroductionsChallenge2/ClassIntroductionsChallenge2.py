@@ -33,10 +33,6 @@ text_syntax_turtle = "What's up? Syntax Turtle in the house. I'm from here, Red-
 text_ram_rom = "Heya! We're RAM and ROM. We came from the other side of the country, Woolshington DC. We like Meryl Sheep, Dustin Hoofman, and Eva Longhornia. Our favorite musician is Lady Baa-Baa, and our sensei is the Dali Llama. We're working on a top-secret project! "
 text_amphib_ian  = "Yo, yo. What's hopping, peeps? Name's Amphib Ian. My launchpad is Croaklahoma City. My choice singer is Demi Lovatoad. And my fave artwork is \"Mourning Son\" by Edwart Hopper. My go-to game to code is Froggy Road. That's it. I'll catch you on the flip flop! "
 
-#Displays character to the screen
-width = 600
-height = 800
-screen = pygame.display.set_mode((width,height))
 
 #Initializes the lists
 CHARACTERS = []
@@ -86,26 +82,22 @@ while running:
     display(background, current_text, current_character)
     EVENTS = pygame.event.get()
     for event in EVENTS:
+        if event.type == pygame.QUIT:
+            running = False
         if event.type == pygame.KEYDOWN: #Checks if the player presses a key
-            
+
             #TODO: Write two lines that check if the player presses the RIGHT key, to go to the next character
             
-            
-            
+
+
             #TODO: Write two lines that check if the player presses the LEFT key, to go to the previous character
             
 
-
-            #Is it required to add pygame.QUIT for quitting from the while loop as well as pygame.K_q? 
-            
-            #Press q to quit
-            if event.key == pygame.K_q:
-                running = False
 
     #If we reach the end of the list, we start from the beginning again
     if index_number == #TODO: Finish this if-statement to check if "index_number" equals the last character in the list
         #TODO: Add a statement to set "index_number" back to the first character in the list
     if index_number == #TODO: Finish this if-statement to check if "index_number" equals the first character in the list
         #TODO: Add a statement to set "index_number" to the last character in the list
-        
+
 pygame.quit()
