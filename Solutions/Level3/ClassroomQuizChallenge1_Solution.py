@@ -33,7 +33,7 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN: #If the player clicks the mouse
             if answer_1_rect.collidepoint(mouse_position): #If the player clicks the 1st answer on the top
                 if ANSWER_CHOICES[0] == answer: #If it's the correct answer
-                    #Added this line to add 1 score
+                    #Uncommented this line to add 1 score
                     score += 1 #The player gets one score
                     display_codala(correct_a, "correct_text") #Displays codala and text for correct answer
                 else: #If it's an incorrect answer
