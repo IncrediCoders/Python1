@@ -17,7 +17,7 @@ def get_file(fileName):
 
 def read_file(fileName):
     """
-    Reads the text file into a list, line by line, and returns it
+    Read txt file into a list line by line and return it
     """
     TRIVIA = []
     #This puts the txt file into the file variable
@@ -30,11 +30,11 @@ def read_file(fileName):
 #PART 3: SETUP FOR THE CLASSROOM QUIZ GAME
 
 """
-Initializes the font objects
+Initialize Font Objects
 """
 #We pick our text style and size
 pygame.init()
-pygame.display.set_caption('Classroom Quiz') #Adds the title of the game
+pygame.display.set_caption('Classroom Quiz') #To add the title of game
 my_font = pygame.font.SysFont('Arial', 35)
 answer_1_text = my_font.render("                        ", True, (0,0,255))
 answer_1_rect = answer_1_text.get_rect(topleft=(200,230))
@@ -48,17 +48,17 @@ correct_text = my_font.render("That is correct.", True, (0,128,0))
 incorrect_text = my_font.render("That is incorrect.", True, (255,0,0))
 
 """
-Sets the window size
+Set Window Size
 """
-#Sets the window size for our game
+#We set the window size for our game
 width = 960
 height = 540
 screen = pygame.display.set_mode((width,height))
 
 """
-Loads the sprites
+Load Sprites
 """
-#Loads the images and puts them in the variables
+#We load the images and put them in variables
 background = pygame.image.load(get_file('Assets/Background.png'))
 correct_a = pygame.image.load(get_file('Assets/CorrectAnswerA.png'))
 correct_b = pygame.image.load(get_file('Assets/CorrectAnswerB.png'))
@@ -97,13 +97,13 @@ def display_intro_screen():
     screen.blit(intro_text, (200,150))
     screen.blit(start_click,start_click_rect)
     pygame.display.update()
-    intro = True
+    intro = True 
     while intro:
-        EVENTS = pygame.event.get()
+        EVENTS = pygame.event.get() 
         for event in EVENTS:
             quit_game(event) #If the player clicks the Close button, it exits the game
         #If the player clicks "Click here to start the game.", the screen changes to the first question
-        if check_game_started():
+        if check_game_started() == True:
             intro = False
 
 def display_end_screen():
@@ -158,6 +158,6 @@ def check_if_last_question(line_number, running_status, number_of_questions):
 
 def quit_game(event):
     #This exits the game if the player clicks the Close button
-    if event.type == pygame.QUIT:
+    if event.type == pygame.QUIT: 
         pygame.quit()
         exit()

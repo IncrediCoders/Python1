@@ -161,3 +161,4 @@ def quit_game(event):
     if event.type == pygame.QUIT: 
         pygame.quit()
         exit()
+        
