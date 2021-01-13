@@ -14,7 +14,7 @@ ANSWER_CHOICES = [answer, wrong_choice_1, wrong_choice_2]
 randomize_answers(ANSWER_CHOICES) #Shuffles the first set of answer choices
 
 line_number = 0
-number_of_questions = 8
+number_of_questions = 12
 
 display_intro_screen() #Displays the intro screen
 
@@ -31,6 +31,7 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN: #If the player clicks the mouse
             if answer_1_rect.collidepoint(mouse_position): #If the player clicks the 1st answer on the top
                 if ANSWER_CHOICES[0] == answer: #If it's the correct answer
+                    #Uncommented these lines to add interactive effect
                     #Change color from blue to green
                     answer_1_text = my_font.render(answer, True, (0,128,0))
                     screen.blit(answer_1_text, answer_1_rect)
@@ -39,6 +40,7 @@ while running:
                     time.sleep(1)
                     display_codala(correct_a, "correct_text") #Displays codala and text for correct answer
                 else: #If it's an incorrect answer
+                    #Add interactive effect
                     #Change color from blue to red
                     answer_1_text = my_font.render(ANSWER_CHOICES[0], True, (255,0,0))
                     screen.blit(answer_1_text, answer_1_rect)
@@ -48,6 +50,7 @@ while running:
                     display_codala(incorrect_a, "incorrect_text") #Display codala and text for incorrect answer
             if answer_2_rect.collidepoint(mouse_position): #If the player clicks the 2nd answer
                 if ANSWER_CHOICES[1] == answer: 
+                    #Add interactive effect
                     #Change color from blue to green
                     answer_2_text = my_font.render(answer, True, (0,128,0))
                     screen.blit(answer_2_text, answer_2_rect)
@@ -56,6 +59,7 @@ while running:
                     time.sleep(1)
                     display_codala(correct_b, "correct_text")
                 else:
+                    #Add interactive effect
                     #Change color from blue to red
                     answer_2_text = my_font.render(ANSWER_CHOICES[1], True, (255,0,0))
                     screen.blit(answer_2_text, answer_2_rect)
@@ -63,10 +67,9 @@ while running:
                     pygame.event.get()
                     time.sleep(1)
                     display_codala(incorrect_b, "incorrect_text")
-
-#TODO:Write the code here for the third answer
             if answer_3_rect.collidepoint(mouse_position): #If the player clicks the 3rd answer
                 if ANSWER_CHOICES[2] == answer: 
+                    #Add interactive effect
                     #Change color from blue to green
                     answer_3_text = my_font.render(answer, True, (0,128,0))
                     screen.blit(answer_3_text, answer_3_rect)
@@ -75,6 +78,7 @@ while running:
                     time.sleep(1)
                     display_codala(correct_a, "correct_text")
                 else:
+                    #Add interactive effect
                     #Change color from blue to red
                     answer_3_text = my_font.render(ANSWER_CHOICES[2], True, (255,0,0))
                     screen.blit(answer_3_text, answer_3_rect)
