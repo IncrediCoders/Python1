@@ -43,6 +43,7 @@ while running:
             if event.key == pygame.K_1:
                 current_character = annie_conda
                 current_text = text_annie_conda
+            #TODO: Uncomment these lines by removing the hashtags
             #if event.key == pygame.K_2:
                 #current_character = bayo_wolf
                 #current_text = text_bayo_wolf
