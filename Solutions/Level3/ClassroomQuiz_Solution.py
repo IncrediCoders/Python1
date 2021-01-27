@@ -32,7 +32,7 @@ while running:
             if answer_1_rect.collidepoint(mouse_position): #If the player clicks the 1st answer on the top
                 if ANSWER_CHOICES[0] == answer: #If it's the correct answer
                     display_codala(correct_a, "correct_text") #Displays Mrs. Codala and the text for the correct answer
-                #Uncommented these two lines to display Mrs. Codala if it's incorrect answer
+                #Uncommented these two lines to display Mrs. Codala if the answer is incorrect
                 else: #If it's an incorrect answer
                     display_codala(incorrect_a, "incorrect_text") #Displays Mrs. Codala and the text for an incorrect answer
             
