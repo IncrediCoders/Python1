@@ -31,27 +31,27 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN: #If the player clicks the mouse
             if answer_1_rect.collidepoint(mouse_position): #If the player clicks the 1st answer on the top
                 if ANSWER_CHOICES[0] == answer: #If it's the correct answer
-                    #TODO: Uncomment these lines to add interactive effect
-                    ##Change color from blue to green
+                    #TODO: Uncomment these lines to add an interactive effect
+                    ##Change the text color from blue to green
                     #answer_1_text = my_font.render(answer, True, (0,128,0))
                     #screen.blit(answer_1_text, answer_1_rect)
                     #pygame.display.update()
                     #pygame.event.get()
                     #time.sleep(1)
-                    display_codala(correct_a, "correct_text") #Displays codala and text for correct answer
+                    display_codala(correct_a, "correct_text") #Displays Mrs. Codala and the text for a correct answer
                 else: #If it's an incorrect answer
-                    #TODO: Add interactive effect
-                    #Change color from blue to red
+                    #TODO: Add an interactive effect to the text
+                    #Change the text color from blue to red
                      
                      
                     
                    
                    
-                    display_codala(incorrect_a, "incorrect_text") #Display codala and text for incorrect answer
+                    display_codala(incorrect_a, "incorrect_text") #Display Mrs. Codala and the text for an incorrect answer
             if answer_2_rect.collidepoint(mouse_position): #If the player clicks the 2nd answer
                 if ANSWER_CHOICES[1] == answer:
-                    #TODO: Add interactive effect
-                    #Change color from blue to green
+                    #TODO: Add an interactive effect to the text
+                    #Change the text color from blue to green
                      
                 
                   
@@ -59,8 +59,8 @@ while running:
             
                     display_codala(correct_b, "correct_text")
                 else:
-                    #TODO: Add interactive effect
-                    #Change color from blue to red
+                    #TODO: Add an interactive effect to the text
+                    #Change the text color from blue to red
                    
                      
                     
@@ -69,8 +69,8 @@ while running:
                     display_codala(incorrect_b, "incorrect_text")
             if answer_3_rect.collidepoint(mouse_position): #If the player clicks the 3rd answer
                 if ANSWER_CHOICES[2] == answer:
-                    #TODO: Add interactive effect
-                    #Change color from blue to green
+                    #TODO: Add an interactive effect to the text
+                    #Change the text color from blue to green
                     
                      
                      
@@ -78,8 +78,8 @@ while running:
                      
                     display_codala(correct_a, "correct_text")
                 else:
-                    #TODO: Add interactive effect
-                    #Change color from blue to red
+                    #TODO: Add an interactive effect to the text
+                    #Change the text color from blue to red
                      
                     
                   
@@ -87,7 +87,7 @@ while running:
                    
                     display_codala(incorrect_a, "incorrect_text")
 
-            #Checks if it's the last question and display end screen
+            #Checks if it's the last question, and then displays the end screen
             running = check_if_last_question(line_number, running, number_of_questions)
             #If it's the not the last question, we display the next question
             line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
