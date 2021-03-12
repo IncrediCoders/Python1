@@ -1,11 +1,11 @@
-#Runs the Init.py file and imports the libraries
+#Runs the init.py file and imports the libraries
 from init import *
 import sys
 import pygame
 
-#The Update method checks for all the key presses and button clicks
 def update(delta_time):
-        for event in pygame.event.get():
+    #The Update method checks for all the key presses and button clicks
+    for event in pygame.event.get():
         #Checks if you click the Replay button to play again
         check_replay_click(event)
         #Checks if you closed the window
