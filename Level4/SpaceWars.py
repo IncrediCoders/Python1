@@ -39,13 +39,13 @@ def update(delta_time):
     #Checks if bullets have been fired and updates their behavior on screen
     update_bullets(delta_time)
 
-    # Check win condition
+    #Check win condition
     check_win()
 
 
-#states
+#Registering the states
 Manager.register(sys.modules[__name__]) #The current file
 Manager.register(GameOver)
 
-#run the game!
+#Runs the game
 Manager.run(SCREEN, WINDOW, BLACK)
