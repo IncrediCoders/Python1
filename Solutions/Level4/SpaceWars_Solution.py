@@ -55,9 +55,9 @@ def update(delta_time):
     check_win()   
 
 
-#states
+#Registering the states
 Manager.register(sys.modules[__name__]) #The current file
 Manager.register(GameOver)
 
-#run the game!
+#Runs the game
 Manager.run(SCREEN, WINDOW, BLACK)
