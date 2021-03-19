@@ -1,11 +1,11 @@
-"""Runs the Init.py file and imports the libraries"""
+#Runs the Init.py file and imports the libraries
 from init import *
 import random
 import pygame
 import sys
 
 def update(delta_time):
-    """The Update method checks for all the key presses and button clicks"""
+    #The Update method checks for all the key presses and button clicks
     for event in pygame.event.get():
         #Checks if you click the Replay button to play again
         check_replay_click(event)
@@ -44,19 +44,19 @@ def update(delta_time):
     elif key_held_down(pygame.K_DOWN):
         MY.player2.add_velocity(MY.player2.rotation, -ship_accel, ship_max_speed)
 
-    # Updates player objects on screen
+    #Updates player objects on screen
     update_players(delta_time)
 
-    # Checks if bullets have been fired and updates their behavior on screen
+    #Checks if bullets have been fired and updates their behavior on screen
     update_bullets(delta_time)
 
     # Check win condition
     check_win()
 
 
-# states
+#states
 Manager.register(sys.modules[__name__]) #The current file
 Manager.register(GameOver)
 
-# run the game!
+#run the game!
 Manager.run(SCREEN, WINDOW, BLACK)
