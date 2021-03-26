@@ -3,8 +3,9 @@ from init import *
 import sys
 import pygame
 
+
+#The Update method checks for all the key presses and button clicks
 def update(delta_time):
-    #The Update method checks for all the key presses and button clicks
     for event in pygame.event.get():
         #Checks if you click the Replay button to play again
         check_replay_click(event)
