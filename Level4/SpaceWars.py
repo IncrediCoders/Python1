@@ -1,6 +1,5 @@
 #Runs the init.py file and imports the libraries
 from init import *
-import pygame
 import sys
 
 #The Update method checks for all the key presses and button clicks
