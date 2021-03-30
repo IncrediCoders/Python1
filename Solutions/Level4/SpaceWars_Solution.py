@@ -44,13 +44,13 @@ def update(delta_time):
     elif key_held_down(pygame.K_DOWN):
         MY.player2.add_velocity(MY.player2.rotation, -ship_accel, ship_max_speed)
     
-    #Updates player objects on screen
+    #Updates player objects on the screen
     update_players(delta_time)
 
     #Checks if bullets have been fired and updates their behavior on screen
     update_bullets(delta_time)
 
-    #Check win condition
+    #Check the win condition
     check_win()   
 
 
