@@ -21,24 +21,36 @@ def update(delta_time):
         #MY.player1.add_rotation(ship_rotate * delta_time)
     #TODO: Copy the code here for the Player 1 ship to rotate clockwise
 
+
+
     #Moves the Player 1 ship forward and backward
     #if key_held_down(pygame.K_w):
         #MY.player1.add_velocity(MY.player1.rotation, ship_accel, ship_max_speed)
     #TODO: Copy the code here for the Player 1 ship to move backward
 
+
+
     #Rotates the Player 2 ship
     #TODO: Write the code here to rotate the Player 2 ship
+
+
+
+
 
     #Moves the Player 2 ship forward and backward
     #TODO: Write the code here to move the Player 2 ship
 
-    #Updates player objects on screen
+
+
+
+
+    #Updates player objects on the screen
     update_players(delta_time)
 
     #Checks if bullets have been fired and updates their behavior on screen
     update_bullets(delta_time)
 
-    #Check win condition
+    #Check the win condition
     check_win()
 
 
