@@ -11,8 +11,10 @@ def update(delta_time):
             stop()
         #Fires the two ships' weapons        
         elif key_down(event, pygame.K_SPACE):
+            sound_laser[random.randint(0, len(sound_laser) - 1)].play()
             fire_bullet(1)
         elif key_down(event, pygame.K_RETURN):
+            sound_laser[random.randint(0, len(sound_laser) - 1)].play()
             fire_bullet(2)           
 
     #Rotates the Player 1 ship
