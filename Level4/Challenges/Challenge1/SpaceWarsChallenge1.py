@@ -11,10 +11,10 @@ def update(delta_time):
             stop()
         #Fires the two ships' weapons
         elif key_down(event, pygame.K_SPACE):
-            #TODO: add code to sound laser for Player 1
+            #TODO: Replace this comment with the line of code that adds sound when firing the Player 1 weapon
             fire_bullet(1)
         elif key_down(event, pygame.K_RETURN):
-            #TODO: add code to sound laser for Player 2
+            #TODO: Replace this comment with the line of code that adds sound when firing the Player 2 weapon
             fire_bullet(2)
 
     #Rotates the Player 1 ship
