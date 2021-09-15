@@ -1,5 +1,3 @@
-# CHALLENGE 1 - ADD 2 MORE CARDS TO DECK (TOTAL OF 5)
-# Changes - Lines 77-78, 83-84, 211 (everything else in init file)
 
 from init import *
 
@@ -74,14 +72,14 @@ class GameScreen(GameState):
 		self.attacker = self.player1 if self.player1.active_turn else self.player2
 		self.defender = self.player1 if not self.player1.active_turn else self.player2
 		
-		self.player1_card_display = CardDisplay(self.player1, player1_card_display_data_challenge)
-		self.player2_card_display = CardDisplay(self.player2, player2_card_display_data_challenge)
+		self.player1_card_display = CardDisplay(self.player1, player1_card_display_data_challenge) #TODO changes
+		self.player2_card_display = CardDisplay(self.player2, player2_card_display_data_challenge) #TODO changes
 
 		self.player1_healthbar = Healthbar(self.player1, player1_healthbar_data)
 		self.player2_healthbar = Healthbar(self.player2, player2_healthbar_data)
 		
-		self.player1_ondeck = OnDeck(self.player1, player1_ondeck_data_challenge)
-		self.player2_ondeck = OnDeck(self.player2, player2_ondeck_data_challenge)
+		self.player1_ondeck = OnDeck(self.player1, player1_ondeck_data_challenge) #TODO changes
+		self.player2_ondeck = OnDeck(self.player2, player2_ondeck_data_challenge) #TODO changes
 
 		self.dialog_box = DialogBox((200,300), (X_CENTER-100, 50))
 		
@@ -204,7 +202,7 @@ if __name__=="__main__":
 			"Title" : TitleScreen(),
 			"GetNames": GetNameScreen(),
 			"CoinFlip": CoinFlipScreen(),
-			"ChooseHand" : ChooseHandScreen(DECK, True),
+			"ChooseHand" : ChooseHandScreen(DECK, True), #TODO
 			"Game" : GameScreen(),
 			"Victory" : VictoryScreen()
 			 }

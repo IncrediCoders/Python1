@@ -20,8 +20,8 @@ syntax_turtle = Card('Syntax Turtle', 'small_basic', 'bash', 'scratch', syntax_t
 viralmuto = Card('Viralmuto', 'bash', 'python', 'scratch', viralmuto_img, icon_bash)
 virobotica = Card('Virobotica', 'bash', 'python', 'small_basic', virobotica_img, icon_bash)
 #TODO: Copy the code here to add the Virobots and Woodchuck Norris cards
-virobots = Card('Virobots', 'bash', 'python', 'small_basic', virobots_img, icon_bash)
-woodchuck_norris = Card('Woodchuck Norris', 'scratch', 'small_basic', 'java', woodchuck_norris_img, icon_scratch)
+
+
 
 DECK = []
 
@@ -48,7 +48,7 @@ DECK.append(virobots)
 DECK.append(woodchuck_norris)
 
 #TODO: Copy the code here to shuffle the cards
-random.shuffle(DECK)
+
 
 class GameScreen(GameState):
 	
@@ -89,14 +89,14 @@ class GameScreen(GameState):
 			self.tech_attack_button.get_event(event)
 	
 		#TODO: Add the code here to check if the players click an On Deck card
-		self.player1_ondeck.get_event(event)
-		self.player2_ondeck.get_event(event)
+
+
 		
 	def button_action(self, params):
 		#TODO: Write the code here to flip the coin when the player clicks the button
-		self.coin_side = self.flip_coin()
-		self.coin.set_side(self.coin_side)
-		self.flipping = True
+		
+		
+		
 				
 	def update(self, dt):
 		self.player1_healthbar.update()
