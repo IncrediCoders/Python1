@@ -64,23 +64,23 @@ class GameScreen(GameState):
 		self.coin_side = None
 		
 	def start(self, players):
-		self.players = players
-		self.player1 = players["player1"]
-		self.player2 = players["player2"]
+		#self.players = players
+		#self.player1 = players["player1"]
+		#self.player2 = players["player2"]
 		
-		self.attacker = self.player1 if self.player1.active_turn else self.player2
-		self.defender = self.player1 if not self.player1.active_turn else self.player2
+		#self.attacker = self.player1 if self.player1.active_turn else self.player2
+		#self.defender = self.player1 if not self.player1.active_turn else self.player2
 		
-		self.player1_card_display = CardDisplay(self.player1, player1_card_display_data)
-		self.player2_card_display = CardDisplay(self.player2, player2_card_display_data)
+		#self.player1_card_display = CardDisplay(self.player1, player1_card_display_data)
+		#self.player2_card_display = CardDisplay(self.player2, player2_card_display_data)
 
-		self.player1_healthbar = Healthbar(self.player1, player1_healthbar_data)
-		self.player2_healthbar = Healthbar(self.player2, player2_healthbar_data)
+		#self.player1_healthbar = Healthbar(self.player1, player1_healthbar_data)
+		#self.player2_healthbar = Healthbar(self.player2, player2_healthbar_data)
 		
-		self.player1_ondeck = OnDeck(self.player1, player1_ondeck_data)
-		self.player2_ondeck = OnDeck(self.player2, player2_ondeck_data)
+		#self.player1_ondeck = OnDeck(self.player1, player1_ondeck_data)
+		#self.player2_ondeck = OnDeck(self.player2, player2_ondeck_data)
 
-		self.dialog_box = DialogBox((200,300), (X_CENTER-100, 50))
+		#self.dialog_box = DialogBox((200,300), (X_CENTER-100, 50))
 		
 	def get_event(self, event):
 		if not self.flipping:
