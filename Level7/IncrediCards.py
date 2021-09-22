@@ -49,6 +49,7 @@ DECK.append(woodchuck_norris)
 
 #TODO: Copy the code here to shuffle the cards
 
+
 class GameScreen(GameState):
 	
 	def __init__(self):
