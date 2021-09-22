@@ -98,21 +98,21 @@ class GameScreen(GameState):
 		
 				
 	def update(self, dt):
-		#TODO: self.player1_healthbar.update()
-		# self.player2_healthbar.update()
+		#TODO: uncomment? // self.player1_healthbar.update()
+		#TODO: Write the healthbar update code for player 2 // self.player2_healthbar.update()
 
-		#TODO: Copy the code to update players' On Deck boxes
+		#TODO: uncomment player 1 // self.player1_ondeck.update()
+		#TODO: Write the ondeck update code for player 2 // self.player2_ondeck.update()
 		
-		
-		#TODO: Copy the code to update players' card displays
+		#TODO: uncomment player 1 // self.player1_card_display.update()
+		#TODO: Write the card display update code for player 2 //self.player2_card_display.update()
 
-
-		if self.flipping: # add TODO here for 110-113
+		if self.flipping: # add TODO here for 110-113 - copy from the book?
 			self.flipping = self.coin.update(dt)
 			if not self.flipping:
 				self.attacking = True
 		
-		if self.attacking: # add TODO here for 115-122
+		if self.attacking: # add TODO here for 115-122 - inline copy?
 			offense_card = self.attacker.current_card 
 			defense_card = self.defender.current_card
 			
@@ -121,7 +121,7 @@ class GameScreen(GameState):
 			message = add_to_message(message, "{}".format(self.attacker.name))
 			message = add_to_message(message, "{}".format(self.coin_side))
 
-			if self.coin_side == 'Heads':
+			if self.coin_side == 'Heads': # add TODO here for 124-136
 				damage = defense_card.attacked_by(offense_card)
 				s_flag = "" if offense_card.name.endswith('s') else "s"
 				if damage == 2:
@@ -153,11 +153,11 @@ class GameScreen(GameState):
 				winner.set_as_winner()
 				self.done = True
 			
-	def flip_coin(self):
+	def flip_coin(self): # add TODO here for 156-158, lots of instruction/hints
 		side = "Heads" if random.random() < 0.5 else "Tails"
 		return side
 
-	def switch_active_player(self):
+	def switch_active_player(self): # add TODO here for 160-169, more instructions
 		if self.player1.active_turn:
 			self.attacker = self.player2
 			self.defender = self.player1
@@ -168,7 +168,7 @@ class GameScreen(GameState):
 		self.attacker.active_turn = True
 		self.defender.active_turn = False
 
-	def check_game_end(self):
+	def check_game_end(self): # add TODO here for 171-178, more challenging instructions
 		# Check status of both players, if one player surviving then end the game
 		exiting = False
 		if not self.player1.active:
@@ -177,7 +177,7 @@ class GameScreen(GameState):
 		    exiting = self.player1
 		return exiting
 		
-	def draw(self, surf):
+	def draw(self, surf): # add TODO for first 6? lines
 		super().draw(surf)
 		
 		if self.turn_counter == 1:
@@ -196,7 +196,7 @@ class GameScreen(GameState):
 		self.coin.draw(surf)
 		self.tech_attack_button.draw(surf)
 		
-if __name__=="__main__":		
+if __name__=="__main__": 
 	
 	states = {
 			"Title" : TitleScreen(),
