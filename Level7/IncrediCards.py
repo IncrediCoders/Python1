@@ -22,6 +22,7 @@ viralmuto = Card('Viralmuto', 'bash', 'python', 'scratch', viralmuto_img, icon_b
 #TODO: Copy the code here to add the Virobots and Woodchuck Norris cards
 
 
+
 DECK = []
 
 # Add all cards to deck
