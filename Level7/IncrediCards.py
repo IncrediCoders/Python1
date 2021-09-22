@@ -25,7 +25,7 @@ viralmuto = Card('Viralmuto', 'bash', 'python', 'scratch', viralmuto_img, icon_b
 
 DECK = []
 
-# Add all cards to deck
+# Adds all the cards to the deck
 DECK.append(annie_conda)
 DECK.append(bayo_wolf)
 DECK.append(captain_javo)
