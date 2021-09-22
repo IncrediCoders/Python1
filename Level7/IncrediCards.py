@@ -90,6 +90,7 @@ class GameScreen(GameState):
 
 
 		
+
 	def button_action(self, params):
 		#TODO: Write the code here to flip the coin when the player clicks the button
 		
@@ -97,21 +98,21 @@ class GameScreen(GameState):
 		
 				
 	def update(self, dt):
-		self.player1_healthbar.update()
-		self.player2_healthbar.update()
+		#TODO: self.player1_healthbar.update()
+		# self.player2_healthbar.update()
+
+		#TODO: Copy the code to update players' On Deck boxes
 		
-		self.player1_ondeck.update()
-		self.player2_ondeck.update()
 		
-		self.player1_card_display.update()
-		self.player2_card_display.update()
-		
-		if self.flipping:
+		#TODO: Copy the code to update players' card displays
+
+
+		if self.flipping: # add TODO here for 110-113
 			self.flipping = self.coin.update(dt)
 			if not self.flipping:
 				self.attacking = True
 		
-		if self.attacking:
+		if self.attacking: # add TODO here for 115-122
 			offense_card = self.attacker.current_card 
 			defense_card = self.defender.current_card
 			
@@ -137,7 +138,7 @@ class GameScreen(GameState):
 			# Dialog box shows the result of the turn
 			self.dialog_box.set_message(message)
 			
-			# update player hands
+			# Update player hands
 			self.player1.refresh_hand()
 			self.player2.refresh_hand()
 			
@@ -174,7 +175,6 @@ class GameScreen(GameState):
 		    exiting = self.player2
 		elif not self.player2.active:
 		    exiting = self.player1
-
 		return exiting
 		
 	def draw(self, surf):

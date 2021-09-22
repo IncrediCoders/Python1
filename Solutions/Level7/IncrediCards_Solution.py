@@ -47,7 +47,7 @@ DECK.append(virobotica)
 DECK.append(virobots)
 DECK.append(woodchuck_norris)
 
-#TODO: Copy the code here to shuffle the cards
+#Copied the code here to shuffle the cards
 random.shuffle(DECK)
 
 class GameScreen(GameState):
@@ -88,12 +88,12 @@ class GameScreen(GameState):
 		if not self.flipping:
 			self.tech_attack_button.get_event(event)
 	
-		#TODO: Add the code here to check if the players click an On Deck card
+		#Added the code here to check if the players click an On Deck card
 		self.player1_ondeck.get_event(event)
 		self.player2_ondeck.get_event(event)
 		
 	def button_action(self, params):
-		#TODO: Write the code here to flip the coin when the player clicks the button
+		#Wrote the code here to flip the coin when the player clicks the button
 		self.coin_side = self.flip_coin()
 		self.coin.set_side(self.coin_side)
 		self.flipping = True
@@ -139,7 +139,7 @@ class GameScreen(GameState):
 			# Dialog box shows the result of the turn
 			self.dialog_box.set_message(message)
 			
-			# update player hands
+			# Update player hands
 			self.player1.refresh_hand()
 			self.player2.refresh_hand()
 			
@@ -176,7 +176,6 @@ class GameScreen(GameState):
 		    exiting = self.player2
 		elif not self.player2.active:
 		    exiting = self.player1
-
 		return exiting
 		
 	def draw(self, surf):
