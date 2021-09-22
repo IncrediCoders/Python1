@@ -18,7 +18,7 @@ ram_rom = Card('Ram Rom', 'java', 'scratch', 'python', ram_rom_img, icon_java)
 sidewinder = Card('Sidewinder', 'python', 'java', 'bash', sidewinder_img, icon_python)
 syntax_turtle = Card('Syntax Turtle', 'small_basic', 'bash', 'scratch', syntax_turtle_img, icon_small_basic)
 viralmuto = Card('Viralmuto', 'bash', 'python', 'scratch', viralmuto_img, icon_bash)
-virobotica = Card('Virobotica', 'bash', 'python', 'small_basic', virobotica_img, icon_bash)
+#virobotica = Card('Virobotica', 'bash', 'python', 'small_basic', virobotica_img, icon_bash)
 #TODO: Copy the code here to add the Virobots and Woodchuck Norris cards
 
 
