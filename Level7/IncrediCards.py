@@ -22,7 +22,6 @@ virobotica = Card('Virobotica', 'bash', 'python', 'small_basic', virobotica_img,
 #TODO: Copy the code here to add the Virobots and Woodchuck Norris cards
 
 
-
 DECK = []
 
 # Add all cards to deck
@@ -48,7 +47,6 @@ DECK.append(virobots)
 DECK.append(woodchuck_norris)
 
 #TODO: Copy the code here to shuffle the cards
-
 
 class GameScreen(GameState):
 	
