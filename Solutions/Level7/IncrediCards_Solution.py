@@ -100,6 +100,7 @@ class GameScreen(GameState):
 		self.flipping = True
 				
 	def update(self, dt):
+		#TODO: Write the code here to update the healthbars, decks, and cards
 		self.player1_healthbar.update()
 		self.player2_healthbar.update()
 		
