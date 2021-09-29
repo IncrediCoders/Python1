@@ -87,9 +87,9 @@ class GameScreen(GameState):
 	def get_event(self, event):
 		if not self.flipping:
 			#TODO: Add the code that checks if the player clicked the TechType Attack button
-	
+	        
+		
 		#TODO: Add the code here to check if the players click an On Deck card
-
 
 		
 
