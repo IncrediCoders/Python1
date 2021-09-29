@@ -100,14 +100,15 @@ class GameScreen(GameState):
 		
 				
 	def update(self, dt):
-		#TODO: uncomment? // self.player1_healthbar.update()
-		#TODO: Write the healthbar update code for player 2 // self.player2_healthbar.update()
-
-		#TODO: uncomment player 1 // self.player1_ondeck.update()
-		#TODO: Write the ondeck update code for player 2 // self.player2_ondeck.update()
+		#TODO: Write the code here to update the healthbars, decks, and cards
 		
-		#TODO: uncomment player 1 // self.player1_card_display.update()
-		#TODO: Write the card display update code for player 2 //self.player2_card_display.update()
+
+		
+		
+		
+		
+		
+		
 
 		if self.flipping: # add TODO here for 110-113 - copy from the book?
 			self.flipping = self.coin.update(dt)
