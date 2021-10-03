@@ -11,11 +11,13 @@ def update(delta_time):
             stop()
         #Fires the two ships' weapons        
         elif key_down(event, pygame.K_SPACE):
-            sound_laser[random.randint(0, len(sound_laser) - 1)].play()
+            pygame.mixer.music.load("Assets/LaserShoot1.wav")
             fire_bullet(1)
+            pygame.mixer.music.play()
         elif key_down(event, pygame.K_RETURN):
-            sound_laser[random.randint(0, len(sound_laser) - 1)].play()
-            fire_bullet(2)           
+            pygame.mixer.music.load("Assets/LaserShoot2.wav")
+            fire_bullet(2) 
+            pygame.mixer.music.play()          
 
     #Rotates the Player 1 ship
     if key_held_down(pygame.K_a):
