@@ -22,6 +22,9 @@ RIGHT = 1
 UP = 2
 DOWN = 3
 
+#For making asteroids appear only in challenge 2
+LEVEL = ''
+
 # data used to store all lerps
 _data = {}
 
@@ -95,7 +98,11 @@ class Machine:
                             'draw': module.draw,
                             'cleanup': module.cleanup})
 
-    def run(self, screen, window, fill_color):
+    def run(self, screen, window, fill_color, level):
+        #Mark level so asteroids only appear in challenge 2
+        global LEVEL 
+        LEVEL = level
+
         """Runs the state given machine."""
         clock = pygame.time.Clock()
         # first run initialize!
@@ -650,7 +657,12 @@ def initialize(window):
         obj.location = rand_location(0, MY.window.x)
         obj.velocity = rand_location(-50, 50)
         obj.scale = 2
-        obj.active = True
+
+        #Hides asteroids in main and challenge 1
+        if LEVEL == "CHALLENGE2":
+            obj.active = True
+        else:
+            obj.active = False
         MY.asteroids.append(obj)
         count = count + 1
 

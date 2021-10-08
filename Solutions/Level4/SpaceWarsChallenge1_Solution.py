@@ -62,4 +62,4 @@ Manager.register(sys.modules[__name__]) #The current file
 Manager.register(GameOver)
 
 #Runs the game
-Manager.run(SCREEN, WINDOW, BLACK)
+Manager.run(SCREEN, WINDOW, BLACK, "CHALLENGE1")
