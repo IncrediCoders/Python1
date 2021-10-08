@@ -22,6 +22,9 @@ RIGHT = 1
 UP = 2
 DOWN = 3
 
+#For making asteroids appear only in challenge 2
+LEVEL = ''
+
 # data used to store all lerps
 _data = {}
 
@@ -29,7 +32,7 @@ _data = {}
 #PART 2: CREATING A FRAMEWORK OF GENERAL CLASSES AND FUNCTIONS
 class TextObject:
     """
-    Create an object that renders text. Assumes that the default font
+    Create an object that renders text. Assumes that the default font 
     freesansbold exists in the project directory as a true type font.
         #create a text object
         title = TextObject(color.RED, 12, "example");
@@ -95,7 +98,11 @@ class Machine:
                             'draw': module.draw,
                             'cleanup': module.cleanup})
 
-    def run(self, screen, window, fill_color):
+    def run(self, screen, window, fill_color, level):
+        #Mark level so asteroids only appear in challenge 2
+        global LEVEL 
+        LEVEL = level
+
         """Runs the state given machine."""
         clock = pygame.time.Clock()
         # first run initialize!
@@ -216,11 +223,11 @@ class Animator:
 
         self.reset()
         self.set_duration(duration_seconds)
-
+    
     def set_duration(self, duration_seconds):
         self.duration = duration_seconds
         self.transition = self.duration / self.num_frames
-
+    
     def use_anim(self, sheet):
         self.sheet = sheet
         self.reset()
@@ -265,8 +272,7 @@ class Animator:
 
 class Object:
     """
-    Object class used to organize and track common game object data, such as location and
-    appearance.
+    Object class used to organize and track common game object data, such as location and appearance.
 
         obj = Object(IMAGE);
     """
@@ -641,6 +647,25 @@ def initialize(window):
         MY.bullet_owner.append(1)
         count = count + 1
 
+    count = 0
+    while count < 5:
+        if (rand(0, 1) == 0):
+            image = IMAGE_ASTEROID
+        else:
+            image = IMAGE_ASTEROID_2
+        obj = Object(image)
+        obj.location = rand_location(0, MY.window.x)
+        obj.velocity = rand_location(-50, 50)
+        obj.scale = 2
+
+        #Hides asteroids in main and challenge 1
+        if LEVEL == "CHALLENGE2":
+            obj.active = True
+        else:
+            obj.active = False
+        MY.asteroids.append(obj)
+        count = count + 1
+
 def fire_bullet(player_number):
     """fire a bullet for the player"""
     index = -1
@@ -675,14 +700,19 @@ def draw(screen):
     rect.center = MY.player2.location
     health_bar(screen, MY.player2_hp,
                 PLAYER_MAX_HP, pygame.math.Vector2(rect.width, 10), rect.topleft)
-
+    
     for i in range(len(MY.bullets)):
         if MY.bullets[i].active:
             MY.bullets[i].draw(screen)
 
+    for i in range(len(MY.asteroids)):
+        if MY.asteroids[i].active:
+            MY.asteroids[i].draw(screen)
+
 def cleanup():
     """Cleans up the Intro State for SpaceWars."""
     MY.bullets = []
+    MY.asteroids = []
 
 class GameOver:
     """Restarter class to be loaded if Player 1 wins."""
@@ -739,7 +769,7 @@ def check_win():
         Manager.current = 1
         MY.state = 1
         MY.display_text = TextObject(WHITE, 24, "Player 2 wins! Play again?")
-
+        
     elif MY.player2_hp < 1:
         Manager.current = 1
         MY.state = 1
@@ -751,7 +781,7 @@ def check_replay_click(event):
         pos = mouse_position()
         if MY.restart_button.collides_with_point(Object(pos[0], pos[1])):
             Manager.current = 0
-            MY.state = 0
+            MY.state = 0  
 
 def update_bullets(delta_time):
     """Update the bullets and check for collisions"""
@@ -764,8 +794,22 @@ def update_bullets(delta_time):
             if screen_wrap(MY.bullets[i], MY.window):
                 MY.bullets[i].active = False
                 continue
+            for j in range(len(MY.asteroids)):
+                if MY.bullets[i].collides_with(MY.asteroids[j]):
+                    MY.bullets[i].active = False
             #check collisions
             check_collision(i)
+
+def update_asteroids(delta_time):
+    """Updates the position of the asteroids in the game window."""
+    for asteroid in MY.asteroids:
+        if asteroid.active:
+            asteroid.update(delta_time)
+            screen_wrap(asteroid, MY.window)
+        if MY.player1.collides_with(asteroid):
+            MY.player1.velocity = pygame.math.Vector2(0, 0)
+        if MY.player2.collides_with(asteroid):
+            MY.player2.velocity = pygame.math.Vector2(0, 0)
 
 def update_players(delta_time):
     """Updates the position of the players in the game window."""
