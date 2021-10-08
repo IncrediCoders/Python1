@@ -800,17 +800,6 @@ def update_bullets(delta_time):
             #check collisions
             check_collision(i)
 
-def update_asteroids(delta_time):
-    """Updates the position of the asteroids in the game window."""
-    for asteroid in MY.asteroids:
-        if asteroid.active:
-            asteroid.update(delta_time)
-            screen_wrap(asteroid, MY.window)
-        if MY.player1.collides_with(asteroid):
-            MY.player1.velocity = pygame.math.Vector2(0, 0)
-        if MY.player2.collides_with(asteroid):
-            MY.player2.velocity = pygame.math.Vector2(0, 0)
-
 def update_players(delta_time):
     """Updates the position of the players in the game window."""
     MY.player1.update(delta_time)

@@ -1,6 +1,9 @@
 #Runs the Init.py file and imports the libraries
 from init import *
 
+def update_asteroids(delta_time):
+    #TODO: Write code to update the position of asteroids in the game window.
+
 #The Update method checks for all the key presses and button clicks
 def update(delta_time):
     for event in pygame.event.get():
@@ -51,7 +54,7 @@ def update(delta_time):
     #Checks if bullets have been fired and updates their behavior on screen
     update_bullets(delta_time)
 
-    #TODO: Write code to updates the position of the asteroids in the game window.
+    #TODO: Call the method that updates the position of asteroids in the game window.
 
     #Check win condition
     check_win()

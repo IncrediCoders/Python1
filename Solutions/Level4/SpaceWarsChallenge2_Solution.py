@@ -1,6 +1,18 @@
 #Runs the init.py file and imports the libraries
 from init import *
 
+#Updates the asteroid's movement on screen
+def update_asteroids(delta_time):
+    """Updates the position of the asteroids in the game window."""
+    for asteroid in MY.asteroids:
+        if asteroid.active:
+            asteroid.update(delta_time)
+            screen_wrap(asteroid, MY.window)
+        if MY.player1.collides_with(asteroid):
+            MY.player1.velocity = pygame.math.Vector2(0, 0)
+        if MY.player2.collides_with(asteroid):
+            MY.player2.velocity = pygame.math.Vector2(0, 0)
+
 #The Update method checks for all the key presses and button clicks
 def update(delta_time):
     for event in pygame.event.get():
@@ -53,6 +65,7 @@ def update(delta_time):
     #Checks if bullets have been fired and updates their behavior on screen
     update_bullets(delta_time)
 
+    #Updates the asteroid's movement on screen
     update_asteroids(delta_time)
 
     #Check win condition
