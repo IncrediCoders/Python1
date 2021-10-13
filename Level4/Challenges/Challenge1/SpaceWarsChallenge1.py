@@ -11,10 +11,14 @@ def update(delta_time):
             stop()
         #Fires the two ships' weapons
         elif key_down(event, pygame.K_SPACE):
-            #TODO: Replace this comment with the line of code that adds sound when firing the Player 1 weapon
+            #TODO: Write code here to add sound when firing the Player 1 weapon
+            
+
             fire_bullet(1)
         elif key_down(event, pygame.K_RETURN):
-            #TODO: Replace this comment with the line of code that adds sound when firing the Player 2 weapon
+            #TODO: Write code here to add sound when firing the Player 1 weapon
+            
+
             fire_bullet(2)
 
     #Rotates the Player 1 ship
@@ -47,13 +51,13 @@ def update(delta_time):
     #Checks if bullets have been fired and updates their behavior on screen
     update_bullets(delta_time)
 
-    # Check win condition
+    #Check win condition
     check_win()
 
 
-#states
+#Registering the states
 Manager.register(sys.modules[__name__]) #The current file
 Manager.register(GameOver)
 
-#run the game!
+#Run the game!
 Manager.run(SCREEN, WINDOW, BLACK, "CHALLENGE1")
