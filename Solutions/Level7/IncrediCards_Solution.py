@@ -86,7 +86,7 @@ class GameScreen(GameState):
 		
 	def get_event(self, event):
 		if not self.flipping:
-			#TODO: Add the code that checks if the player clicked the TechType Attack button
+			#Added the code that checks if the player clicked the TechType Attack button
 			self.tech_attack_button.get_event(event)
 	
 		#Added the code here to check if the players click an On Deck card
@@ -100,7 +100,7 @@ class GameScreen(GameState):
 		self.flipping = True
 				
 	def update(self, dt):
-		#TODO: Write the code here to update the healthbars, decks, and cards
+		#Wrote the code here to update the healthbars, decks, and cards
 		self.player1_healthbar.update()
 		self.player2_healthbar.update()
 		
