@@ -110,10 +110,11 @@ class GameScreen(GameState):
 		
 		
 
-		if self.flipping: # add TODO here for 110-113 - copy from the book?
-			self.flipping = self.coin.update(dt)
-			if not self.flipping:
-				self.attacking = True
+		#TODO: Copy the code that checks if the player clicked the button
+		
+			
+			
+				
 		
 		if self.attacking: # add TODO here for 115-122 - inline copy?
 			offense_card = self.attacker.current_card 
