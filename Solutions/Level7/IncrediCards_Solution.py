@@ -110,6 +110,7 @@ class GameScreen(GameState):
 		self.player1_card_display.update()
 		self.player2_card_display.update()
 		
+		#Copied the code that checks if the player clicked the button
 		if self.flipping:
 			self.flipping = self.coin.update(dt)
 			if not self.flipping:
