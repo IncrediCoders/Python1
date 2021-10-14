@@ -1,9 +1,8 @@
 #Runs the init.py file and imports the libraries
 from init import *
 
-#Updates the asteroid's movement on screen
 def update_asteroids(delta_time):
-    """Updates the position of the asteroids in the game window."""
+    #Updated the position of the asteroids in the game window
     for asteroid in MY.asteroids:
         if asteroid.active:
             asteroid.update(delta_time)
@@ -24,36 +23,32 @@ def update(delta_time):
         #Fires the two ships' weapons        
         elif key_down(event, pygame.K_SPACE):
             pygame.mixer.music.load("Assets/LaserShoot1.wav")
-            fire_bullet(1)
             pygame.mixer.music.play()
+            fire_bullet(1)
         elif key_down(event, pygame.K_RETURN):
             pygame.mixer.music.load("Assets/LaserShoot2.wav")
-            fire_bullet(2) 
-            pygame.mixer.music.play()         
+            pygame.mixer.music.play()
+            fire_bullet(2)        
 
     #Rotates the Player 1 ship
     if key_held_down(pygame.K_a):
         MY.player1.add_rotation(ship_rotate * delta_time)
-    #TODO: Copy the code here for the Player 1 ship to rotate clockwise
     elif key_held_down(pygame.K_d):
         MY.player1.add_rotation(-ship_rotate * delta_time)
 
     #Moves the Player 1 ship forward and backward
     if key_held_down(pygame.K_w):
         MY.player1.add_velocity(MY.player1.rotation, ship_accel, ship_max_speed)
-    #TODO: Copy the code here for the Player 1 ship to move backward
     elif key_held_down(pygame.K_s):
         MY.player1.add_velocity(MY.player1.rotation, -ship_accel, ship_max_speed)
 
     #Rotates the Player 2 ship
-    #TODO: Write the code here to rotate the Player 2 ship
     if key_held_down(pygame.K_LEFT):
         MY.player2.add_rotation(ship_rotate * delta_time)
     elif key_held_down(pygame.K_RIGHT):
         MY.player2.add_rotation(-ship_rotate * delta_time)
 
     #Moves the Player 2 ship forward and backward
-    #TODO: Write the code here to move the Player 2 ship
     if key_held_down(pygame.K_UP):
         MY.player2.add_velocity(MY.player2.rotation, ship_accel, ship_max_speed)
     elif key_held_down(pygame.K_DOWN):
@@ -65,7 +60,7 @@ def update(delta_time):
     #Checks if bullets have been fired and updates their behavior on screen
     update_bullets(delta_time)
 
-    #Updates the asteroid's movement on screen
+    #Called the method that updates the position of the asteroids in the game window
     update_asteroids(delta_time)
 
     #Check win condition
