@@ -134,13 +134,12 @@ class GameScreen(GameState):
 			if not self.coded_attack:
 				if self.coin_side == 'Heads':
 					damage = defense_card.attacked_by(offense_card)
-					s_flag = "" if offense_card.name.endswith('s') else "s"
 					if damage == 2:
-						turn_msg = "{} is resistant to {}'{} attack! They only take 2 damage.".format(defense_card.name, offense_card.name, s_flag)
+						turn_msg = "{} is resistant to {}'{} attack! They only take 2 damage.".format(defense_card.name, offense_card.name, offense_card.s_flag)
 					elif damage == 4:
-						turn_msg = "{} is weak to {}'{} attack! They receive 4 damage.".format(defense_card.name, offense_card.name, s_flag)
+						turn_msg = "{} is weak to {}'{} attack! They receive 4 damage.".format(defense_card.name, offense_card.name, offense_card.s_flag)
 					else:
-						turn_msg = "{} took {} damage from {}'{} attack\n".format(defense_card.name, damage, offense_card.name, s_flag)
+						turn_msg = "{} took {} damage from {}'{} attack\n".format(defense_card.name, damage, offense_card.name, offense_card.s_flag)
 					message = add_to_message(message, turn_msg)
 				else:
 					turn_msg = "{} took no damage from {}\n".format(defense_card.name, offense_card.name)
@@ -162,40 +161,39 @@ class GameScreen(GameState):
 			# Coded Attack Logic
 			else:
 				defense_card.take_damage(1)
-				s_flag = "" if offense_card.name.endswith('s') else "s"
 				# Do 1 damage automatically then flip coin for extra effect
 
 				if self.coin_side == 'Heads':
 					# Execute coded attack - four different paths:
 
-					# This deals 1 more damage to the opponent and switches active player
+					# Extra hit - This deals 1 more damage to the opponent and switches active player
 					if offense_card.coded_type == 'extra_hit':
 						defense_card.take_damage(1)
-						turn_msg = "{}'{} {} landed, dealing 2 damage to {} this turn!\n".format(offense_card.name, s_flag, offense_card.coded_attack, defense_card.name)
+						turn_msg = "{}'{} {} landed, dealing 2 damage to {} this turn!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, defense_card.name)
 						self.switch_active_player()
-					# This gives the active player an extra turn, does not switch active player
+					# Extra turn - This gives the active player an extra turn, does not switch active player
 					if offense_card.coded_type == 'extra_turn':
-						turn_msg = "{}'{} {} hit - {} took 1 damage and {} gets another turn!\n".format(offense_card.name, s_flag, offense_card.coded_attack, defense_card.name, self.attacker.name)
-					# This lets the active card (or any other card in the player's hand with damage) to gain 1 HP and switches active player
+						turn_msg = "{}'{} {} hit - {} took 1 damage and {} gets another turn!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, defense_card.name, self.attacker.name)
+					# Gain Health - This lets the active card (or any other card in the player's hand with damage) to gain 1 HP and switches active player
 					if offense_card.coded_type == 'gain_health':
 						healed_card = self.attacker.gain_health(1)
 						if healed_card is None:
-							turn_msg = "{}'{} {} worked but all cards had max health!\n".format(offense_card.name, s_flag, offense_card.coded_attack)
+							turn_msg = "{}'{} {} worked but all cards had max health!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack)
 						else:
-							turn_msg = "{}'{} {} worked and {} gained 1 health point back!\n".format(offense_card.name, s_flag, offense_card.coded_attack, healed_card.name)
+							turn_msg = "{}'{} {} worked and {} gained 1 health point back!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, healed_card.name)
 						self.switch_active_player()
-					# This forces the next roll to be a 'Tails' and switches the active player
+					# Opponent Tails - This forces the next roll to be a 'Tails' and switches the active player
 					if offense_card.coded_type == 'opponent_tails':
 						self.force_tails = True
-						turn_msg = "{}'{} {} strikes - {} will roll tails on the next turn!\n".format(offense_card.name, s_flag, offense_card.coded_attack, defense_card.name)
+						turn_msg = "{}'{} {} strikes - {} will roll tails on the next turn!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, defense_card.name)
 						self.switch_active_player()
 
 				else: 
 					# Coded attack fails, defense still takes 1 damage and switch active player
-					turn_msg = "{}'{} {} missed - {} took 1 damage.\n".format(offense_card.name, s_flag, offense_card.coded_attack, defense_card.name)
+					turn_msg = "{}'{} {} missed - {} took 1 damage.\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, defense_card.name)
 					self.switch_active_player()
 
-				# Following needs to happen for every coded attack scenario
+				# The following logic needs to happen for every coded attack scenario
 				message = add_to_message(message, turn_msg)
 				self.dialog_box.set_message(message)
 				

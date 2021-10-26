@@ -19,7 +19,7 @@ sidewinder = Card('Sidewinder', 'python', 'java', 'bash', sidewinder_img, icon_p
 syntax_turtle = Card('Syntax Turtle', 'small_basic', 'bash', 'scratch', syntax_turtle_img, icon_small_basic)
 viralmuto = Card('Viralmuto', 'bash', 'python', 'scratch', viralmuto_img, icon_bash)
 virobotica = Card('Virobotica', 'bash', 'python', 'small_basic', virobotica_img, icon_bash)
-#TODO: Copy the code here to add the Virobots and Woodchuck Norris cards
+#Copied the code here to add the Virobots and Woodchuck Norris cards
 virobots = Card('Virobots', 'bash', 'python', 'small_basic', virobots_img, icon_bash)
 woodchuck_norris = Card('Woodchuck Norris', 'scratch', 'small_basic', 'java', woodchuck_norris_img, icon_scratch)
 
@@ -117,9 +117,11 @@ class GameScreen(GameState):
 				self.attacking = True
 		
 		if self.attacking:
+			#Wrote in the code for choosing attacker and defender cards
 			offense_card = self.attacker.current_card 
 			defense_card = self.defender.current_card
 			
+			#Wrote in the code for creating and adding to the turn's message
 			message = ""
 			message = add_to_message(message, "{}".format(self.turn_counter))
 			message = add_to_message(message, "{}".format(self.attacker.name))
@@ -127,16 +129,15 @@ class GameScreen(GameState):
 
 			if self.coin_side == 'Heads':
 				damage = defense_card.attacked_by(offense_card)
-				s_flag = "" if offense_card.name.endswith('s') else "s"
 				if damage == 2:
-					turn_msg = "{} is resistant to {}'{} attack! They only take 2 damage.".format(defense_card.name, offense_card.name, s_flag)
+					turn_msg = "{} is resistant to {}'{} attack! They only take 2 damage.".format(defense_card.name, offense_card.name, offense_card.s_flag)
 				elif damage == 4:
-					turn_msg = "{} is weak to {}'{} attack! They receive 4 damage.".format(defense_card.name, offense_card.name, s_flag)
+					turn_msg = "{} is weak to {}'{} attack! They receive 4 damage.".format(defense_card.name, offense_card.name, offense_card.s_flag)
 				else:
-					turn_msg = "{} took {} damage from {}'{} attack\n".format(defense_card.name, damage, offense_card.name, s_flag)
+					turn_msg = "{} took {} damage from {}'{} attack.".format(defense_card.name, damage, offense_card.name, offense_card.s_flag)
 				message = add_to_message(message, turn_msg)
 			else:
-				turn_msg = "{} took no damage from {}\n".format(defense_card.name, offense_card.name)
+				turn_msg = "{} took no damage from {}.".format(defense_card.name, offense_card.name)
 				message = add_to_message(message, turn_msg)
 			
 			# Dialog box shows the result of the turn

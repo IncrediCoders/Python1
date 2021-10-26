@@ -102,6 +102,7 @@ class Card(GameObject):
 		self.coded_type = coded_type
 		self.coded_attack = coded_attack
 		# coded types are: extra_hit, extra_turn, gain_health, opponent_tails
+		self.s_flag = "" if name.endswith('s') else "s"
 	
 	def attacked_by(self, offense_card):
 		damage = 3 # default value

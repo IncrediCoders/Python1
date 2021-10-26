@@ -116,14 +116,16 @@ class GameScreen(GameState):
 			
 				
 		
-		if self.attacking: # add TODO here for 115-122 - inline copy?
-			offense_card = self.attacker.current_card 
-			defense_card = self.defender.current_card
+		if self.attacking:
+			#TODO: Write in the code for choosing attacker and defender cards
 			
-			message = ""
-			message = add_to_message(message, "{}".format(self.turn_counter))
-			message = add_to_message(message, "{}".format(self.attacker.name))
-			message = add_to_message(message, "{}".format(self.coin_side))
+			
+			
+			#TODO: Write in the code for creating and adding to the turn's message
+			
+			
+			
+			
 
 			if self.coin_side == 'Heads': # add TODO here for 124-136
 				damage = defense_card.attacked_by(offense_card)
