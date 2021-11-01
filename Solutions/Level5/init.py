@@ -24,6 +24,9 @@ DOWN = 3
 # data used to store all lerps
 _data = {}
 
+#Note current challenge to hide certain game features
+challenge_type = ''
+
 #============================================================
 # PART 2: CREATING A FRAMEWORK OF GENERAL CLASSES AND FUNCTIONS
 
@@ -496,7 +499,8 @@ DOOR = 3
 PLAYER_START = 4
 COINS = 5
 
-PLAYER_START_HEALTH = 10
+PLAYER_START_HEALTH = 1
+PLAYER_CHALLENGE2_HEALTH = 10
 PLAYER_ACCEL = 64
 GRAVITY_ACCEL = 70
 PLAYER_DECEL = 500
@@ -582,7 +586,12 @@ class Data:
 
     player = Object(paul_idle_right_sheet.image_at(0))
     player.sprite = paul_idle_right
-    player_health = PLAYER_START_HEALTH
+
+    if(challenge_type == "CHALLENGE2"):
+        player_health = PLAYER_CHALLENGE2_HEALTH
+    else:
+        player_health = PLAYER_START_HEALTH
+
     player_max_speed = 100
     player_start_position = pygame.math.Vector2(0, 0)
     player_direction = RIGHT
@@ -653,7 +662,7 @@ def initialize(window):
     """Initializes the Platformer state."""
     MY.player_health = PLAYER_START_HEALTH
     MY.player.velocity = pygame.math.Vector2(0, 0)
-    MY.level_num = 1
+    # MY.level_num = 1
     # load_level("level" + str(MY.level_num))
     tilemap = read_file('assets/level1.txt')
     load_level(tilemap)
