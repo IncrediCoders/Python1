@@ -24,9 +24,6 @@ DOWN = 3
 # data used to store all lerps
 _data = {}
 
-#Path to level file
-LEVEL_FILE_PATH = ''
-
 #============================================================
 # PART 2: CREATING A FRAMEWORK OF GENERAL CLASSES AND FUNCTIONS
 
@@ -435,6 +432,7 @@ class Machine:
         self.current = 0
         self.previous = 0
         self.states = []
+        
 
     def register(self, module):
         """Registers the state's init, update, draw, and cleanup functions."""
@@ -443,13 +441,9 @@ class Machine:
                             'draw': module.draw,
                             'cleanup': module.cleanup})
 
-    def run(self, screen, window, fill_color, tilemap):
+    def run(self, screen, window, fill_color):
         """Runs the state given machine."""
         clock = pygame.time.Clock()
-
-        #Save filepath to level's tilemap
-        global LEVEL_FILE_PATH
-        LEVEL_FILE_PATH = tilemap
 
         # first run initialize!
         self.states[self.current]['initialize'](window)
@@ -620,11 +614,11 @@ def health_bar(screen, health, max_health, max_size, location):
     width = max_size[0] * (health / max_health)
     draw_rect(screen, bar_color, location, (width, max_size[1]))
 
-def load_level(level_file_path):
+def load_level(tilemap):
     """Cleans up resources and loads a specified level. Can be used to reload the same level."""
     cleanup()
 
-    MY.tilemap = level_file_path 
+    MY.tilemap = tilemap
     for row in range(len(MY.tilemap)):
         for column in range(len(MY.tilemap[row])):
             obj = Object(TILE_IMAGES[int(MY.tilemap[row][column])])
@@ -657,7 +651,10 @@ def initialize(window):
     MY.player_health = PLAYER_START_HEALTH
     MY.player.velocity = pygame.math.Vector2(0, 0)
     MY.level_num = 1
-    load_level(LEVEL_FILE_PATH)
+    # load_level("level" + str(MY.level_num))
+    tilemap = read_file('assets/level1.txt')
+    load_level(tilemap)
+    
     MY.window = window
 
 def draw(screen):
@@ -734,7 +731,7 @@ class Win:
 
     def update(self, delta_time):
         """Updates the lose menu state."""
-        for event in event.listing():
+        for event in MY.event.listing():
             if event.quit_game(event):
                 stop()
             elif event.mouse_l_button_down(event):
@@ -763,7 +760,7 @@ class Lose:
 
     def update(self, delta_time):
         """Updates the lose menu state."""
-        for event in event.listing():
+        for event in MY.event.listing():
             if event.quit_game(event):
                 stop()
             elif event.mouse_l_button_down(event):

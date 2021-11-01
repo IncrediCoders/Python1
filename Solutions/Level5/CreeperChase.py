@@ -1,7 +1,20 @@
 #Runs the Init.py file and imports the libraries
 from init import *
 
+# Starting at first level
+MY.current_level = 1
+
+# To load custom tilemap change custom_level to ON and insert filename
+MY.custom_level = "OFF" 
+if (MY.custom_level == "ON"):
+    level_name_as_string = 'custom'
+    MY.tilemap = read_file("assets/" + level_name_as_string + ".txt")
+
 def update(delta_time):
+    if MY.custom_level == "ON": 
+        load_level(MY.tilemap)
+        MY.custom_level = "RUNNING" #So it doesn't reload level every update
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             stop()
@@ -41,7 +54,6 @@ def update(delta_time):
             MY.player.sprite = MY.paul_jetpack_right
         elif MY.player.velocity.x < 0:
             MY.player.sprite = MY.paul_jetpack_left
-
 
     #Gravity
     MY.player.velocity.y = min(MY.player.velocity.y + GRAVITY_ACCEL, PLAYER_TERMINAL_VEL)
@@ -91,18 +103,27 @@ def update(delta_time):
     if not touching:
         MY.grounded = False
     
+    #Check for exit portal collision
+    if MY.player.collides_with(MY.exit_portal):
+        if MY.custom_level == "RUNNING":
+            # Show win screen
+            print('You won!') #placeholder
+        elif MY.current_level >= 1 & MY.current_level < 6:
+            #Move to next level
+            MY.current_level = MY.current_level + 1
+            level_name_as_string = 'level' + str(MY.current_level)
+            tilemap = read_file("assets/" + level_name_as_string + ".txt")
+            load_level(tilemap)
+        elif MY.current_level == 6:
+            #Show win screen
+            print("You won!")
+
     update_level(delta_time)
 
-# states
-import CreeperChase
-Manager.register(CreeperChase)
-
+# Registering the states
+Manager.register(sys.modules[__name__]) #The current file 
 Manager.register(Lose)
 Manager.register(Win)
 
-#Load level's tilemap file
-level_name_as_string = 'level1'
-tilemap = read_file("assets/" + level_name_as_string + ".txt")
-
-# run the game!
-Manager.run(SCREEN, WINDOW, BLUE, tilemap)
+# Run the game!
+Manager.run(SCREEN, WINDOW, BLUE)
