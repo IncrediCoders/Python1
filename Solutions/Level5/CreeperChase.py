@@ -126,4 +126,4 @@ Manager.register(Lose)
 Manager.register(Win)
 
 # Run the game!
-Manager.run(SCREEN, WINDOW, BLUE)
+Manager.run(SCREEN, WINDOW, BLUE, "MAIN")

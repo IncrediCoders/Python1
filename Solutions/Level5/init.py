@@ -431,8 +431,7 @@ class Machine:
     def __init__(self):
         self.current = 0
         self.previous = 0
-        self.states = []
-        
+        self.states = []    
 
     def register(self, module):
         """Registers the state's init, update, draw, and cleanup functions."""
@@ -441,9 +440,13 @@ class Machine:
                             'draw': module.draw,
                             'cleanup': module.cleanup})
 
-    def run(self, screen, window, fill_color):
+    def run(self, screen, window, fill_color, challenge):
         """Runs the state given machine."""
         clock = pygame.time.Clock()
+
+        #Note current challenge to hide certain game features
+        global challenge_type
+        challenge_type = challenge
 
         # first run initialize!
         self.states[self.current]['initialize'](window)
@@ -687,8 +690,9 @@ def draw(screen):
         MY.creeper.draw(screen)
         MY.entrance.draw(screen)
     
-    #draw player health_bar
-    health_bar(screen, MY.player_health, 10, (128, 16), (MY.window.x * 0.75, 20))
+    #Draw player health_bar if on challenge 2
+    if challenge_type == 'CHALLENGE2':
+        health_bar(screen, MY.player_health, 10, (128, 16), (MY.window.x * 0.75, 20))
 
 def update_level(delta_time):
     # MY.player.update(delta_time)
