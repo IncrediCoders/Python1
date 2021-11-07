@@ -70,6 +70,12 @@ def update(delta_time):
                 MY.player.sprite = MY.paul_pain_right
                 break
     
+    #Check for coin collisions
+    for coin in MY.coins:
+        if MY.player.collides_with(coin):
+            MY.coins.remove(coin)
+            MY.player_health += 1
+    
     MY.player.update(delta_time)
 
     # check for wall collisions
@@ -122,4 +128,4 @@ Manager.register(Lose)
 Manager.register(Win)
 
 # Run the game!
-Manager.run(SCREEN, WINDOW, BLUE, "MAIN")
+Manager.run(SCREEN, WINDOW, BLUE, "CHALLENGE2")

@@ -500,7 +500,7 @@ PLAYER_START = 4
 COINS = 5
 
 PLAYER_START_HEALTH = 1
-PLAYER_CHALLENGE2_HEALTH = 10
+PLAYER_CHALLENGE2_HEALTH = 5
 PLAYER_ACCEL = 64
 GRAVITY_ACCEL = 70
 PLAYER_DECEL = 500
@@ -609,8 +609,6 @@ class Data:
     level_num = 1
     window = pygame.math.Vector2(0, 0)
 
-
-
 # Initializes the data
 MY = Data()
 
@@ -660,10 +658,14 @@ def load_level(tilemap):
 
 def initialize(window):
     """Initializes the Platformer state."""
-    MY.player_health = PLAYER_START_HEALTH
+    if(challenge_type == "CHALLENGE2"):
+        MY.player_health = PLAYER_CHALLENGE2_HEALTH
+    else:
+        MY.player_health = PLAYER_START_HEALTH
     MY.player.velocity = pygame.math.Vector2(0, 0)
     # MY.level_num = 1
     # load_level("level" + str(MY.level_num))
+    #TODO: rework this so can input custom level
     tilemap = read_file('assets/level1.txt')
     load_level(tilemap)
     
@@ -701,7 +703,8 @@ def draw(screen):
     
     #Draw player health_bar if on challenge 2
     if challenge_type == 'CHALLENGE2':
-        health_bar(screen, MY.player_health, 10, (128, 16), (MY.window.x * 0.75, 20))
+        health_bar(screen, MY.player_health, 5, (128, 16), (MY.window.x * 0.75, 20))
+    
 
 def update_level(delta_time):
     # MY.player.update(delta_time)
