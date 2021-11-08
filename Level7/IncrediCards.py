@@ -121,11 +121,11 @@ class GameScreen(GameState):
 			
 			
 			
-			#TODO: Write in the code for creating and adding to the turn's message
-			
-			
-			
-			
+			#This code creates and adds the turn's message
+			message = ""
+			message = add_to_message(message, "{}".format(self.turn_counter))
+			message = add_to_message(message, "{}".format(self.attacker.name))
+			message = add_to_message(message, "{}".format(self.coin_side))
 
 			if self.coin_side == 'Heads': # add TODO here for 124-136
 				damage = defense_card.attacked_by(offense_card)
