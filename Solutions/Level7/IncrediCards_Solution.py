@@ -63,7 +63,7 @@ class GameScreen(GameState):
 		self.turn_counter = 1
 		self.flipping = False
 		self.attacking = False
-		self.coin_side = None
+		self.side_up = None
 		
 	def start(self, players):
 		self.players = players
@@ -95,8 +95,8 @@ class GameScreen(GameState):
 		
 	def button_action(self, params):
 		#Wrote the code here to flip the coin when the player clicks the button
-		self.coin_side = self.flip_coin()
-		self.coin.set_side(self.coin_side)
+		self.side_up = self.flip_coin()
+		self.coin.set_side(self.side_up)
 		self.flipping = True
 				
 	def update(self, dt):
@@ -121,13 +121,11 @@ class GameScreen(GameState):
 			offense_card = self.attacker.current_card 
 			defense_card = self.defender.current_card
 			
-			#Wrote in the code for creating and adding to the turn's message
-			message = ""
-			message = add_to_message(message, "{}".format(self.turn_counter))
+			message = add_to_message("", "{}".format(self.turn_counter))
 			message = add_to_message(message, "{}".format(self.attacker.name))
-			message = add_to_message(message, "{}".format(self.coin_side))
+			message = add_to_message(message, "{}".format(self.side_up))
 
-			if self.coin_side == 'Heads':
+			if self.side_up == 'Heads':
 				damage = defense_card.attacked_by(offense_card)
 				if damage == 2:
 					turn_msg = "{} is resistant to {}'{} attack! They only take 2 damage.".format(defense_card.name, offense_card.name, offense_card.s_flag)

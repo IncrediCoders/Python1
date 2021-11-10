@@ -68,7 +68,7 @@ class GameScreen(GameState):
 		self.flipping = False
 		self.attacking = False
 		self.coded_attack = False
-		self.coin_side = None
+		self.side_up = None
 		self.force_tails = False
 		
 	def start(self, players):
@@ -100,11 +100,9 @@ class GameScreen(GameState):
 	def button_action(self, params):
 		if params == "coded":
 			self.coded_attack = True
-		self.coin_side = self.flip_coin()
-		self.coin.set_side(self.coin_side)
+		self.side_up = self.flip_coin()
+		self.coin.set_side(self.side_up)
 		self.flipping = True
-
-			
 				
 	def update(self, dt):
 		self.player1_healthbar.update()
@@ -128,11 +126,11 @@ class GameScreen(GameState):
 			message = ""
 			message = add_to_message(message, "{}".format(self.turn_counter))
 			message = add_to_message(message, "{}".format(self.attacker.name))
-			message = add_to_message(message, "{}".format(self.coin_side))
+			message = add_to_message(message, "{}".format(self.side_up))
 
 			# Tech Attack Logic
 			if not self.coded_attack:
-				if self.coin_side == 'Heads':
+				if self.side_up == 'Heads':
 					damage = defense_card.attacked_by(offense_card)
 					if damage == 2:
 						turn_msg = "{} is resistant to {}'{} attack! They only take 2 damage.".format(defense_card.name, offense_card.name, offense_card.s_flag)
@@ -163,7 +161,7 @@ class GameScreen(GameState):
 				defense_card.take_damage(1)
 				# Do 1 damage automatically then flip coin for extra effect
 
-				if self.coin_side == 'Heads':
+				if self.side_up == 'Heads':
 					# Execute coded attack - four different paths:
 
 					# Extra hit - This deals 1 more damage to the opponent and switches active player

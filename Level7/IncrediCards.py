@@ -63,7 +63,7 @@ class GameScreen(GameState):
 		self.turn_counter = 1
 		self.flipping = False
 		self.attacking = False
-		self.coin_side = None
+		self.side_up = None
 		
 	def start(self, players):
 		#self.players = players
@@ -127,7 +127,7 @@ class GameScreen(GameState):
 			
 			
 
-			if self.coin_side == 'Heads': # add TODO here for 124-136
+			if self.side_up == 'Heads': # add TODO here for 124-136
 				damage = defense_card.attacked_by(offense_card)
 				s_flag = "" if offense_card.name.endswith('s') else "s"
 				if damage == 2:
