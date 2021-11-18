@@ -1,19 +1,7 @@
 #Runs the Init.py file and imports the libraries
 from init import *
 
-# Starting at first level
-MY.current_level = 1
-
-# To load custom tilemap change custom_level to ON and insert filename
-MY.custom_level = "OFF" 
-if (MY.custom_level == "ON"):
-    level_name_as_string = 'custom'
-    MY.tilemap = read_file("assets/" + level_name_as_string + ".txt")
-
 def update(delta_time):
-    if MY.custom_level == "ON": 
-        load_level(MY.tilemap)
-        MY.custom_level = "RUNNING" #So it doesn't reload level every update
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -101,16 +89,13 @@ def update(delta_time):
     
     #Check for exit portal collision
     if MY.player.collides_with(MY.exit_portal):
-        if MY.custom_level == "RUNNING":
-            # Show win screen
-            print('You won!') #PLACEHOLDER
-        elif MY.current_level >= 1 & MY.current_level < 6:
+        if MY.level_num >= 1 & MY.level_num < 6:
             #Move to next level
-            MY.current_level = MY.current_level + 1
-            level_name_as_string = 'level' + str(MY.current_level)
+            MY.level_num = MY.level_num + 1
+            level_name_as_string = 'level' + str(MY.level_num)
             tilemap = read_file("assets/" + level_name_as_string + ".txt")
             load_level(tilemap)
-        elif MY.current_level == 6:
+        elif MY.level_num == 6:
             #Show win screen
             print("You won!")
 
