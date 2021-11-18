@@ -117,7 +117,7 @@ class GameScreen(GameState):
 				self.attacking = True
 		
 		if self.attacking:
-			#Wrote in the code for choosing attacker and defender cards
+			#Wrote the code for choosing the attacker and defender cards
 			offense_card = self.attacker.current_card 
 			defense_card = self.defender.current_card
 			
