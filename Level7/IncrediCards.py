@@ -117,7 +117,7 @@ class GameScreen(GameState):
 				
 		
 		if self.attacking:
-			#TODO: Write in the code for choosing attacker and defender cards
+			#TODO: Write the code for choosing the attacker and defender cards
 			
 			
 			
