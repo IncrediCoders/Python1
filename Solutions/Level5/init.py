@@ -641,9 +641,13 @@ def load_level(tilemap):
             obj = Object(TILE_IMAGES[int(MY.tilemap[row][column])])
             obj.location = pygame.math.Vector2(column * TILE_SIZE + TILE_SIZE/2, row * TILE_SIZE + TILE_SIZE/2)
             if int(MY.tilemap[row][column]) == GROUND:
-                # Even numbered levels
-                if(MY.level_num % 2 == 0): 
-                    ground_obj = Object(random.choice(MY.ground_food)) 
+                #[ground_cookie, ground_cupcake, ground_marshmallow, ground_marshmallow_chocolate, ground_orange] 
+                if(MY.level_num == 2): 
+                    ground_obj = Object(MY.ground_food[0]) 
+                elif(MY.level_num == 4):
+                    ground_obj = Object(MY.ground_food[4]) 
+                elif(MY.level_num == 6):
+                    ground_obj =Object(MY.ground_food[random.randint(2,3)])
                 # Odd numbered levels
                 else: 
                     ground_obj = Object(MY.lava_ground_pulse_sheet.image_at(random.randint(0,3)))
@@ -683,7 +687,7 @@ def initialize(window):
     else:
         MY.player_health = PLAYER_START_HEALTH
     MY.player.velocity = pygame.math.Vector2(0, 0)
-    MY.level_num = 1
+    MY.level_num = 6
     level_name_as_string = 'level' + str(MY.level_num)
 
     if challenge_type == "CHALLENGE2":
