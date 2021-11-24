@@ -49,7 +49,7 @@ DECK.append(woodchuck_norris)
 
 random.shuffle(DECK)
 
-class GameScreen(GameState):
+class PlayScreen(GameState):
 	
 	def __init__(self):
 		super().__init__()
@@ -202,7 +202,7 @@ if __name__=="__main__":
 			"GetNames": GetNameScreen(),
 			"CoinFlip": CoinFlipScreen(),
 			"ChooseHand" : ChooseHandScreen(DECK, True), #TODO
-			"Game" : GameScreen(),
+			"Game" : PlayScreen(),
 			"Victory" : VictoryScreen()
 			 }
 
