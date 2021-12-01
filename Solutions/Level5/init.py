@@ -2,6 +2,7 @@
 #PART 1: IMPORTING DEPENDENCIES AND ASSIGNING GLOBAL VARIABLES
 """General information on your module and what it does."""
 import pygame
+from pygame import font
 from types import ModuleType
 import sys
 import math
@@ -434,7 +435,7 @@ class Machine:
     def __init__(self):
         self.current = 0
         self.previous = 0
-        self.states = []    
+        self.states = []  
 
     def register(self, module):
         """Registers the state's init, update, draw, and cleanup functions."""
@@ -456,6 +457,7 @@ class Machine:
 
         while True:
             delta_time = clock.tick(60) / 1000
+
             if self.current != self.previous:
                 self.states[self.current]['cleanup']()
                 self.states[self.current]['initialize'](window)
@@ -464,11 +466,13 @@ class Machine:
             update(delta_time)
             self.states[self.current]['update'](delta_time)
             screen.fill(fill_color)
+            
             if(MY.level_num % 2 == 0):
                 screen.blit(pygame.transform.scale(FOOD_BACKGROUND_IMAGE.data, [int(x) for x in WINDOW]), (0, 0))
             else:
                 screen.blit(pygame.transform.scale(LAVA_BACKGROUND_IMAGE.data, [int(x) for x in WINDOW]), (0, 0))
-            self.states[self.current]['draw'](screen)
+
+            self.states[self.current]['draw'](screen)    
             pygame.display.flip()
 
 Manager = Machine()
@@ -524,6 +528,7 @@ class Data:
     doors = []
     batteries = []
     start_time = 0
+    hide_timer = False
 
     ground_cookie = SpriteSheet("assets/Cookie.png", (32, 32), 0.5).image_at(0)
     ground_cupcake = SpriteSheet("assets/Cupcake.png", (32, 32), 0.5).image_at(0)
@@ -641,7 +646,6 @@ def load_level(tilemap):
             obj = Object(TILE_IMAGES[int(MY.tilemap[row][column])])
             obj.location = pygame.math.Vector2(column * TILE_SIZE + TILE_SIZE/2, row * TILE_SIZE + TILE_SIZE/2)
             if int(MY.tilemap[row][column]) == GROUND:
-                #[ground_cookie, ground_cupcake, ground_marshmallow, ground_marshmallow_chocolate, ground_orange] 
                 if(MY.level_num == 2): 
                     ground_obj = Object(MY.ground_food[0]) 
                 elif(MY.level_num == 4):
@@ -686,8 +690,10 @@ def initialize(window):
         MY.player_health = PLAYER_CHALLENGE2_HEALTH
     else:
         MY.player_health = PLAYER_START_HEALTH
+
     MY.player.velocity = pygame.math.Vector2(0, 0)
-    MY.level_num = 6
+
+    MY.level_num = 1
     level_name_as_string = 'level' + str(MY.level_num)
 
     if challenge_type == "CHALLENGE2":
@@ -715,6 +721,17 @@ def draw(screen):
     # draw batteries
     for battery in MY.batteries:
         battery.draw(screen)
+    
+    # draw the timer if on challenge 1
+    if challenge_type == 'CHALLENGE1' and MY.hide_timer == False:
+        font = pygame.font.SysFont(None, 40)
+        time_remaining = 'Seconds Remaining: ' + str(MY.timer).split('.')[0]
+        MY.text = font.render(time_remaining, True, (255, 0, 0))
+        SCREEN.blit(MY.text, [450, 25]) 
+
+    # draw player health_bar if on challenge 2
+    if challenge_type == 'CHALLENGE2':
+        health_bar(screen, MY.player_health, 5, (128, 16), (MY.window.x * 0.75, 20))
 
     # draw player
     MY.player.draw(screen)
@@ -729,10 +746,12 @@ def draw(screen):
         MY.creeper.draw(screen)
         MY.entrance.draw(screen)
     
-    #Draw player health_bar if on challenge 2
-    if challenge_type == 'CHALLENGE2':
-        health_bar(screen, MY.player_health, 5, (128, 16), (MY.window.x * 0.75, 20))
     
+def hide_timer():
+    MY.hide_timer = True
+
+def show_timer():
+    MY.hide_timer = False
 
 def update_level(delta_time):
     # MY.player.update(delta_time)
@@ -789,7 +808,7 @@ class Win:
 
     def cleanup():
         """Cleans up the lose menu state."""
-
+    
 class Lose:
     #load sprites
     BUTTON_IMAGE = Image("assets/LoseButton.png")
