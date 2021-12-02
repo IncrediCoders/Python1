@@ -1,4 +1,4 @@
-#Runs the Init.py file and imports the libraries
+#Runs the init.py file and imports the libraries
 from init import *
 
 def update(delta_time):
