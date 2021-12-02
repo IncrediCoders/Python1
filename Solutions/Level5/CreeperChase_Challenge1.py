@@ -17,8 +17,7 @@ def update(delta_time):
 
     #If timer reaches 0 show lose screen
     if MY.timer <= 0:
-        hide_timer()
-        #Display lose screen here
+        change(1)
 
     if key_held_down(pygame.K_LEFT): 
         #TODO: Uncomment the two lines below
@@ -100,7 +99,7 @@ def update(delta_time):
     
     #Check for exit portal collision
     if MY.player.collides_with(MY.exit_portal):
-        if MY.level_num >= 1 & MY.level_num < 6:
+        if MY.level_num >= 1 and MY.level_num < 6:
             #Move to next level
             MY.level_num = MY.level_num + 1
             level_name_as_string = 'level' + str(MY.level_num)
@@ -109,10 +108,8 @@ def update(delta_time):
             #Reset timer 
             MY.timer = 60
         elif MY.level_num == 6:
-            #Hide timer
-            hide_timer()
             #Show win screen
-            print("You won!")
+            change(2)
 
     update_level(delta_time)
 

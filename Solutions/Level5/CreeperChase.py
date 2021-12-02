@@ -60,7 +60,7 @@ def update(delta_time):
     
     MY.player.update(delta_time)
 
-    # check for wall collisions
+    #Check for wall collisions
     touching = False
     for wall in MY.walls:
         if MY.player.collides_with(wall):
@@ -89,7 +89,7 @@ def update(delta_time):
     
     #Check for exit portal collision
     if MY.player.collides_with(MY.exit_portal):
-        if MY.level_num >= 1 & MY.level_num < 6:
+        if MY.level_num >= 1 and MY.level_num < 6:
             #Move to next level
             MY.level_num = MY.level_num + 1
             level_name_as_string = 'level' + str(MY.level_num)
@@ -97,7 +97,7 @@ def update(delta_time):
             load_level(tilemap)
         elif MY.level_num == 6:
             #Show win screen
-            print("You won!")
+            change(2) 
 
     update_level(delta_time)
 

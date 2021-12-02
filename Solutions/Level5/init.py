@@ -22,6 +22,9 @@ RIGHT = 1
 UP = 2
 DOWN = 3
 
+#Timer duration variable
+ONE_MINUTE = 60
+
 # data used to store all lerps
 _data = {}
 
@@ -451,7 +454,7 @@ class Machine:
         #Note current challenge to hide certain game features
         global challenge_type
         challenge_type = challenge
-
+        
         # first run initialize!
         self.states[self.current]['initialize'](window)
 
@@ -528,7 +531,10 @@ class Data:
     doors = []
     batteries = []
     start_time = 0
-    hide_timer = False
+    timer = 0
+
+    lose_button = Object(Image("assets/LoseButton.png"))
+    win_button = Object(Image("assets/WinButton.png"))
 
     ground_cookie = SpriteSheet("assets/Cookie.png", (32, 32), 0.5).image_at(0)
     ground_cupcake = SpriteSheet("assets/Cupcake.png", (32, 32), 0.5).image_at(0)
@@ -694,6 +700,7 @@ def initialize(window):
     MY.player.velocity = pygame.math.Vector2(0, 0)
 
     MY.level_num = 1
+
     level_name_as_string = 'level' + str(MY.level_num)
 
     if challenge_type == "CHALLENGE2":
@@ -723,11 +730,8 @@ def draw(screen):
         battery.draw(screen)
     
     # draw the timer if on challenge 1
-    if challenge_type == 'CHALLENGE1' and MY.hide_timer == False:
-        font = pygame.font.SysFont(None, 40)
-        time_remaining = 'Seconds Remaining: ' + str(MY.timer).split('.')[0]
-        MY.text = font.render(time_remaining, True, (255, 0, 0))
-        SCREEN.blit(MY.text, [450, 25]) 
+    if challenge_type == 'CHALLENGE1':
+        draw_timer()
 
     # draw player health_bar if on challenge 2
     if challenge_type == 'CHALLENGE2':
@@ -746,15 +750,16 @@ def draw(screen):
         MY.creeper.draw(screen)
         MY.entrance.draw(screen)
     
-    
-def hide_timer():
-    MY.hide_timer = True
+def draw_timer():
+    font = pygame.font.SysFont(None, 40)
+    time_remaining = 'Seconds Remaining: ' + str(MY.timer).split('.')[0]
+    MY.text = font.render(time_remaining, True, (255, 0, 0))
+    SCREEN.blit(MY.text, [450, 25]) 
 
-def show_timer():
-    MY.hide_timer = False
+def reset_timer():
+    MY.timer = ONE_MINUTE
 
 def update_level(delta_time):
-    # MY.player.update(delta_time)
     for wall in MY.walls:
         wall.update(delta_time)
     for hazard in MY.hazards:
@@ -768,9 +773,6 @@ def update_level(delta_time):
     MY.entrance.update(delta_time)
     MY.exit_portal.update(delta_time)
     
-    # if pygame.time.get_ticks() - MY.start_time < 1000:
-    #     MY.creeper.update(delta_time)
-    
 def cleanup():
     """Cleans up the Platformer State."""
     MY.tilemap = []
@@ -781,59 +783,47 @@ def cleanup():
     MY.batteries = []
 
 class Win:
-    #load sprites
-    BUTTON_IMAGE = Image("assets/WinButton.png")
 
-    class Data:
-        button = Object(Image("assets/WinButton.png"))
-
-    MY = Data()
-
-    def initialize(self, window):
+    def initialize(window):
         """Initializes the lose menu state."""
-        MY.button.location = window / 2
+        MY.win_button.location = window / 2
 
-    def update(self, delta_time):
+    def update(delta_time):
         """Updates the lose menu state."""
-        for event in MY.event.listing():
-            if event.quit_game(event):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
                 stop()
-            elif event.mouse_l_button_down(event):
-                if MY.button.collides_with_point(event.mouse_position()):
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if MY.win_button.collides_with_point(event.pos):
+                    reset_timer()
                     change(0)
 
-    def draw(self, screen):
+    def draw(screen):
         """Draws the lose menu state."""
-        MY.button.draw(screen)
+        MY.win_button.draw(screen)
 
     def cleanup():
         """Cleans up the lose menu state."""
     
 class Lose:
-    #load sprites
-    BUTTON_IMAGE = Image("assets/LoseButton.png")
 
-    class Data:
-        button = Object(Image("assets/LoseButton.png"))
-
-    MY = Data()
-
-    def initialize(self, window):
+    def initialize(window):
         """Initializes the lose menu state."""
-        MY.button.location = window / 2
-
-    def update(self, delta_time):
+        MY.lose_button.location = window / 2
+        
+    def update(delta_time):
         """Updates the lose menu state."""
-        for event in MY.event.listing():
-            if event.quit_game(event):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
                 stop()
-            elif event.mouse_l_button_down(event):
-                if MY.button.collides_with_point(event.mouse_position()):
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if MY.lose_button.collides_with_point(event.pos):
+                    reset_timer()
                     change(0)
 
-    def draw(self, screen):
+    def draw(screen):
         """Draws the lose menu state."""
-        MY.button.draw(screen)
+        MY.lose_button.draw(screen)
 
     def cleanup():
         """Cleans up the lose menu state."""
