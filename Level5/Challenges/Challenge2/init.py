@@ -23,7 +23,7 @@ UP = 2
 DOWN = 3
 
 #Timer duration variable
-ONE_MINUTE = 60
+TIME_LIMIT = 45
 
 # data used to store all lerps
 _data = {}
@@ -752,13 +752,23 @@ def draw(screen):
         MY.entrance.draw(screen)
     
 def draw_timer():
-    font = pygame.font.SysFont(None, 40)
-    time_remaining = 'Time: ' + str(MY.timer).split('.')[0]
+    if(MY.level_num == 5):
+        font = pygame.font.Font("./assets/lilliput-steps.regular.ttf", 32)
+    else:
+       font = pygame.font.Font("./assets/lilliput-steps.regular.ttf", 35) 
+
+    time_remaining = 'TIME:' + str(MY.timer).split('.')[0]
     MY.text = font.render(time_remaining, True, (255, 0, 0))
-    SCREEN.blit(MY.text, [450, 25]) 
+
+    if(MY.level_num == 5):
+        SCREEN.blit(MY.text, [312, 25])
+    elif(MY.level_num == 6):
+        SCREEN.blit(MY.text, [267, 25])
+    else:
+        SCREEN.blit(MY.text, [325, 25]) 
 
 def reset_timer():
-    MY.timer = ONE_MINUTE
+    MY.timer = TIME_LIMIT
 
 def update_level(delta_time):
     for wall in MY.walls:

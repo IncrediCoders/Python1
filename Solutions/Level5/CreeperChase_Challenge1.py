@@ -1,8 +1,8 @@
 #Runs the init.py file and imports the libraries
 from init import *
 
-#Set timer for 60 seconds
-MY.timer = 60
+#Set timer for 45 seconds
+MY.timer = 45
 
 #Checks for player input and updates the game
 def update(delta_time):
@@ -109,7 +109,7 @@ def update(delta_time):
             tilemap = read_file("assets/" + level_name_as_string + ".txt")
             load_level(tilemap)
             #Reset timer 
-            MY.timer = 60
+            MY.timer = 45
         elif MY.level_num == 6:
             #Show the Win screen
             change(2) 
