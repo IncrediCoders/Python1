@@ -2,6 +2,7 @@
 #PART 1: IMPORTING DEPENDENCIES AND ASSIGNING GLOBAL VARIABLES
 """General information on your module and what it does."""
 import pygame
+from pygame import font
 from types import ModuleType
 import sys
 import math
@@ -21,11 +22,14 @@ RIGHT = 1
 UP = 2
 DOWN = 3
 
+#Timer duration variable
+ONE_MINUTE = 60
+
 # data used to store all lerps
 _data = {}
 
-#Path to level file
-LEVEL_FILE_PATH = ''
+#Note current challenge to hide certain game features
+challenge_type = ''
 
 #============================================================
 # PART 2: CREATING A FRAMEWORK OF GENERAL CLASSES AND FUNCTIONS
@@ -434,7 +438,7 @@ class Machine:
     def __init__(self):
         self.current = 0
         self.previous = 0
-        self.states = []
+        self.states = []  
 
     def register(self, module):
         """Registers the state's init, update, draw, and cleanup functions."""
@@ -443,19 +447,20 @@ class Machine:
                             'draw': module.draw,
                             'cleanup': module.cleanup})
 
-    def run(self, screen, window, fill_color, tilemap):
+    def run(self, screen, window, fill_color, challenge):
         """Runs the state given machine."""
         clock = pygame.time.Clock()
 
-        #Save filepath to level's tilemap
-        global LEVEL_FILE_PATH
-        LEVEL_FILE_PATH = tilemap
-
+        #Note current challenge to hide certain game features
+        global challenge_type
+        challenge_type = challenge
+        
         # first run initialize!
         self.states[self.current]['initialize'](window)
 
         while True:
             delta_time = clock.tick(60) / 1000
+
             if self.current != self.previous:
                 self.states[self.current]['cleanup']()
                 self.states[self.current]['initialize'](window)
@@ -464,8 +469,13 @@ class Machine:
             update(delta_time)
             self.states[self.current]['update'](delta_time)
             screen.fill(fill_color)
-            screen.blit(pygame.transform.scale(BACKGROUND_IMAGE.data, [int(x) for x in WINDOW]), (0, 0))
-            self.states[self.current]['draw'](screen)
+            
+            if(MY.level_num % 2 == 0):
+                screen.blit(pygame.transform.scale(FOOD_BACKGROUND_IMAGE.data, [int(x) for x in WINDOW]), (0, 0))
+            else:
+                screen.blit(pygame.transform.scale(LAVA_BACKGROUND_IMAGE.data, [int(x) for x in WINDOW]), (0, 0))
+
+            self.states[self.current]['draw'](screen)    
             pygame.display.flip()
 
 Manager = Machine()
@@ -486,9 +496,10 @@ TILE_IMAGES = [None,                     # Sky
                Image("assets/Hazard.png"), # Hazard
                Image("assets/Exit.png"),   # Door
                None,                     # Player
-               Image("assets/Coin.png")]   # Coin
+               Image("assets/Coin.png")]   # Battery
 
-BACKGROUND_IMAGE = Image("assets/Background.png")
+LAVA_BACKGROUND_IMAGE = Image("assets/Background.png")
+FOOD_BACKGROUND_IMAGE = Image("assets/Background_Food.png")
 PLAYER_IMAGE = Image("assets/player.png")
 
 # Constants
@@ -497,9 +508,10 @@ GROUND = 1
 HAZARD = 2
 DOOR = 3
 PLAYER_START = 4
-COINS = 5
+BATTERIES = 5
 
-PLAYER_START_HEALTH = 10
+PLAYER_START_HEALTH = 1
+PLAYER_CHALLENGE2_HEALTH = 5
 PLAYER_ACCEL = 64
 GRAVITY_ACCEL = 70
 PLAYER_DECEL = 500
@@ -517,8 +529,12 @@ class Data:
     walls = []
     hazards = []
     doors = []
-    coins = []
+    batteries = []
     start_time = 0
+    timer = 0
+
+    lose_button = Object(Image("assets/LoseButton.png"))
+    win_button = Object(Image("assets/WinButton.png"))
 
     ground_cookie = SpriteSheet("assets/Cookie.png", (32, 32), 0.5).image_at(0)
     ground_cupcake = SpriteSheet("assets/Cupcake.png", (32, 32), 0.5).image_at(0)
@@ -536,6 +552,9 @@ class Data:
 
     hazard_pepper_pulse_sheet = SpriteSheet("assets/hazard_pepper.png", (32, 32), 0.5)
     hazard_pepper_pulse = Animator(hazard_pepper_pulse_sheet, 8)
+
+    battery_pulse_sheet = SpriteSheet("assets/Battery.png", (64, 64), 0.75) 
+    battery_pulse = Animator(battery_pulse_sheet, 2)
 
     portal_enter_closing_sheet = SpriteSheet("assets/portal_enter_closing.png", (128, 128), 0.25)
     portal_enter_closing = Animator(portal_enter_closing_sheet, 1)
@@ -585,7 +604,13 @@ class Data:
 
     player = Object(paul_idle_right_sheet.image_at(0))
     player.sprite = paul_idle_right
-    player_health = PLAYER_START_HEALTH
+
+    #If on challenge 2, increase health
+    if(challenge_type == "CHALLENGE2"):
+        player_health = PLAYER_CHALLENGE2_HEALTH
+    else:
+        player_health = PLAYER_START_HEALTH
+
     player_max_speed = 100
     player_start_position = pygame.math.Vector2(0, 0)
     player_direction = RIGHT
@@ -603,8 +628,6 @@ class Data:
     level_num = 1
     window = pygame.math.Vector2(0, 0)
 
-
-
 # Initializes the data
 MY = Data()
 
@@ -620,24 +643,37 @@ def health_bar(screen, health, max_health, max_size, location):
     width = max_size[0] * (health / max_health)
     draw_rect(screen, bar_color, location, (width, max_size[1]))
 
-def load_level(level_file_path):
+def load_level(tilemap):
     """Cleans up resources and loads a specified level. Can be used to reload the same level."""
     cleanup()
 
-    MY.tilemap = level_file_path 
+    MY.tilemap = tilemap
     for row in range(len(MY.tilemap)):
         for column in range(len(MY.tilemap[row])):
             obj = Object(TILE_IMAGES[int(MY.tilemap[row][column])])
             obj.location = pygame.math.Vector2(column * TILE_SIZE + TILE_SIZE/2, row * TILE_SIZE + TILE_SIZE/2)
             if int(MY.tilemap[row][column]) == GROUND:
-                ground_obj = Object(MY.lava_ground_pulse_sheet.image_at(random.randint(0,3)))
-                ground_obj.sprite = MY.lava_ground_pulse
-                # ground_obj = Object(random.choice(MY.ground_food)) 
+                if(MY.level_num == 2): 
+                    ground_obj = Object(MY.ground_food[0]) 
+                elif(MY.level_num == 4):
+                    ground_obj = Object(MY.ground_food[4]) 
+                elif(MY.level_num == 6):
+                    ground_obj =Object(MY.ground_food[random.randint(2,3)])
+                # Odd numbered levels
+                else: 
+                    ground_obj = Object(MY.lava_ground_pulse_sheet.image_at(random.randint(0,3)))
+                    ground_obj.sprite = MY.lava_ground_pulse
                 ground_obj.location = pygame.math.Vector2(column * TILE_SIZE + TILE_SIZE/2, row * TILE_SIZE + TILE_SIZE/2)
                 MY.walls.append(ground_obj)
             elif int(MY.tilemap[row][column]) == HAZARD:
-                hazard_obj = Object(MY.hazard_lava_pulse_sheet.image_at(0))
-                hazard_obj.sprite = MY.hazard_lava_pulse
+                # Even numbered levels
+                if(MY.level_num % 2 == 0): 
+                    hazard_obj = Object(MY.hazard_pepper_pulse_sheet.image_at(0))
+                    hazard_obj.sprite = MY.hazard_pepper_pulse
+                # Odd numbered levels
+                else:
+                    hazard_obj = Object(MY.hazard_lava_pulse_sheet.image_at(0))
+                    hazard_obj.sprite = MY.hazard_lava_pulse
                 hazard_obj.location = pygame.math.Vector2(column * TILE_SIZE + TILE_SIZE/2, row * TILE_SIZE + TILE_SIZE/2)
                 MY.hazards.append(hazard_obj)
             elif int(MY.tilemap[row][column]) == DOOR and row < len(MY.tilemap) - 1 and int(MY.tilemap[row + 1][column]) == DOOR:
@@ -645,8 +681,11 @@ def load_level(level_file_path):
                 MY.creeper.location = pygame.math.Vector2((column - 1) * TILE_SIZE + TILE_SIZE/2, row * TILE_SIZE + TILE_SIZE/2)
             elif int(MY.tilemap[row][column]) == PLAYER_START:
                 MY.player_start_position = obj.location
-            elif int(MY.tilemap[row][column]) == COINS:
-                MY.coins.append(obj)
+            elif int(MY.tilemap[row][column]) == BATTERIES:
+                battery_obj = Object(MY.battery_pulse_sheet.image_at(0))
+                battery_obj.sprite = MY.battery_pulse
+                battery_obj.location = pygame.math.Vector2(column * TILE_SIZE + TILE_SIZE/2, row * TILE_SIZE + TILE_SIZE/2)
+                MY.batteries.append(battery_obj)
 
     MY.player.location = MY.player_start_position
     MY.entrance.location = MY.player_start_position
@@ -654,10 +693,24 @@ def load_level(level_file_path):
 
 def initialize(window):
     """Initializes the Platformer state."""
-    MY.player_health = PLAYER_START_HEALTH
+    if(challenge_type == "CHALLENGE2"):
+        MY.player_health = PLAYER_CHALLENGE2_HEALTH
+    else:
+        MY.player_health = PLAYER_START_HEALTH
+
     MY.player.velocity = pygame.math.Vector2(0, 0)
+
     MY.level_num = 1
-    load_level(LEVEL_FILE_PATH)
+    level_name_as_string = 'level' + str(MY.level_num)
+
+    #Load more difficult levels if in challenge 2
+    if challenge_type == "CHALLENGE2":
+        tilemap = read_file("assets/challenge2/" + level_name_as_string + ".txt")
+        load_level(tilemap)
+    else:
+        tilemap = read_file("assets/" + level_name_as_string + ".txt")
+        load_level(tilemap)
+    
     MY.window = window
 
 def draw(screen):
@@ -673,9 +726,17 @@ def draw(screen):
     for door in MY.doors:
         door.draw(screen)
     
-    # draw coins
-    for coin in MY.coins:
-        coin.draw(screen)
+    # draw batteries
+    for battery in MY.batteries:
+        battery.draw(screen)
+    
+    # draw the timer if on challenge 1
+    if challenge_type == 'CHALLENGE1':
+        draw_timer()
+
+    # draw player health_bar if on challenge 2
+    if challenge_type == 'CHALLENGE2':
+        health_bar(screen, MY.player_health, 5, (128, 16), (MY.window.x * 0.75, 20))
 
     # draw player
     MY.player.draw(screen)
@@ -690,24 +751,28 @@ def draw(screen):
         MY.creeper.draw(screen)
         MY.entrance.draw(screen)
     
-    #draw player health_bar
-    health_bar(screen, MY.player_health, 10, (128, 16), (MY.window.x * 0.75, 20))
+def draw_timer():
+    font = pygame.font.SysFont(None, 40)
+    time_remaining = 'Time: ' + str(MY.timer).split('.')[0]
+    MY.text = font.render(time_remaining, True, (255, 0, 0))
+    SCREEN.blit(MY.text, [450, 25]) 
+
+def reset_timer():
+    MY.timer = ONE_MINUTE
 
 def update_level(delta_time):
-    # MY.player.update(delta_time)
     for wall in MY.walls:
         wall.update(delta_time)
     for hazard in MY.hazards:
         hazard.update(delta_time)
     for door in MY.doors:
         door.update(delta_time)
+    for battery in MY.batteries:
+        battery.update(delta_time)
     
     MY.creeper.update(delta_time)
     MY.entrance.update(delta_time)
     MY.exit_portal.update(delta_time)
-    
-    # if pygame.time.get_ticks() - MY.start_time < 1000:
-    #     MY.creeper.update(delta_time)
     
 def cleanup():
     """Cleans up the Platformer State."""
@@ -716,63 +781,50 @@ def cleanup():
     MY.walls = []
     MY.hazards = []
     MY.doors = []
-    MY.coins = []
+    MY.batteries = []
 
 class Win:
-    #load sprites
-    BUTTON_IMAGE = Image("assets/WinButton.png")
 
-    class Data:
-        button = Object(Image("assets/WinButton.png"))
-
-    MY = Data()
-
-
-    def initialize(self, window):
+    def initialize(window):
         """Initializes the lose menu state."""
-        MY.button.location = window / 2
+        MY.win_button.location = window / 2
 
-    def update(self, delta_time):
+    def update(delta_time):
         """Updates the lose menu state."""
-        for event in event.listing():
-            if event.quit_game(event):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
                 stop()
-            elif event.mouse_l_button_down(event):
-                if MY.button.collides_with_point(event.mouse_position()):
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if MY.win_button.collides_with_point(event.pos):
+                    reset_timer()
                     change(0)
 
-    def draw(self, screen):
+    def draw(screen):
         """Draws the lose menu state."""
-        MY.button.draw(screen)
+        MY.win_button.draw(screen)
 
     def cleanup():
         """Cleans up the lose menu state."""
-
+    
 class Lose:
-    #load sprites
-    BUTTON_IMAGE = Image("assets/LoseButton.png")
 
-    class Data:
-        button = Object(Image("assets/LoseButton.png"))
-
-    MY = Data()
-
-    def initialize(self, window):
+    def initialize(window):
         """Initializes the lose menu state."""
-        MY.button.location = window / 2
-
-    def update(self, delta_time):
+        MY.lose_button.location = window / 2
+        
+    def update(delta_time):
         """Updates the lose menu state."""
-        for event in event.listing():
-            if event.quit_game(event):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
                 stop()
-            elif event.mouse_l_button_down(event):
-                if MY.button.collides_with_point(event.mouse_position()):
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if MY.lose_button.collides_with_point(event.pos):
+                    reset_timer()
                     change(0)
 
-    def draw(self, screen):
+    def draw(screen):
         """Draws the lose menu state."""
-        MY.button.draw(screen)
+        MY.lose_button.draw(screen)
 
     def cleanup():
         """Cleans up the lose menu state."""
