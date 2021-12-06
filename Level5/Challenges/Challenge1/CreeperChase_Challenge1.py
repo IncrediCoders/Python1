@@ -1,6 +1,9 @@
 #Runs the init.py file and imports the libraries
 from init import *
 
+#TODO: Write code to set the timer for 60 seconds
+
+
 #Checks for player input and updates the game
 def update(delta_time):
     for event in pygame.event.get():
@@ -9,34 +12,36 @@ def update(delta_time):
         elif key_down(event, " ") and (MY.grounded or MY.level_num > 3):
             MY.player.velocity.y = -700
             MY.grounded = False
+    #Controls Paul's lefthand movement
     if key_held_down(pygame.K_LEFT): 
-        #Uncommented the two lines below
+        #Set Paul's velocity 
         MY.player.velocity.x = max(MY.player.velocity.x - PLAYER_ACCEL, -PLAYER_MAX_SPEED)
+        #Set Paul's lefthand movement animation
         MY.player.sprite = MY.paul_run_left
-    #Copied the elif statement here for the Pauls's righthand movement
+    #Controls Paul's righthand movement
     elif key_held_down(pygame.K_RIGHT): 
-        #Copied code here to set Paul's velocity 
+        #Set Paul's velocity 
         MY.player.velocity.x = min(MY.player.velocity.x + PLAYER_ACCEL, PLAYER_MAX_SPEED)
-        #Wrote code here to set Paul's righthand movement animation
+        #Set Paul's righthand movement animation
         MY.player.sprite = MY.paul_run_right
     else:
         if MY.grounded: 
-            #Copied code here to track and control velocity when grounded
+            #Track and control velocity when grounded
             if MY.player.velocity.x > 0:
                 MY.player.velocity.x = max(0, MY.player.velocity.x - PLAYER_DECEL)
             elif MY.player.velocity.x < 0:
                 MY.player.velocity.x = min(0, MY.player.velocity.x + PLAYER_DECEL)
-            #Copied code here to set Paul's movement to idle
+            #Set Paul's movement to idle
             else:
                 MY.player.sprite = MY.paul_idle_right
-        #Wrote code here to track and control velocity when falling
+        #Track and control velocity when falling
         else:
             if MY.player.velocity.x > 0:
                 MY.player.velocity.x = max(0, MY.player.velocity.x - PLAYER_AIR_DECEL)
             elif MY.player.velocity.x < 0:
                 MY.player.velocity.x = min(0, MY.player.velocity.x + PLAYER_AIR_DECEL)
     
-    #Wrote code here to track and control velocity when flying
+    #Track and control velocity when flying
     if not MY.grounded:      
         if MY.player.velocity.x > 0:
             MY.player.sprite = MY.paul_jetpack_right
@@ -88,6 +93,13 @@ def update(delta_time):
     if not touching:
         MY.grounded = False
     
+    #TODO: Write code to subtract delta time (milliseconds) from the timer
+
+
+    #TODO: Write code to show the Lose screen if the timer reaches 0
+
+
+    
     #Check for exit portal collision
     if MY.player.collides_with(MY.exit_portal):
         if MY.level_num >= 1 and MY.level_num < 6:
@@ -96,6 +108,8 @@ def update(delta_time):
             level_name_as_string = 'level' + str(MY.level_num)
             tilemap = read_file("assets/" + level_name_as_string + ".txt")
             load_level(tilemap)
+            #TODO: Write code to reset the timer 
+
         elif MY.level_num == 6:
             #Show the Win screen
             change(2) 
@@ -109,4 +123,4 @@ Manager.register(Lose)
 Manager.register(Win)
 
 # Run the game!
-Manager.run(SCREEN, WINDOW, BLUE, "MAIN")
+Manager.run(SCREEN, WINDOW, BLUE, "CHALLENGE1")
