@@ -9,34 +9,36 @@ def update(delta_time):
         elif key_down(event, " ") and (MY.grounded or MY.level_num > 3):
             MY.player.velocity.y = -700
             MY.grounded = False
+    #Controls Paul's lefthand movement
     if key_held_down(pygame.K_LEFT): 
-        #Uncommented the two lines below
+        #Set Paul's velocity
         MY.player.velocity.x = max(MY.player.velocity.x - PLAYER_ACCEL, -PLAYER_MAX_SPEED)
+        #Set Paul's lefthand movement animation
         MY.player.sprite = MY.paul_run_left
-    #Copied the elif statement here for the Pauls's righthand movement
+    #Controls Pauls's righthand movement
     elif key_held_down(pygame.K_RIGHT): 
-        #Copied code here to set Paul's velocity 
+        #Set Paul's velocity 
         MY.player.velocity.x = min(MY.player.velocity.x + PLAYER_ACCEL, PLAYER_MAX_SPEED)
-        #Wrote code here to set Paul's righthand movement animation
+        #Set Paul's righthand movement animation
         MY.player.sprite = MY.paul_run_right
     else:
         if MY.grounded: 
-            #Copied code here to track and control velocity when grounded
+            #Track and control velocity when grounded
             if MY.player.velocity.x > 0:
                 MY.player.velocity.x = max(0, MY.player.velocity.x - PLAYER_DECEL)
             elif MY.player.velocity.x < 0:
                 MY.player.velocity.x = min(0, MY.player.velocity.x + PLAYER_DECEL)
-            #Copied code here to set Paul's movement to idle
+            #Set Paul's movement to idle
             else:
                 MY.player.sprite = MY.paul_idle_right
-        #Wrote code here to track and control velocity when falling
+        #Track and control velocity when falling
         else:
             if MY.player.velocity.x > 0:
                 MY.player.velocity.x = max(0, MY.player.velocity.x - PLAYER_AIR_DECEL)
             elif MY.player.velocity.x < 0:
                 MY.player.velocity.x = min(0, MY.player.velocity.x + PLAYER_AIR_DECEL)
     
-    #Wrote code here to track and control velocity when flying
+    #Track and control velocity when flying
     if not MY.grounded:      
         if MY.player.velocity.x > 0:
             MY.player.sprite = MY.paul_jetpack_right
@@ -58,6 +60,12 @@ def update(delta_time):
                 MY.player.sprite = MY.paul_pain_right
                 break
     
+    #TODO: Write the code to check for battery collisions
+
+
+
+
+
     #Update Paul's location
     MY.player.update(delta_time)
 
@@ -109,4 +117,4 @@ Manager.register(Lose)
 Manager.register(Win)
 
 # Run the game!
-Manager.run(SCREEN, WINDOW, BLUE, "MAIN")
+Manager.run(SCREEN, WINDOW, BLUE, "CHALLENGE2")
