@@ -181,24 +181,24 @@ class PlayScreen(GameState):
 		    exiting = self.player1
 		return exiting
 		
-	def draw(self, surf):
-		super().draw(surf)
+	def draw(self, surface):
+		super().draw(surface)
 		
 		if self.turn_counter == 1:
-			self.instructions_box.draw(surf)
-		self.dialog_box.draw(surf)
+			self.instructions_box.draw(surface)
+		self.dialog_box.draw(surface)
 		
-		self.player1_card_display.draw(surf)
-		self.player2_card_display.draw(surf)
+		self.player1_card_display.draw(surface)
+		self.player2_card_display.draw(sursurfacef)
 		
-		self.player1_healthbar.draw(surf)
-		self.player2_healthbar.draw(surf)
+		self.player1_healthbar.draw(surface)
+		self.player2_healthbar.draw(surface)
 		
-		self.player1_ondeck.draw(surf)
-		self.player2_ondeck.draw(surf)
+		self.player1_ondeck.draw(surface)
+		self.player2_ondeck.draw(surface)
 		
-		self.coin.draw(surf)
-		self.tech_attack_button.draw(surf)
+		self.coin.draw(surface)
+		self.tech_attack_button.draw(surface)
 		
 if __name__=="__main__":		
 	

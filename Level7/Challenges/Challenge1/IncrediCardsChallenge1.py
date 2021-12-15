@@ -1,4 +1,3 @@
-
 from init import *
 
 # Create all of the Cards		
@@ -72,14 +71,16 @@ class PlayScreen(GameState):
 		self.attacker = self.player1 if self.player1.active_turn else self.player2
 		self.defender = self.player1 if not self.player1.active_turn else self.player2
 		
-		self.player1_card_display = CardDisplay(self.player1, player1_card_display_data_challenge) #TODO changes
-		self.player2_card_display = CardDisplay(self.player2, player2_card_display_data_challenge) #TODO changes
+		# TODO: Update the card display data for both players (Hint: look at lines 585-624 in the init.py file)
+		self.player1_card_display = CardDisplay(self.player1, player1_card_display_data) #change to player1_card_display_data_challenge
+		self.player2_card_display = CardDisplay(self.player2, player2_card_display_data) 
 
 		self.player1_healthbar = Healthbar(self.player1, player1_healthbar_data)
 		self.player2_healthbar = Healthbar(self.player2, player2_healthbar_data)
 		
-		self.player1_ondeck = OnDeck(self.player1, player1_ondeck_data_challenge) #TODO changes
-		self.player2_ondeck = OnDeck(self.player2, player2_ondeck_data_challenge) #TODO changes
+		# TODO: Update the on deck data for both players (Hint: lookat lines 626-677 in the init.py file)
+		self.player1_ondeck = OnDeck(self.player1, player1_ondeck_data) #change to player1_ondeck_data_challenge
+		self.player2_ondeck = OnDeck(self.player2, player2_ondeck_data) 
 
 		self.dialog_box = DialogBox((200,300), (X_CENTER-100, 50))
 		
@@ -176,24 +177,24 @@ class PlayScreen(GameState):
 
 		return exiting
 		
-	def draw(self, surf):
-		super().draw(surf)
+	def draw(self, surface):
+		super().draw(surface)
 		
 		if self.turn_counter == 1:
-			self.instructions_box.draw(surf)
-		self.dialog_box.draw(surf)
+			self.instructions_box.draw(surface)
+		self.dialog_box.draw(surface)
 		
-		self.player1_card_display.draw(surf)
-		self.player2_card_display.draw(surf)
+		self.player1_card_display.draw(surface)
+		self.player2_card_display.draw(surface)
 		
-		self.player1_healthbar.draw(surf)
-		self.player2_healthbar.draw(surf)
+		self.player1_healthbar.draw(surface)
+		self.player2_healthbar.draw(surface)
 		
-		self.player1_ondeck.draw(surf)
-		self.player2_ondeck.draw(surf)
+		self.player1_ondeck.draw(surface)
+		self.player2_ondeck.draw(surface)
 		
-		self.coin.draw(surf)
-		self.tech_attack_button.draw(surf)
+		self.coin.draw(surface)
+		self.tech_attack_button.draw(surface)
 		
 if __name__=="__main__":		
 	
@@ -201,7 +202,8 @@ if __name__=="__main__":
 			"Title" : TitleScreen(),
 			"GetNames": GetNameScreen(),
 			"CoinFlip": CoinFlipScreen(),
-			"ChooseHand" : ChooseHandScreen(DECK, True), #TODO
+			# TODO: Add a second argument (boolean True) to the ChooseHandScreen parameters
+			"ChooseHand" : ChooseHandScreen(DECK), 
 			"Game" : PlayScreen(),
 			"Victory" : VictoryScreen()
 			 }
