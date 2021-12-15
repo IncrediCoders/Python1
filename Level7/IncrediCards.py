@@ -66,23 +66,23 @@ class PlayScreen(GameState):
 		self.side_up = None
 		
 	def start(self, players):
-		#self.players = players
-		#self.player1 = players["player1"]
-		#self.player2 = players["player2"]
+		self.players = players
+		self.player1 = players["player1"]
+		self.player2 = players["player2"]
 		
-		#self.attacker = self.player1 if self.player1.active_turn else self.player2
-		#self.defender = self.player1 if not self.player1.active_turn else self.player2
+		self.attacker = self.player1 if self.player1.active_turn else self.player2
+		self.defender = self.player1 if not self.player1.active_turn else self.player2
 		
-		#self.player1_card_display = CardDisplay(self.player1, player1_card_display_data)
-		#self.player2_card_display = CardDisplay(self.player2, player2_card_display_data)
+		self.player1_card_display = CardDisplay(self.player1, player1_card_display_data)
+		self.player2_card_display = CardDisplay(self.player2, player2_card_display_data)
 
-		#self.player1_healthbar = Healthbar(self.player1, player1_healthbar_data)
-		#self.player2_healthbar = Healthbar(self.player2, player2_healthbar_data)
+		self.player1_healthbar = Healthbar(self.player1, player1_healthbar_data)
+		self.player2_healthbar = Healthbar(self.player2, player2_healthbar_data)
 		
-		#self.player1_ondeck = OnDeck(self.player1, player1_ondeck_data)
-		#self.player2_ondeck = OnDeck(self.player2, player2_ondeck_data)
+		self.player1_ondeck = OnDeck(self.player1, player1_ondeck_data)
+		self.player2_ondeck = OnDeck(self.player2, player2_ondeck_data)
 
-		#self.dialog_box = DialogBox((200,300), (X_CENTER-100, 50))
+		self.dialog_box = DialogBox((200,300), (X_CENTER-100, 50))
 		
 	def get_event(self, event):
 		if not self.flipping:
@@ -181,24 +181,24 @@ class PlayScreen(GameState):
 		    exiting = self.player1
 		return exiting
 		
-	def draw(self, surf): 
-		super().draw(surf)
+	def draw(self, surface): 
+		super().draw(surface)
 		
 		if self.turn_counter == 1:
-			self.instructions_box.draw(surf)
-		self.dialog_box.draw(surf)
+			self.instructions_box.draw(surface)
+		self.dialog_box.draw(surface)
 		
-		self.player1_card_display.draw(surf)
-		self.player2_card_display.draw(surf)
+		self.player1_card_display.draw(surface)
+		self.player2_card_display.draw(surface)
 		
-		self.player1_healthbar.draw(surf)
-		self.player2_healthbar.draw(surf)
+		self.player1_healthbar.draw(surface)
+		self.player2_healthbar.draw(surface)
 		
-		self.player1_ondeck.draw(surf)
-		self.player2_ondeck.draw(surf)
+		self.player1_ondeck.draw(surface)
+		self.player2_ondeck.draw(surface)
 		
-		self.coin.draw(surf)
-		self.tech_attack_button.draw(surf)
+		self.coin.draw(surface)
+		self.tech_attack_button.draw(surface)
 		
 if __name__=="__main__": 
 	
