@@ -189,7 +189,7 @@ class PlayScreen(GameState):
 		self.dialog_box.draw(surface)
 		
 		self.player1_card_display.draw(surface)
-		self.player2_card_display.draw(sursurfacef)
+		self.player2_card_display.draw(surface)
 		
 		self.player1_healthbar.draw(surface)
 		self.player2_healthbar.draw(surface)
