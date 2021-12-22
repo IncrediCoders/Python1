@@ -1,7 +1,4 @@
-# CHALLENGE 2 - ADD CODED ATTACKS
-# Lots of logic changes here - in card creation and some game screen attributes, then in Update() ~160-205ish
-
-from init import *
+from init import * #Imports code from the init.py file
 
 # Create all of the Cards
 annie_conda = Card('Annie Conda', 'python', 'java', 'bash', annie_conda_img, icon_python, 'gain_health', 'Super Squeeze')
