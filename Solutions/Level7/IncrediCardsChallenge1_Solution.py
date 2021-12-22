@@ -1,6 +1,4 @@
-# CHALLENGE 1 - ADD 2 MORE CARDS TO DECK (TOTAL OF 5)       Changes - Lines 77-78, 83-84, 211 (everything else in init file)
-
-from init import *
+from init import * #Imports code from the init.py file
 
 # Create all of the Cards		
 annie_conda = Card('Annie Conda', 'python', 'java', 'bash', annie_conda_img, icon_python)
