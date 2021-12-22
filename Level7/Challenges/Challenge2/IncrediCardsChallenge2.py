@@ -1,4 +1,4 @@
-from init import *
+from init import * #Imports code from the init.py file
 
 # Create all of the Cards
 # TODO Add the Coded Attack names for each card as the last argument for creating the Card object (the first one is done for you)
