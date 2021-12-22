@@ -115,8 +115,7 @@ class PlayScreen(GameState):
 			offense_card = self.attacker.current_card 
 			defense_card = self.defender.current_card
 			
-			message = ""
-			message = add_to_message(message, "{}".format(self.turn_counter))
+			message = add_to_message("", "{}".format(self.turn_counter))
 			message = add_to_message(message, "{}".format(self.attacker.name))
 			message = add_to_message(message, "{}".format(self.side_up))
 

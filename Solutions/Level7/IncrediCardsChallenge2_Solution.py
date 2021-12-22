@@ -1,6 +1,7 @@
 from init import * #Imports code from the init.py file
 
 # Create all of the Cards
+# Added the names of all cards' Coded Attacks to the Card parameters
 annie_conda = Card('Annie Conda', 'python', 'java', 'bash', annie_conda_img, icon_python, 'gain_health', 'Super Squeeze')
 bayo_wolf = Card('Bayo Wolf', 'scratch', 'small_basic', 'java', bayo_wolf_img, icon_scratch, 'opponent_tails', 'Bitter Bite')
 captain_javo = Card('Captain Javo', 'java', 'scratch', 'python', captain_javo_img, icon_java, 'opponent_tails', 'Punch Line')
@@ -55,9 +56,11 @@ class PlayScreen(GameState):
 		self.next_state = "Victory"
 
 		self.tech_attack_button = Button("TechType Attack", X_CENTER-105, 625, 210, 40, ondeck_teal, round_dark_blue, parent = self)	
-		self.tech_attack_button.action_params = "tech"	
+		self.tech_attack_button.action_params = "tech"
+		# Added the Coded Attack Button and action_params from the wiki	
 		self.coded_attack_button = Button("Coded Attack", X_CENTER-85, 575, 170, 40, coin_yellow, coin_dark_yellow, parent = self)
 		self.coded_attack_button.action_params = "coded"
+		# Changed the instructions argument for the Info Box to use the CHALLENGE_INSTRUCTIONS instead
 		self.instructions_box = InfoBox(CHALLENGE_INSTRUCTIONS, dialog_inst, BLACK, (200, 300), (X_CENTER, 200), 200)
 
 		self.coin = Coin(coin_img, (X_CENTER, 475))
@@ -154,37 +157,46 @@ class PlayScreen(GameState):
 			
 			# Coded Attack Logic
 			else:
+				# Added the code to make the defense card take 1 damage (Hint: Cards have a method called take_damage())
 				defense_card.take_damage(1)
-				# Do 1 damage automatically then flip coin for extra effect
-
+				
+				# Flip the coin for the offense card's extra effect
 				if self.side_up == 'Heads':
 					# Execute coded attack - four different paths:
 
 					# Extra hit - This deals 1 more damage to the opponent and switches active player
 					if offense_card.coded_type == 'extra_hit':
+						# Added the code to make the defense card take 1 damage
 						defense_card.take_damage(1)
 						turn_msg = "{}'{} {} landed, dealing 2 damage to {} this turn!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, defense_card.name)
+						# Added the code to switch the active player
 						self.switch_active_player()
 					# Extra turn - This gives the active player an extra turn, does not switch active player
 					if offense_card.coded_type == 'extra_turn':
 						turn_msg = "{}'{} {} hit - {} took 1 damage and {} gets another turn!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, defense_card.name, self.attacker.name)
 					# Gain Health - This lets the active card (or any other card in the player's hand with damage) to gain 1 HP and switches active player
 					if offense_card.coded_type == 'gain_health':
+						# Added the code to make the offense player gain 1 health point (Hint: Players have a method called gain_health())
 						healed_card = self.attacker.gain_health(1)
 						if healed_card is None:
 							turn_msg = "{}'{} {} worked but all cards had max health!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack)
 						else:
 							turn_msg = "{}'{} {} worked and {} gained 1 health point back!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, healed_card.name)
+						# Added the code to switch the active player
 						self.switch_active_player()
+					
 					# Opponent Tails - This forces the next roll to be a 'Tails' and switches the active player
 					if offense_card.coded_type == 'opponent_tails':
+						# Added the code to set the game's attribute for forcing tails to be 'True'
 						self.force_tails = True
 						turn_msg = "{}'{} {} strikes - {} will roll tails on the next turn!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, defense_card.name)
+						# Added the code to switch the active player
 						self.switch_active_player()
 
 				else: 
 					# Coded attack fails, defense still takes 1 damage and switch active player
 					turn_msg = "{}'{} {} missed - {} took 1 damage.\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, defense_card.name)
+					# Added the code to switch the active player
 					self.switch_active_player()
 
 				# The following logic needs to happen for every coded attack scenario
@@ -194,6 +206,7 @@ class PlayScreen(GameState):
 				self.player1.refresh_hand()
 				self.player2.refresh_hand()
 				
+				# Added the code to set the game's coded attack attribute to 'False'
 				self.coded_attack = False
 				self.attacking = False
 				self.turn_counter += 1
