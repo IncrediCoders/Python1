@@ -54,14 +54,13 @@ def update(delta_time):
     #Check for hazard collisions
     for hazard in MY.hazards:
         if MY.player.collides_with(hazard):
-            MY.player_health -= 2
-            if MY.player_health <= 0:
+            MY.player_health -= 1
+            if MY.player_health == 0:
                 change(1)
             else:
                 MY.player.location = MY.player_start_position
                 MY.player.set_velocity(0, 0)
                 MY.player.sprite = MY.paul_pain_right
-                break
     
     #Update Paul's location
     MY.player.update(delta_time)
@@ -74,22 +73,18 @@ def update(delta_time):
                 MY.player.snap_to_object_y(wall, DOWN)
                 MY.player.velocity.y = 0
                 MY.grounded = touching = True
-                continue
             if MY.player.collision[LEFT]:
                 MY.player.snap_to_object_x(wall, LEFT)
                 MY.player.velocity.x = 0
                 touching = True
-                continue
             if MY.player.collision[RIGHT]:
                 MY.player.snap_to_object_x(wall, RIGHT)
                 MY.player.velocity.x = 0
                 touching = True
-                continue
             if MY.player.collision[UP]:
                 MY.player.snap_to_object_y(wall, UP)
                 MY.player.velocity.y = 0
                 touching = True
-                continue
     if not touching:
         MY.grounded = False
     
