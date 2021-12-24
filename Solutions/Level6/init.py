@@ -667,36 +667,43 @@ def initialize(window):
 def draw(screen):
     """Draws the state to the given screen for BossBattle."""
     MY.background.draw(screen)
-    MY.player.draw(screen)
+    
+    #Draw pillars depending on if player is in front or behind it
+    if(MY.player.collides_with_point((212, 212))):
+       MY.pillar_top_left.draw(screen) 
+       MY.player.draw(screen)
+    elif(MY.player.collides_with_point((204, 424))):
+       MY.pillar_bottom_left.draw(screen)
+       MY.player.draw(screen)
+    elif(MY.player.collides_with_point((562, 215))):
+        MY.pillar_top_right.draw(screen)
+        MY.player.draw(screen)
+    elif(MY.player.collides_with_point((562, 457))):
+        MY.pillar_bottom_right.draw(screen)
+        MY.player.draw(screen)
+    else:   
+        MY.player.draw(screen)
+        MY.pillar_top_left.draw(screen) 
+        MY.pillar_bottom_left.draw(screen)
+        MY.pillar_bottom_right.draw(screen)
+        MY.pillar_top_right.draw(screen)
+        
+    #Draw player hitbox
     if MY.player_hitbox.active:
         MY.player_hitbox.draw(screen)
 
+    #Draw projectiles
     for i in range(len(MY.projectiles)):
         if MY.projectiles[i].active:
             MY.projectiles[i].draw(screen)
 
+    #Draw the boss
     MY.boss.draw(screen)
-    MY.pillar_top_left.draw(screen)
-    MY.pillar_top_right.draw(screen)
-    MY.pillar_bottom_left.draw(screen)
-    MY.pillar_bottom_right.draw(screen)
 
-    #TO DO: REMOVE. for testing only.
-    # upper_left_pillar = pygame.Rect(192, 422, 30, 24)
-    # player_rect = pygame.Rect(MY.player.location.x - 10, MY.player.location.y + 22, 20, 10)
-    # pygame.draw.rect(SCREEN, (255,255,255), upper_left_pillar)
-    # pygame.draw.rect(SCREEN, (255,255,255), player_rect)
-    
     MY.player_text.draw(screen)
     health_bar(screen, MY.player_health, 100, (100, 20), (85, 3))
-    health_bar(
-        screen,
-        MY.boss_health,
-        300, (
-            MY.boss.width(),
-            20
-        ),
-        MY.boss.location - (MY.boss.width() / 2, (MY.boss.height() / 2) + 25)
+    health_bar(screen, MY.boss_health, 300, (MY.boss.width(), 20),
+    MY.boss.location - (MY.boss.width() / 2, (MY.boss.height() / 2) + 25)
     )
 
 def cleanup():
@@ -829,7 +836,7 @@ def update_assets(delta_time):
 
     #boss
     if MY.player_hitbox.active and MY.boss.collides_with(MY.player_hitbox):
-        MY.boss.sprite = MY.boss_pain
+        MY.boss.sprite = MY.boss_pain    
     elif MY.is_boss_attacking:
         MY.boss.sprite = MY.boss_attack
         boss_attack(delta_time)
