@@ -667,18 +667,24 @@ def initialize(window):
 def draw(screen):
     """Draws the state to the given screen for BossBattle."""
     MY.background.draw(screen)
-    
+    upper_left_pillar = pygame.Rect(175, 193, 65, 65)
+    lower_left_pillar = pygame.Rect(175, 427, 65, 65)
+    upper_right_pillar = pygame.Rect(525, 193, 70, 65)
+    lower_right_pillar = pygame.Rect(525, 427, 70, 65)
+
+    player_rect = pygame.Rect(MY.player.location.x - 10, MY.player.location.y + 22, 20, 10)
+
     #Draw pillars depending on if player is in front or behind it
-    if(MY.player.collides_with_point((212, 212))):
-       MY.pillar_top_left.draw(screen) 
+    if player_rect.colliderect(upper_left_pillar): 
+       MY.pillar_top_left.draw(screen)
        MY.player.draw(screen)
-    elif(MY.player.collides_with_point((204, 424))):
+    elif player_rect.colliderect(lower_left_pillar):  
        MY.pillar_bottom_left.draw(screen)
        MY.player.draw(screen)
-    elif(MY.player.collides_with_point((562, 215))):
+    elif player_rect.colliderect(upper_right_pillar):
         MY.pillar_top_right.draw(screen)
         MY.player.draw(screen)
-    elif(MY.player.collides_with_point((562, 457))):
+    elif player_rect.colliderect(lower_right_pillar):
         MY.pillar_bottom_right.draw(screen)
         MY.player.draw(screen)
     else:   
@@ -703,8 +709,7 @@ def draw(screen):
     MY.player_text.draw(screen)
     health_bar(screen, MY.player_health, 100, (100, 20), (85, 3))
     health_bar(screen, MY.boss_health, 300, (MY.boss.width(), 20),
-    MY.boss.location - (MY.boss.width() / 2, (MY.boss.height() / 2) + 25)
-    )
+    MY.boss.location - (MY.boss.width() / 2, (MY.boss.height() / 2) + 25))
 
 def cleanup():
     """Cleans up the Intro State."""
@@ -802,16 +807,16 @@ def boss_attack(delta_time):
 def check_pillar_collision(player_rect, pillar):
     if player_rect.colliderect(pillar):
         if MY.player_dir == LEFT:
-            MY.player.location.x += 3
+            MY.player.location.x += 9
         elif MY.player_dir == RIGHT:
-            MY.player.location.x -= 3
+            MY.player.location.x -= 9
         elif MY.player_dir == DOWN:
-            MY.player.location.y -= 3
+            MY.player.location.y -= 9
         elif MY.player_dir == UP:
-            MY.player.location.x += 3
+            MY.player.location.x += 9
 
 def handle_pillar_collision():
-    upper_left_pillar = pygame.Rect(192, 190, 30, 24)
+    upper_left_pillar =  pygame.Rect(192, 187, 30, 24) 
     upper_right_pillar = pygame.Rect(545, 190, 30, 24)
     lower_left_pillar = pygame.Rect(192, 422, 30, 24)
     lower_right_pillar = pygame.Rect(545, 422, 30, 24)
