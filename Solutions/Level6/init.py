@@ -43,9 +43,6 @@ def check_events():
     Checks for pygame events, including boss attacks and if you closed the window.
     """
     for event in pygame.event.get():
-        if event.type == pygame.MOUSEBUTTONDOWN: #TO DO: REMOVE. used for testing only.
-            print(pygame.mouse.get_pos())
-
         if event.type == pygame.QUIT:
             stop()
         elif event.type == MY.boss_attack_event:
@@ -619,6 +616,16 @@ class Data:
     boss_health = 300
     boss_attack_event = pygame.USEREVENT
     is_boss_attacking = False
+    # projectile data
+    projectile_sheet = SpriteSheet("assets/PlasmaBall.png", (32, 32))
+    projectile_anim = Animator(projectile_sheet, 6)
+    projectile = Object(projectile_sheet.image_at(0))
+    num_projectiles = 0
+    x_angle = 3
+    y_angle = 3
+    projectile_angles = [(x_angle, y_angle), (y_angle, -x_angle), (-x_angle, -y_angle), (-y_angle, x_angle)]
+    angle_index = 0
+    projectiles = []
     # miscellaneous data
     wall_height = 70
     pillar_width = 28
@@ -628,11 +635,6 @@ class Data:
     pillar_bottom_left = Object(Image("assets/PillarTop.png"))
     pillar_bottom_right = Object(Image("assets/PillarTop.png"))
     pillars = [pillar_top_left, pillar_top_right, pillar_bottom_left, pillar_bottom_right]
-    projectile_sheet = SpriteSheet("assets/PlasmaBall.png", (32, 32))
-    projectile_anim = Animator(projectile_sheet, 6)
-    projectile = Object(projectile_sheet.image_at(0))
-    numberOfprojectiles = 0
-    projectiles = []
     state = 0
     last_state = 2
     index = 0
@@ -656,13 +658,14 @@ def initialize(window):
     MY.player.location = (window.x / 2, window.y / 4)
     MY.boss.location = window / 2
     pygame.time.set_timer(MY.boss_attack_event, 100)
-    count = 0
-    while count < 20:
+    #Set up projectiles
+    MY.num_projectiles = 0
+    while MY.num_projectiles < 1:
         proj = Object(PROJECTILE_IMAGE)
         proj.location = (window.x / 2, window.y/ 2 - 35)
         proj.sprite = MY.projectile_anim
         MY.projectiles.append(proj)
-        count += 1
+        MY.num_projectiles += 1
 
 def draw(screen):
     """Draws the state to the given screen for BossBattle."""
@@ -678,15 +681,27 @@ def draw(screen):
     if player_rect.colliderect(upper_left_pillar): 
        MY.pillar_top_left.draw(screen)
        MY.player.draw(screen)
+       MY.pillar_bottom_left.draw(screen)
+       MY.pillar_top_right.draw(screen)
+       MY.pillar_bottom_right.draw(screen)
     elif player_rect.colliderect(lower_left_pillar):  
        MY.pillar_bottom_left.draw(screen)
        MY.player.draw(screen)
+       MY.pillar_top_left.draw(screen)
+       MY.pillar_top_right.draw(screen)
+       MY.pillar_bottom_right.draw(screen)
     elif player_rect.colliderect(upper_right_pillar):
         MY.pillar_top_right.draw(screen)
         MY.player.draw(screen)
+        MY.pillar_top_left.draw(screen)
+        MY.pillar_bottom_left.draw(screen)
+        MY.pillar_bottom_right.draw(screen)
     elif player_rect.colliderect(lower_right_pillar):
         MY.pillar_bottom_right.draw(screen)
         MY.player.draw(screen)
+        MY.pillar_top_left.draw(screen)
+        MY.pillar_bottom_left.draw(screen)
+        MY.pillar_top_right.draw(screen)
     else:   
         MY.player.draw(screen)
         MY.pillar_top_left.draw(screen) 
@@ -780,30 +795,6 @@ def player_move_update(delta_time):
         MY.player_dir = RIGHT
         MY.player.sprite = MY.walk_right
 
-def fire_projectile(delta_time, projectile):
-    rand_x = random.randint(-3, 3)
-    rand_y = random.randint(-3, 3)
-    if projectile.active:
-        projectile.update(delta_time)
-        projectile.location.x += rand_x
-        projectile.location.y += rand_y
-        if projectile.location.x < MY.wall_height or projectile.location.x > WINDOW_WIDTH - MY.wall_height or projectile.location.y < MY.wall_height or projectile.location.y > WINDOW_LENGTH - (MY.wall_height + 20):
-            projectile.active = False
-        if projectile.collides_with(MY.player):
-            MY.player_health -= 0.1
-            player_pain_anim()
-            projectile.active = False
-
-def boss_attack(delta_time):
-    """shoot out lots of projectiles."""
-    num_projectiles = 10
-    count = 0
-    while count < num_projectiles:
-        for p in MY.projectiles:
-            p.active = True
-            fire_projectile(delta_time, p)
-            count += 1
-
 def check_pillar_collision(player_rect, pillar):
     if player_rect.colliderect(pillar):
         if MY.player_dir == LEFT:
@@ -828,6 +819,33 @@ def handle_pillar_collision():
     check_pillar_collision(player_rect, lower_left_pillar)
     check_pillar_collision(player_rect, lower_right_pillar)
 
+def change_angle_index():
+    if(MY.angle_index < 3):
+        MY.angle_index += 1
+    else:
+        MY.angle_index = 0
+
+def fire_projectile(delta_time, projectile):
+    angle = MY.projectile_angles[MY.angle_index]
+
+    if projectile.active:
+        projectile.location.x += angle[0]
+        projectile.location.y += angle[1] 
+        projectile.update(delta_time)
+        if projectile.location.x < MY.wall_height or projectile.location.x > WINDOW_WIDTH - MY.wall_height or projectile.location.y < MY.wall_height or projectile.location.y > WINDOW_LENGTH - (MY.wall_height + 20):
+            projectile.location = (WINDOW_WIDTH / 2, WINDOW_LENGTH/ 2 - 35)
+            change_angle_index()
+        if projectile.collides_with(MY.player):
+            MY.player_health -= 10
+            player_pain_anim()
+            projectile.location = (WINDOW_WIDTH / 2, WINDOW_LENGTH/ 2 - 35)
+            change_angle_index()
+
+def boss_attack(delta_time):
+    """shoot projectiles.""" 
+    for p in MY.projectiles:
+        p.active = True
+        fire_projectile(delta_time, p)
 
 def update_assets(delta_time):
     # background
@@ -845,11 +863,10 @@ def update_assets(delta_time):
     elif MY.is_boss_attacking:
         MY.boss.sprite = MY.boss_attack
         boss_attack(delta_time)
-        for p in MY.projectiles:
-            p.update(delta_time)
     else:
         MY.boss.sprite = MY.boss_idle
     MY.boss.update(delta_time)
+
 
 def check_win():
     """Check win condition and change state if a player has won the game"""
