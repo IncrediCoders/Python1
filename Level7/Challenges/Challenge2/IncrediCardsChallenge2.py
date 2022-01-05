@@ -57,9 +57,9 @@ class PlayScreen(GameState):
 
 		self.tech_attack_button = Button("TechType Attack", X_CENTER-105, 625, 210, 40, ondeck_teal, round_dark_blue, parent = self)	
 		self.tech_attack_button.action_params = "tech"	
-		#TODO: Add Coded Attack button and action_params here - copy/paste
-		self.coded_attack_button = Button("Coded Attack", X_CENTER-85, 575, 170, 40, coin_yellow, coin_dark_yellow, parent = self)
-		self.coded_attack_button.action_params = "coded"
+		#TODO: Copy the code to add the Coded Attack button and the action_params attribute below
+
+		
 		#TODO: Change the instructions argument for the Info Box to use the CHALLENGE_INSTRUCTIONS instead
 		self.instructions_box = InfoBox(INSTRUCTIONS, dialog_inst, BLACK, (200, 300), (X_CENTER, 200), 200)
 
