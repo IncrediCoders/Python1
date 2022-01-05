@@ -136,7 +136,7 @@ class PlayScreen(GameState):
 			# Dialog box shows the result of the turn
 			self.dialog_box.set_message(message)
 			
-			# update player hands
+			# Update player hands
 			self.player1.refresh_hand()
 			self.player2.refresh_hand()
 			

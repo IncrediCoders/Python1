@@ -72,14 +72,14 @@ class PlayScreen(GameState):
 		self.defender = self.player1 if not self.player1.active_turn else self.player2
 		
 		#TODO: Update the card display data for both players (Hint: look at lines 585-624 in the init.py file)
-		self.player1_card_display = CardDisplay(self.player1, player1_card_display_data) #change to player1_card_display_data_challenge
+		self.player1_card_display = CardDisplay(self.player1, player1_card_display_data)
 		self.player2_card_display = CardDisplay(self.player2, player2_card_display_data) 
 
 		self.player1_healthbar = Healthbar(self.player1, player1_healthbar_data)
 		self.player2_healthbar = Healthbar(self.player2, player2_healthbar_data)
 		
-		#TODO: Update the on deck data for both players (Hint: lookat lines 626-677 in the init.py file)
-		self.player1_ondeck = OnDeck(self.player1, player1_ondeck_data) #change to player1_ondeck_data_challenge
+		#TODO: Update the on deck data for both players (Hint: look at lines 626-677 in the init.py file)
+		self.player1_ondeck = OnDeck(self.player1, player1_ondeck_data)
 		self.player2_ondeck = OnDeck(self.player2, player2_ondeck_data) 
 
 		self.dialog_box = DialogBox((200,300), (X_CENTER-100, 50))
@@ -136,7 +136,7 @@ class PlayScreen(GameState):
 			# Dialog box shows the result of the turn
 			self.dialog_box.set_message(message)
 			
-			# update player hands
+			# Update player hands
 			self.player1.refresh_hand()
 			self.player2.refresh_hand()
 			
