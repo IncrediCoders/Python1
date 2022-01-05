@@ -199,17 +199,15 @@ class PlayScreen(GameState):
 		
 		self.coin.draw(surface)
 		self.tech_attack_button.draw(surface)
-		
-if __name__=="__main__":		
-	
-	states = {
-			"Title" : TitleScreen(),
-			"GetNames": GetNameScreen(),
-			"CoinFlip": CoinFlipScreen(),
-			"ChooseHand" : ChooseHandScreen(DECK),
-			"Game" : PlayScreen(),
-			"Victory" : VictoryScreen()
-			 }
+
+states = {
+		"Title" : TitleScreen(),
+		"GetNames": GetNameScreen(),
+		"CoinFlip": CoinFlipScreen(),
+		"ChooseHand" : ChooseHandScreen(DECK),
+		"Game" : PlayScreen(),
+		"Victory" : VictoryScreen()
+			}
 
 game = GameRunner(SCREEN, states, "Title")
 
