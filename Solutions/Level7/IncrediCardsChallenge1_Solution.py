@@ -199,7 +199,7 @@ states = {
 		"Title" : TitleScreen(),
 		"GetNames": GetNameScreen(),
 		"CoinFlip": CoinFlipScreen(),
-			#Added a second argument (boolean True) to the ChooseHandScreen parameters
+		#Added a second argument (boolean True) to the ChooseHandScreen parameters
 		"ChooseHand" : ChooseHandScreen(DECK, True),
 		"Game" : PlayScreen(),
 		"Victory" : VictoryScreen()
