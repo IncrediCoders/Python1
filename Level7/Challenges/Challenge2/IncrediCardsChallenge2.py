@@ -1,7 +1,7 @@
 from init import * #Imports code from the init.py file
 
 # Create all of the Cards
-#TODO Add the Coded Attack names for each card as the last argument for creating the Card object (the first one is done for you)
+#TODO: Add the Coded Attack names for each card as the last argument for creating the Card object (the first one is done for you)
 annie_conda = Card('Annie Conda', 'python', 'java', 'bash', annie_conda_img, icon_python, 'gain_health', 'Super Squeeze')
 bayo_wolf = Card('Bayo Wolf', 'scratch', 'small_basic', 'java', bayo_wolf_img, icon_scratch, 'opponent_tails')
 captain_javo = Card('Captain Javo', 'java', 'scratch', 'python', captain_javo_img, icon_java, 'opponent_tails')
