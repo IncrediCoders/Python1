@@ -1,5 +1,4 @@
 #Runs the init.py file and imports the libraries
-import BossBattle
 from init import *
 
 def update(delta_time):
@@ -54,7 +53,7 @@ def update(delta_time):
     check_events()
 
 # Register the game states
-Manager.register(BossBattle)
+Manager.register(sys.modules[__name__]) #The current file
 Manager.register(GameOver)
 Manager.register(PlayAgain)
 
