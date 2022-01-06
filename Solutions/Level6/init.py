@@ -620,10 +620,13 @@ class Data:
     projectile_sheet = SpriteSheet("assets/PlasmaBall.png", (32, 32))
     projectile_anim = Animator(projectile_sheet, 6)
     projectile = Object(projectile_sheet.image_at(0))
+    proj_damage = 10
     num_projectiles = 0
     x_angle = 3
     y_angle = 3
-    projectile_angles = [(x_angle, y_angle), (y_angle, -x_angle), (-x_angle, -y_angle), (-y_angle, x_angle)]
+    projectile_angles = []
+    for i in range (72):
+        projectile_angles.append(i * 5) #TODO
     angle_index = 0
     projectiles = []
     # miscellaneous data
@@ -820,26 +823,26 @@ def handle_pillar_collision():
     check_pillar_collision(player_rect, lower_right_pillar)
 
 def change_angle_index():
-    if(MY.angle_index < 3):
-        MY.angle_index += 1
-    else:
-        MY.angle_index = 0
+    MY.angle_index = random.randint(0, 71) 
 
 def fire_projectile(delta_time, projectile):
     angle = MY.projectile_angles[MY.angle_index]
+    velocity = 4
 
     if projectile.active:
-        projectile.location.x += angle[0]
-        projectile.location.y += angle[1] 
+        projectile.location.x += math.cos(angle) * velocity 
+        projectile.location.y += math.sin(angle) * velocity
         projectile.update(delta_time)
         if projectile.location.x < MY.wall_height or projectile.location.x > WINDOW_WIDTH - MY.wall_height or projectile.location.y < MY.wall_height or projectile.location.y > WINDOW_LENGTH - (MY.wall_height + 20):
             projectile.location = (WINDOW_WIDTH / 2, WINDOW_LENGTH/ 2 - 35)
             change_angle_index()
+            projectile.update(delta_time)
         if projectile.collides_with(MY.player):
-            MY.player_health -= 10
+            MY.player_health -= MY.proj_damage
             player_pain_anim()
             projectile.location = (WINDOW_WIDTH / 2, WINDOW_LENGTH/ 2 - 35)
             change_angle_index()
+            projectile.update(delta_time)
 
 def boss_attack(delta_time):
     """shoot projectiles.""" 
@@ -859,7 +862,7 @@ def update_assets(delta_time):
 
     #boss
     if MY.player_hitbox.active and MY.boss.collides_with(MY.player_hitbox):
-        MY.boss.sprite = MY.boss_pain    
+        MY.boss.sprite = MY.boss_pain 
     elif MY.is_boss_attacking:
         MY.boss.sprite = MY.boss_attack
         boss_attack(delta_time)
