@@ -23,7 +23,7 @@ def update(delta_time):
         MY.player_health -= 1
         MY.player_hitbox.active = False
 
-    # Adds the hit box above Paul
+    # Uncommented Lines 27-29 to add the hit box above Paul
     if MY.player_dir == UP:
         MY.player_hitbox.location = pygame.math.Vector2(
             MY.player.location.x + 20, MY.player.location.y - 20)
