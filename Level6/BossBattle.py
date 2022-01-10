@@ -23,10 +23,10 @@ def update(delta_time):
 
 
 
-    # Adds the hit box above Paul
-    if MY.player_dir == UP:
-        MY.player_hitbox.location = pygame.math.Vector2(
-            MY.player.location.x + 20, MY.player.location.y - 20)
+    #TODO: Uncomment Lines 27-29 to add the hit box above Paul
+    #if MY.player_dir == UP:
+    #    MY.player_hitbox.location = pygame.math.Vector2(
+    #        MY.player.location.x + 20, MY.player.location.y - 20)
     #TODO: Copy the code here to add the hit box below Paul
 
 
