@@ -43,9 +43,6 @@ def check_events():
     Checks for pygame events, including boss attacks and if you closed the window.
     """
     for event in pygame.event.get():
-        if event.type == pygame.MOUSEBUTTONDOWN: #TO DO: REMOVE. used for testing only.
-            print(pygame.mouse.get_pos())
-
         if event.type == pygame.QUIT:
             stop()
         elif event.type == MY.boss_attack_event:
@@ -113,7 +110,7 @@ def key_held_down(key):
 
 def get_file(filename):
     """Returns the absolute path of a file."""
-    #This grabs your files from your folder.
+    # This grabs your files from your folder.
     return path.join(path.dirname(__file__), filename)
 
 def read_file(filename):
@@ -123,7 +120,7 @@ def read_file(filename):
     # Open our file for read.
     file = open(filename, 'r')
 
-    # put all the lines in an array
+    # Put all the lines in an array
     for line in file:
         array.append(line.rstrip())
 
@@ -154,7 +151,7 @@ class Machine:
                 to_delete.append(obj)
             elif lerp_list[0].update(obj, delta_time):
                 lerp_list.pop(0)
-                # remove duplicates
+                # Remove duplicates
                 while lerp_list and lerp_list[0].end == getattr(obj, lerp_list[0].member):
                     lerp_list.pop(0)
 
@@ -164,7 +161,7 @@ class Machine:
     def run(self, screen, window, fill_color):
         """Runs the state given machine."""
         clock = pygame.time.Clock()
-        # first run initialize!
+        # First run initialize!
         self.states[self.current]['initialize'](window)
 
         while True:
@@ -405,15 +402,15 @@ class Object:
             if obj1.collides_with(obj2):
                 do_things();
         """
-        # check for early rejection.
+        # Check for early rejection.
         dist = (self.location - other_obj.location).length_squared()
-        # if distance between objects is greater then 64^2
+        # If distance between objects is greater then 64^2
         if dist > 4096:
             self.collision[DOWN] = self.collision[UP] = False
             self.collision[LEFT] = self.collision[RIGHT] = False
             return False
 
-        #get transformed rectangles
+        # Get transformed rectangles
         rect1 = self.get_transformed_rect()
         rect2 = other_obj.get_transformed_rect()
 
@@ -426,6 +423,23 @@ class Object:
         self.collision[RIGHT] = rect2.collidepoint((rect1.center[0] + rect1.width / 2, rect1.center[1] + rect1.height / 4)) or rect2.collidepoint((rect1.center[0] + rect1.width / 2, rect1.center[1] - rect1.height / 4))
 
         return True
+
+
+    def collides_with_boss(self):
+        player = self.get_transformed_rect()
+        boss = MY.boss_defence_area
+        if player.colliderect(boss) and MY.player_hitbox.active == False:
+            return True  
+        return False
+    
+
+    def collides_with_hitbox(self):
+        boss = self.get_transformed_rect() 
+        hitbox = MY.player_hitbox.get_transformed_rect()
+        if boss.colliderect(hitbox):
+            return True
+        return False
+
 
     def snap_to_object_x(self, other_obj, facing):
         """
@@ -551,11 +565,11 @@ WINDOW_LENGTH = 600
 WINDOW = pygame.math.Vector2(800, 600)
 SCREEN = start(WINDOW, "Boss Battle")
 
-#load sprites constants
+# Load sprites constants
 PROJECTILE_IMAGE = Image("assets/Projectile.png")
 HITBOX_IMAGE = Image("assets/Hitbox.png")
 
-#constants
+# Constants
 PLAYER = 0
 BOSS = 1
 GRASS = 4
@@ -568,7 +582,7 @@ class Data:
     background_sheet = SpriteSheet("assets/Background.png", (800, 600))
     background_anim = Animator(background_sheet, 0.75)
     background = Object(background_sheet.image_at(0))
-    # player data
+    # Player data
     player_idle_forward_sheet = SpriteSheet("assets/paul/PaulIdleFront.png", (64, 68))
     player_idle_backward_sheet = SpriteSheet("assets/paul/PaulIdleBack.png", (64, 68))
     player_idle_left_sheet = SpriteSheet("assets/paul/PaulIdleLeft.png", (64, 68))
@@ -607,7 +621,7 @@ class Data:
     player_dir = DOWN
     player_text = TextObject(BLACK, 24, "Player: ")
     player_hitbox = Object(HITBOX_IMAGE)
-    # boss data
+    # Boss data
     boss_attack_sheet = SpriteSheet("assets/creeper/CreeperAttack.png", (100, 100))
     boss_attack = Animator(boss_attack_sheet, 2)
     boss_idle_sheet = SpriteSheet("assets/creeper/CreeperIdle.png", (100, 100))
@@ -616,10 +630,24 @@ class Data:
     boss_pain = Animator(boss_pain_sheet, 0.5)
     boss = Object(boss_idle_sheet.image_at(0))
     boss_start_position = pygame.math.Vector2(0, 0)
+    boss_defence_area = pygame.Rect(1,1,1,1)
     boss_health = 300
     boss_attack_event = pygame.USEREVENT
     is_boss_attacking = False
-    # miscellaneous data
+    # Projectile data
+    projectile_sheet = SpriteSheet("assets/PlasmaBall.png", (32, 32))
+    projectile_anim = Animator(projectile_sheet, 6)
+    projectile = Object(projectile_sheet.image_at(0))
+    proj_damage = 1
+    num_projectiles = 0
+    x_angle = 3
+    y_angle = 3
+    projectile_angles = []
+    for i in range (72):
+        projectile_angles.append(i * 5) 
+    angle_index = 0
+    projectiles = []
+    # Miscellaneous data
     wall_height = 70
     pillar_width = 28
     pillar_height = 112
@@ -628,11 +656,6 @@ class Data:
     pillar_bottom_left = Object(Image("assets/PillarTop.png"))
     pillar_bottom_right = Object(Image("assets/PillarTop.png"))
     pillars = [pillar_top_left, pillar_top_right, pillar_bottom_left, pillar_bottom_right]
-    projectile_sheet = SpriteSheet("assets/PlasmaBall.png", (32, 32))
-    projectile_anim = Animator(projectile_sheet, 6)
-    projectile = Object(projectile_sheet.image_at(0))
-    numberOfprojectiles = 0
-    projectiles = []
     state = 0
     last_state = 2
     index = 0
@@ -655,49 +678,77 @@ def initialize(window):
     MY.pillar_bottom_right.location = (560, 375)
     MY.player.location = (window.x / 2, window.y / 4)
     MY.boss.location = window / 2
+    MY.boss_defence_area = pygame.Rect(375, 340, 50, 15)
     pygame.time.set_timer(MY.boss_attack_event, 100)
-    count = 0
-    while count < 20:
+    # Set up projectiles
+    MY.num_projectiles = 0
+    while MY.num_projectiles < 1:
         proj = Object(PROJECTILE_IMAGE)
         proj.location = (window.x / 2, window.y/ 2 - 35)
         proj.sprite = MY.projectile_anim
         MY.projectiles.append(proj)
-        count += 1
+        MY.num_projectiles += 1
 
 def draw(screen):
     """Draws the state to the given screen for BossBattle."""
     MY.background.draw(screen)
-    MY.player.draw(screen)
+    upper_left_pillar = pygame.Rect(175, 193, 65, 65)
+    lower_left_pillar = pygame.Rect(175, 427, 65, 65)
+    upper_right_pillar = pygame.Rect(525, 193, 70, 65)
+    lower_right_pillar = pygame.Rect(525, 427, 70, 65)
+
+    player_rect = pygame.Rect(MY.player.location.x - 10, MY.player.location.y + 22, 20, 10)
+
+    # Draw pillars depending on if player is in front or behind it
+    if player_rect.colliderect(upper_left_pillar): 
+       MY.pillar_top_left.draw(screen)
+       MY.player.draw(screen)
+       MY.pillar_bottom_left.draw(screen)
+       MY.pillar_top_right.draw(screen)
+       MY.pillar_bottom_right.draw(screen)
+    elif player_rect.colliderect(lower_left_pillar):  
+       MY.pillar_bottom_left.draw(screen)
+       MY.player.draw(screen)
+       MY.pillar_top_left.draw(screen)
+       MY.pillar_top_right.draw(screen)
+       MY.pillar_bottom_right.draw(screen)
+    elif player_rect.colliderect(upper_right_pillar):
+        MY.pillar_top_right.draw(screen)
+        MY.player.draw(screen)
+        MY.pillar_top_left.draw(screen)
+        MY.pillar_bottom_left.draw(screen)
+        MY.pillar_bottom_right.draw(screen)
+    elif player_rect.colliderect(lower_right_pillar):
+        MY.pillar_bottom_right.draw(screen)
+        MY.player.draw(screen)
+        MY.pillar_top_left.draw(screen)
+        MY.pillar_bottom_left.draw(screen)
+        MY.pillar_top_right.draw(screen)
+    else:   
+        MY.player.draw(screen)
+        MY.pillar_top_left.draw(screen) 
+        MY.pillar_bottom_left.draw(screen)
+        MY.pillar_bottom_right.draw(screen)
+        MY.pillar_top_right.draw(screen)
+ 
+    # Draw player hitbox
     if MY.player_hitbox.active:
         MY.player_hitbox.draw(screen)
 
+    # Draw projectiles
     for i in range(len(MY.projectiles)):
         if MY.projectiles[i].active:
             MY.projectiles[i].draw(screen)
 
+    # Draw the boss
     MY.boss.draw(screen)
-    MY.pillar_top_left.draw(screen)
-    MY.pillar_top_right.draw(screen)
-    MY.pillar_bottom_left.draw(screen)
-    MY.pillar_bottom_right.draw(screen)
-
-    #TO DO: REMOVE. for testing only.
-    # upper_left_pillar = pygame.Rect(192, 422, 30, 24)
-    # player_rect = pygame.Rect(MY.player.location.x - 10, MY.player.location.y + 22, 20, 10)
-    # pygame.draw.rect(SCREEN, (255,255,255), upper_left_pillar)
-    # pygame.draw.rect(SCREEN, (255,255,255), player_rect)
     
     MY.player_text.draw(screen)
     health_bar(screen, MY.player_health, 100, (100, 20), (85, 3))
-    health_bar(
-        screen,
-        MY.boss_health,
-        300, (
-            MY.boss.width(),
-            20
-        ),
-        MY.boss.location - (MY.boss.width() / 2, (MY.boss.height() / 2) + 25)
-    )
+    health_bar(screen, MY.boss_health, 300, (MY.boss.width(), 20),
+    MY.boss.location - (MY.boss.width() / 2, (MY.boss.height() / 2) + 25))
+
+    
 
 def cleanup():
     """Cleans up the Intro State."""
@@ -768,43 +819,19 @@ def player_move_update(delta_time):
         MY.player_dir = RIGHT
         MY.player.sprite = MY.walk_right
 
-def fire_projectile(delta_time, projectile):
-    rand_x = random.randint(-3, 3)
-    rand_y = random.randint(-3, 3)
-    if projectile.active:
-        projectile.update(delta_time)
-        projectile.location.x += rand_x
-        projectile.location.y += rand_y
-        if projectile.location.x < MY.wall_height or projectile.location.x > WINDOW_WIDTH - MY.wall_height or projectile.location.y < MY.wall_height or projectile.location.y > WINDOW_LENGTH - (MY.wall_height + 20):
-            projectile.active = False
-        if projectile.collides_with(MY.player):
-            MY.player_health -= 0.1
-            player_pain_anim()
-            projectile.active = False
-
-def boss_attack(delta_time):
-    """shoot out lots of projectiles."""
-    num_projectiles = 10
-    count = 0
-    while count < num_projectiles:
-        for p in MY.projectiles:
-            p.active = True
-            fire_projectile(delta_time, p)
-            count += 1
-
 def check_pillar_collision(player_rect, pillar):
     if player_rect.colliderect(pillar):
         if MY.player_dir == LEFT:
-            MY.player.location.x += 3
+            MY.player.location.x += 9
         elif MY.player_dir == RIGHT:
-            MY.player.location.x -= 3
+            MY.player.location.x -= 9
         elif MY.player_dir == DOWN:
-            MY.player.location.y -= 3
+            MY.player.location.y -= 9
         elif MY.player_dir == UP:
-            MY.player.location.x += 3
+            MY.player.location.x += 9
 
 def handle_pillar_collision():
-    upper_left_pillar = pygame.Rect(192, 190, 30, 24)
+    upper_left_pillar =  pygame.Rect(192, 187, 30, 24) 
     upper_right_pillar = pygame.Rect(545, 190, 30, 24)
     lower_left_pillar = pygame.Rect(192, 422, 30, 24)
     lower_right_pillar = pygame.Rect(545, 422, 30, 24)
@@ -816,28 +843,55 @@ def handle_pillar_collision():
     check_pillar_collision(player_rect, lower_left_pillar)
     check_pillar_collision(player_rect, lower_right_pillar)
 
+def change_angle_index():
+    MY.angle_index = random.randint(0, 71) 
+
+def fire_projectile(delta_time, projectile):
+    angle = MY.projectile_angles[MY.angle_index]
+    velocity = 4
+
+    if projectile.active:
+        projectile.location.x += math.cos(angle) * velocity 
+        projectile.location.y += math.sin(angle) * velocity
+        projectile.update(delta_time)
+        if projectile.location.x < MY.wall_height or projectile.location.x > WINDOW_WIDTH - MY.wall_height or projectile.location.y < MY.wall_height or projectile.location.y > WINDOW_LENGTH - (MY.wall_height + 20):
+            projectile.location = (WINDOW_WIDTH / 2, WINDOW_LENGTH/ 2 - 35)
+            change_angle_index()
+            projectile.update(delta_time)
+        if projectile.collides_with(MY.player):
+            MY.player_health -= MY.proj_damage
+            player_pain_anim()
+            projectile.location = (WINDOW_WIDTH / 2, WINDOW_LENGTH/ 2 - 35)
+            change_angle_index()
+            projectile.update(delta_time)
+
+def boss_attack(delta_time):
+    """shoot projectiles.""" 
+    for p in MY.projectiles:
+        p.active = True
+        fire_projectile(delta_time, p)
+
 
 def update_assets(delta_time):
-    # background
+    # Background
     MY.background.sprite = MY.background_anim
     MY.background.update(delta_time)
 
-    #player
+    # Player
     player_move_update(delta_time)
     player_attack_update()
     MY.player.update(delta_time)
 
-    #boss
+    # Boss
     if MY.player_hitbox.active and MY.boss.collides_with(MY.player_hitbox):
-        MY.boss.sprite = MY.boss_pain
+        MY.boss.sprite = MY.boss_pain 
     elif MY.is_boss_attacking:
         MY.boss.sprite = MY.boss_attack
         boss_attack(delta_time)
-        for p in MY.projectiles:
-            p.update(delta_time)
     else:
         MY.boss.sprite = MY.boss_idle
     MY.boss.update(delta_time)
+
 
 def check_win():
     """Check win condition and change state if a player has won the game"""

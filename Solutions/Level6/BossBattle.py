@@ -1,4 +1,4 @@
-#Runs the init.py file and imports the libraries
+# Runs the init.py file and imports the libraries
 from init import *
 
 def update(delta_time):
@@ -18,7 +18,7 @@ def update(delta_time):
     handle_pillar_collision()
 
     # Copied code here for Paul to lose health if he collides with the Creeper
-    if MY.player.collides_with(MY.boss):
+    if MY.player.collides_with_boss():
         player_pain_anim()
         MY.player_health -= 1
         MY.player_hitbox.active = False
@@ -41,7 +41,7 @@ def update(delta_time):
             MY.player.location.x + 20, MY.player.location.y)
 
     # Copied code here to reduce Creeper's health when he gets attacked
-    if MY.player_hitbox.active and MY.boss.collides_with(MY.player_hitbox):
+    if MY.player_hitbox.active and MY.boss.collides_with_hitbox():
         MY.boss_health -= 1
         MY.player_hitbox.active = False
 
