@@ -1,4 +1,4 @@
-#Runs the init.py file and imports the libraries
+# Runs the init.py file and imports the libraries
 from init import *
 
 def update(delta_time):
@@ -23,7 +23,7 @@ def update(delta_time):
 
 
 
-    #Adds the hit box above Paul
+    # Adds the hit box above Paul
     if MY.player_dir == UP:
         MY.player_hitbox.location = pygame.math.Vector2(
             MY.player.location.x + 20, MY.player.location.y - 20)

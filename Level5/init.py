@@ -22,13 +22,13 @@ RIGHT = 1
 UP = 2
 DOWN = 3
 
-#Timer duration variable
+# Timer duration variable
 TIME_LIMIT = 45
 
-# data used to store all lerps
+# Data used to store all lerps
 _data = {}
 
-#Note current challenge to hide certain game features
+# Note current challenge to hide certain game features
 challenge_type = ''
 
 #============================================================
@@ -87,7 +87,7 @@ def update(delta_time):
 
 def get_file(fileName):
     """Returns the absolute path of a file."""
-    #This grabs the image files from your folder.
+    # This grabs the image files from your folder.
     return path.join(path.dirname(__file__), fileName)
 
 def read_file(filename):
@@ -97,7 +97,7 @@ def read_file(filename):
     # Open our file for read.
     file = open(get_file(filename), 'r')
 
-    # put all the lines in an array
+    # Put all the lines in an array
     for line in file:
         array.append(line.rstrip())
 
@@ -326,15 +326,15 @@ class Object:
             if obj1.collides_with(obj2):
                 do_things();
         """
-        # check for early rejection.
+        # Check for early rejection.
         dist = (self.location - other_obj.location).length_squared()
-        # if distance between objects is greater then 64^2
+        # If distance between objects is greater then 64^2
         if dist > 4096:
             self.collision[DOWN] = self.collision[UP] = False
             self.collision[LEFT] = self.collision[RIGHT] = False
             return False
 
-        #get transformed rectangles
+        # Get transformed rectangles
         rect1 = self.get_transformed_rect()
         rect2 = other_obj.get_transformed_rect()
 
@@ -451,11 +451,11 @@ class Machine:
         """Runs the state given machine."""
         clock = pygame.time.Clock()
 
-        #Note current challenge to hide certain game features
+        # Note current challenge to hide certain game features
         global challenge_type
         challenge_type = challenge
         
-        # first run initialize!
+        # First run initialize!
         self.states[self.current]['initialize'](window)
 
         while True:
@@ -521,7 +521,7 @@ PLAYER_TERMINAL_VEL = 128
 
 TILE_SIZE = 16
 
-#Loads modifiable data for gameplay
+# Loads modifiable data for gameplay
 class Data:
     """Place modifiable data here."""
     tilemap = []
@@ -605,7 +605,7 @@ class Data:
     player = Object(paul_idle_right_sheet.image_at(0))
     player.sprite = paul_idle_right
 
-    #If on challenge 2, increase health
+    # If on challenge 2, increase health
     if(challenge_type == "CHALLENGE2"):
         player_health = PLAYER_CHALLENGE2_HEALTH
     else:
@@ -703,7 +703,7 @@ def initialize(window):
     MY.level_num = 1
     level_name_as_string = 'level' + str(MY.level_num)
 
-    #Load more difficult levels if in challenge 2
+    # Load more difficult levels if in challenge 2
     if challenge_type == "CHALLENGE2":
         tilemap = read_file("assets/challenge2/" + level_name_as_string + ".txt")
         load_level(tilemap)
@@ -715,30 +715,30 @@ def initialize(window):
 
 def draw(screen):
     """Draws the platformer state to the given screen."""
-    # draw tilemap walls
+    # Draw tilemap walls
     for wall in MY.walls:
         wall.draw(screen)
 
-    # draw tilemap hazard
+    # Draw tilemap hazard
     for hazard in MY.hazards:
         hazard.draw(screen)
     
     for door in MY.doors:
         door.draw(screen)
     
-    # draw batteries
+    # Draw batteries
     for battery in MY.batteries:
         battery.draw(screen)
     
-    # draw the timer if on challenge 1
+    # Draw the timer if on challenge 1
     if challenge_type == 'CHALLENGE1':
         draw_timer()
 
-    # draw player health_bar if on challenge 2
+    # Draw player health_bar if on challenge 2
     if challenge_type == 'CHALLENGE2':
         health_bar(screen, MY.player_health, 5, (128, 16), (MY.window.x * 0.75, 20))
 
-    # draw player
+    # Draw player
     MY.player.draw(screen)
     MY.exit_portal.draw(screen)
 

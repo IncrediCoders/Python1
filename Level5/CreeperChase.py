@@ -1,7 +1,7 @@
-#Runs the init.py file and imports the libraries
+# Runs the init.py file and imports the libraries
 from init import *
 
-#Checks for player input and updates the game
+# Checks for player input and updates the game
 def update(delta_time):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -11,8 +11,8 @@ def update(delta_time):
             MY.grounded = False
     if key_held_down(pygame.K_LEFT): 
         #TODO: Uncomment the two lines below
-        # MY.player.velocity.x = max(MY.player.velocity.x - PLAYER_ACCEL, -PLAYER_MAX_SPEED)
-        # MY.player.sprite = MY.paul_run_left
+        #MY.player.velocity.x = max(MY.player.velocity.x - PLAYER_ACCEL, -PLAYER_MAX_SPEED)
+        #MY.player.sprite = MY.paul_run_left
     #TODO: Copy the elif statement here for Paul's righthand movement
 
         #TODO: Copy the code here to set Paul's velocity 
@@ -43,7 +43,7 @@ def update(delta_time):
 
 
 
-    #Gravity
+    # Gravity
     MY.player.velocity.y = min(MY.player.velocity.y + GRAVITY_ACCEL, PLAYER_TERMINAL_VEL)
 
     #TODO: Write the code here to check for hazard collisions
@@ -57,10 +57,10 @@ def update(delta_time):
 
 
     
-    #Update Paul's location
+    # Update Paul's location
     MY.player.update(delta_time)
 
-    #Check for wall collisions
+    # Check for wall collisions
     touching = False
     for wall in MY.walls:
         if MY.player.collides_with(wall):
@@ -83,23 +83,23 @@ def update(delta_time):
     if not touching:
         MY.grounded = False
     
-    #Check for exit portal collision
+    # Check for exit portal collision
     if MY.player.collides_with(MY.exit_portal):
         if MY.level_num >= 1 and MY.level_num < 6:
-            #Load and run the next level
+            # Load and run the next level
             MY.level_num = MY.level_num + 1
             level_name_as_string = 'level' + str(MY.level_num)
             tilemap = read_file("assets/" + level_name_as_string + ".txt")
             load_level(tilemap)
         elif MY.level_num == 6:
-            #Show the Win screen
+            # Show the Win screen
             change(2) 
 
-    #Update level assets
+    # Update level assets
     update_level(delta_time)
 
 # Register the states
-Manager.register(sys.modules[__name__]) #The current file 
+Manager.register(sys.modules[__name__]) # The current file 
 Manager.register(Lose)
 Manager.register(Win)
 
