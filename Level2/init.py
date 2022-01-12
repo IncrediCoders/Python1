@@ -1,7 +1,7 @@
 #============================================================
 #PART 1: IMPORTING DEPENDENCIES AND ASSIGNING GLOBAL VARIABLES
 from os import path
-import pygame #Gives us our gaming functions
+import pygame # Gives us our gaming functions
 import textwrap
 
 #============================================================
@@ -11,7 +11,7 @@ def load_file(fileName):
     """
     Returns the absolute path of a file
     """
-    #This grabs the image files from your folder
+    # This grabs the image files from your folder
     return pygame.image.load(path.join(path.dirname(__file__), fileName))
 
 def display_text(screen, current_text):
@@ -30,9 +30,9 @@ def display_text(screen, current_text):
 """
 Initializes pygame, the font object, and the window's title
 """
-pygame.init() #Initializes all the imported pygame modules
-my_font = pygame.font.SysFont('Arial', 20) #Creates a font object from the system fonts
-pygame.display.set_caption('Class Introductions') #Adds the title of the game
+pygame.init() # Initializes all the imported pygame modules
+my_font = pygame.font.SysFont('Arial', 20) # Creates a font object from the system fonts
+pygame.display.set_caption('Class Introductions') # Adds the title of the game
 
 """
 Sets up the screen

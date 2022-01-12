@@ -1,6 +1,6 @@
-from init import * #Gives us many helpful functions
+from init import * # Gives us many helpful functions
 
-#Loads the background and images
+# Loads the background and images
 background = load_file("Assets/Background.png")
 annie_conda = load_file("Assets/AnnieConda.png")
 bayo_wolf = load_file("Assets/BayoWolf.png")
@@ -18,7 +18,7 @@ syntax_turtle = load_file("Assets/SyntaxTurtle.png")
 
 
 
-#Stores the character text into the variables
+# Stores the character text into the variables
 text_annie_conda  = "Hello! I'm Annie Conda. \nI come from Sanfran-Hissco, Cowlifornia. I've done a little coding. My favorite musician is Justin Timbersnake. I'm also partial to Hissy Elliott. My favorite Pigxar movie is Rattle-toulle. I love to make trivia games and word games. "
 text_bayo_wolf  = "I'm Bayo Wolf, from Little Squawk, Barkansas. I'm the best at SpaceWars and great at Mega Mechs in my Grendel mech. My favorite movies are The Dogfather, Jurassic Bark, Citizen Canine, and Stall Wars: The Empire Strikes Cats. My top actors are Brad Pitbull, Howly Berry, and Sandra Bulldog. "
 text_grafika_turtle  = "My name is Grafika Turtle. I live here, in Red-mutt, Washeepton. Now I get to go to school with my best friend. Hi, Paul! I love the movie Wizard of Paws, and my favorite artist is Pablo Pigcasso. I like coding in Turtle Graphics, and my brother Syntax and I are pretty good at coding card games. "
@@ -32,10 +32,10 @@ text_sb_turtle = "Hey. I'm SB Turtle, from New-ark, Moo Jersey. My top actresses
 text_sidewinder = "I'm SideWinder, from Salt-Snake City, Mewtah. I'm the best at SpaceWars, despite what Bayo thinks. My favorite movie is Snakes on a Glider, my favorite actor is Sylvester Stallion, and my favorite musician is Nine-Inch Snails. Jitter Bug has good taste. "
 text_syntax_turtle = "What's up? Syntax Turtle in the house. I'm from here, Red-Mutt, with my twin sis Grafika. My favorite actress is Natalie Porkman, and my favorite artist is Lizardnardo Da Vinci. My top games are \"Skate and Fly\" and Porkymon, and I'm looking forward to making a Codu Kids card game! "
 #TODO: Uncomment the introduction for RAM & ROM and Amphib Ian below
-##text_ram_rom = "Heya! We're RAM and ROM. We came from the other side of the country, Woolshington DC. We like Meryl Sheep, Dustin Hoofman, and Eva Longhornia. Our favorite musician is Lady Baa-Baa, and our sensei is the Dali Llama. We're working on a top-secret project! "
-##text_amphib_ian  = "Yo, yo. What's hopping, peeps? Name's Amphib Ian. My launchpad is Croaklahoma City. My choice singer is Demi Lovatoad. And my fave artwork is \"Mourning Son\" by Edwart Hopper. My go-to game to code is Froggy Road. That's it. I'll catch you on the flip flop! "
+#text_ram_rom = "Heya! We're RAM and ROM. We came from the other side of the country, Woolshington DC. We like Meryl Sheep, Dustin Hoofman, and Eva Longhornia. Our favorite musician is Lady Baa-Baa, and our sensei is the Dali Llama. We're working on a top-secret project! "
+#text_amphib_ian  = "Yo, yo. What's hopping, peeps? Name's Amphib Ian. My launchpad is Croaklahoma City. My choice singer is Demi Lovatoad. And my fave artwork is \"Mourning Son\" by Edwart Hopper. My go-to game to code is Froggy Road. That's it. I'll catch you on the flip flop! "
 
-#Assigns our character and text variables
+# Assigns our character and text variables
 current_character = annie_conda
 current_text = text_annie_conda
 
