@@ -2,46 +2,50 @@
 from init import *
 
 def update(delta_time):
-    # Checks if player collides with the walls
+    # Check if Paul collides with the walls
     if MY.player.location.x < MY.wall_height:
         MY.player.location.x = MY.wall_height
-    # Uncommented Lines 9-10 to make sure that Paul doesn't walk through the wall on the right side of the screen
     if MY.player.location.x > WINDOW_WIDTH - MY.wall_height:
         MY.player.location.x = WINDOW_WIDTH - MY.wall_height
-    # Uncommented Lines 12-13 to make sure that Paul doesn't walk through the wall on the top of the screen
     if MY.player.location.y < MY.wall_height:
         MY.player.location.y = MY.wall_height
-    # Copied code here to make sure that Paul doesn't walk through the wall on the bottom of the screen
     if MY.player.location.y > WINDOW_LENGTH - (MY.wall_height + 15):
         MY.player.location.y = WINDOW_LENGTH - (MY.wall_height + 15)
 
     handle_pillar_collision()
 
-    # Copied code here for Paul to lose health if he collides with the Creeper
+    # Paul loses health if he collides with the Creeper
     if MY.player.collides_with_boss():
         player_pain_anim()
         MY.player_health -= 1
         MY.player_hitbox.active = False
 
-    # Uncommented Lines 27-29 to add the hit box above Paul
+    # Wrote code here to play a sound when Paul gets hit
+    if MY.player.collides_with_projectile():
+        mixer.music.load("assets/Paul_Hit.wav")
+        mixer.music.play()
+        return True
+
+    # Add Paul's hitbox depending on his direction
     if MY.player_dir == UP:
         MY.player_hitbox.location = pygame.math.Vector2(
             MY.player.location.x + 20, MY.player.location.y - 20)
-    # Copied code here to add the hit box below Paul
     elif MY.player_dir == DOWN:
         MY.player_hitbox.location = pygame.math.Vector2(
             MY.player.location.x - 10, MY.player.location.y + 25)
-    # Copied code here to add the hit box to the left of Paul
     elif MY.player_dir == LEFT:
         MY.player_hitbox.location = pygame.math.Vector2(
             MY.player.location.x - 20, MY.player.location.y)
-    # Wrote code here to add the hit box to the right of Paul
     elif MY.player_dir == RIGHT:
         MY.player_hitbox.location = pygame.math.Vector2(
             MY.player.location.x + 20, MY.player.location.y)
 
-    # Copied code here to reduce Creeper's health when he gets attacked
+    # Reduce Creeper's health when he gets attacked
     if MY.player_hitbox.active and MY.boss.collides_with_hitbox():
+        # Wrote code here to play a sound when Creeper is attacked
+        mixer.music.load("assets/Boss_Hit.wav")
+        mixer.music.set_volume(0.4)
+        mixer.music.play()
         MY.boss_health -= 1
         MY.player_hitbox.active = False
 
@@ -50,6 +54,14 @@ def update(delta_time):
     update_assets(delta_time)
     
     check_win()
+
+    # Wrote code here to play a sound when Paul wins or loses
+    if(MY.boss_health <= 0):
+        mixer.music.load("assets/Win.wav")
+        mixer.music.play()
+    elif(MY.player_health <= 0):
+        mixer.music.load("assets/Lose.wav")
+        mixer.music.play()
 
     check_events()
 

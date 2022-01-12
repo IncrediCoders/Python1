@@ -6,6 +6,7 @@ import random
 import time
 import sys
 import pygame
+from pygame import mixer
 
 # colors
 WHITE = [225, 225, 225]
@@ -25,6 +26,9 @@ _data = {}
 
 X_VALUE = 0
 Y_VALUE = 0
+
+# mixer for sound
+mixer.init()
 
 #============================================================
 #PART 2: CREATING A FRAMEWORK OF GENERAL CLASSES AND FUNCTIONS
@@ -310,6 +314,7 @@ class Object:
         self.rotation = 0
         self.active = False
         self.collision = [False] * 5
+        self.hit = False
 
     def __setattr__(self, name, value):
         if name == "location" or name == "velocity":
@@ -440,6 +445,12 @@ class Object:
             return True
         return False
 
+    def collides_with_projectile(self):
+        if (self.hit == True):
+            self.hit = False
+            return True
+        else:
+            return False
 
     def snap_to_object_x(self, other_obj, facing):
         """
@@ -861,9 +872,11 @@ def fire_projectile(delta_time, projectile):
         if projectile.collides_with(MY.player):
             MY.player_health -= MY.proj_damage
             player_pain_anim()
+            MY.player.hit = True
             projectile.location = (WINDOW_WIDTH / 2, WINDOW_LENGTH/ 2 - 35)
             change_angle_index()
             projectile.update(delta_time)
+
 
 def boss_attack(delta_time):
     """shoot projectiles.""" 
