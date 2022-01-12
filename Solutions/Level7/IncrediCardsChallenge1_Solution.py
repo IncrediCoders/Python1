@@ -1,4 +1,4 @@
-from init import * #Imports code from the init.py file
+from init import * # Imports code from the init.py file
 
 # Create all of the Cards		
 annie_conda = Card('Annie Conda', 'python', 'java', 'bash', annie_conda_img, icon_python)
@@ -71,14 +71,14 @@ class PlayScreen(GameState):
 		self.attacker = self.player1 if self.player1.active_turn else self.player2
 		self.defender = self.player1 if not self.player1.active_turn else self.player2
 		
-		#Updated the card display data for both players (Hint: look at lines 585-624 in the init.py file)
+		# Updated the card display data for both players (Hint: look at lines 585-624 in the init.py file)
 		self.player1_card_display = CardDisplay(self.player1, player1_card_display_data_challenge)
 		self.player2_card_display = CardDisplay(self.player2, player2_card_display_data_challenge)
 
 		self.player1_healthbar = Healthbar(self.player1, player1_healthbar_data)
 		self.player2_healthbar = Healthbar(self.player2, player2_healthbar_data)
 		
-		#Updated the on deck data for both players (Hint: look at lines 626-677 in the init.py file)
+		# Updated the on deck data for both players (Hint: look at lines 626-677 in the init.py file)
 		self.player1_ondeck = OnDeck(self.player1, player1_ondeck_data_challenge)
 		self.player2_ondeck = OnDeck(self.player2, player2_ondeck_data_challenge)
 
@@ -199,7 +199,7 @@ states = {
 		"Title" : TitleScreen(),
 		"GetNames": GetNameScreen(),
 		"CoinFlip": CoinFlipScreen(),
-		#Added a second argument (boolean True) to the ChooseHandScreen parameters
+		# Added a second argument (boolean True) to the ChooseHandScreen parameters
 		"ChooseHand" : ChooseHandScreen(DECK, True),
 		"Game" : PlayScreen(),
 		"Victory" : VictoryScreen()

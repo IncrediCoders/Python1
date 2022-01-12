@@ -23,7 +23,7 @@ CENTER_COORD = (X_CENTER, Y_CENTER)
 WINDOW = (WINDOW_WIDTH, WINDOW_HEIGHT)
 BACKGROUND_IMAGE = pygame.image.load(path.join(assets_path, "IncrediCardsBackground.png")) 
 TITLE_IMAGE = pygame.image.load(path.join(assets_path, "TitleCards.png")) 
-TITLE_LOGO = pygame.image.load(path.join(assets_path, "IncredicodersLogo.png"))
+TITLE_LOGO = pygame.image.load(path.join(assets_path, "IncredicodersLogo.png")) 
 CARD_L_POS = pygame.math.Vector2(200,305)
 CARD_R_POS = pygame.math.Vector2(800,305)
 INSTRUCTIONS = ["Click TechType Attack", "to flip the coin: heads", "does 3 damage and", "tails misses.", "Be sure to check out", "your card's weaknesses", "and resistance. You can", "give more damage to a", "weak Tech Type, and you", "can receive less damage if", "you're resistant to a", "Tech Type."]
@@ -82,9 +82,7 @@ class AnimatedObject(GameObject):
 				
 	def animate(self):
 		self.current_frame = (self.current_frame + 1) % len(self.images)
-		#bottom = self.rect.bottom
 		self.image = self.images[self.current_frame]			
-		#self.rect = self.image.get_rect(bottom = bottom)
 		
 	def draw(self, surf):
 		surf.blit(self.image, self.rect)
@@ -101,19 +99,19 @@ class Card(GameObject):
 		self.typelogo = typelogo
 		self.coded_type = coded_type
 		self.coded_attack = coded_attack
-		# coded types are: extra_hit, extra_turn, gain_health, opponent_tails
+		# Coded types are: extra_hit, extra_turn, gain_health, opponent_tails
 		self.s_flag = "" if name.endswith('s') else "s"
 	
 	def attacked_by(self, offense_card):
-		damage = 3 # default value
+		damage = 3 # Default value
 		
-		# check strength/weakness and determine damage	
+		# Check strength/weakness and determine damage	
 		if offense_card.techtype == self.resistance:
 			damage = damage - 1
 		elif offense_card.techtype == self.weakness:
 			damage = damage + 1
 		
-		# take damage and return the damage amount
+		# Take damage and return the damage amount
 		self.take_damage(damage)
 		return damage
 
@@ -142,7 +140,7 @@ class Card(GameObject):
 
 class Player(object):
 	def __init__(self, name):
-		self.hand = [] # list of Cards
+		self.hand = [] # List of Cards
 		self.name = name
 		self.current_card = None
 		self.active = True
@@ -462,7 +460,6 @@ class VictoryScreen(GameState):
 			
 	def draw(self, surf):
 		super().draw(surf)
-		# surf.blit(self.victor_msg, self.victor_msg_rect)
 		self.victor_box.draw(surf)
 		self.play_button.draw(surf)
 		self.exit_button.draw(surf)
@@ -554,10 +551,10 @@ ondeck_titlebox = (255,235,210)
 clock = pygame.time.Clock()
 TURN = 1
 	
-# on deck box 
+# On Deck box 
 on_deck_box_size = (250,100)
 
-# healthbar locations		
+# Healthbar locations		
 player1_healthbar_data = {
 					"name_x" : 68,
 					"name_y" : 17,
@@ -582,7 +579,7 @@ player2_healthbar_data = {
 					"font_color" : hb_grey	
 					}	
 
-# card display locations and sizes
+# Card Display locations and sizes
 player1_card_display_data = {
 					"active_box_pos" : (23, 15),
 					"active_box_pos_s" : (25, 17),
@@ -623,7 +620,7 @@ player2_card_display_data_challenge = {
 					"active_box_size_s" : (350,675)
 					}
 
-# ondeck boxes locations and sizes					
+# On Deck boxes locations and sizes					
 player1_ondeck_data = {
 					"box_size" : (250, 100),
 					"box_pos" : (75, 562),
@@ -675,10 +672,9 @@ player2_ondeck_data_challenge = {
 					"card_box_size" : (200, 25),
 					"on_deck_label_pos" : (24, 6),
 					}
-
 coin_img = pygame.image.load(path.join(assets_path, "CoinFlip.png"))
 
-# icon images
+# Icon images
 icon_bash = pygame.image.load(path.join(assets_path, "IconBash.png"))
 icon_java = pygame.image.load(path.join(assets_path, "IconJava.png"))
 icon_python = pygame.image.load(path.join(assets_path, "IconPython.png"))
@@ -687,7 +683,7 @@ icon_small_basic = pygame.image.load(path.join(assets_path, "IconSmallBasic.png"
 icon_ondeck = pygame.image.load(path.join(assets_path, "IconOnDeck.png"))
 icon_codedattack = pygame.image.load(path.join(assets_path, "IconCodedAttack.png"))
 
-# card images
+# Card images
 annie_conda_img = pygame.image.load(path.join(assets_path, "AnnieConda.png")).convert()
 bayo_wolf_img = pygame.image.load(path.join(assets_path, "BayoWolf.png")).convert()
 captain_javo_img = pygame.image.load(path.join(assets_path, "CaptainJavo.png")).convert()
@@ -770,7 +766,7 @@ class Coin(AnimatedObject):
 	def update(self, dt):
 		if self.frames > 0:
 			self.anim_time += dt
-			if self.anim_time > 75: # change number for speed, larger number = slower speed for coin flip animation
+			if self.anim_time > 75: # Change number for speed, larger number = slower speed for coin flip animation
 				self.animate()
 				self.frames -= 1
 				self.anim_time = 0
@@ -852,7 +848,7 @@ class InfoBox(pygame.Surface):
 		self.font_color = font_color
 		self.alpha = alpha
 		self.set_alpha(alpha)
-		self.input_box = input_box # used if there is a text box on the panel
+		self.input_box = input_box # Used if there is a text box on the panel
 		self.rect = self.get_rect(center = center_pos)
 
 		self.set_text_surfs(self.text)
@@ -864,7 +860,7 @@ class InfoBox(pygame.Surface):
 		for line in text:
 			surf = self.font.render(line, True, self.font_color, self.bg_color)
 		
-			# this calculates the spacing and positioning of the lines of text, taking into account
+			# This calculates the spacing and positioning of the lines of text, taking into account
 			# whether there is an input box drawn on the surface.
 			if self.input_box:
 				division = (self.rect.height // (len(text) + 2))
@@ -966,7 +962,7 @@ class OnDeck(pygame.Surface):
 		self.fill(ondeck_ltblue)
 		self.set_alpha(85)
 		
-		# on deck title box
+		# On Deck title box
 		self.ondeck_title = Label("On Deck", icon_ondeck, title_x, title_y, title_w, title_h, cardshand_font, ondeck_text)
 		
 		self.update()
@@ -1065,7 +1061,7 @@ class Healthbar(object):
 		pygame.draw.rect(surf, hb_red, (self.healthbar_pos, (self.width, self.height)), 0, 2)
 		pygame.draw.rect(surf, p1_color, (self.healthbar_pos, (p1_bar, self.height)), 0, 2)
 		
-		# add highlight to healthbars
+		# Add highlight to healthbars
 		hl_w = p1_bar-10 if (p1_bar-10) >0 else 0
 		hl_pos = (self.name_x + 5, self.name_y + 48)
 		hl_size = (hl_w, self.height/3)
@@ -1129,7 +1125,7 @@ class CardDisplay(object):
 			pygame.draw.rect(surf, active_cyan, (self.box_pos, self.active_box_size), 3, 10)
 			surf.blit(self.active_surface_s, self.box_pos_s)
 	
-		# draw shadow first
+		# Draw shadow first
 		surf.blit(self.card_shadow, self.shadow_pos)
 		self.active_card.draw(surf)
 
@@ -1156,7 +1152,7 @@ class DialogBox(object):
 			surf.blit(self.surface, self.rect)
 			pygame.draw.rect(surf, (84,84,84), self.rect, 3)
 			
-			# render Round Number
+			# Render round number
 			round_num = round_font.render(self.rd, True, round_dark_blue)
 			round_surf = round_num.get_rect()
 			round_surf.top = self.position[1] + 10
@@ -1164,19 +1160,19 @@ class DialogBox(object):
 			
 			surf.blit(round_num, round_surf)
 		
-			# render line separator
+			# Render line separator
 			pygame.draw.rect(surf, round_dark_blue, ((self.position[0] + 5, self.position[1] + 40), (190, 3)))
-			# render current player
+			# Render current player
 			current_player = dialog_bold.render("Player:", True, BLACK)
 			surf.blit(current_player, (self.position[0] + 10, self.position[1] + 70))
 			player_name = dialog_font.render(self.player, True, BLACK)
 			surf.blit(player_name, (self.position[0] + current_player.get_width() + 12, self.position[1] + 70))
-			# render Coin Toss
+			# Render Coin Toss
 			coin_toss = dialog_bold.render("Coin Toss:", True, BLACK)
 			surf.blit(coin_toss, (self.position[0] + 10, self.position[1] + 100))
 			coin_result = dialog_font.render(self.coin, True, BLACK)
 			surf.blit(coin_result, (self.position[0] + 10 + coin_toss.get_width(), self.position[1] + 100))
-			# render turn result - may be over multiple lines
+			# Render turn result - may be over multiple lines
 			x = self.position[0] + 10
 			y = self.position[1] + 130
 			for line in self.status:

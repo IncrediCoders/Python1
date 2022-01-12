@@ -1,4 +1,4 @@
-from init import * #Imports code from the init.py file
+from init import * # Imports code from the init.py file
 
 # Create all of the Cards
 #TODO: Add the Coded Attack names for each card as the last argument for creating the Card object (the first one is done for you)
@@ -127,7 +127,7 @@ class PlayScreen(GameState):
 			message = add_to_message(message, "{}".format(self.attacker.name))
 			message = add_to_message(message, "{}".format(self.side_up))
 
-			# Tech Type Attack Logic
+			# Tech Type Attack logic
 			if not self.coded_attack:
 				if self.side_up == 'Heads':
 					damage = defense_card.attacked_by(offense_card)
@@ -155,7 +155,7 @@ class PlayScreen(GameState):
 				# Switch active player
 				self.switch_active_player()
 			
-			# Coded Attack Logic
+			# Coded Attack logic
 			else:
 				#TODO: Add the code to make the defense card take 1 damage (Hint: Cards have a method called take_damage())
 				

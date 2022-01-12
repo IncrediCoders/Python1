@@ -1,4 +1,4 @@
-from init import * #Imports code from the init.py file
+from init import * # Imports code from the init.py file
 
 # Create all of the Cards		
 annie_conda = Card('Annie Conda', 'python', 'java', 'bash', annie_conda_img, icon_python)

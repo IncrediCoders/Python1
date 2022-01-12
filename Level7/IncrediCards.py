@@ -1,4 +1,4 @@
-from init import * #Imports code from the init.py file
+from init import * # Imports code from the init.py file
 
 # Create all of the Cards		
 annie_conda = Card('Annie Conda', 'python', 'java', 'bash', annie_conda_img, icon_python)
@@ -121,7 +121,7 @@ class PlayScreen(GameState):
 			
 			
 			
-			#This code creates and adds the turn's message
+			# This code creates and adds the turn's message
 			message = add_to_message("", "{}".format(self.turn_counter))
 			message = add_to_message(message, "{}".format(self.attacker.name))
 			message = add_to_message(message, "{}".format(self.side_up))

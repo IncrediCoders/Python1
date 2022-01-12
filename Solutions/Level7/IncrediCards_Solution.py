@@ -1,4 +1,4 @@
-from init import * #Imports code from the init.py file
+from init import * # Imports code from the init.py file
 
 # Create all of the Cards		
 annie_conda = Card('Annie Conda', 'python', 'java', 'bash', annie_conda_img, icon_python)
@@ -19,7 +19,7 @@ sidewinder = Card('Sidewinder', 'python', 'java', 'bash', sidewinder_img, icon_p
 syntax_turtle = Card('Syntax Turtle', 'small_basic', 'bash', 'scratch', syntax_turtle_img, icon_small_basic)
 viralmuto = Card('Viralmuto', 'bash', 'python', 'scratch', viralmuto_img, icon_bash)
 virobotica = Card('Virobotica', 'bash', 'python', 'small_basic', virobotica_img, icon_bash)
-#Copied the code here to add the Virobots and Woodchuck Norris cards
+# Copied the code here to add the Virobots and Woodchuck Norris cards
 virobots = Card('Virobots', 'bash', 'python', 'small_basic', virobots_img, icon_bash)
 woodchuck_norris = Card('Woodchuck Norris', 'scratch', 'small_basic', 'java', woodchuck_norris_img, icon_scratch)
 
@@ -47,7 +47,7 @@ DECK.append(virobotica)
 DECK.append(virobots)
 DECK.append(woodchuck_norris)
 
-#Copied the code here to shuffle the cards
+# Copied the code here to shuffle the cards
 random.shuffle(DECK)
 
 class PlayScreen(GameState):
@@ -86,21 +86,21 @@ class PlayScreen(GameState):
 		
 	def get_event(self, event):
 		if not self.flipping:
-			#Added the code that checks if the player clicked the TechType Attack button
+			# Added the code that checks if the player clicked the TechType Attack button
 			self.tech_attack_button.get_event(event)
 	
-		#Added the code here to check if the players click an On Deck card
+		# Added the code here to check if the players click an On Deck card
 		self.player1_ondeck.get_event(event)
 		self.player2_ondeck.get_event(event)
 		
 	def button_action(self, params):
-		#Wrote the code here to flip the coin when the player clicks the button
+		# Wrote the code here to flip the coin when the player clicks the button
 		self.side_up = self.flip_coin()
 		self.coin.set_side(self.side_up)
 		self.flipping = True
 				
 	def update(self, dt):
-		#Wrote the code here to update the healthbars, decks, and cards
+		# Wrote the code here to update the healthbars, decks, and cards
 		self.player1_healthbar.update()
 		self.player2_healthbar.update()
 		
@@ -110,18 +110,18 @@ class PlayScreen(GameState):
 		self.player1_card_display.update()
 		self.player2_card_display.update()
 		
-		#Copied the code that checks if the player clicked the button
+		# Copied the code that checks if the player clicked the button
 		if self.flipping:
 			self.flipping = self.coin.update(dt)
 			if not self.flipping:
 				self.attacking = True
 		
 		if self.attacking:
-			#Wrote the code for choosing the attacker and defender cards
+			# Wrote the code for choosing the attacker and defender cards
 			offense_card = self.attacker.current_card 
 			defense_card = self.defender.current_card
 			
-			#This code creates and adds the turn's message
+			# This code creates and adds the turn's message
 			message = add_to_message("", "{}".format(self.turn_counter))
 			message = add_to_message(message, "{}".format(self.attacker.name))
 			message = add_to_message(message, "{}".format(self.side_up))
