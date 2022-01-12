@@ -164,20 +164,20 @@ class PlayScreen(GameState):
 				if self.side_up == 'Heads':
 					# Execute Coded Attack - four different paths:
 
-					# Extra Hit: This deals 1 more damage to the opponent and switches active player
+					# Extra Hit - This deals 1 more damage to the opponent and switches active player
 					if offense_card.coded_type == 'extra_hit':
 						#TODO: Add the code to make the defense card take 1 damage 
 
 						turn_msg = "{}'{} {} landed, dealing 2 damage to {} this turn!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, defense_card.name)
 						#TODO: Add the code to switch the active player
 
-					# Extra Turn: This gives the active player an extra turn, does not switch active player
+					# Extra Turn - This gives the active player an extra turn, does not switch active player
 					if offense_card.coded_type == 'extra_turn':
 						turn_msg = "{}'{} {} hit - {} took 1 damage and {} gets another turn!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, defense_card.name, self.attacker.name)
-					# Gain Health: This lets the active card (or any other card in the player's hand with damage) to gain 1 HP and switches active player
+					# Gain Health - This lets the active card (or any other card in the player's hand with damage) to gain 1 HP and switches active player
 					if offense_card.coded_type == 'gain_health':
 						#TODO: Add the code to make the offense player gain 1 health point (Hint: Players have a method called gain_health())
-						healed_card = # add code here
+						healed_card = # Add code here
 						if healed_card is None:
 							turn_msg = "{}'{} {} worked but all cards had max health!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack)
 						else:
@@ -185,7 +185,7 @@ class PlayScreen(GameState):
 						#TODO: Add the code to switch the active player
 						
 
-					# Opponent Tails: This forces the next roll to be a 'Tails' and switches the active player
+					# Opponent Tails - This forces the next roll to be a 'Tails' and switches the active player
 					if offense_card.coded_type == 'opponent_tails':
 						#TODO: Add the code to set the game's attribute for forcing tails to be 'True'
 						
