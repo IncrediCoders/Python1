@@ -8,7 +8,7 @@ import time
 import random
 from os import path
 
-#Global color values
+# Global color values
 WHITE = [225, 225, 225]
 BLACK = [0, 0, 0]
 YELLOW = [255, 255, 0]
@@ -16,16 +16,16 @@ RED = [255, 0, 0]
 GREEN = [0, 128, 0, 128]
 BLUE = [0, 192, 255, 128]
 
-#Global direction variables
+# Global direction variables
 LEFT = 0
 RIGHT = 1
 UP = 2
 DOWN = 3
 
-#For making asteroids appear only in challenge 2
+# For making asteroids appear only in challenge 2
 LEVEL = ''
 
-# data used to store all lerps
+# Data used to store all lerps
 _data = {}
 
 #============================================================
@@ -77,7 +77,7 @@ def update(delta_time):
             to_delete.append(obj)
         elif lerp_list[0].update(obj, delta_time):
             lerp_list.pop(0)
-            # remove duplicates
+            # Remove duplicates
             while lerp_list and lerp_list[0].end == getattr(obj, lerp_list[0].member):
                 lerp_list.pop(0)
 
@@ -99,13 +99,13 @@ class Machine:
                             'cleanup': module.cleanup})
 
     def run(self, screen, window, fill_color, level):
-        #Mark level so asteroids only appear in challenge 2
+        # Mark level so asteroids only appear in challenge 2
         global LEVEL 
         LEVEL = level
 
         """Runs the state given machine."""
         clock = pygame.time.Clock()
-        # first run initialize!
+        # First run initialize!
         self.states[self.current]['initialize'](window)
 
         while True:
@@ -144,7 +144,7 @@ def stop():
 
 def get_file(fileName):
     """Returns the absolute path of a file."""
-    #This grabs your files from your folder.
+    # This grabs your files from your folder.
     return path.join(path.dirname(__file__), fileName)
 
 class Image:
@@ -377,15 +377,15 @@ class Object:
             if obj1.collides_with(obj2):
                 do_things();
         """
-        # check for early rejection.
+        # Check for early rejection.
         dist = (self.location - other_obj.location).length_squared()
-        # if distance between objects is greater then 64^2
+        # If distance between objects is greater then 64^2
         if dist > 4096:
             self.collision[DOWN] = self.collision[UP] = False
             self.collision[LEFT] = self.collision[RIGHT] = False
             return False
 
-        #get transformed rectangles
+        # Get transformed rectangles
         rect1 = self.get_transformed_rect()
         rect2 = other_obj.get_transformed_rect()
 
@@ -536,14 +536,14 @@ def key_held_down(key):
 
 #============================================================
 #PART 3: SETUP FOR THE SPACEWARS GAME
-#Initializes the state manager
+# Initializes the state manager
 Manager = Machine()
 
-#Initializes the game window and game screen
+# Initializes the game window and game screen
 WINDOW = pygame.math.Vector2(900, 500)
 SCREEN = start(WINDOW, "Space Wars Tournament")
 
-#Loads sprites, sounds, and images
+# Loads sprites, sounds, and images
 IMAGE_BACKGROUND = Image("assets/Background.jpg")
 IMAGE_PLAYER1 = Image("assets/Player1.png")
 IMAGE_PLAYER2 = Image("assets/Player2.png")
@@ -564,14 +564,14 @@ PROJECTILE_ANIMATION = [None,
 IMAGE_GAMEOVER = Image("assets/GameOverBackground.png")
 IMAGE_BUTTON = Image("assets/ReplayButton.png")
 
-# constants for movement and gameplay
+# Constants for movement and gameplay
 ship_rotate = 120
 ship_max_speed = 500
 ship_accel = 10
 BULLET_SPEED = 1000
 PLAYER_MAX_HP = 10
 
-#Loads the changeable data for gameplay
+# Loads the changeable data for gameplay
 class Data:
     player1 = Object(IMAGE_PLAYER1)
     player1_hp = 1
@@ -588,7 +588,7 @@ class Data:
     display_text = TextObject(WHITE, 24, "")
     state = 0
 
-#Initializes the data
+# Initializes the data
 MY = Data()
 
 def health_bar(screen, health, max_health, max_size, location):
@@ -658,7 +658,7 @@ def initialize(window):
         obj.velocity = rand_location(-50, 50)
         obj.scale = 2
 
-        #Hides asteroids in main and challenge 1
+        # Hides asteroids in main and challenge 1
         if LEVEL == "CHALLENGE2":
             obj.active = True
         else:
@@ -716,11 +716,11 @@ def cleanup():
 
 class GameOver:
     """Restarter class to be loaded if Player 1 wins."""
-    # load sprites
+    # Load sprites
     IMAGE_GAMEOVER = Image("assets/GameOverBackground.png")
     IMAGE_BUTTON = Image("assets/ReplayButton.png")
 
-    # modifiable data
+    # Modifiable data
     class Data:
         """place changable state variables here."""
         gameoverbackground = Object(IMAGE_GAMEOVER)
@@ -787,7 +787,7 @@ def update_bullets(delta_time):
     """Update the bullets and check for collisions"""
     # Update bullets
     for i in range(len(MY.bullets)):
-        # ignore if not active
+        # Ignore if not active
         if MY.bullets[i].active:
             MY.bullets[i].update(delta_time)
             # Destroy bullets that hit the screen edge.
@@ -797,7 +797,7 @@ def update_bullets(delta_time):
             for j in range(len(MY.asteroids)):
                 if MY.bullets[i].collides_with(MY.asteroids[j]):
                     MY.bullets[i].active = False
-            #check collisions
+            # Check collisions
             check_collision(i)
 
 def update_players(delta_time):
