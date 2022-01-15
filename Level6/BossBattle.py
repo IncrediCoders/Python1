@@ -59,4 +59,4 @@ Manager.register(GameOver)
 Manager.register(PlayAgain)
 
 # Run the game
-Manager.run(SCREEN, WINDOW, BLACK)
+Manager.run(SCREEN, WINDOW, BLACK, "MAIN")

@@ -27,6 +27,9 @@ _data = {}
 X_VALUE = 0
 Y_VALUE = 0
 
+# Note current challenge to hide certain game features
+current_challenge = ''
+
 # mixer for sound
 mixer.init()
 
@@ -162,9 +165,14 @@ class Machine:
         for key in to_delete:
             del _data[key]
 
-    def run(self, screen, window, fill_color):
+    def run(self, screen, window, fill_color, challenge):
         """Runs the state given machine."""
         clock = pygame.time.Clock()
+
+        # Note current challenge to hide certain game features
+        global current_challenge
+        current_challenge = challenge
+
         # First run initialize!
         self.states[self.current]['initialize'](window)
 
@@ -649,7 +657,7 @@ class Data:
     projectile_sheet = SpriteSheet("assets/PlasmaBall.png", (32, 32))
     projectile_anim = Animator(projectile_sheet, 6)
     projectile = Object(projectile_sheet.image_at(0))
-    proj_damage = 1
+    proj_damage = 10
     num_projectiles = 0
     x_angle = 3
     y_angle = 3
@@ -658,6 +666,7 @@ class Data:
         projectile_angles.append(i * 5) 
     angle_index = 0
     projectiles = []
+    shield_projectiles = []
     # Miscellaneous data
     wall_height = 70
     pillar_width = 28
@@ -692,13 +701,16 @@ def initialize(window):
     MY.boss_defence_area = pygame.Rect(375, 340, 50, 15)
     pygame.time.set_timer(MY.boss_attack_event, 100)
     # Set up projectiles
-    MY.num_projectiles = 0
-    while MY.num_projectiles < 1:
+    proj = Object(PROJECTILE_IMAGE)
+    proj.location = (window.x / 2, window.y/ 2 - 35)
+    proj.sprite = MY.projectile_anim
+    MY.projectiles.append(proj)
+    for i in range(3):
         proj = Object(PROJECTILE_IMAGE)
-        proj.location = (window.x / 2, window.y/ 2 - 35)
+        proj.location = (window.x / 3, window.y/2 )
         proj.sprite = MY.projectile_anim
-        MY.projectiles.append(proj)
-        MY.num_projectiles += 1
+        MY.shield_projectiles.append(proj)
+
 
 def draw(screen):
     """Draws the state to the given screen for BossBattle."""
@@ -750,6 +762,11 @@ def draw(screen):
     for i in range(len(MY.projectiles)):
         if MY.projectiles[i].active:
             MY.projectiles[i].draw(screen)
+
+    # If in Challenge 2 draw shield projectiles
+    if(current_challenge == "CHALLENGE2"):
+        for i in range(len(MY.shield_projectiles)):
+            MY.shield_projectiles[i].draw(screen)
 
     # Draw the boss
     MY.boss.draw(screen)
