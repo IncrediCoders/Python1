@@ -39,20 +39,20 @@ def update(delta_time):
         MY.boss_health -= 1
         MY.player_hitbox.active = False
 
-    # Wrote code for projectiles that have a square path around the Creeper
-    for projectile in MY.shield_projectiles:
-        # Wrote code to move the projectile to the right
-        if(projectile.location.x >= 320 and projectile.location.x < 480 and projectile.location.y == 240):
-            projectile.location.x += MY.projectile_velocity
-        # Wrote code to move the projectile down
-        elif(projectile.location.x == 480 and projectile.location.y >= 240 and projectile.location.y < 400): 
-            projectile.location.y += MY.projectile_velocity
-        # Wrote code to move the projectile to the left
-        elif(projectile.location.x <= 480 and projectile.location.x > 320 and projectile.location.y == 400): 
-            projectile.location.x -= MY.projectile_velocity
-        # Wrote code to move the projectile up
-        elif(projectile.location.x == 320 and projectile.location.y > 240 and projectile.location.y <= 400): 
-            projectile.location.y -= MY.projectile_velocity
+    #TODO: Write code for projectiles that have a square path around the Creeper
+
+        #TODO: Write code to move the projectile to the right
+
+
+        #TODO: Write code to move the projectile down
+        
+        
+        #TODO: Write code to move the projectile to the left
+        
+        
+        #TODO: Write code to move the projectile up
+        
+        
         # Paul loses health if he collides with a projectile
         if projectile.collides_with(MY.player):
             MY.player_health -= MY.proj_damage
