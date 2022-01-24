@@ -671,6 +671,7 @@ class Data:
     projectiles = []
     shield_projectiles = []
     projectile_velocity = 2
+    s_proj_count = 0
     # Miscellaneous data
     wall_height = 70
     pillar_width = 28
@@ -710,12 +711,13 @@ def initialize(window):
     proj.sprite = MY.projectile_anim
     MY.projectiles.append(proj)
 
-    s_proj = Object(PROJECTILE_IMAGE)
-    s_proj.location = (window.x / 2.5, window.y / 2.5)
-    s_proj.sprite = MY.projectile_anim
-    MY.shield_projectiles.append(s_proj)
-    MY.projectile_velocity = 2
-
+    if(MY.s_proj_count == 0):
+        s_proj = Object(PROJECTILE_IMAGE)
+        s_proj.location = (window.x / 2.5, window.y / 2.5)
+        s_proj.sprite = MY.projectile_anim
+        MY.shield_projectiles.append(s_proj)
+        MY.projectile_velocity = 2
+        MY.s_proj_count += 1
 
 def draw(screen):
     """Draws the state to the given screen for BossBattle."""
