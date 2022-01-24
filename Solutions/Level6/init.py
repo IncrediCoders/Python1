@@ -667,6 +667,7 @@ class Data:
     angle_index = 0
     projectiles = []
     shield_projectiles = []
+    projectile_velocity = 2
     # Miscellaneous data
     wall_height = 70
     pillar_width = 28
@@ -705,11 +706,12 @@ def initialize(window):
     proj.location = (window.x / 2, window.y/ 2 - 35)
     proj.sprite = MY.projectile_anim
     MY.projectiles.append(proj)
-    for i in range(3):
-        proj = Object(PROJECTILE_IMAGE)
-        proj.location = (window.x / 3, window.y/2 )
-        proj.sprite = MY.projectile_anim
-        MY.shield_projectiles.append(proj)
+
+    s_proj = Object(PROJECTILE_IMAGE)
+    s_proj.location = (window.x / 2.5, window.y / 2.5)
+    s_proj.sprite = MY.projectile_anim
+    MY.shield_projectiles.append(s_proj)
+    MY.projectile_velocity = 2
 
 
 def draw(screen):
