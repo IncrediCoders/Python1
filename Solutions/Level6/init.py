@@ -639,6 +639,7 @@ class Data:
     player_health = 100
     player_dir = DOWN
     player_text = TextObject(BLACK, 24, "Player: ")
+    player_text.location.x = 25
     player_hitbox = Object(HITBOX_IMAGE)
     # Boss data
     boss_attack_sheet = SpriteSheet("assets/creeper/CreeperAttack.png", (100, 100))
@@ -650,6 +651,8 @@ class Data:
     boss = Object(boss_idle_sheet.image_at(0))
     boss_start_position = pygame.math.Vector2(0, 0)
     boss_defence_area = pygame.Rect(1,1,1,1)
+    boss_text = TextObject(BLACK, 24, "Creeper: ")
+    boss_text.location.x = 567
     boss_health = 300
     boss_attack_event = pygame.USEREVENT
     is_boss_attacking = False
@@ -773,12 +776,12 @@ def draw(screen):
     # Draw the boss
     MY.boss.draw(screen)
     
+    #Draw healthbars
     MY.player_text.draw(screen)
-    health_bar(screen, MY.player_health, 100, (100, 20), (85, 3))
-    health_bar(screen, MY.boss_health, 300, (MY.boss.width(), 20),
-    MY.boss.location - (MY.boss.width() / 2, (MY.boss.height() / 2) + 25))
+    health_bar(screen, MY.player_health, 100, (100, 20), (110, 3))
+    MY.boss_text.draw(screen)
+    health_bar(screen, MY.boss_health, 300, (MY.boss.width(), 20), (675, 3))
 
-    
 
 def cleanup():
     """Cleans up the Intro State."""
