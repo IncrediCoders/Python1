@@ -1,6 +1,6 @@
 from init import * # Imports code from the init.py file
 
-# Create all of the Cards		
+# Create all of the cards		
 annie_conda = Card('Annie Conda', 'python', 'java', 'bash', annie_conda_img, icon_python)
 bayo_wolf = Card('Bayo Wolf', 'scratch', 'small_basic', 'java', bayo_wolf_img, icon_scratch)
 captain_javo = Card('Captain Javo', 'java', 'scratch', 'python', captain_javo_img, icon_java)
