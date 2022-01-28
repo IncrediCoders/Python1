@@ -492,15 +492,15 @@ SCREEN = start(WINDOW, "Creeper Chase")
 
 #load sprites
 TILE_IMAGES = [None,                     # Sky
-               Image("assets/Ground.png"), # Ground
-               Image("assets/Hazard.png"), # Hazard
-               Image("assets/Exit.png"),   # Door
+               Image("Assets/Ground.png"), # Ground
+               Image("Assets/Hazard.png"), # Hazard
+               Image("Assets/Exit.png"),   # Door
                None,                     # Player
-               Image("assets/Coin.png")]   # Battery
+               Image("Assets/Coin.png")]   # Battery
 
-LAVA_BACKGROUND_IMAGE = Image("assets/Background.png")
-FOOD_BACKGROUND_IMAGE = Image("assets/Background_Food.png")
-PLAYER_IMAGE = Image("assets/player.png")
+LAVA_BACKGROUND_IMAGE = Image("Assets/Background.png")
+FOOD_BACKGROUND_IMAGE = Image("assets/BackgroundFood.png")
+PLAYER_IMAGE = Image("Assets/Player.png")
 
 # Constants
 SKY = 0
@@ -533,72 +533,72 @@ class Data:
     start_time = 0
     timer = 0
 
-    lose_button = Object(Image("assets/LoseButton.png"))
-    win_button = Object(Image("assets/WinButton.png"))
+    lose_button = Object(Image("Assets/LoseButton.png"))
+    win_button = Object(Image("Assets/WinButton.png"))
 
-    ground_cookie = SpriteSheet("assets/Cookie.png", (32, 32), 0.5).image_at(0)
-    ground_cupcake = SpriteSheet("assets/Cupcake.png", (32, 32), 0.5).image_at(0)
-    ground_marshmallow = SpriteSheet("assets/Marshmallow.png", (32, 32), 0.5).image_at(0)
-    ground_marshmallow_chocolate = SpriteSheet("assets/Marshmallow_Chocolate.png", (32, 32), 0.5).image_at(0)
-    ground_orange = SpriteSheet("assets/Orange.png", (32, 32), 0.5).image_at(0)
+    ground_cookie = SpriteSheet("Assets/Cookie.png", (32, 32), 0.5).image_at(0)
+    ground_cupcake = SpriteSheet("Assets/Cupcake.png", (32, 32), 0.5).image_at(0)
+    ground_marshmallow = SpriteSheet("Assets/Marshmallow.png", (32, 32), 0.5).image_at(0)
+    ground_marshmallow_chocolate = SpriteSheet("Assets/MarshmallowChocolate.png", (32, 32), 0.5).image_at(0)
+    ground_orange = SpriteSheet("Assets/Orange.png", (32, 32), 0.5).image_at(0)
 
     ground_food = [ground_cookie, ground_cupcake, ground_marshmallow, ground_marshmallow_chocolate, ground_orange] 
 
-    lava_ground_pulse_sheet = SpriteSheet("assets/ground_lava.png", (32, 32), 0.5)
+    lava_ground_pulse_sheet = SpriteSheet("Assets/GroundLava.png", (32, 32), 0.5)
     lava_ground_pulse = Animator(lava_ground_pulse_sheet, 1)
 
-    hazard_lava_pulse_sheet = SpriteSheet("assets/hazard_lava.png", (32, 32), 0.6)
+    hazard_lava_pulse_sheet = SpriteSheet("Assets/HazardLava.png", (32, 32), 0.6)
     hazard_lava_pulse = Animator(hazard_lava_pulse_sheet, 30)
 
-    hazard_pepper_pulse_sheet = SpriteSheet("assets/hazard_pepper.png", (32, 32), 0.5)
+    hazard_pepper_pulse_sheet = SpriteSheet("Assets/HazardPepper.png", (32, 32), 0.5)
     hazard_pepper_pulse = Animator(hazard_pepper_pulse_sheet, 8)
 
-    battery_pulse_sheet = SpriteSheet("assets/Battery.png", (64, 64), 0.75) 
+    battery_pulse_sheet = SpriteSheet("Assets/Battery.png", (64, 64), 0.75) 
     battery_pulse = Animator(battery_pulse_sheet, 2)
 
-    portal_enter_closing_sheet = SpriteSheet("assets/portal_enter_closing.png", (128, 128), 0.25)
+    portal_enter_closing_sheet = SpriteSheet("Assets/PortalEnterClosing.png", (128, 128), 0.25)
     portal_enter_closing = Animator(portal_enter_closing_sheet, 1)
 
-    portal_enter_pulse_sheet = SpriteSheet("assets/portal_enter_idle.png", (128, 128), 0.25)
+    portal_enter_pulse_sheet = SpriteSheet("Assets/PortalEnterIdle.png", (128, 128), 0.25)
     portal_enter_pulse = Animator(portal_enter_pulse_sheet, 1)
 
-    portal_exit_pulse_sheet = SpriteSheet("assets/portal_exit_idle.png", (128, 128), 0.25)
+    portal_exit_pulse_sheet = SpriteSheet("Assets/PortalExitIdle.png", (128, 128), 0.25)
     portal_exit_pulse = Animator(portal_exit_pulse_sheet, 1)
 
-    portal_exit_closing_sheet = SpriteSheet("assets/portal_exit_closing.png", (128, 128), 0.25)
+    portal_exit_closing_sheet = SpriteSheet("Assets/PortalExitClosing.png", (128, 128), 0.25)
     portal_exit_closing = Animator(portal_exit_closing_sheet, 1)
 
-    paul_idle_right_sheet = SpriteSheet("assets/paul_idle_right.png", (64, 64), 0.5)
+    paul_idle_right_sheet = SpriteSheet("Assets/PaulIdleRight.png", (64, 64), 0.5)
     paul_idle_right = Animator(paul_idle_right_sheet, 1)
 
-    paul_idle_left_sheet = SpriteSheet("assets/paul_idle_left.png", (64, 64), 0.5)
+    paul_idle_left_sheet = SpriteSheet("Assets/PaulIdleLeft.png", (64, 64), 0.5)
     paul_idle_left = Animator(paul_idle_left_sheet, 1)
 
-    paul_run_right_sheet = SpriteSheet("assets/paul_run_right.png", (64, 64), 0.5)
+    paul_run_right_sheet = SpriteSheet("Assets/PaulRunRight.png", (64, 64), 0.5)
     paul_run_right = Animator(paul_run_right_sheet, 1)
 
-    paul_run_left_sheet = SpriteSheet("assets/paul_run_left.png", (64, 64), 0.5)
+    paul_run_left_sheet = SpriteSheet("Assets/PaulRunLeft.png", (64, 64), 0.5)
     paul_run_left = Animator(paul_run_left_sheet, 1)
 
-    paul_fall_right_sheet = SpriteSheet("assets/paul_fall_right.png", (64, 64), 0.5)
+    paul_fall_right_sheet = SpriteSheet("Assets/PaulFallRight.png", (64, 64), 0.5)
     paul_fall_right = Animator(paul_fall_right_sheet, 1)
 
-    paul_fall_left_sheet = SpriteSheet("assets/paul_fall_left.png", (64, 64), 0.5)
+    paul_fall_left_sheet = SpriteSheet("Assets/PaulFallLeft.png", (64, 64), 0.5)
     paul_fall_left = Animator(paul_fall_left_sheet, 1)
 
-    paul_pain_right_sheet = SpriteSheet("assets/paul_pain_right.png", (64, 64), 0.5)
+    paul_pain_right_sheet = SpriteSheet("Assets/PaulPainRight.png", (64, 64), 0.5)
     paul_pain_right = Animator(paul_pain_right_sheet, 1)
 
-    paul_pain_left_sheet = SpriteSheet("assets/paul_pain_left.png", (64, 64), 0.5)
+    paul_pain_left_sheet = SpriteSheet("Assets/PaulPainLeft.png", (64, 64), 0.5)
     paul_pain_left = Animator(paul_pain_left_sheet, 1)
 
-    paul_jetpack_right_sheet = SpriteSheet("assets/paul_jetpack_right.png", (64, 64), 0.5)
+    paul_jetpack_right_sheet = SpriteSheet("Assets/PaulJetpackRight.png", (64, 64), 0.5)
     paul_jetpack_right = Animator(paul_jetpack_right_sheet, 1)
 
-    paul_jetpack_left_sheet = SpriteSheet("assets/paul_jetpack_left.png", (64, 64), 0.5)
+    paul_jetpack_left_sheet = SpriteSheet("Assets/PaulJetpackLeft.png", (64, 64), 0.5)
     paul_jetpack_left = Animator(paul_jetpack_left_sheet, 1)
 
-    creeper_exit_sheet = SpriteSheet("assets/creeper_exit.png", (80, 80), 0.40)
+    creeper_exit_sheet = SpriteSheet("Assets/CreeperExit.png", (80, 80), 0.40)
     creeper_exit = Animator(creeper_exit_sheet, 1, False)
 
 
@@ -701,14 +701,14 @@ def initialize(window):
     MY.player.velocity = pygame.math.Vector2(0, 0)
 
     MY.level_num = 1
-    level_name_as_string = 'level' + str(MY.level_num)
+    level_name_as_string = 'Level' + str(MY.level_num)
 
     # Load more difficult levels if in challenge 2
     if challenge_type == "CHALLENGE2":
-        tilemap = read_file("assets/challenge2/" + level_name_as_string + ".txt")
+        tilemap = read_file("Assets/Challenge2/" + level_name_as_string + ".txt")
         load_level(tilemap)
     else:
-        tilemap = read_file("assets/" + level_name_as_string + ".txt")
+        tilemap = read_file("Assets/" + level_name_as_string + ".txt")
         load_level(tilemap)
     
     MY.window = window
@@ -753,9 +753,9 @@ def draw(screen):
     
 def draw_timer():
     if(MY.level_num == 5):
-        font = pygame.font.Font("./assets/lilliput-steps.regular.ttf", 32)
+        font = pygame.font.Font("./Assets/Lilliput-steps.regular.ttf", 32)
     else:
-       font = pygame.font.Font("./assets/lilliput-steps.regular.ttf", 35) 
+       font = pygame.font.Font("./Assets/Lilliput-steps.regular.ttf", 35) 
 
     time_remaining = 'TIME:' + str(MY.timer).split('.')[0]
     MY.text = font.render(time_remaining, True, (255, 0, 0))
