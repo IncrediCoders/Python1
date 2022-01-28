@@ -585,8 +585,8 @@ WINDOW = pygame.math.Vector2(800, 600)
 SCREEN = start(WINDOW, "Boss Battle")
 
 # Load sprites constants
-PROJECTILE_IMAGE = Image("assets/Projectile.png")
-HITBOX_IMAGE = Image("assets/Hitbox.png")
+PROJECTILE_IMAGE = Image("Assets/Projectile.png")
+HITBOX_IMAGE = Image("Assets/Hitbox.png")
 
 # Constants
 PLAYER = 0
@@ -598,38 +598,38 @@ class Data:
     """
     Data loads the changeable data for gameplay
     """
-    background_sheet = SpriteSheet("assets/Background.png", (800, 600))
+    background_sheet = SpriteSheet("Assets/Background.png", (800, 600))
     background_anim = Animator(background_sheet, 0.75)
     background = Object(background_sheet.image_at(0))
     # Player data
-    player_idle_forward_sheet = SpriteSheet("assets/paul/PaulIdleFront.png", (64, 68))
-    player_idle_backward_sheet = SpriteSheet("assets/paul/PaulIdleBack.png", (64, 68))
-    player_idle_left_sheet = SpriteSheet("assets/paul/PaulIdleLeft.png", (64, 68))
-    player_idle_right_sheet = SpriteSheet("assets/paul/PaulIdleRight.png", (64, 68))
+    player_idle_forward_sheet = SpriteSheet("Assets/Paul/PaulIdleFront.png", (64, 68))
+    player_idle_backward_sheet = SpriteSheet("Assets/Paul/PaulIdleBack.png", (64, 68))
+    player_idle_left_sheet = SpriteSheet("Assets/Paul/PaulIdleLeft.png", (64, 68))
+    player_idle_right_sheet = SpriteSheet("Assets/Paul/PaulIdleRight.png", (64, 68))
     idle_forward = Animator(player_idle_forward_sheet, 1)
     idle_backward = Animator(player_idle_backward_sheet, 1)
     idle_left = Animator(player_idle_left_sheet, 1)
     idle_right = Animator(player_idle_right_sheet, 1)
-    player_walk_forward_sheet = SpriteSheet("assets/paul/PaulMoveFront.png", (64, 68))
-    player_walk_backward_sheet = SpriteSheet("assets/paul/PaulMoveBack.png", (64, 68))
-    player_walk_left_sheet = SpriteSheet("assets/paul/PaulMoveLeft.png", (64, 68))
-    player_walk_right_sheet = SpriteSheet("assets/paul/PaulMoveRight.png", (64, 68))
+    player_walk_forward_sheet = SpriteSheet("Assets/Paul/PaulMoveFront.png", (64, 68))
+    player_walk_backward_sheet = SpriteSheet("Assets/Paul/PaulMoveBack.png", (64, 68))
+    player_walk_left_sheet = SpriteSheet("Assets/Paul/PaulMoveLeft.png", (64, 68))
+    player_walk_right_sheet = SpriteSheet("Assets/Paul/PaulMoveRight.png", (64, 68))
     walk_forward = Animator(player_walk_forward_sheet, 1)
     walk_backward = Animator(player_walk_backward_sheet, 1)
     walk_left = Animator(player_walk_left_sheet, 1)
     walk_right = Animator(player_walk_right_sheet, 1)
-    player_attack_forward_sheet = SpriteSheet("assets/paul/PaulAttackFront.png", (100, 100))
-    player_attack_backward_sheet = SpriteSheet("assets/paul/PaulAttackBack.png", (100, 100))
-    player_attack_left_sheet = SpriteSheet("assets/paul/PaulAttackLeft.png", (128, 68))
-    player_attack_right_sheet = SpriteSheet("assets/paul/PaulAttackRight.png", (128, 68))
+    player_attack_forward_sheet = SpriteSheet("Assets/Paul/PaulAttackFront.png", (100, 100))
+    player_attack_backward_sheet = SpriteSheet("Assets/Paul/PaulAttackBack.png", (100, 100))
+    player_attack_left_sheet = SpriteSheet("Assets/Paul/PaulAttackLeft.png", (128, 68))
+    player_attack_right_sheet = SpriteSheet("Assets/Paul/PaulAttackRight.png", (128, 68))
     attack_forward = Animator(player_attack_forward_sheet, 0.5)
     attack_backward = Animator(player_attack_backward_sheet, 0.5)
     attack_left = Animator(player_attack_left_sheet, 0.5)
     attack_right = Animator(player_attack_right_sheet, 0.5)
-    player_pain_forward_sheet = SpriteSheet("assets/paul/PaulPainFront.png", (64, 68))
-    player_pain_backward_sheet = SpriteSheet("assets/paul/PaulPainBack.png", (64, 68))
-    player_pain_left_sheet = SpriteSheet("assets/paul/PaulPainLeft.png", (64, 68))
-    player_pain_right_sheet = SpriteSheet("assets/paul/PaulPainRight.png", (64, 68))
+    player_pain_forward_sheet = SpriteSheet("Assets/Paul/PaulPainFront.png", (64, 68))
+    player_pain_backward_sheet = SpriteSheet("Assets/Paul/PaulPainBack.png", (64, 68))
+    player_pain_left_sheet = SpriteSheet("Assets/Paul/PaulPainLeft.png", (64, 68))
+    player_pain_right_sheet = SpriteSheet("Assets/Paul/PaulPainRight.png", (64, 68))
     pain_forward = Animator(player_pain_forward_sheet, 0.5)
     pain_backward = Animator(player_pain_backward_sheet, 0.5)
     pain_left = Animator(player_pain_left_sheet, 0.5)
@@ -642,11 +642,11 @@ class Data:
     player_text.location.x = 25
     player_hitbox = Object(HITBOX_IMAGE)
     # Boss data
-    boss_attack_sheet = SpriteSheet("assets/creeper/CreeperAttack.png", (100, 100))
+    boss_attack_sheet = SpriteSheet("Assets/Creeper/CreeperAttack.png", (100, 100))
     boss_attack = Animator(boss_attack_sheet, 2)
-    boss_idle_sheet = SpriteSheet("assets/creeper/CreeperIdle.png", (100, 100))
+    boss_idle_sheet = SpriteSheet("Assets/Creeper/CreeperIdle.png", (100, 100))
     boss_idle = Animator(boss_idle_sheet, 2.5)
-    boss_pain_sheet = SpriteSheet("assets/creeper/CreeperPain.png", (100, 100))
+    boss_pain_sheet = SpriteSheet("Assets/Creeper/CreeperPain.png", (100, 100))
     boss_pain = Animator(boss_pain_sheet, 0.5)
     boss = Object(boss_idle_sheet.image_at(0))
     boss_start_position = pygame.math.Vector2(0, 0)
@@ -657,7 +657,7 @@ class Data:
     boss_attack_event = pygame.USEREVENT
     is_boss_attacking = False
     # Projectile data
-    projectile_sheet = SpriteSheet("assets/PlasmaBall.png", (32, 32))
+    projectile_sheet = SpriteSheet("Assets/PlasmaBall.png", (32, 32))
     projectile_anim = Animator(projectile_sheet, 6)
     projectile = Object(projectile_sheet.image_at(0))
     proj_damage = 5
@@ -676,20 +676,20 @@ class Data:
     wall_height = 70
     pillar_width = 28
     pillar_height = 112
-    pillar_top_left = Object(Image("assets/PillarTop.png"))
-    pillar_top_right = Object(Image("assets/PillarTop.png"))
-    pillar_bottom_left = Object(Image("assets/PillarTop.png"))
-    pillar_bottom_right = Object(Image("assets/PillarTop.png"))
+    pillar_top_left = Object(Image("Assets/PillarTop.png"))
+    pillar_top_right = Object(Image("Assets/PillarTop.png"))
+    pillar_bottom_left = Object(Image("Assets/PillarTop.png"))
+    pillar_bottom_right = Object(Image("Assets/PillarTop.png"))
     pillars = [pillar_top_left, pillar_top_right, pillar_bottom_left, pillar_bottom_right]
     state = 0
     last_state = 2
     index = 0
-    game_over_sheet = SpriteSheet("assets/GameOverOverlay.png", (800, 600))
+    game_over_sheet = SpriteSheet("Assets/GameOverOverlay.png", (800, 600))
     game_over = Animator(game_over_sheet, 0.75, False, True)
-    you_win_sheet = SpriteSheet("assets/YouWinOverlay.png", (800, 600))
+    you_win_sheet = SpriteSheet("Assets/YouWinOverlay.png", (800, 600))
     you_win = Animator(you_win_sheet, 0.75, False, True)
     ending_overlay = Object(game_over_sheet.image_at(0))
-    restart_button = Object(Image("assets/PlayAgain.png"))
+    restart_button = Object(Image("Assets/PlayAgain.png"))
     
 
 MY = Data()
