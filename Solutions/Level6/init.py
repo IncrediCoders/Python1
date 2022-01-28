@@ -560,7 +560,7 @@ class TextObject:
             self.__dict__[name] = pygame.math.Vector2(value[0], value[1])
         elif name == "font_size":
             self.__dict__[name] = value
-            self.font = pygame.font.Font('assets/freesansbold.ttf', int(self.font_size))
+            self.font = pygame.font.Font('Assets/FreeSansBold.ttf', int(self.font_size))
         else:
             self.__dict__[name] = value
 
