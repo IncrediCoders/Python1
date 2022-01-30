@@ -492,7 +492,7 @@ SCREEN = start(WINDOW, "Creeper Chase")
 
 #load sprites
 TILE_IMAGES = [None,                     # Sky
-               Image("Assets/Ground.png"), # Ground
+               Image("Assets/GroundLava.png"), # Ground
                Image("Assets/Hazard.png"), # Hazard
                Image("Assets/Exit.png"),   # Door
                None,                     # Player
