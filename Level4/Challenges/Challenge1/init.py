@@ -544,25 +544,25 @@ WINDOW = pygame.math.Vector2(900, 500)
 SCREEN = start(WINDOW, "Space Wars Tournament")
 
 # Loads sprites, sounds, and images
-IMAGE_BACKGROUND = Image("assets/Background.jpg")
-IMAGE_PLAYER1 = Image("assets/Player1.png")
-IMAGE_PLAYER2 = Image("assets/Player2.png")
-IMAGE_ASTEROID = Image("assets/AsteroidLarge.png")
-IMAGE_ASTEROID_2 = Image("assets/AsteroidSmall.png")
+IMAGE_BACKGROUND = Image("Assets/Background.jpg")
+IMAGE_PLAYER1 = Image("Assets/Player1.png")
+IMAGE_PLAYER2 = Image("Assets/Player2.png")
+IMAGE_ASTEROID = Image("Assets/AsteroidLarge.png")
+IMAGE_ASTEROID_2 = Image("Assets/AsteroidSmall.png")
 
-sound_explosions = [Sound("assets/Explosion1.wav"),
-                    Sound("assets/Explosion2.wav")]
-sound_laser = [Sound("assets/LaserShoot1.wav"),
-               Sound("assets/LaserShoot2.wav")]
+sound_explosions = [Sound("Assets/Explosion1.wav"),
+                    Sound("Assets/Explosion2.wav")]
+sound_laser = [Sound("Assets/LaserShoot1.wav"),
+               Sound("Assets/LaserShoot2.wav")]
 
 SPRITESHEET_PROJECTILE = [None,
-                          SpriteSheet("assets/Player1Projectile.png", (36, 24)),
-                          SpriteSheet("assets/Player2Projectile.png", (48, 48))]
+                          SpriteSheet("Assets/Player1Projectile.png", (36, 24)),
+                          SpriteSheet("Assets/Player2Projectile.png", (48, 48))]
 PROJECTILE_ANIMATION = [None,
                         Animator(SPRITESHEET_PROJECTILE[1], 0.4),
                         Animator(SPRITESHEET_PROJECTILE[2], 0.4)]
-IMAGE_GAMEOVER = Image("assets/GameOverBackground.png")
-IMAGE_BUTTON = Image("assets/ReplayButton.png")
+IMAGE_GAMEOVER = Image("Assets/GameOverBackground.png")
+IMAGE_BUTTON = Image("Assets/ReplayButton.png")
 
 # Constants for movement and gameplay
 ship_rotate = 120
@@ -717,8 +717,8 @@ def cleanup():
 class GameOver:
     """Restarter class to be loaded if Player 1 wins."""
     # Load sprites
-    IMAGE_GAMEOVER = Image("assets/GameOverBackground.png")
-    IMAGE_BUTTON = Image("assets/ReplayButton.png")
+    IMAGE_GAMEOVER = Image("Assets/GameOverBackground.png")
+    IMAGE_BUTTON = Image("Assets/ReplayButton.png")
 
     # Modifiable data
     class Data:
