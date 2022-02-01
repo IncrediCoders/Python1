@@ -705,7 +705,7 @@ def initialize(window):
 
     # Load more difficult levels if in challenge 2
     if challenge_type == "CHALLENGE2":
-        tilemap = read_file("Assets/Challenge2/" + level_name_as_string + ".txt")
+        tilemap = read_file("Assets/BatteryLevels/" + level_name_as_string + ".txt")
         load_level(tilemap)
     else:
         tilemap = read_file("Assets/" + level_name_as_string + ".txt")
