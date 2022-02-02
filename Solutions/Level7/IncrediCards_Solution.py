@@ -176,9 +176,9 @@ class PlayScreen(GameState):
 		# Check status of both players, if one player surviving then end the game
 		exiting = False
 		if not self.player1.active:
-		    exiting = self.player2
+			exiting = self.player2
 		elif not self.player2.active:
-		    exiting = self.player1
+			exiting = self.player1
 		return exiting
 		
 	def draw(self, surface):
