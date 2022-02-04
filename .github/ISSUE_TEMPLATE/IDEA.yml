@@ -1,0 +1,25 @@
+name: IDEA
+description: Make a suggestion for improvement!
+title: "[IDEA]: "
+body:
+  - type: dropdown
+    id: levels
+    attributes:
+      label: "Relevant level(s), if any:"
+      multiple: true
+      options:
+        - Level 1
+        - Level 2
+        - Level 3
+        - Level 4
+        - Level 5
+        - Level 6
+        - Level 7
+        - N/A
+  - type: textarea
+    id: idea
+    attributes:
+      label: "What's your suggestion?"
+      placeholder: Cool idea here...
+    validations:
+      required: true
