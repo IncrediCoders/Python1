@@ -1,0 +1,25 @@
+name: Question
+description: "Ask a question or get help if you're stuck or confused"
+title: "[Question]: "
+body:
+  - type: dropdown
+    id: levels
+    attributes:
+      label: Relevant level(s), if any:
+      multiple: true
+      options:
+        - Level 1
+        - Level 2
+        - Level 3
+        - Level 4
+        - Level 5
+        - Level 6
+        - Level 7
+        - N/A
+  - type: textarea
+    id: question
+    attributes:
+      label: What do you want to know more about? 
+      placeholder: Ask away!
+    validations:
+      required: true
