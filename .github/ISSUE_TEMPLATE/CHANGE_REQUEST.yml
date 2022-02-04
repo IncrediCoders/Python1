@@ -2,29 +2,29 @@ name: Change Request
 description: Report an inaccuracy, typo, error, etc.
 title: "[Change]: "
 body:
-- type: dropdown
-  id: location
-  attributes:
-    label: Where did you find the issue?
-    multiple: true
-    options:
-      - Book
-      - Wiki
-      - Github Code Repo
-- type: dropdown
-  id: levels
-  attributes:
-    label: Which level(s) does this affect?
-    multiple: true
-    options:
-      - Level 1
-      - Level 2
-      - Level 3
-      - Level 4
-      - Level 5
-      - Level 6
-      - Level 7
-      - N/A
+  - type: dropdown
+    id: location
+    attributes:
+      label: Where did you find the issue?
+      multiple: true
+      options:
+        - Book
+        - Wiki
+        - Github Code Repo
+  - type: dropdown
+    id: levels
+    attributes:
+      label: Which level(s) does this affect?
+      multiple: true
+      options:
+        - Level 1
+        - Level 2
+        - Level 3
+        - Level 4
+        - Level 5
+        - Level 6
+        - Level 7
+        - N/A
   - type: textarea
     id: change
     attributes:
