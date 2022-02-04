@@ -1,0 +1,40 @@
+name: Change Request
+description: Report an inaccuracy, typo, error, etc.
+title: "[Change]: "
+body:
+- type: dropdown
+  id: location
+  attributes:
+    label: Where did you find the issue?
+    multiple: true
+    options:
+      - Book
+      - Wiki
+      - Github Code Repo
+- type: dropdown
+  id: levels
+  attributes:
+    label: Which level(s) does this affect?
+    multiple: true
+    options:
+      - Level 1
+      - Level 2
+      - Level 3
+      - Level 4
+      - Level 5
+      - Level 6
+      - Level 7
+      - N/A
+  - type: textarea
+    id: change
+    attributes:
+      label: What did we get wrong?
+      description: (And any thoughts on how we should fix it?)
+      placeholder: The Cryptic Creeper corrupted the code by ...
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! The Power Posse is on the case. |
+        If you think images would be useful/appropriate for this request, you can add them in a comment after submitting this issue.
