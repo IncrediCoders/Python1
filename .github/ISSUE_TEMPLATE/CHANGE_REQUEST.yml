@@ -28,13 +28,12 @@ body:
   - type: textarea
     id: change
     attributes:
-      label: What did we get wrong?
-      description: (And any thoughts on how we should fix it?)
+      label: What did we get wrong? 
+      description: Add any relevant information, including images (drag and drop below) and thoughts on how we should fix it!
       placeholder: The Cryptic Creeper corrupted the code by ...
     validations:
       required: true
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report! The Power Posse is on the case. |
-        If you think images would be useful/appropriate for this request, you can add them in a comment after submitting this issue.
+        Thanks for taking the time to fill out this bug report! The Power Posse is on the case.
