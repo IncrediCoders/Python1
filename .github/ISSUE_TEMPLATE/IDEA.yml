@@ -1,6 +1,6 @@
-name: IDEA
+name: Idea
 description: Make a suggestion for improvement!
-title: "[IDEA]: "
+title: "[Idea]: "
 body:
   - type: dropdown
     id: levels
