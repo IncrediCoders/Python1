@@ -8,13 +8,13 @@ body:
       label: "Relevant level(s), if any:"
       multiple: true
       options:
-        - Level 1
-        - Level 2
-        - Level 3
-        - Level 4
-        - Level 5
-        - Level 6
-        - Level 7
+        - 1 - Turtle Map
+        - 2 - Class Introductions
+        - 3 - Classroom Quiz
+        - 4 - Space Wars
+        - 5 - Creeper Chase
+        - 6 - Boss Battle
+        - 7 - IncrediCards
         - N/A
   - type: textarea
     id: question
