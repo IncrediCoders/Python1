@@ -532,6 +532,7 @@ class Data:
     batteries = []
     start_time = 0
     timer = 0
+    timer_for_creeper = 0
 
     lose_button = Object(Image("Assets/LoseButton.png"))
     win_button = Object(Image("Assets/WinButton.png"))
@@ -599,7 +600,7 @@ class Data:
     paul_jetpack_left = Animator(paul_jetpack_left_sheet, 1)
 
     creeper_exit_sheet = SpriteSheet("Assets/CreeperExit.png", (80, 80), 0.40)
-    creeper_exit = Animator(creeper_exit_sheet, 1, False)
+    creeper_exit = Animator(creeper_exit_sheet, 1, True)
 
 
     player = Object(paul_idle_right_sheet.image_at(0))
@@ -695,6 +696,7 @@ def load_level(tilemap):
     MY.player.location = MY.player_start_position
     MY.entrance.location = MY.player_start_position
     MY.start_time = pygame.time.get_ticks()
+    MY.timer_for_creeper = 0
 
 def initialize(window):
     """Initializes the Platformer state."""
@@ -747,14 +749,12 @@ def draw(screen):
     MY.player.draw(screen)
     MY.exit_portal.draw(screen)
 
-    if pygame.time.get_ticks() - MY.start_time < 1500:
-        MY.creeper.draw(screen)
-        MY.entrance.draw(screen)
-    elif pygame.time.get_ticks() - MY.start_time < 4000:
+    if MY.timer_for_creeper < 1:
         MY.creeper.sprite = MY.creeper_exit
         MY.entrance.sprite = MY.portal_enter_closing
         MY.creeper.draw(screen)
         MY.entrance.draw(screen)
+
     
 def draw_timer():
     if(MY.level_num == 5):
@@ -788,6 +788,8 @@ def update_level(delta_time):
     MY.creeper.update(delta_time)
     MY.entrance.update(delta_time)
     MY.exit_portal.update(delta_time)
+
+    MY.timer_for_creeper += delta_time
     
 def cleanup():
     """Cleans up the Platformer State."""

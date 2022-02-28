@@ -52,9 +52,9 @@ def update(delta_time):
             if MY.player_health == 0:
                 restart_level(MY.level_num)
             else:
-                MY.player.location = MY.player_start_position
-                MY.player.set_velocity(0, 0)
                 MY.player.sprite = MY.paul_pain_right
+                MY.player.location = MY.player_start_position
+                MY.player.set_velocity(0, 0)         
     
     # Update Paul's location
     MY.player.update(delta_time)
