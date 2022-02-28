@@ -24,11 +24,10 @@ def update(delta_time):
             # Copied code here to track and control velocity when grounded
             if MY.player.velocity.x > 0:
                 MY.player.velocity.x = max(0, MY.player.velocity.x - PLAYER_DECEL)
+                MY.player.sprite = MY.paul_idle_right
             elif MY.player.velocity.x < 0:
                 MY.player.velocity.x = min(0, MY.player.velocity.x + PLAYER_DECEL)
-            # Copied code here to set Paul's movement to idle
-            else:
-                MY.player.sprite = MY.paul_idle_right
+                MY.player.sprite = MY.paul_idle_left
         # Wrote code here to track and control velocity when falling
         else:
             if MY.player.velocity.x > 0:

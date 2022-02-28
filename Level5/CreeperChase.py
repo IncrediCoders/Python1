@@ -26,7 +26,6 @@ def update(delta_time):
 
 
 
-            #TODO: Copy the code here to set Paul's movement to idle
 
 
         #TODO: Write the code here to track and control velocity when falling
