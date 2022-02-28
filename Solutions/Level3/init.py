@@ -78,17 +78,37 @@ def display_question(question, input_list):
     """
     Loads the questions and the answers
     """
+    question_wrap =""
+    wrapped = False
+    #Wrap text for these questions
+    if(question == "What is SB Turtle's favorite programming language?"):
+        question = "What is SB Turtle's favorite programming"
+        question_wrap = "language?"
+        wrapped = True
+    elif(question == "According to SideWinder, who has good taste?"):
+        question = "According to SideWinder, who has good"
+        question_wrap = "taste?"
+        wrapped = True
+
     # Loads and displays the new question and the according answer choices
     question_text = my_font.render(question, True, (0, 0, 0))
-    question_rect = question_text.get_rect(topleft=(200,150))
+    if wrapped:
+        question_rect = question_text.get_rect(topleft=(200,130))
+    else:
+        question_rect = question_text.get_rect(topleft=(200,150))
+    question_text_wrap = my_font.render(question_wrap, True, (0, 0, 0))
+    question_wrap_rect = question_text_wrap.get_rect(topleft=(200,165))
+    
     answer_1_text = my_font.render(input_list[0], True, (0,0,255))
     answer_1_rect = answer_1_text.get_rect(topleft=(200,230))
     answer_2_text = my_font.render(input_list[1], True, (0,0,255))
     answer_2_rect = answer_2_text.get_rect(topleft=(200,300))
     answer_3_text = my_font.render(input_list[2], True, (0,0,255))
     answer_3_rect = answer_3_text.get_rect(topleft=(200,370))
+
     screen.blit(background, (0,0))
     screen.blit(question_text, question_rect)
+    screen.blit(question_text_wrap, question_wrap_rect)
     screen.blit(answer_1_text, answer_1_rect)
     screen.blit(answer_2_text, answer_2_rect)
     screen.blit(answer_3_text, answer_3_rect)
