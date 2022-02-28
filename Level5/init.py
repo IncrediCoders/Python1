@@ -511,6 +511,7 @@ PLAYER_START = 4
 BATTERIES = 5
 
 PLAYER_START_HEALTH = 1
+PLAYER_CHALLENGE2_HEALTH = 5
 PLAYER_ACCEL = 64
 GRAVITY_ACCEL = 70
 PLAYER_DECEL = 500
@@ -604,6 +605,12 @@ class Data:
     player = Object(paul_idle_right_sheet.image_at(0))
     player.sprite = paul_idle_right
 
+    # If on challenge 2, increase health
+    if(challenge_type == "CHALLENGE2"):
+        player_health = PLAYER_CHALLENGE2_HEALTH
+    else:
+        player_health = PLAYER_START_HEALTH
+
     player_max_speed = 100
     player_start_position = pygame.math.Vector2(0, 0)
     player_direction = RIGHT
@@ -635,6 +642,11 @@ def health_bar(screen, health, max_health, max_size, location):
 
     width = max_size[0] * (health / max_health)
     draw_rect(screen, bar_color, location, (width, max_size[1]))
+
+def restart_level(level_num):
+    level_name_as_string = 'Level' + str(level_num)
+    tilemap = read_file("Assets/" + level_name_as_string + ".txt")
+    load_level(tilemap)
 
 def load_level(tilemap):
     """Cleans up resources and loads a specified level. Can be used to reload the same level."""
@@ -686,15 +698,23 @@ def load_level(tilemap):
 
 def initialize(window):
     """Initializes the Platformer state."""
-    MY.player_health = PLAYER_START_HEALTH
+    if(challenge_type == "CHALLENGE2"):
+        MY.player_health = PLAYER_CHALLENGE2_HEALTH
+    else:
+        MY.player_health = PLAYER_START_HEALTH
 
     MY.player.velocity = pygame.math.Vector2(0, 0)
 
     MY.level_num = 1
     level_name_as_string = 'Level' + str(MY.level_num)
 
-    tilemap = read_file("Assets/" + level_name_as_string + ".txt")
-    load_level(tilemap)
+    # Load more difficult levels if in challenge 2
+    if challenge_type == "CHALLENGE2":
+        tilemap = read_file("Assets/BatteryLevels/" + level_name_as_string + ".txt")
+        load_level(tilemap)
+    else:
+        tilemap = read_file("Assets/" + level_name_as_string + ".txt")
+        load_level(tilemap)
     
     MY.window = window
 
@@ -718,6 +738,10 @@ def draw(screen):
     # Draw the timer if on challenge 1
     if challenge_type == 'CHALLENGE1':
         draw_timer()
+
+    # Draw player health_bar if on challenge 2
+    if challenge_type == 'CHALLENGE2':
+        health_bar(screen, MY.player_health, 5, (128, 16), (MY.window.x * 0.75, 20))
 
     # Draw player
     MY.player.draw(screen)

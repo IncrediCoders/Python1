@@ -643,6 +643,11 @@ def health_bar(screen, health, max_health, max_size, location):
     width = max_size[0] * (health / max_health)
     draw_rect(screen, bar_color, location, (width, max_size[1]))
 
+def restart_level(level_num):
+    level_name_as_string = 'Level' + str(level_num)
+    tilemap = read_file("Assets/" + level_name_as_string + ".txt")
+    load_level(tilemap)
+
 def load_level(tilemap):
     """Cleans up resources and loads a specified level. Can be used to reload the same level."""
     cleanup()

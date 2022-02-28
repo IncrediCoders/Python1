@@ -51,7 +51,7 @@ def update(delta_time):
         if MY.player.collides_with(hazard):
             MY.player_health -= 1
             if MY.player_health == 0:
-                change(1)
+                restart_level(MY.level_num)
             else:
                 MY.player.location = MY.player_start_position
                 MY.player.set_velocity(0, 0)
