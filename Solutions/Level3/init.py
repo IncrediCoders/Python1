@@ -81,6 +81,9 @@ def display_question(question, input_list):
     question_wrap =""
     wrapped = False
     #Wrap text for these questions
+    question_wrap = ""
+    wrapped = False
+    #Wrap text for these questions
     if(question == "What is SB Turtle's favorite programming language?"):
         question = "What is SB Turtle's favorite programming"
         question_wrap = "language?"
@@ -88,6 +91,18 @@ def display_question(question, input_list):
     elif(question == "According to SideWinder, who has good taste?"):
         question = "According to SideWinder, who has good"
         question_wrap = "taste?"
+        wrapped = True
+    elif(question == "Who is one of Java Lynn's favorite actors?"):
+        question = "Who is one of Java Lynn's favorite"
+        question_wrap = "actors?"
+        wrapped = True
+    elif(question == "Who is one of Jitter Bug's favorite actors?"):
+        question = "Who is one of Jitter Bug's favorite"
+        question_wrap = "actors?"
+        wrapped = True
+    elif(question == "What is Quackintosh's favorite art called?"):
+        question = "What is Quackintosh's favorite art"
+        question_wrap = "called?"
         wrapped = True
 
     # Loads and displays the new question and the according answer choices
