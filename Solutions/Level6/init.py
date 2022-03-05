@@ -2,6 +2,7 @@
 #PART 1: IMPORTING DEPENDENCIES AND ASSIGNING GLOBAL VARIABLES
 from os import path
 import math
+import os
 import random
 import time
 import sys
@@ -445,7 +446,6 @@ class Object:
             return True  
         return False
     
-
     def collides_with_hitbox(self):
         boss = self.get_transformed_rect() 
         hitbox = MY.player_hitbox.get_transformed_rect()
@@ -457,8 +457,7 @@ class Object:
         if (self.hit == True):
             self.hit = False
             return True
-        else:
-            return False
+        return False
 
     def snap_to_object_x(self, other_obj, facing):
         """
@@ -661,13 +660,8 @@ class Data:
     projectile_anim = Animator(projectile_sheet, 6)
     projectile = Object(projectile_sheet.image_at(0))
     proj_damage = 5
+    proj_angle = 0
     num_projectiles = 0
-    x_angle = 3
-    y_angle = 3
-    projectile_angles = []
-    for i in range (72):
-        projectile_angles.append(i * 5) 
-    angle_index = 0
     projectiles = []
     shield_projectiles = []
     projectile_velocity = 2
@@ -690,7 +684,7 @@ class Data:
     you_win = Animator(you_win_sheet, 0.75, False, True)
     ending_overlay = Object(game_over_sheet.image_at(0))
     restart_button = Object(Image("Assets/PlayAgain.png"))
-    
+
 
 MY = Data()
 
@@ -821,7 +815,7 @@ def player_move_update(delta_time):
     """Updates animations for player if moving"""
     moving = (key_held_down(pygame.K_RIGHT) or key_held_down(pygame.K_LEFT) or
               key_held_down(pygame.K_DOWN) or key_held_down(pygame.K_UP))
-
+    
     if not moving and not key_held_down(pygame.K_SPACE) and not MY.player.collides_with(MY.boss):
         MY.player_hitbox.active = False
         if MY.player_dir == UP:
@@ -832,7 +826,7 @@ def player_move_update(delta_time):
             MY.player.sprite = MY.idle_left
         elif MY.player_dir == RIGHT:
             MY.player.sprite = MY.idle_right
-
+    
     if key_held_down(pygame.K_UP):
         MY.player_hitbox.active = False
         MY.player.location.y -= 200 * delta_time
@@ -878,26 +872,29 @@ def handle_pillar_collision():
     check_pillar_collision(player_rect, lower_left_pillar)
     check_pillar_collision(player_rect, lower_right_pillar)
 
-def change_angle_index():
-    MY.angle_index = random.randint(0, 71) 
+def aim_at_player():
+    distance_x = MY.player.location.x - MY.boss.location.x
+    distance_y = MY.player.location.y - MY.boss.location.y 
+    MY.proj_angle = math.atan2(distance_y, distance_x)
+
 
 def fire_projectile(delta_time, projectile):
-    angle = MY.projectile_angles[MY.angle_index]
+    MY.proj_angle 
 
     if projectile.active:
-        projectile.location.x += math.cos(angle) * MY.projectile_velocity 
-        projectile.location.y += math.sin(angle) * MY.projectile_velocity 
+        projectile.location.x += math.cos(MY.proj_angle ) * MY.projectile_velocity 
+        projectile.location.y += math.sin(MY.proj_angle ) * MY.projectile_velocity 
         projectile.update(delta_time)
         if projectile.location.x < MY.wall_height or projectile.location.x > WINDOW_WIDTH - MY.wall_height or projectile.location.y < MY.wall_height or projectile.location.y > WINDOW_LENGTH - (MY.wall_height + 20):
             projectile.location = (WINDOW_WIDTH / 2, WINDOW_LENGTH/ 2 - 35)
-            change_angle_index()
+            aim_at_player()
             projectile.update(delta_time)
         if projectile.collides_with(MY.player):
             MY.player_health -= MY.proj_damage
             player_pain_anim()
             MY.player.hit = True
             projectile.location = (WINDOW_WIDTH / 2, WINDOW_LENGTH/ 2 - 35)
-            change_angle_index()
+            aim_at_player()
             projectile.update(delta_time)
 
 
@@ -921,7 +918,7 @@ def update_assets(delta_time):
     # Boss
     if MY.player_hitbox.active and MY.boss.collides_with(MY.player_hitbox):
         MY.boss.sprite = MY.boss_pain 
-        boss_attack(delta_time)
+        boss_attack(delta_time)  
     elif MY.is_boss_attacking:
         MY.boss.sprite = MY.boss_attack
         boss_attack(delta_time)
