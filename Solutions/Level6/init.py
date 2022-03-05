@@ -659,12 +659,14 @@ class Data:
     projectile_sheet = SpriteSheet("Assets/PlasmaBall.png", (32, 32))
     projectile_anim = Animator(projectile_sheet, 6)
     projectile = Object(projectile_sheet.image_at(0))
-    proj_damage = 5
+    proj_damage = 0.2
+    aimed_proj_damage = 0.5
     proj_angle = 0
     num_projectiles = 0
     projectiles = []
     shield_projectiles = []
-    projectile_velocity = 2
+    projectile_velocity = 1
+    aimed_projectile_velocity = 2
     s_proj_count = 0
     # Miscellaneous data
     wall_height = 70
@@ -684,7 +686,6 @@ class Data:
     you_win = Animator(you_win_sheet, 0.75, False, True)
     ending_overlay = Object(game_over_sheet.image_at(0))
     restart_button = Object(Image("Assets/PlayAgain.png"))
-
 
 MY = Data()
 
@@ -710,7 +711,7 @@ def initialize(window):
         s_proj.location = (window.x / 2.5, window.y / 2.5)
         s_proj.sprite = MY.projectile_anim
         MY.shield_projectiles.append(s_proj)
-        MY.projectile_velocity = 2
+        MY.projectile_velocity = 1
         MY.s_proj_count += 1
 
 def draw(screen):
@@ -816,7 +817,7 @@ def player_move_update(delta_time):
     moving = (key_held_down(pygame.K_RIGHT) or key_held_down(pygame.K_LEFT) or
               key_held_down(pygame.K_DOWN) or key_held_down(pygame.K_UP))
     
-    if not moving and not key_held_down(pygame.K_SPACE) and not MY.player.collides_with(MY.boss):
+    if not moving and not key_held_down(pygame.K_SPACE) and not MY.player.collides_with_boss():
         MY.player_hitbox.active = False
         if MY.player_dir == UP:
             MY.player.sprite = MY.idle_backward
@@ -826,27 +827,39 @@ def player_move_update(delta_time):
             MY.player.sprite = MY.idle_left
         elif MY.player_dir == RIGHT:
             MY.player.sprite = MY.idle_right
-    
+
     if key_held_down(pygame.K_UP):
         MY.player_hitbox.active = False
         MY.player.location.y -= 200 * delta_time
         MY.player_dir = UP
-        MY.player.sprite = MY.walk_backward
+        if(MY.player.collides_with_boss()):
+            MY.player.sprite = MY.pain_backward
+        else:
+            MY.player.sprite = MY.walk_backward
     elif key_held_down(pygame.K_DOWN):
         MY.player_hitbox.active = False
         MY.player.location.y += 200 * delta_time
         MY.player_dir = DOWN
-        MY.player.sprite = MY.walk_forward
+        if(MY.player.collides_with_boss()):
+            MY.player.sprite = MY.pain_forward
+        else:
+            MY.player.sprite = MY.walk_forward
     if key_held_down(pygame.K_LEFT):
         MY.player_hitbox.active = False
         MY.player.location.x -= 200 * delta_time
         MY.player_dir = LEFT
-        MY.player.sprite = MY.walk_left
+        if(MY.player.collides_with_boss()):
+            MY.player.sprite = MY.pain_left
+        else:
+            MY.player.sprite = MY.walk_left
     elif key_held_down(pygame.K_RIGHT):
         MY.player_hitbox.active = False
         MY.player.location.x += 200 * delta_time
         MY.player_dir = RIGHT
-        MY.player.sprite = MY.walk_right
+        if(MY.player.collides_with_boss()):
+            MY.player.sprite = MY.pain_right
+        else:
+            MY.player.sprite = MY.walk_right
 
 def check_pillar_collision(player_rect, pillar):
     if player_rect.colliderect(pillar):
@@ -882,15 +895,15 @@ def fire_projectile(delta_time, projectile):
     MY.proj_angle 
 
     if projectile.active:
-        projectile.location.x += math.cos(MY.proj_angle ) * MY.projectile_velocity 
-        projectile.location.y += math.sin(MY.proj_angle ) * MY.projectile_velocity 
+        projectile.location.x += math.cos(MY.proj_angle ) * MY.aimed_projectile_velocity 
+        projectile.location.y += math.sin(MY.proj_angle ) * MY.aimed_projectile_velocity 
         projectile.update(delta_time)
         if projectile.location.x < MY.wall_height or projectile.location.x > WINDOW_WIDTH - MY.wall_height or projectile.location.y < MY.wall_height or projectile.location.y > WINDOW_LENGTH - (MY.wall_height + 20):
             projectile.location = (WINDOW_WIDTH / 2, WINDOW_LENGTH/ 2 - 35)
             aim_at_player()
             projectile.update(delta_time)
         if projectile.collides_with(MY.player):
-            MY.player_health -= MY.proj_damage
+            MY.player_health -= MY.aimed_proj_damage
             player_pain_anim()
             MY.player.hit = True
             projectile.location = (WINDOW_WIDTH / 2, WINDOW_LENGTH/ 2 - 35)

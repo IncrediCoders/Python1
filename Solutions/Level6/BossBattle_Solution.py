@@ -20,7 +20,7 @@ def update(delta_time):
     # Copied code here for Paul to lose health if he collides with the Creeper
     if MY.player.collides_with_boss():
         player_pain_anim()
-        MY.player_health -= 1
+        MY.player_health -= 0.5
         MY.player_hitbox.active = False
 
     # Uncommented Lines 27-29 to add the hit box above Paul
