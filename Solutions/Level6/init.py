@@ -660,7 +660,7 @@ class Data:
     projectile_anim = Animator(projectile_sheet, 6)
     projectile = Object(projectile_sheet.image_at(0))
     proj_damage = 0.2
-    aimed_proj_damage = 0.5
+    aimed_proj_damage = 1
     proj_angle = 0
     num_projectiles = 0
     projectiles = []
@@ -728,29 +728,48 @@ def draw(screen):
     if player_rect.colliderect(upper_left_pillar): 
        MY.pillar_top_left.draw(screen)
        MY.player.draw(screen)
+       MY.boss.draw(screen)
        MY.pillar_bottom_left.draw(screen)
        MY.pillar_top_right.draw(screen)
        MY.pillar_bottom_right.draw(screen)
     elif player_rect.colliderect(lower_left_pillar):  
        MY.pillar_bottom_left.draw(screen)
        MY.player.draw(screen)
+       MY.boss.draw(screen)
        MY.pillar_top_left.draw(screen)
        MY.pillar_top_right.draw(screen)
        MY.pillar_bottom_right.draw(screen)
     elif player_rect.colliderect(upper_right_pillar):
         MY.pillar_top_right.draw(screen)
         MY.player.draw(screen)
+        MY.boss.draw(screen)
         MY.pillar_top_left.draw(screen)
         MY.pillar_bottom_left.draw(screen)
         MY.pillar_bottom_right.draw(screen)
     elif player_rect.colliderect(lower_right_pillar):
         MY.pillar_bottom_right.draw(screen)
         MY.player.draw(screen)
+        MY.boss.draw(screen)
         MY.pillar_top_left.draw(screen)
         MY.pillar_bottom_left.draw(screen)
         MY.pillar_top_right.draw(screen)
+    #Draw the player and boss depending on who's in front when they collide
     else:   
-        MY.player.draw(screen)
+        if(MY.player.collides_with_boss and MY.player_dir == UP):
+            MY.boss.draw(screen)
+            MY.player.draw(screen)
+        elif(MY.player.collides_with_boss and MY.player_dir == DOWN):
+            MY.boss.draw(screen)
+            MY.player.draw(screen)
+        elif(MY.player.collides_with_boss and MY.player_dir == LEFT):
+            MY.boss.draw(screen)
+            MY.player.draw(screen)
+        elif(MY.player.collides_with_boss and MY.player_dir == RIGHT):
+            MY.boss.draw(screen)
+            MY.player.draw(screen)
+        else:
+            MY.player.draw(screen)
+            MY.boss.draw(screen)
         MY.pillar_top_left.draw(screen) 
         MY.pillar_bottom_left.draw(screen)
         MY.pillar_bottom_right.draw(screen)
@@ -769,9 +788,6 @@ def draw(screen):
     if(current_challenge == "CHALLENGE2"):
         for i in range(len(MY.shield_projectiles)):
             MY.shield_projectiles[i].draw(screen)
-
-    # Draw the boss
-    MY.boss.draw(screen)
 
     #Draw healthbars
     MY.player_text.draw(screen)

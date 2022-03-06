@@ -2,6 +2,7 @@
 #PART 1: IMPORTING DEPENDENCIES AND ASSIGNING GLOBAL VARIABLES
 from os import path
 import math
+import os
 import random
 import time
 import sys
@@ -445,7 +446,6 @@ class Object:
             return True  
         return False
     
-
     def collides_with_hitbox(self):
         boss = self.get_transformed_rect() 
         hitbox = MY.player_hitbox.get_transformed_rect()
@@ -457,8 +457,7 @@ class Object:
         if (self.hit == True):
             self.hit = False
             return True
-        else:
-            return False
+        return False
 
     def snap_to_object_x(self, other_obj, facing):
         """
@@ -560,7 +559,7 @@ class TextObject:
             self.__dict__[name] = pygame.math.Vector2(value[0], value[1])
         elif name == "font_size":
             self.__dict__[name] = value
-            self.font = pygame.font.Font('Assets/Freesansbold.ttf', int(self.font_size))
+            self.font = pygame.font.Font('Assets/FreeSansBold.ttf', int(self.font_size))
         else:
             self.__dict__[name] = value
 
@@ -660,17 +659,14 @@ class Data:
     projectile_sheet = SpriteSheet("Assets/PlasmaBall.png", (32, 32))
     projectile_anim = Animator(projectile_sheet, 6)
     projectile = Object(projectile_sheet.image_at(0))
-    proj_damage = 5
+    proj_damage = 0.2
+    aimed_proj_damage = 1
+    proj_angle = 0
     num_projectiles = 0
-    x_angle = 3
-    y_angle = 3
-    projectile_angles = []
-    for i in range (72):
-        projectile_angles.append(i * 5) 
-    angle_index = 0
     projectiles = []
     shield_projectiles = []
-    projectile_velocity = 2
+    projectile_velocity = 1
+    aimed_projectile_velocity = 2
     s_proj_count = 0
     # Miscellaneous data
     wall_height = 70
@@ -690,7 +686,6 @@ class Data:
     you_win = Animator(you_win_sheet, 0.75, False, True)
     ending_overlay = Object(game_over_sheet.image_at(0))
     restart_button = Object(Image("Assets/PlayAgain.png"))
-    
 
 MY = Data()
 
@@ -716,7 +711,7 @@ def initialize(window):
         s_proj.location = (window.x / 2.5, window.y / 2.5)
         s_proj.sprite = MY.projectile_anim
         MY.shield_projectiles.append(s_proj)
-        MY.projectile_velocity = 2
+        MY.projectile_velocity = 1
         MY.s_proj_count += 1
 
 def draw(screen):
@@ -733,29 +728,48 @@ def draw(screen):
     if player_rect.colliderect(upper_left_pillar): 
        MY.pillar_top_left.draw(screen)
        MY.player.draw(screen)
+       MY.boss.draw(screen)
        MY.pillar_bottom_left.draw(screen)
        MY.pillar_top_right.draw(screen)
        MY.pillar_bottom_right.draw(screen)
     elif player_rect.colliderect(lower_left_pillar):  
        MY.pillar_bottom_left.draw(screen)
        MY.player.draw(screen)
+       MY.boss.draw(screen)
        MY.pillar_top_left.draw(screen)
        MY.pillar_top_right.draw(screen)
        MY.pillar_bottom_right.draw(screen)
     elif player_rect.colliderect(upper_right_pillar):
         MY.pillar_top_right.draw(screen)
         MY.player.draw(screen)
+        MY.boss.draw(screen)
         MY.pillar_top_left.draw(screen)
         MY.pillar_bottom_left.draw(screen)
         MY.pillar_bottom_right.draw(screen)
     elif player_rect.colliderect(lower_right_pillar):
         MY.pillar_bottom_right.draw(screen)
         MY.player.draw(screen)
+        MY.boss.draw(screen)
         MY.pillar_top_left.draw(screen)
         MY.pillar_bottom_left.draw(screen)
         MY.pillar_top_right.draw(screen)
+    #Draw the player and boss depending on who's in front when they collide
     else:   
-        MY.player.draw(screen)
+        if(MY.player.collides_with_boss and MY.player_dir == UP):
+            MY.boss.draw(screen)
+            MY.player.draw(screen)
+        elif(MY.player.collides_with_boss and MY.player_dir == DOWN):
+            MY.boss.draw(screen)
+            MY.player.draw(screen)
+        elif(MY.player.collides_with_boss and MY.player_dir == LEFT):
+            MY.boss.draw(screen)
+            MY.player.draw(screen)
+        elif(MY.player.collides_with_boss and MY.player_dir == RIGHT):
+            MY.boss.draw(screen)
+            MY.player.draw(screen)
+        else:
+            MY.player.draw(screen)
+            MY.boss.draw(screen)
         MY.pillar_top_left.draw(screen) 
         MY.pillar_bottom_left.draw(screen)
         MY.pillar_bottom_right.draw(screen)
@@ -774,9 +788,6 @@ def draw(screen):
     if(current_challenge == "CHALLENGE2"):
         for i in range(len(MY.shield_projectiles)):
             MY.shield_projectiles[i].draw(screen)
-
-    # Draw the boss
-    MY.boss.draw(screen)
 
     #Draw healthbars
     MY.player_text.draw(screen)
@@ -821,8 +832,8 @@ def player_move_update(delta_time):
     """Updates animations for player if moving"""
     moving = (key_held_down(pygame.K_RIGHT) or key_held_down(pygame.K_LEFT) or
               key_held_down(pygame.K_DOWN) or key_held_down(pygame.K_UP))
-
-    if not moving and not key_held_down(pygame.K_SPACE) and not MY.player.collides_with(MY.boss):
+    
+    if not moving and not key_held_down(pygame.K_SPACE) and not MY.player.collides_with_boss():
         MY.player_hitbox.active = False
         if MY.player_dir == UP:
             MY.player.sprite = MY.idle_backward
@@ -837,22 +848,34 @@ def player_move_update(delta_time):
         MY.player_hitbox.active = False
         MY.player.location.y -= 200 * delta_time
         MY.player_dir = UP
-        MY.player.sprite = MY.walk_backward
+        if(MY.player.collides_with_boss()):
+            MY.player.sprite = MY.pain_backward
+        else:
+            MY.player.sprite = MY.walk_backward
     elif key_held_down(pygame.K_DOWN):
         MY.player_hitbox.active = False
         MY.player.location.y += 200 * delta_time
         MY.player_dir = DOWN
-        MY.player.sprite = MY.walk_forward
+        if(MY.player.collides_with_boss()):
+            MY.player.sprite = MY.pain_forward
+        else:
+            MY.player.sprite = MY.walk_forward
     if key_held_down(pygame.K_LEFT):
         MY.player_hitbox.active = False
         MY.player.location.x -= 200 * delta_time
         MY.player_dir = LEFT
-        MY.player.sprite = MY.walk_left
+        if(MY.player.collides_with_boss()):
+            MY.player.sprite = MY.pain_left
+        else:
+            MY.player.sprite = MY.walk_left
     elif key_held_down(pygame.K_RIGHT):
         MY.player_hitbox.active = False
         MY.player.location.x += 200 * delta_time
         MY.player_dir = RIGHT
-        MY.player.sprite = MY.walk_right
+        if(MY.player.collides_with_boss()):
+            MY.player.sprite = MY.pain_right
+        else:
+            MY.player.sprite = MY.walk_right
 
 def check_pillar_collision(player_rect, pillar):
     if player_rect.colliderect(pillar):
@@ -878,26 +901,29 @@ def handle_pillar_collision():
     check_pillar_collision(player_rect, lower_left_pillar)
     check_pillar_collision(player_rect, lower_right_pillar)
 
-def change_angle_index():
-    MY.angle_index = random.randint(0, 71) 
+def aim_at_player():
+    distance_x = MY.player.location.x - MY.boss.location.x
+    distance_y = MY.player.location.y - MY.boss.location.y 
+    MY.proj_angle = math.atan2(distance_y, distance_x)
+
 
 def fire_projectile(delta_time, projectile):
-    angle = MY.projectile_angles[MY.angle_index]
+    MY.proj_angle 
 
     if projectile.active:
-        projectile.location.x += math.cos(angle) * MY.projectile_velocity 
-        projectile.location.y += math.sin(angle) * MY.projectile_velocity 
+        projectile.location.x += math.cos(MY.proj_angle ) * MY.aimed_projectile_velocity 
+        projectile.location.y += math.sin(MY.proj_angle ) * MY.aimed_projectile_velocity 
         projectile.update(delta_time)
         if projectile.location.x < MY.wall_height or projectile.location.x > WINDOW_WIDTH - MY.wall_height or projectile.location.y < MY.wall_height or projectile.location.y > WINDOW_LENGTH - (MY.wall_height + 20):
             projectile.location = (WINDOW_WIDTH / 2, WINDOW_LENGTH/ 2 - 35)
-            change_angle_index()
+            aim_at_player()
             projectile.update(delta_time)
         if projectile.collides_with(MY.player):
-            MY.player_health -= MY.proj_damage
+            MY.player_health -= MY.aimed_proj_damage
             player_pain_anim()
             MY.player.hit = True
             projectile.location = (WINDOW_WIDTH / 2, WINDOW_LENGTH/ 2 - 35)
-            change_angle_index()
+            aim_at_player()
             projectile.update(delta_time)
 
 
@@ -921,7 +947,7 @@ def update_assets(delta_time):
     # Boss
     if MY.player_hitbox.active and MY.boss.collides_with(MY.player_hitbox):
         MY.boss.sprite = MY.boss_pain 
-        boss_attack(delta_time)
+        boss_attack(delta_time)  
     elif MY.is_boss_attacking:
         MY.boss.sprite = MY.boss_attack
         boss_attack(delta_time)
