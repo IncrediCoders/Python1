@@ -1,5 +1,6 @@
 #============================================================
 #PART 1: IMPORTING DEPENDENCIES AND ASSIGNING GLOBAL VARIABLES
+import sys
 import pygame
 import random
 import time
@@ -78,6 +79,9 @@ def display_question(question, input_list):
     """
     Loads the questions and the answers
     """
+    question_wrap =""
+    wrapped = False
+    #Wrap text for these questions
     question_wrap = ""
     wrapped = False
     #Wrap text for these questions
@@ -164,9 +168,7 @@ def check_game_started():
     """
     EVENTS = pygame.event.get()
     for event in EVENTS:
-        mouse_position = pygame.mouse.get_pos()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if start_click_rect.collidepoint(mouse_position):
                 return True
     return False
 
@@ -213,6 +215,5 @@ def quit_game(event):
     Exits the game if the player clicks the Close button
     """
     if event.type == pygame.QUIT:
-        pygame.quit()
-        exit()
+        sys.exit()
         

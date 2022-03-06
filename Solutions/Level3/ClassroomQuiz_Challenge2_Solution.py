@@ -90,5 +90,6 @@ while running:
             # Checks if it's the last question and display end screen
             running = check_if_last_question(line_number, running, number_of_questions)
             # If it's the not the last question, we display the next question
-            line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
+            if running:
+                line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
 pygame.quit()
