@@ -155,6 +155,7 @@ class PlayScreen(GameState):
 			winner = self.check_game_end()
 			if winner:
 				winner.set_as_winner()
+				pygame.time.wait(600)
 				self.done = True
 			
 	def flip_coin(self):

@@ -356,10 +356,13 @@ class ChooseHandScreen(GameState):
 		self.reset_cards()
 	
 		name = "{},".format(self.current_player.name)
-		instructions_1 = "Click on the card"
-		instructions_2 = "you want to use."
+		instructions_1 = "Click on the card you"
+		instructions_2 = "want to use. You can"
+		instructions_3 = "switch cards at any time,"
+		instructions_4 = "by clicking the card in"
+		instructions_5 = "the On Deck box."
 		
-		self.info_box = InfoBox([name, instructions_1, instructions_2], bold_font, BLACK, (300,300), (800,300), 200)
+		self.info_box = InfoBox([name, instructions_1, instructions_2, instructions_3, instructions_4, instructions_5], button_font, BLACK, (300,300), (800,300), 200)
 		self.set_card_locations(self.player1)
 		self.set_card_locations(self.player2)
 		
@@ -435,9 +438,9 @@ class VictoryScreen(GameState):
 			
 	def start(self, players):
 		self.player1 = players["player1"]
-		self.player2 = players["player1"]
+		self.player2 = players["player2"]
 		
-		self.winner = self.player1 if self.player1.winner else self.player2
+		self.winner = self.player2 if self.player2.winner else self.player1
 
 		self.victor_box = InfoBox(["{} has won!".format(self.winner.name)], bold_font, WHITE, (300,75), (X_CENTER, 225), 150, bg_color = BLACK)
 		self.play_button = Button("Play Again?", 250, 400, 200, 40, button_orange, button_red_orange, WHITE, round_font, self)
