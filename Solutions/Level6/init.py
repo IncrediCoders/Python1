@@ -660,7 +660,7 @@ class Data:
     projectile_anim = Animator(projectile_sheet, 6)
     projectile = Object(projectile_sheet.image_at(0))
     proj_damage = 0.2
-    aimed_proj_damage = 1
+    aimed_proj_damage = 10
     proj_angle = 0
     num_projectiles = 0
     projectiles = []
