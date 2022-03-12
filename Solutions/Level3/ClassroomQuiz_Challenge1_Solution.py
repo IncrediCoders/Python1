@@ -56,7 +56,7 @@ while running:
             # Check if it's the last question and display end screen with scores
             # Modified from the check_if_last_question function in init.py
             if line_number >= (number_of_questions * 4)-4:
-                display_end_screen()
+                display_challenge1_end_screen()
                 # Display the final score on the end screen
                 if score == number_of_questions:
                     score_text = my_font.render("Congratulations! You got all questions right! " + str(score) + " / " + str(number_of_questions), True, (0,128,0))
@@ -73,4 +73,4 @@ while running:
             # If it's the not the last question, we display the next question
             if running:
                 line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
-pygame.quit()
+display_end_screen()

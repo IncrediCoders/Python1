@@ -73,4 +73,4 @@ while running:
             # If it's the not the last question, we display the next question
             if running:
                 line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
-pygame.quit()
+display_end_screen()

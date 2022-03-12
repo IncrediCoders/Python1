@@ -151,6 +151,14 @@ def display_intro_screen():
         if check_game_started():
             intro = False
 
+def display_challenge1_end_screen():
+    codala = end_game
+    screen.blit(background, (0,0))
+    screen.blit(codala,(0,0))
+    pygame.display.update()
+    pygame.event.get()
+    time.sleep(3)
+
 def display_end_screen():
     """
     Loads the end screen
@@ -161,6 +169,13 @@ def display_end_screen():
     screen.blit(codala,(0,0))
     pygame.display.update()
     pygame.event.get()
+    running = True
+    while running:
+        EVENTS = pygame.event.get()
+        for event in EVENTS:
+            if event.type == pygame.QUIT:
+                running = False
+                sys.exit()
 
 def check_game_started():
     """
@@ -205,8 +220,6 @@ def check_if_last_question(line_number, running_status, number_of_questions):
     Checks if it's the last question and displays end screen if so
     """
     if line_number >= (number_of_questions * 4)-4:
-        display_end_screen()
-        time.sleep(5)
         running_status = False
     return running_status
 
