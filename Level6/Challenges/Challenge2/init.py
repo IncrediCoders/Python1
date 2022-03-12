@@ -698,7 +698,7 @@ def initialize(window):
     MY.pillar_bottom_right.location = (560, 375)
     MY.player.location = (window.x / 2, window.y / 4)
     MY.boss.location = window / 2
-    MY.boss_defence_area = pygame.Rect(375, 340, 50, 15)
+    MY.boss_defence_area = pygame.Rect(375, 333, 50, 22)
     pygame.time.set_timer(MY.boss_attack_event, 100)
     # Set up projectiles
     proj = Object(PROJECTILE_IMAGE)
@@ -761,15 +761,16 @@ def draw(screen):
         elif(MY.player.collides_with_boss and MY.player_dir == DOWN):
             MY.boss.draw(screen)
             MY.player.draw(screen)
-        elif(MY.player.collides_with_boss and MY.player_dir == LEFT):
-            MY.boss.draw(screen)
+        elif(MY.player.collides_with_boss and MY.player_dir == LEFT and MY.player.sprite == MY.pain_left):
+            MY.boss.draw(screen)    
             MY.player.draw(screen)
-        elif(MY.player.collides_with_boss and MY.player_dir == RIGHT):
-            MY.boss.draw(screen)
+        elif(MY.player.collides_with_boss and MY.player_dir == RIGHT and MY.player.sprite == MY.pain_right):
+            MY.boss.draw(screen)    
             MY.player.draw(screen)
         else:
             MY.player.draw(screen)
             MY.boss.draw(screen)
+                   
         MY.pillar_top_left.draw(screen) 
         MY.pillar_bottom_left.draw(screen)
         MY.pillar_bottom_right.draw(screen)
