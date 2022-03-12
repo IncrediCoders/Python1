@@ -106,6 +106,16 @@ def screen_wrap(obj, window):
 
     return flag
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+    
 def key_down(event, key):
     if isinstance(key, str):
         return event.type == pygame.KEYDOWN and event.key == key
@@ -559,7 +569,7 @@ class TextObject:
             self.__dict__[name] = pygame.math.Vector2(value[0], value[1])
         elif name == "font_size":
             self.__dict__[name] = value
-            self.font = pygame.font.Font('Assets/FreeSansBold.ttf', int(self.font_size))
+            self.font = pygame.font.Font(resource_path('Assets/FreeSansBold.ttf'), int(self.font_size))
         else:
             self.__dict__[name] = value
 
@@ -660,7 +670,7 @@ class Data:
     projectile_anim = Animator(projectile_sheet, 6)
     projectile = Object(projectile_sheet.image_at(0))
     proj_damage = 0.2
-    aimed_proj_damage = 10
+    aimed_proj_damage = 5
     proj_angle = 0
     num_projectiles = 0
     projectiles = []
@@ -755,22 +765,13 @@ def draw(screen):
         MY.pillar_top_right.draw(screen)
     #Draw the player and boss depending on who's in front when they collide
     else:   
-        if(MY.player.collides_with_boss and MY.player_dir == UP):
+        if(MY.player.location.y < 300):
+            MY.player.draw(screen)
             MY.boss.draw(screen)
-            MY.player.draw(screen)
-        elif(MY.player.collides_with_boss and MY.player_dir == DOWN):
-            MY.boss.draw(screen)
-            MY.player.draw(screen)
-        elif(MY.player.collides_with_boss and MY.player_dir == LEFT and MY.player.sprite == MY.pain_left):
-            MY.boss.draw(screen)    
-            MY.player.draw(screen)
-        elif(MY.player.collides_with_boss and MY.player_dir == RIGHT and MY.player.sprite == MY.pain_right):
-            MY.boss.draw(screen)    
-            MY.player.draw(screen)
         else:
-            MY.player.draw(screen)
             MY.boss.draw(screen)
-                   
+            MY.player.draw(screen)
+                        
         MY.pillar_top_left.draw(screen) 
         MY.pillar_bottom_left.draw(screen)
         MY.pillar_bottom_right.draw(screen)
