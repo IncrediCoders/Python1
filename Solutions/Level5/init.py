@@ -398,6 +398,10 @@ class Object:
 
     def update(self, delta_time):
         self.location += self.velocity * delta_time
+        if MY.player.velocity.x > 0:
+                MY.player_direction = RIGHT
+        elif MY.player.velocity.x < 0:
+            MY.player_direction = LEFT
         self.sprite.update(delta_time)
 
     def draw(self, screen):
@@ -644,6 +648,12 @@ def health_bar(screen, health, max_health, max_size, location):
 
     width = max_size[0] * (health / max_health)
     draw_rect(screen, bar_color, location, (width, max_size[1]))
+
+def jetpack_up_animation():
+    if(MY.player_direction == RIGHT):
+        MY.player.sprite = MY.paul_jetpack_right
+    else:
+       MY.player.sprite = MY.paul_jetpack_left 
 
 def restart_level(level_num):
     level_name_as_string = 'Level' + str(level_num)

@@ -9,6 +9,8 @@ def update(delta_time):
         elif key_down(event, " ") and (MY.grounded or MY.level_num > 3):
             MY.player.velocity.y = -700
             MY.grounded = False
+            if(MY.level_num > 3):
+                jetpack_up_animation()
     if key_held_down(pygame.K_LEFT): 
         # Uncommented the two lines below
         MY.player.velocity.x = max(MY.player.velocity.x - PLAYER_ACCEL, -PLAYER_MAX_SPEED)
@@ -40,7 +42,7 @@ def update(delta_time):
         if MY.player.velocity.x > 0:
             MY.player.sprite = MY.paul_jetpack_right
         elif MY.player.velocity.x < 0:
-            MY.player.sprite = MY.paul_jetpack_left
+            MY.player.sprite = MY.paul_jetpack_left    
 
     # Gravity
     MY.player.velocity.y = min(MY.player.velocity.y + GRAVITY_ACCEL, PLAYER_TERMINAL_VEL)
