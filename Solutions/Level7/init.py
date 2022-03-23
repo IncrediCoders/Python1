@@ -1184,12 +1184,17 @@ class DialogBox(object):
 				surf.blit(dlg_line, dlg_pos)
 				y = y + 20
 
-def add_to_message(msg, text_add):
+def add_to_message(msg, text_add, defense_card = None):
     # Helper method to build game dialog messages and wrap over lines
-    text = textwrap.wrap(text_add, 30)
-    for line in text:
-        msg += line + "\n"
-    return msg
+
+	if (defense_card):
+		if(defense_card.HP <= 0):
+			text_add += "\n{} was defeated!".format(defense_card.name)
+
+	text = textwrap.wrap(text_add, 30)
+	for line in text:
+		msg += line + "\n"
+	return msg
 
 def strip_from_sheet(sheet, start, size, columns, rows=1):
 	"""Strips individual frames from a sprite sheet given a start location,

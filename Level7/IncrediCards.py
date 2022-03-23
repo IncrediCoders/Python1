@@ -134,7 +134,7 @@ class PlayScreen(GameState):
 					turn_msg = "{} is weak to {}'{} attack! They receive 4 damage.".format(defense_card.name, offense_card.name, offense_card.s_flag)
 				else:
 					turn_msg = "{} took {} damage from {}'{} attack\n".format(defense_card.name, damage, offense_card.name, offense_card.s_flag)
-				message = add_to_message(message, turn_msg)
+				message = add_to_message(message, turn_msg, defense_card)
 			else:
 				turn_msg = "{} took no damage from {}\n".format(defense_card.name, offense_card.name)
 				message = add_to_message(message, turn_msg)

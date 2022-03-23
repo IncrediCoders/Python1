@@ -127,7 +127,7 @@ class PlayScreen(GameState):
 					turn_msg = "{} is weak to {}'{} attack! They receive 4 damage.".format(defense_card.name, offense_card.name, offense_card.s_flag)
 				else:
 					turn_msg = "{} took {} damage from {}'{} attack\n".format(defense_card.name, damage, offense_card.name, offense_card.s_flag)
-				message = add_to_message(message, turn_msg)
+				message = add_to_message(message, turn_msg, defense_card)
 			else:
 	
 				turn_msg = "{} took no damage from {}\n".format(defense_card.name, offense_card.name)
@@ -170,9 +170,9 @@ class PlayScreen(GameState):
 		# Check status of both players, if one player surviving then end the game
 		exiting = False
 		if not self.player1.active:
-		    exiting = self.player2
+			exiting = self.player2
 		elif not self.player2.active:
-		    exiting = self.player1
+			exiting = self.player1
 
 		return exiting
 		
