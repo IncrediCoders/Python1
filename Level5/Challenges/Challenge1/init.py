@@ -537,7 +537,8 @@ class Data:
     start_time = 0
     timer = 0
     timer_for_creeper = 0
-    timer_for_message = 0
+    timer_for_level4 = 0
+    timer_for_level1 = 0
 
     lose_button = Object(Image("Assets/LoseButton.png"))
     win_button = Object(Image("Assets/WinButton.png"))
@@ -756,10 +757,10 @@ def draw(screen):
     if challenge_type == 'CHALLENGE2':
         health_bar(screen, MY.player_health, 5, (128, 16), (MY.window.x * 0.75, 20))
 
-    if(MY.level_num == 4):
+    if (MY.level_num == 4):
         draw_level4_message()
-
-    #TODO: text that tells you to use the arrow keys to move and spacebar to attack (only once)
+    elif (MY.level_num == 1):
+        draw_level1_message()
 
     # Draw player
     MY.player.draw(screen)
@@ -780,10 +781,21 @@ def draw_level4_message():
     message_pt1 = font.render(pt1, True, color)
     message_pt2 = font.render(pt2, True, color)
     message_pt3 = font.render(pt3, True, color)
-    if(MY.timer_for_message < 5):
+    if(MY.timer_for_level4 < 5):
         SCREEN.blit(message_pt1, [45, 50]) 
         SCREEN.blit(message_pt2, [45, 90]) 
         SCREEN.blit(message_pt3, [45, 130]) 
+
+def draw_level1_message():
+    font = pygame.font.Font("./Assets/Prototype.ttf", 30)
+    pt1 = "Use the arrow keys to move"
+    pt2 = "and the spacebar to jump!"
+    color = (127, 0, 255)
+    message_pt1 = font.render(pt1, True, color)
+    message_pt2 = font.render(pt2, True, color)
+    if(MY.timer_for_level1 < 5):
+        SCREEN.blit(message_pt1, [220, 40]) 
+        SCREEN.blit(message_pt2, [235, 70]) 
 
 def draw_timer():
     if(MY.level_num == 5):
@@ -821,8 +833,10 @@ def update_level(delta_time):
 
     MY.timer_for_creeper += delta_time
 
-    if(MY.level_num == 4):
-        MY.timer_for_message += delta_time
+    if(MY.level_num ==1):
+        MY.timer_for_level1 += delta_time
+    elif(MY.level_num == 4):
+        MY.timer_for_level4 += delta_time
     
 def cleanup():
     """Cleans up the Platformer State."""
