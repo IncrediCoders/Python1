@@ -820,6 +820,7 @@ class InputBox(pygame.Surface):
 			return False
 	
 	def update(self):
+		self.fill(WHITE)
 		self.color = active_purple if self.active else inactive_dark_green
 		pygame.draw.rect(self, self.color, (0, 0, self.rect.width - 1 , self.rect.height - 1), 2)
 		
