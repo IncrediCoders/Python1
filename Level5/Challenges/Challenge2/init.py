@@ -398,6 +398,10 @@ class Object:
 
     def update(self, delta_time):
         self.location += self.velocity * delta_time
+        if MY.player.velocity.x > 0:
+                MY.player_direction = RIGHT
+        elif MY.player.velocity.x < 0:
+            MY.player_direction = LEFT
         self.sprite.update(delta_time)
 
     def draw(self, screen):
@@ -645,6 +649,12 @@ def health_bar(screen, health, max_health, max_size, location):
     width = max_size[0] * (health / max_health)
     draw_rect(screen, bar_color, location, (width, max_size[1]))
 
+def jetpack_up_animation():
+    if(MY.player_direction == RIGHT):
+        MY.player.sprite = MY.paul_jetpack_right
+    else:
+       MY.player.sprite = MY.paul_jetpack_left 
+
 def restart_level(level_num):
     level_name_as_string = 'Level' + str(level_num)
     tilemap = read_file("Assets/" + level_name_as_string + ".txt")
@@ -749,6 +759,8 @@ def draw(screen):
     if(MY.level_num == 4):
         draw_level4_message()
 
+    #TODO: text that tells you to use the arrow keys to move and spacebar to attack (only once)
+
     # Draw player
     MY.player.draw(screen)
     MY.exit_portal.draw(screen)
@@ -802,6 +814,7 @@ def update_level(delta_time):
     for battery in MY.batteries:
         battery.update(delta_time)
     
+    #TODO: reduce speed of creeper's exit
     MY.creeper.update(delta_time)
     MY.entrance.update(delta_time)
     MY.exit_portal.update(delta_time)

@@ -12,6 +12,7 @@ def update(delta_time):
         elif key_down(event, " ") and (MY.grounded or MY.level_num > 3):
             MY.player.velocity.y = -700
             MY.grounded = False
+            jetpack_up_animation()
     # Controls Paul's lefthand movement
     if key_held_down(pygame.K_LEFT): 
         # Set Paul's velocity 

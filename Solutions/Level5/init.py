@@ -759,6 +759,8 @@ def draw(screen):
     if(MY.level_num == 4):
         draw_level4_message()
 
+    #TODO: text that tells you to use the arrow keys to move and spacebar to attack (only once)
+
     # Draw player
     MY.player.draw(screen)
     MY.exit_portal.draw(screen)
@@ -812,6 +814,7 @@ def update_level(delta_time):
     for battery in MY.batteries:
         battery.update(delta_time)
     
+    #TODO: reduce speed of creeper's exit
     MY.creeper.update(delta_time)
     MY.entrance.update(delta_time)
     MY.exit_portal.update(delta_time)
