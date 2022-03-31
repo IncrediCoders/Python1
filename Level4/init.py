@@ -708,6 +708,22 @@ def draw(screen):
     for i in range(len(MY.asteroids)):
         if MY.asteroids[i].active:
             MY.asteroids[i].draw(screen)
+    
+    if(pygame.time.get_ticks() < 10000):
+        instructions_font = pygame.font.Font('freesansbold.ttf', 30)
+        color = (255, 0, 0)
+        pt1 = "Player 1: Use the wasd keys to move"
+        pt2 = "and the spacebar to shoot!"
+        pt3 = "Player 2: Use arrow keys to move"
+        pt4 = "and Enter to shoot!"
+        message_pt1 = instructions_font.render(pt1, True, color)
+        message_pt2 = instructions_font.render(pt2, True, color)
+        message_pt3 = instructions_font.render(pt3, True, color)
+        message_pt4 = instructions_font.render(pt4, True, color)
+        screen.blit(message_pt1, [180, 160]) 
+        screen.blit(message_pt2, [240, 190])
+        screen.blit(message_pt3, [180, 270])
+        screen.blit(message_pt4, [275, 300])
 
 def cleanup():
     """Cleans up the Intro State for SpaceWars."""
@@ -732,7 +748,7 @@ class GameOver:
     def initialize(window):
         """Initializes the restart menu state."""
         MY.gameoverbackground.location = window / 2
-        MY.restart_button.location = window / 2
+        MY.restart_button.location = (115, 70)
 
     def update(delta_time):
         """Updates the restart menu state."""
