@@ -778,8 +778,7 @@ def check_win():
 def check_replay_click(event):
     """Check to see if the replay button has been clicked"""
     if mouse_l_button_down(event):
-        pos = mouse_position()
-        if MY.restart_button.collides_with_point(Object(pos[0], pos[1])):
+        if MY.restart_button.collides_with_point(mouse_position()):
             Manager.current = 0
             MY.state = 0  
 
