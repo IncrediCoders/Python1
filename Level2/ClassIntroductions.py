@@ -27,7 +27,7 @@ text_paul_python  = "Hi. I'm Paul Python. My home is just over the bridge in Sea
 text_quackintosh = "Hello. I'm Quackintosh, from nearby Bill-view, Washeepton. My top actors are Audrey Honkburn, Goose Willis, Squawkin Phoenix, Robird De Niro, Hennifer Lawrence, and Woody Owlen. My musicians are Swan Bon Jovi, Michael Quackson, and Ozzy Ostrich. My top art is \"Son of Duck.\" "
 text_sb_turtle = "Hey. I'm SB Turtle, from New-ark, Moo Jersey. My top actresses are Shelly Long and Zooey Deshell. I'm a founding member of the Shell Scouts, and my favorite programming language is Microsoft Small Basic. Oh, and I grow into a giant monster, but that's for a different book. "
 text_sidewinder = "I'm SideWinder, from Salt-Snake City, Mewtah. I'm the best at SpaceWars, despite what Bayo thinks. My favorite movie is Snakes on a Glider, my favorite actor is Sylvester Stallion, and my favorite musician is Nine-Inch Snails. Jitter Bug has good taste. "
-text_syntax_turtle = "What's up? Syntax Turtle in the house. I'm from here, Red-Mutt, with my twin sis Grafika. My favorite actress is Natalie Porkman, and my favorite artist is Lizardnardo Da Vinci. My top games are \"Skate and Fly\" and Porkymon, and I'm looking forward to making a Codu Kids card game! "
+text_syntax_turtle = "What's up? Syntax Turtle in the house. I'm from here, Red-Mutt, with my twin sis Grafika. My favorite actress is Natalie Porkman, and my favorite artist is Lizardnardo Da Vinci. My top games are \"Skate and Fly\" and Porkymon, and I'm looking forward to making an IncrediCards game! "
 
 # We assign our character and text variables
 current_character = annie_conda
