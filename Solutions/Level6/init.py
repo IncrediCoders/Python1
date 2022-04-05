@@ -692,6 +692,7 @@ class Data:
     index = 0
     game_over_sheet = SpriteSheet("Assets/GameOverOverlay.png", (800, 600))
     game_over = Animator(game_over_sheet, 0.75, False, True)
+    game_over_time = 0
     you_win_sheet = SpriteSheet("Assets/YouWinOverlay.png", (800, 600))
     you_win = Animator(you_win_sheet, 0.75, False, True)
     ending_overlay = Object(game_over_sheet.image_at(0))
@@ -1009,6 +1010,7 @@ class PlayAgain:
         """Initializes the restart menu state."""
         pygame.time.set_timer(MY.boss_attack_event, 0)
         MY.ending_overlay.location = window / 2
+        MY.game_over_time = pygame.time.get_ticks()
 
     def update(delta_time):
         """Updates the restart menu state."""
@@ -1028,4 +1030,8 @@ class PlayAgain:
         MY.background.draw(screen)
         MY.player.draw(screen)
         MY.boss.draw(screen)
-        MY.ending_overlay.draw(screen)
+        if(pygame.time.get_ticks() - MY.game_over_time > 3000):
+            MY.restart_button.location = (WINDOW_WIDTH/2, WINDOW_LENGTH/2)
+            MY.restart_button.draw(screen)
+        else:
+            MY.ending_overlay.draw(screen)
