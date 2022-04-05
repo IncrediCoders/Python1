@@ -728,6 +728,11 @@ def initialize(window):
 def draw(screen):
     """Draws the state to the given screen for BossBattle."""
     MY.background.draw(screen)
+
+    # Draw instructions on first run
+    if(pygame.time.get_ticks() < 7000):
+        draw_instructions()
+
     upper_left_pillar = pygame.Rect(175, 193, 65, 65)
     lower_left_pillar = pygame.Rect(175, 427, 65, 65)
     upper_right_pillar = pygame.Rect(525, 193, 70, 65)
@@ -792,11 +797,22 @@ def draw(screen):
         for i in range(len(MY.shield_projectiles)):
             MY.shield_projectiles[i].draw(screen)
 
-    #Draw healthbars
+    # Draw healthbars
     MY.player_text.draw(screen)
     health_bar(screen, MY.player_health, 100, (100, 20), (110, 3))
     MY.boss_text.draw(screen)
     health_bar(screen, MY.boss_health, 300, (MY.boss.width(), 20), (675, 3))
+
+
+def draw_instructions():
+    font = pygame.font.Font('freesansbold.ttf', 30)
+    pt1 = "Use the arrow keys to move"
+    pt2 = "and the spacebar to attack!"
+    color = (204, 0, 0)
+    message_pt1 = font.render(pt1, True, color)
+    message_pt2 = font.render(pt2, True, color)
+    SCREEN.blit(message_pt1, [185, 220]) 
+    SCREEN.blit(message_pt2, [185, 250]) 
 
 
 def cleanup():
