@@ -453,6 +453,10 @@ class Object:
         player = pygame.Rect(MY.player.location.x - 10, MY.player.location.y + 22, 20, 10)
         boss = MY.boss_defence_area
         if player.colliderect(boss) and MY.player_hitbox.active == False:
+            MY.player.hit = True
+            if(MY.hit_recorded == False):
+                MY.last_hit = pygame.time.get_ticks()
+                MY.hit_recorded = True
             return True  
         return False
     
@@ -636,7 +640,7 @@ class Data:
     attack_left = Animator(player_attack_left_sheet, 0.5)
     attack_right = Animator(player_attack_right_sheet, 0.5)
     player_pain_forward_sheet = SpriteSheet("Assets/Paul/PaulPainFront.png", (64, 68))
-    player_pain_backward_sheet = SpriteSheet("Assets/Paul/PaulPainBack.png", (64, 68))
+    player_pain_backward_sheet = SpriteSheet("Assets/Paul/PaulPainBack.png", (64, 68)) 
     player_pain_left_sheet = SpriteSheet("Assets/Paul/PaulPainLeft.png", (64, 68))
     player_pain_right_sheet = SpriteSheet("Assets/Paul/PaulPainRight.png", (64, 68))
     pain_forward = Animator(player_pain_forward_sheet, 0.5)
@@ -650,6 +654,7 @@ class Data:
     player_text = TextObject(BLACK, 24, "Player: ")
     player_text.location.x = 25
     player_hitbox = Object(HITBOX_IMAGE)
+    hit_recorded = False
     # Boss data
     boss_attack_sheet = SpriteSheet("Assets/Creeper/CreeperAttack.png", (100, 100))
     boss_attack = Animator(boss_attack_sheet, 2)
@@ -678,6 +683,8 @@ class Data:
     projectile_velocity = 1
     aimed_projectile_velocity = 2
     s_proj_count = 0
+    last_hit = 0
+    proj_hit = False
     # Miscellaneous data
     wall_height = 70
     pillar_width = 28
@@ -814,7 +821,6 @@ def draw_instructions():
     SCREEN.blit(message_pt1, [185, 220]) 
     SCREEN.blit(message_pt2, [185, 250]) 
 
-
 def cleanup():
     """Cleans up the Intro State."""
     MY.projectiles = []
@@ -852,7 +858,7 @@ def player_move_update(delta_time):
     moving = (key_held_down(pygame.K_RIGHT) or key_held_down(pygame.K_LEFT) or
               key_held_down(pygame.K_DOWN) or key_held_down(pygame.K_UP))
     
-    if not moving and not key_held_down(pygame.K_SPACE) and not MY.player.collides_with_boss():
+    if not moving and not key_held_down(pygame.K_SPACE) and not MY.player.collides_with_boss() and not MY.projectile.collides_with(MY.player):
         MY.player_hitbox.active = False
         if MY.player_dir == UP:
             MY.player.sprite = MY.idle_backward
@@ -867,34 +873,22 @@ def player_move_update(delta_time):
         MY.player_hitbox.active = False
         MY.player.location.y -= 200 * delta_time
         MY.player_dir = UP
-        if(MY.player.collides_with_boss()):
-            MY.player.sprite = MY.pain_backward
-        else:
-            MY.player.sprite = MY.walk_backward
+        MY.player.sprite = MY.walk_backward
     elif key_held_down(pygame.K_DOWN):
         MY.player_hitbox.active = False
         MY.player.location.y += 200 * delta_time
         MY.player_dir = DOWN
-        if(MY.player.collides_with_boss()):
-            MY.player.sprite = MY.pain_forward
-        else:
-            MY.player.sprite = MY.walk_forward
+        MY.player.sprite = MY.walk_forward
     if key_held_down(pygame.K_LEFT):
         MY.player_hitbox.active = False
         MY.player.location.x -= 200 * delta_time
         MY.player_dir = LEFT
-        if(MY.player.collides_with_boss()):
-            MY.player.sprite = MY.pain_left
-        else:
-            MY.player.sprite = MY.walk_left
+        MY.player.sprite = MY.walk_left
     elif key_held_down(pygame.K_RIGHT):
         MY.player_hitbox.active = False
         MY.player.location.x += 200 * delta_time
         MY.player_dir = RIGHT
-        if(MY.player.collides_with_boss()):
-            MY.player.sprite = MY.pain_right
-        else:
-            MY.player.sprite = MY.walk_right
+        MY.player.sprite = MY.walk_right
 
 def check_pillar_collision(player_rect, pillar):
     if player_rect.colliderect(pillar):
@@ -928,7 +922,6 @@ def aim_at_player():
 
 def fire_projectile(delta_time, projectile):
     MY.proj_angle 
-
     if projectile.active:
         projectile.location.x += math.cos(MY.proj_angle ) * MY.aimed_projectile_velocity 
         projectile.location.y += math.sin(MY.proj_angle ) * MY.aimed_projectile_velocity 
@@ -961,12 +954,22 @@ def update_assets(delta_time):
     # Player
     player_move_update(delta_time)
     player_attack_update()
+    
+    if(MY.player.hit == True):
+        player_pain_anim()
+
+        # Makes sure the pain animation runs for the correct amount of time during boss collision
+        if(MY.player_dir == LEFT or MY.player_dir == RIGHT):
+            MY.player.hit = False
+            MY.hit_recorded = False
+        elif(pygame.time.get_ticks() - MY.last_hit > 300 and (MY.player_dir == UP or MY.player_dir == DOWN)):
+            MY.player.hit = False
+            MY.hit_recorded = False
     MY.player.update(delta_time)
 
     # Boss
     if MY.player_hitbox.active and MY.boss.collides_with(MY.player_hitbox):
         MY.boss.sprite = MY.boss_pain 
-        boss_attack(delta_time)  
     elif MY.is_boss_attacking:
         MY.boss.sprite = MY.boss_attack
         boss_attack(delta_time)
