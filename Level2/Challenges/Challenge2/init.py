@@ -18,14 +18,14 @@ def display_text(screen, current_text):
     """
     Displays text to the screen
     """
-    if(pygame.time.get_ticks() < 5000):
-        pt1 = "Use the number keys to switch characters"
+    if(pygame.time.get_ticks() < 10000):
+        pt1 = "Use the 0-9, Q, and W keys to switch characters"
         pt2 = "and learn about your classmates!"
         message_pt1 = instructions_font.render(pt1, True, PURPLE)
         message_pt2 = instructions_font.render(pt2, True, PURPLE)
         pygame.draw.rect(screen, WHITE, pygame.Rect(5, 45, 587, 80))
-        screen.blit(message_pt1, [10, 45]) 
-        screen.blit(message_pt2, [60, 77])
+        screen.blit(message_pt1, [11, 49]) 
+        screen.blit(message_pt2, [90, 81])
 
     WRAPPED_TEXT = textwrap.wrap(current_text, 30)
     y = 230
@@ -41,7 +41,7 @@ Initializes pygame, the font object, and the window's title
 """
 pygame.init() # Initializes all the imported pygame modules
 my_font = pygame.font.SysFont('Arial', 20) # Creates a font object from the system fonts
-instructions_font = pygame.font.SysFont('Arial', 35, True)
+instructions_font = pygame.font.SysFont('Arial', 31, True)
 pygame.display.set_caption('Class Introductions') # Adds the title of the game
 
 """
