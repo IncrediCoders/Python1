@@ -766,11 +766,13 @@ def draw(screen):
     MY.player.draw(screen)
     MY.exit_portal.draw(screen)
 
+    #Creeper pauses before exiting through portal
     if MY.timer_for_creeper < 1:
-        MY.creeper.sprite = MY.creeper_exit
-        MY.entrance.sprite = MY.portal_enter_closing
+        MY.creeper.sprite = MY.creeper_exit_sheet.image_at(0)
         MY.creeper.draw(screen)
-        MY.entrance.draw(screen)
+    elif 1 < MY.timer_for_creeper < 2:
+        MY.creeper.sprite = MY.creeper_exit
+        MY.creeper.draw(screen)
 
 def draw_level4_message():
     font = pygame.font.Font("./Assets/Prototype.ttf", 30)
