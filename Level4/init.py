@@ -7,6 +7,7 @@ import math
 import time
 import random
 from os import path
+import os, sys 
 
 # Global color values
 WHITE = [225, 225, 225]
@@ -50,7 +51,7 @@ class TextObject:
             self.__dict__[name] = pygame.math.Vector2(value[0], value[1])
         elif name == "font_size":
             self.__dict__[name] = value
-            self.font = pygame.font.Font('freesansbold.ttf', int(self.font_size))
+            self.font = pygame.font.SysFont('Arial', int(self.font_size))
         else:
             self.__dict__[name] = value
 
@@ -710,7 +711,8 @@ def draw(screen):
             MY.asteroids[i].draw(screen)
     
     if(pygame.time.get_ticks() < 10000):
-        instructions_font = pygame.font.Font('freesansbold.ttf', 30)
+        pygame.font.get_fonts()
+        instructions_font = pygame.font.SysFont('Arial', 35, True)
         color = (255, 0, 0)
         pt1 = "Player 1: Use the wasd keys to move"
         pt2 = "and the spacebar to shoot!"
