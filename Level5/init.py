@@ -545,6 +545,7 @@ class Data:
     timer_for_creeper = 0
     timer_for_level4 = 0
     timer_for_level1 = 0
+    restart = False
 
     lose_button = Object(Image("Assets/LoseButton.png"))
     win_button = Object(Image("Assets/WinButton.png"))
@@ -665,6 +666,7 @@ def jetpack_up_animation():
 def restart_level(level_num):
     level_name_as_string = 'Level' + str(level_num)
     tilemap = read_file("Assets/" + level_name_as_string + ".txt")
+    MY.restart = True
     load_level(tilemap)
 
 def load_level(tilemap):
@@ -714,7 +716,11 @@ def load_level(tilemap):
     MY.player.location = MY.player_start_position
     MY.entrance.location = MY.player_start_position
     MY.start_time = pygame.time.get_ticks()
-    MY.timer_for_creeper = 0
+    if(MY.restart == False):
+        MY.timer_for_creeper = 0
+    else:
+        MY.restart = False
+
 
 def initialize(window):
     """Initializes the Platformer state."""
@@ -776,7 +782,8 @@ def draw(screen):
     if MY.timer_for_creeper < 1:
         MY.creeper.sprite = MY.creeper_exit_sheet.image_at(0)
         MY.creeper.draw(screen)
-    elif 1 < MY.timer_for_creeper < 2:
+        MY.creeper_exit.reset()
+    elif 1 < MY.timer_for_creeper < 1.7:
         MY.creeper.sprite = MY.creeper_exit
         MY.creeper.draw(screen)
 
@@ -840,7 +847,7 @@ def update_level(delta_time):
 
     MY.timer_for_creeper += delta_time
 
-    if(MY.level_num ==1):
+    if(MY.level_num == 1):
         MY.timer_for_level1 += delta_time
     elif(MY.level_num == 4):
         MY.timer_for_level4 += delta_time
