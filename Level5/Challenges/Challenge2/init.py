@@ -374,11 +374,17 @@ class Object:
         if facing == UP:
             self.location.y = (other_obj.location.y +
                                other_obj.height() / 2 +
-                               self.height() / 2)
-        else:
+                               self.height() / 2)  
+        else: # Collides with floor
             self.location.y = (other_obj.location.y -
                                (other_obj.height() / 2 +
                                 self.height() / 2))
+            if MY.player.velocity.x == 0 and MY.player_direction == RIGHT:
+                MY.player.velocity.x = max(0, MY.player.velocity.x - PLAYER_DECEL)
+                MY.player.sprite = MY.paul_idle_right
+            elif MY.player.velocity.x == 0 and MY.player_direction == LEFT:
+                MY.player.velocity.x = min(0, MY.player.velocity.x + PLAYER_DECEL)
+                MY.player.sprite = MY.paul_idle_left
 
     def collides_with_point(self, point):
         """
@@ -828,7 +834,6 @@ def update_level(delta_time):
     for battery in MY.batteries:
         battery.update(delta_time)
     
-    #TODO: reduce speed of creeper's exit
     MY.creeper.update(delta_time)
     MY.entrance.update(delta_time)
     MY.exit_portal.update(delta_time)

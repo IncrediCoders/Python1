@@ -1,7 +1,7 @@
 # Runs the init.py file and imports the libraries
 from init import *
 
-#TODO: Write code to set the timer for 60 seconds
+#TODO: Write code to set the timer for 45 seconds
 
 
 # Checks for player input and updates the game
@@ -73,22 +73,18 @@ def update(delta_time):
                 MY.player.snap_to_object_y(wall, DOWN)
                 MY.player.velocity.y = 0
                 MY.grounded = touching = True
-                continue
             if MY.player.collision[LEFT]:
                 MY.player.snap_to_object_x(wall, LEFT)
                 MY.player.velocity.x = 0
                 touching = True
-                continue
             if MY.player.collision[RIGHT]:
                 MY.player.snap_to_object_x(wall, RIGHT)
                 MY.player.velocity.x = 0
                 touching = True
-                continue
             if MY.player.collision[UP]:
                 MY.player.snap_to_object_y(wall, UP)
                 MY.player.velocity.y = 0
                 touching = True
-                continue
     if not touching:
         MY.grounded = False
     
@@ -104,8 +100,8 @@ def update(delta_time):
         if MY.level_num >= 1 and MY.level_num < 6:
             # Load and run the next level
             MY.level_num = MY.level_num + 1
-            level_name_as_string = 'level' + str(MY.level_num)
-            tilemap = read_file("assets/" + level_name_as_string + ".txt")
+            level_name_as_string = 'Level' + str(MY.level_num)
+            tilemap = read_file("Assets/" + level_name_as_string + ".txt")
             load_level(tilemap)
             #TODO: Write code to reset the timer 
 

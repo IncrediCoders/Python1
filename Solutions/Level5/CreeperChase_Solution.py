@@ -68,10 +68,6 @@ def update(delta_time):
                 MY.player.snap_to_object_y(wall, DOWN)
                 MY.player.velocity.y = 0
                 MY.grounded = touching = True
-                if(MY.player_direction == RIGHT):
-                    MY.player.sprite = MY.paul_idle_right
-                else:
-                    MY.player.sprite = MY.paul_idle_left
             if MY.player.collision[LEFT]:
                 MY.player.snap_to_object_x(wall, LEFT)
                 MY.player.velocity.x = 0
