@@ -675,13 +675,13 @@ class Data:
     projectile_anim = Animator(projectile_sheet, 6)
     projectile = Object(projectile_sheet.image_at(0))
     proj_damage = 0.2
-    aimed_proj_damage = 5
+    aimed_proj_damage = 5 
     proj_angle = 0
     num_projectiles = 0
     projectiles = []
     shield_projectiles = []
     projectile_velocity = 1
-    aimed_projectile_velocity = 2
+    aimed_projectile_velocity = 3 
     s_proj_count = 0
     last_hit = 0
     proj_hit = False
@@ -836,6 +836,12 @@ def player_attack_anim():
     elif MY.player_dir == RIGHT:
         MY.player.sprite = MY.attack_right
 
+def reset_pain_anim():
+    MY.pain_left.reset()
+    MY.pain_right.reset()
+    MY.pain_forward.reset()
+    MY.pain_backward.reset()
+
 def player_pain_anim():
     """Updates animations for player while in pain"""
     if MY.player_dir == UP:
@@ -932,8 +938,8 @@ def fire_projectile(delta_time, projectile):
             projectile.update(delta_time)
         if projectile.collides_with(MY.player):
             MY.player_health -= MY.aimed_proj_damage
-            player_pain_anim()
             MY.player.hit = True
+            MY.last_hit = pygame.time.get_ticks()
             projectile.location = (WINDOW_WIDTH / 2, WINDOW_LENGTH/ 2 - 35)
             aim_at_player()
             projectile.update(delta_time)
@@ -955,21 +961,25 @@ def update_assets(delta_time):
     player_move_update(delta_time)
     player_attack_update()
     
+    # Pause boss attack for a short time if player is hit
+    if(pygame.time.get_ticks() - MY.last_hit < 600):
+        MY.is_boss_attacking = False
+        MY.player_hitbox.active = False
+
+    # Makes sure the pain animation runs for the correct amount of time
     if(MY.player.hit == True):
         player_pain_anim()
-
-        # Makes sure the pain animation runs for the correct amount of time during boss collision
-        if(MY.player_dir == LEFT or MY.player_dir == RIGHT):
+        if(pygame.time.get_ticks() - MY.last_hit > 300):
             MY.player.hit = False
             MY.hit_recorded = False
-        elif(pygame.time.get_ticks() - MY.last_hit > 300 and (MY.player_dir == UP or MY.player_dir == DOWN)):
-            MY.player.hit = False
-            MY.hit_recorded = False
+            reset_pain_anim() 
+            
     MY.player.update(delta_time)
 
     # Boss
     if MY.player_hitbox.active and MY.boss.collides_with(MY.player_hitbox):
         MY.boss.sprite = MY.boss_pain 
+        boss_attack(delta_time)
     elif MY.is_boss_attacking:
         MY.boss.sprite = MY.boss_attack
         boss_attack(delta_time)
