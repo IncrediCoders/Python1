@@ -654,6 +654,7 @@ class Data:
     player_text = TextObject(BLACK, 24, "Player: ")
     player_text.location.x = 25
     player_hitbox = Object(HITBOX_IMAGE)
+    attack_allowed = False
     hit_recorded = False
     # Boss data
     boss_attack_sheet = SpriteSheet("Assets/Creeper/CreeperAttack.png", (100, 100))
@@ -855,7 +856,8 @@ def player_pain_anim():
 
 def player_attack_update():
     """Updates player's hitbox and plays animations while attacking"""
-    if key_held_down(pygame.K_SPACE):
+
+    if key_held_down(pygame.K_SPACE) and MY.attack_allowed == True:
         MY.player_hitbox.active = True
         player_attack_anim()
 
@@ -959,12 +961,13 @@ def update_assets(delta_time):
 
     # Player
     player_move_update(delta_time)
-    player_attack_update()
     
-    # Pause boss attack for a short time if player is hit
-    if(pygame.time.get_ticks() - MY.last_hit < 600):
+    # If player is hit, pause boss and player attacks
+    if(pygame.time.get_ticks() - MY.last_hit < 800):
         MY.is_boss_attacking = False
-        MY.player_hitbox.active = False
+        MY.attack_allowed = False
+    else:
+        MY.attack_allowed = True
 
     # Makes sure the pain animation runs for the correct amount of time
     if(MY.player.hit == True):
