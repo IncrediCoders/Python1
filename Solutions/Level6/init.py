@@ -676,7 +676,7 @@ class Data:
     projectile_anim = Animator(projectile_sheet, 6)
     projectile = Object(projectile_sheet.image_at(0))
     proj_damage = 0.2
-    aimed_proj_damage = 5 
+    aimed_proj_damage = 15 
     proj_angle = 0
     num_projectiles = 0
     projectiles = []
@@ -982,6 +982,9 @@ def update_assets(delta_time):
     # Boss
     if MY.player_hitbox.active and MY.boss.collides_with(MY.player_hitbox):
         MY.boss.sprite = MY.boss_pain 
+        boss_attack(delta_time)
+    elif MY.player_hitbox.active:
+        MY.boss.sprite = MY.boss_attack
         boss_attack(delta_time)
     elif MY.is_boss_attacking:
         MY.boss.sprite = MY.boss_attack
