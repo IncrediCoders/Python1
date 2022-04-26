@@ -113,9 +113,9 @@ def resource_path(relative_path):
         base_path = sys._MEIPASS
     except Exception:
         base_path = os.path.abspath(".")
-
     return os.path.join(base_path, relative_path)
-    
+
+   
 def key_down(event, key):
     if isinstance(key, str):
         return event.type == pygame.KEYDOWN and event.key == key
@@ -813,7 +813,7 @@ def draw(screen):
 
 
 def draw_instructions():
-    font = pygame.font.Font('freesansbold.ttf', 30)
+    font = pygame.font.Font(resource_path('Assets/freesansbold.ttf'), 30) #TODO
     pt1 = "Use the arrow keys to move"
     pt2 = "and the spacebar to attack!"
     color = (204, 0, 0)
