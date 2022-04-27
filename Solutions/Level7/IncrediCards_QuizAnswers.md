@@ -10,9 +10,9 @@ Here are the answers:
 2. The second parameter is the card's TechType. An example TechType is _`'python'`_. These TechTypes represent the different coding languages that the cards use.
 3. The _`.append()`_ function adds something (in our case, a card variable) to the Deck. For example: _`DECK.append(annie_conda)`_.
 4. _`PlayScreen()`_ is one of the game states, which are kind of like modes or screens that the player switches between. The _`PlayScreen()`_ class sets up the graphics on the screen, including the player names, the player cards, the dialog box, the healthbars, the TechType Attack button, the coin, and the On Deck boxes. It also checks if player clicked the TechType Attack button. It determines what messages are that go in the dialog box, and it displays them. Finally, it determines when a turn is over and it switches turns.
-5. A class is where you can organize your program to stick pieces of your code together, and you can then use the class as a set of code or in other words it creates a new object that includes methods and variables.
-6. The argument "self" is used to set what you see on the screen.
-7. The _`start()`_ method creates the players and sets which of the players is attacking and which one is defending. 
-8. The code command for checking if player 1 clicked on a different "On Deck" card is _`self.player1_ondeck.get_event(event)`_.
-9. The thing that changes for player 2 is it will be "self.player2" so it will look like this: _`self.player2_ondeck.get_event(event)`_.
-10. The "self.flip" command is part of what is used to actually flip the coin so the command in an if statment tells it how many times to flip the coin.
+5. A class is where you can organize your program in sections, so that you don't have to repeat code. You can then call the class when you need it. (In Python, it's also called an _object_.) In other words, it creates a new object and might include methods and variables.
+6. The _`start()`_ method creates the players and sets which of the players is attacking and which one is defending. 
+7. The code command for checking if player 1 clicked on a different "On Deck" card is _`self.player1_ondeck.get_event(event)`_.
+8. The thing that changes for player 2 is it will be "self.player2" so it will look like this: _`self.player2_ondeck.get_event(event)`_.
+9. The "self.flip" command is part of what is used to actually flip the coin so the command in an if statment tells it how many times to flip the coin.
+10. The 6 game states are the _`Title`_ screen, the _`GetNames`_ screen (where you enter your names), the _`CoinFlip`_ screen (where you flip a coin to see who goes first), the _`ChooseHand`_ screen (where you pick which card to start with), the _`Game`_ or Play screen (the main screen where you play the game), and the _`Victory`_ screen (the screen at the end that tells you who won, and where you can choose to play again).
