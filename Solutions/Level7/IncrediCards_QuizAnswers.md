@@ -6,7 +6,7 @@ This page includes the answers to the Level 7 IncrediCards Quiz!
 
 Here are the answers:
 
-1. There are 6 total parameters in the _`Card()`_ function: the name of the card (such as _`'Annie Conda'`_), the card's TechType (such as 'python'), the card's weakness TechType (such as _`'java'`_), the card's resistance TechType that it's stronger against (such as _`'bash'`_), the card image (such as _`annie_conda_img`_), and the TechType icon for that card (such as _`icon_python`_).
+1. There are 6 total parameters in the _`Card()`_ function: the name of the card (such as _`'Annie Conda'`_), the card's TechType (such as _`'python'`_), the card's weakness TechType (such as _`'java'`_), the card's resistance TechType that it's stronger against (such as _`'bash'`_), the card image (such as _`annie_conda_img`_), and the TechType icon for that card (such as _`icon_python`_).
 2. The second parameter is the Card's TechType. An example of TechType would simply be python because that is the coding language we are using in this program.
 3. The _`.append`_ command adds something to the Deck for example: _`DECK.append(annie_conda)`_.
 4. _`GameScreen()`_ is of a few different game states, which are kind of like modes or screens that the player switches between. An examples of something that could go inside of the parentheses is "GameState" which would look like _`GameScreen(GameState)`_.
