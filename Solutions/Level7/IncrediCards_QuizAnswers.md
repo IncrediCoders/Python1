@@ -8,7 +8,7 @@ Here are the answers:
 
 1. There are 6 total parameters in the _`Card()`_ function: the name of the card (such as _`'Annie Conda'`_), the card's TechType (such as _`'python'`_), the card's weakness TechType (such as _`'java'`_), the card's resistance TechType that it's stronger against (such as _`'bash'`_), the card image (such as _`annie_conda_img`_), and the TechType icon for that card (such as _`icon_python`_).
 2. The second parameter is the card's TechType. An example TechType is _`'python'`_. These TechTypes represent the different coding languages that the cards use.
-3. The _`.append`_ command adds something to the Deck for example: _`DECK.append(annie_conda)`_.
+3. The _`.append()`_ function adds something (in our case, a card variable) to the Deck. For example: _`DECK.append(annie_conda)`_.
 4. _`GameScreen()`_ is of a few different game states, which are kind of like modes or screens that the player switches between. An examples of something that could go inside of the parentheses is "GameState" which would look like _`GameScreen(GameState)`_.
 5. A class is where you can organize your program to stick pieces of your code together, and you can then use the class as a set of code or in other words it creates a new object that includes methods and variables.
 6. The argument "self" is used to set what you see on the screen.
