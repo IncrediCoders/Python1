@@ -23,19 +23,19 @@ def update(delta_time):
 
 
 
-    #TODO: Uncomment Lines 27-29 to add the hit box above Paul
+    #TODO: Uncomment Lines 27-29 to add the hitbox above Paul
     #if MY.player_dir == UP:
     #    MY.player_hitbox.location = pygame.math.Vector2(
     #        MY.player.location.x + 20, MY.player.location.y - 20)
-    #TODO: Copy the code here to add the hit box below Paul
+    #TODO: Copy the code here to add the hitbox below Paul
 
 
 
-    #TODO: Copy the code here to add the hit box to the left of Paul
+    #TODO: Copy the code here to add the hitbox to the left of Paul
 
 
 
-    #TODO: Write the code here to add the hit box to the right of Paul
+    #TODO: Write the code here to add the hitbox to the right of Paul
 
 
 
