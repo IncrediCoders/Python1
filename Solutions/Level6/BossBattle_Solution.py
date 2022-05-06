@@ -23,19 +23,19 @@ def update(delta_time):
         MY.player_health -= 0.5
         MY.player_hitbox.active = False
 
-    # Uncommented Lines 27-29 to add the hit box above Paul
+    # Uncommented Lines 27-29 to add the hitbox above Paul
     if MY.player_dir == UP:
         MY.player_hitbox.location = pygame.math.Vector2(
             MY.player.location.x + 20, MY.player.location.y - 20)
-    # Copied code here to add the hit box below Paul
+    # Copied code here to add the hitbox below Paul
     elif MY.player_dir == DOWN:
         MY.player_hitbox.location = pygame.math.Vector2(
             MY.player.location.x - 10, MY.player.location.y + 25)
-    # Copied code here to add the hit box to the left of Paul
+    # Copied code here to add the hitbox to the left of Paul
     elif MY.player_dir == LEFT:
         MY.player_hitbox.location = pygame.math.Vector2(
             MY.player.location.x - 20, MY.player.location.y)
-    # Wrote code here to add the hit box to the right of Paul
+    # Wrote code here to add the hitbox to the right of Paul
     elif MY.player_dir == RIGHT:
         MY.player_hitbox.location = pygame.math.Vector2(
             MY.player.location.x + 20, MY.player.location.y)
