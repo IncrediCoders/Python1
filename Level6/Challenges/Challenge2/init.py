@@ -53,6 +53,9 @@ def check_events():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             stop()
+        elif(MY.display_intro):
+            MY.display_intro = False
+            Manager.current = 3  
         elif event.type == MY.boss_attack_event:
             MY.is_boss_attacking = True
         else:
@@ -65,9 +68,20 @@ def check_ending_events():
             stop()
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if MY.background.collides_with_point(pygame.mouse.get_pos()):
-                Manager.current = 0
                 MY.boss_health = 300
                 MY.player_health = 100
+                Manager.current = 3
+                
+
+def check_intro_events():
+    for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                stop()
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                if MY.background.collides_with_point(pygame.mouse.get_pos()):
+                    MY.boss_health = 300
+                    MY.player_health = 100
+                    Manager.current = 0
 
 def draw_rect(screen, color, top_left, size):
     pygame.draw.rect(screen, color, (top_left[0], top_left[1], size[0], size[1]))
@@ -705,6 +719,9 @@ class Data:
     you_win = Animator(you_win_sheet, 0.75, False, True)
     ending_overlay = Object(game_over_sheet.image_at(0))
     restart_button = Object(Image("Assets/PlayAgain.png"))
+    intro_screen = Object(Image("Assets/Intro.png"))
+    intro_time = 0
+    display_intro = True
 
 MY = Data()
 
@@ -737,14 +754,10 @@ def draw(screen):
     """Draws the state to the given screen for BossBattle."""
     MY.background.draw(screen)
 
-    # Draw instructions on first run
-    if(pygame.time.get_ticks() < 7000):
-        draw_instructions()
-
     upper_left_pillar = pygame.Rect(175, 193, 65, 65)
     lower_left_pillar = pygame.Rect(175, 427, 65, 65)
     upper_right_pillar = pygame.Rect(525, 193, 70, 65)
-    lower_right_pillar = pygame.Rect(525, 427, 70, 65)
+    lower_right_pillar = pygame.Rect(525, 427, 70, 65) 
 
     player_rect = pygame.Rect(MY.player.location.x - 10, MY.player.location.y + 22, 20, 10)
 
@@ -810,17 +823,6 @@ def draw(screen):
     health_bar(screen, MY.player_health, 100, (100, 20), (110, 3))
     MY.boss_text.draw(screen)
     health_bar(screen, MY.boss_health, 300, (MY.boss.width(), 20), (675, 3))
-
-
-def draw_instructions():
-    font = pygame.font.Font(resource_path('Assets/freesansbold.ttf'), 30) #TODO
-    pt1 = "Use the arrow keys to move"
-    pt2 = "and the spacebar to attack!"
-    color = (204, 0, 0)
-    message_pt1 = font.render(pt1, True, color)
-    message_pt2 = font.render(pt2, True, color)
-    SCREEN.blit(message_pt1, [185, 220]) 
-    SCREEN.blit(message_pt2, [185, 250]) 
 
 def cleanup():
     """Cleans up the Intro State."""
@@ -1070,3 +1072,25 @@ class PlayAgain:
             MY.restart_button.draw(screen)
         else:
             MY.ending_overlay.draw(screen)
+
+class Intro:
+    MY = Data()
+
+    def initialize(window):
+        """Initializes the intro menu state."""
+        pygame.time.set_timer(MY.boss_attack_event, 0)
+        MY.intro_screen.location = window / 2
+        MY.display_intro = False
+
+    def update(delta_time):
+        """Updates the intro menu state."""
+        check_intro_events()
+
+    def cleanup():
+        """Cleans up the intro menu state."""
+        MY.projectiles = []
+
+    def draw(screen):
+        """Draws the intro menu state."""
+        MY.intro_screen.location = (WINDOW_WIDTH/2, WINDOW_LENGTH/2)
+        MY.intro_screen.draw(screen)
