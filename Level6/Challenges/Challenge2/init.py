@@ -689,7 +689,7 @@ class Data:
     projectile_sheet = SpriteSheet("Assets/PlasmaBall.png", (32, 32))
     projectile_anim = Animator(projectile_sheet, 6)
     projectile = Object(projectile_sheet.image_at(0))
-    proj_damage = 0.2
+    proj_damage = 0.1
     aimed_proj_damage = 12.5
     proj_angle = 0
     num_projectiles = 0
