@@ -66,7 +66,7 @@ class PlayScreen(GameState):
 		self.coin = Coin(coin_img, (X_CENTER, 475))
 		self.turn_counter = 1
 		self.flipping = False
-		self.tech_attack = False
+		self.turn_action = False
 		self.coded_attack = False
 		self.side_up = None
 		self.force_tails = False
@@ -117,9 +117,9 @@ class PlayScreen(GameState):
 		if self.flipping:
 			self.flipping = self.coin.update(dt)
 			if not self.flipping:
-				self.tech_attack = True
+				self.turn_action = True
 		
-		if self.tech_attack:
+		if self.turn_action:
 			offense_card = self.attacker.current_card 
 			defense_card = self.defender.current_card
 			
@@ -149,7 +149,7 @@ class PlayScreen(GameState):
 				self.player1.refresh_hand()
 				self.player2.refresh_hand()
 				
-				self.tech_attack = False
+				self.turn_action = False
 				self.turn_counter += 1
 						
 				# Switch active player
@@ -208,7 +208,7 @@ class PlayScreen(GameState):
 				
 				#TODO: Add the code to set the game's coded attack attribute to 'False' (Hint: Look at line 70)
 
-				self.tech_attack = False
+				self.turn_action = False
 				self.turn_counter += 1
 
 			winner = self.check_game_end()
