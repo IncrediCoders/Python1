@@ -1,0 +1,1 @@
+Our instructions will be to the reader for how to update the code to point at this Trivia2 version instead.
