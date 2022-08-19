@@ -1,1 +1,60 @@
-Our instructions will be to the reader for how to update the code to point at this Trivia2 version instead.
+Who is Annie Conda's favorite musician?
+Justin Timbersnake
+Swan Bon Jovi
+Michael Quackson
+<To add two more new Annie Conda questions>
+Where is Bayo Wolf from?
+Little Squawk, Barkansas
+Red-mutt, Washeepton
+Bill-view, Washeepton
+<To add two more new Bayo Wolf questions>
+Where is Captain Javo from?
+Indiana-pawlis, Fin-diana
+New-ark, Moo Jersey
+Salt-Snake City, Mewtah
+<To add two more new Captain Javo questions>
+What is Grafika's favorite movie?
+Wizard of Paws
+Stall Wars
+Clawshank Redemption
+<To add two more new questions for this character>
+What are two of Intelli-Scents' favorite movies?
+Hack to the Future and Mission Impawsible
+Fast and Furry-us and Paws
+Hairy Otter 8 and Catsaway
+<To add two more new questions for this character>
+Where is Java Lynn from?
+Minnea-pawlis, Minnow-soda
+Sanfran-Hissco, Cowlifornia
+Sea-cattle, Washeepton
+<To add two more new questions for this character>
+What Jitter Bug's two favorite movies?
+Mrs. Doubtspider and Twi-mite
+Catsaway and The Sound of Mew-sic
+Dogfather and Jurassic Bark
+<To add two more new questions for this character>
+Who is one of Paul Python's favorite musicians?
+White Snake
+Ozzy Ostrich
+Nine-Inch Snails
+<To add two more new questions for this character>
+Who are two of Quackintosh's favorite actors?
+Hennifer Lawrence and Woody Owlen
+Shelly Long and Zooey Deshell
+Tomcat Hanks and Sylvester Stallion
+<To add two more new questions for this character>
+Where is SB Turtle from?
+New-ark, Moo Jersey
+Minnea-pawlis, Minnow-soda
+Little Squawk, Barkansas
+<To add two more new questions for this character>
+Who is SideWinder's favorite actor?
+Sylvester Stallion
+Tomcat Hanks
+Kristin Ear-Wiig
+<To add two more new questions for this character>
+Who is Syntax Turtle's twin?
+Grafika
+Java Lynn
+SB Turtle
+<To add two more new questions for this character>
