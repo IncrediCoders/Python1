@@ -8,17 +8,17 @@ Red-mutt, Washeepton
 Bill-view, Washeepton
 Who is another musician Annie Conda likes?
 Hissy Elliott
-Swan Bon Jovi
-Michael Quackson
+Britney Shears
+Beeyonce
 Where is Bayo Wolf from?
 Little Squawk, Barkansas
-Red-mutt, Washeepton
-Bill-view, Washeepton
+Minnea-pawlis, Minnow-soda
+Sea-cattle, Washeepton
 What game is Bayo Wolf best at?
 SpaceWars
 Creeper Chase
-Boss Battle
-What is Bayo Wolf's favorite movie?
+Stall Wars
+What is one of Bayo Wolf's favorite movies?
 The Dogfather
 Wizard of Paws
 Clawshank Redemption
@@ -37,7 +37,7 @@ Woody Owlen
 What is Grafika's favorite movie?
 Wizard of Paws
 Stall Wars
-Clawshank Redemption
+Snakes on a Glider4454332
 Where is Grafika from?
 Red-mutt, Washeepton
 Sanfran-Hissco, Cowlifornia
@@ -54,19 +54,19 @@ Where is Intelli-Scents from?
 Minnea-pawlis, Minnow-soda
 Sanfran-Hissco, Cowlifornia
 Sea-cattle, Washeepton
-Who is Intelli-Scents favorite artist?
+Who is Intelli-Scents' favorite artist?
 Vincent van Gopher
 Pablo Pigcasso
 Lizardnardo Da Vinci
 Where is Java Lynn from?
 Minnea-pawlis, Minnow-soda
-Sanfran-Hissco, Cowlifornia
-Sea-cattle, Washeepton
+Little Squawk, Barkansas
+Indiana-pawlis, Fin-diana
 What is one of Java Lynn's favorite movies?
 Hairy Otter 8
-Dogfather
+The Dogfather
 Jurassic Bark
-Who is one of Java Lynn's favorite actor?
+Who is one of Java Lynn's favorite actors?
 Scarlett Johamster
 Woody Owlen
 Shelly Long
@@ -78,10 +78,10 @@ Where is Jitter Bug from?
 Ant-aheim, Cowlifornia
 Minnea-pawlis, Minnow-soda
 Little Squawk, Barkansas
-What is one of Jitter Bug's favorite movies?
-Mrs. Doubtspider 
-Catsaway
-The Sound of Mew-sic
+Who is one of Jitter Bug's favorite actors?
+Kristin Ear-Wiig
+Howly Berry
+Scarlett Johamster
 Who is one of Paul Python's favorite musicians?
 White Snake
 Ozzy Ostrich
@@ -102,30 +102,34 @@ Where is Quackintosh from?
 Bill-view, Washeepton
 Sea-cattle, Washeepton
 Minnea-pawlis, Minnow-soda
-Who is one of Quackintosh's favoirte musicians?
+Who is not one of Quackintosh's favoirte musicians?
+Nine-Inch Snails
 Michael Quackson
 Ozzy Ostrich
-Nine-Inch Snails
 Where is SB Turtle from?
 New-ark, Moo Jersey
 Minnea-pawlis, Minnow-soda
-Little Squawk, Barkansas
+Indiana-pawlis, Fin-diana
 Who is one of SB Turtle's favorite actresses?
 Shelly Long
 Hennifer Lawrence
 Scarlett Johamster
+What does SB Turtle turn into?
+A giant monster
+Paint
+A semitruck
 Who is SideWinder's favorite actor?
 Sylvester Stallion
-Tomcat Hanks
-Kristin Ear-Wiig
+David Hisselhoff
+Molly Ringworm
 Where is Sidewinder from?
 Salt-Snake City, Mewtah
 New-ark, Moo Jersey
 Minnea-pawlis, Minnow-soda
 What is Sidewinder's favorite movie?
 Snakes on a Glider
-Mrs. Doubtspider 
-Catsaway
+Mrs. Doubtspider
+Rattle-toulle
 Who is Syntax Turtle's twin?
 Grafika
 Java Lynn
@@ -133,7 +137,7 @@ SB Turtle
 Where is Syntax Turtle from?
 Red-mutt, Washeepton
 Sea-cattle, Washeepton
-Minnea-pawlis, Minnow-soda
+Bill-view, Washeepton
 Who is Syntax Turtle's favorite artist?
 Lizardnardo Da Vinci
 Vincent van Gopher
