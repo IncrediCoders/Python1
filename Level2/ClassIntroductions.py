@@ -16,7 +16,7 @@ sidewinder = load_file("Assets/SideWinder.png")
 syntax_turtle = load_file("Assets/SyntaxTurtle.png")
 
 # Stores character text into variables
-text_annie_conda  = "Hello! I'm Annie Conda. \nI come from Sanfran-Hissco, Cowlifornia. I've done a little coding. My favorite musician is Justin Timbersnake. I'm also partial to Hissy Elliott. My favorite Pigxar movie is Rattle-toulle. I love to make trivia games and word games. "
+text_annie_conda  = "Hello! I'm Annie Conda. \nI come from Sanfran-Hissco, Cowlifornia. I've done a little coding. My favorite musician is Justin Timbersnake. I'm also partial to Hissy Elliott. My favorite Pigxar movie is Rattle-touille. I love to make trivia games and word games. "
 text_bayo_wolf  = "I'm Bayo Wolf, from Little Squawk, Barkansas. I'm the best at SpaceWars and great at Mega Mechs in my Grendel mech. My favorite movies are The Dogfather, Jurassic Bark, Citizen Canine, and Stall Wars: The Empire Strikes Cats. My top actors are Brad Pitbull, Howly Berry, and Sandra Bulldog. "
 text_grafika_turtle  = "My name is Grafika Turtle. I live here, in Red-mutt, Washeepton. Now I get to go to school with my best friend. Hi, Paul! I love the movie Wizard of Paws, and my favorite artist is Pablo Pigcasso. I like coding in Turtle Graphics, and my brother Syntax and I are pretty good at coding card games. "
 text_intelli_scents  = "Hi. I'm Intelli-Scents from Minnea-pawlis, Minnow-soda. My top movies are Hack to the Future, Mission Impawsible with Eat'n Hunt, and Hair-Spay. My top artist is Vincent van Gopher, top book is The Time Machine by H.G. Gills, and my favorite neurologist is Digmund Freud.  "
