@@ -22,6 +22,7 @@ Y_CENTER = WINDOW_HEIGHT // 2
 CENTER_COORD = (X_CENTER, Y_CENTER)
 WINDOW = (WINDOW_WIDTH, WINDOW_HEIGHT)
 BACKGROUND_IMAGE = pygame.image.load(path.join(assets_path, "IncrediCardsBackground.png")) 
+VICTOR_SCREEN_IMAGE = pygame.image.load(path.join(assets_path, "Level7_PlayAgain.png")) 
 TITLE_IMAGE = pygame.image.load(path.join(assets_path, "TitleCards.png")) 
 TITLE_LOGO = pygame.image.load(path.join(assets_path, "IncredicodersLogo.png")) 
 CARD_L_POS = pygame.math.Vector2(200,305)
@@ -442,10 +443,10 @@ class VictoryScreen(GameState):
 		
 		self.winner = self.player2 if self.player2.winner else self.player1
 
-		self.victor_box = InfoBox(["{} has won!".format(self.winner.name)], bold_font, WHITE, (300,75), (X_CENTER, 225), 150, bg_color = BLACK)
-		self.play_button = Button("Play Again?", 250, 400, 200, 40, button_orange, button_red_orange, WHITE, round_font, self)
+		self.victor_box = InfoBox(["{} has won!".format(self.winner.name)], bold_font, WHITE, (300,75), (X_CENTER, 125), 150, bg_color = BLACK)
+		self.play_button = Button("Play Again?", 250, 500, 200, 40, button_orange, button_red_orange, WHITE, round_font, self)
 		self.play_button.action_params = "play"
-		self.exit_button = Button("Exit", 625, 400, 100, 40, button_orange, button_red_orange, WHITE, round_font, self)
+		self.exit_button = Button("Exit", 625, 500, 100, 40, button_orange, button_red_orange, WHITE, round_font, self)
 		self.exit_button.action_params = "exit"
 		
 	def get_event(self, event):
@@ -463,6 +464,7 @@ class VictoryScreen(GameState):
 			
 	def draw(self, surf):
 		super().draw(surf)
+		surf.blit(VICTOR_SCREEN_IMAGE, (0,0))
 		self.victor_box.draw(surf)
 		self.play_button.draw(surf)
 		self.exit_button.draw(surf)
