@@ -1,6 +1,7 @@
 #============================================================
 #PART 1: IMPORTING DEPENDENCIES AND ASSIGNING GLOBAL VARIABLES
 """General information on your module and what it does."""
+import os
 import pygame
 from pygame import font
 from types import ModuleType
@@ -104,9 +105,11 @@ def read_file(filename):
     return array
 
 class Image:
-    def __init__(self, image_file_name):
+    def __init__(self, image_file_name, width = None, height = None):
         if image_file_name is not None:
             self.data = pygame.image.load(get_file(image_file_name))
+            if width is not None and height is not None:
+                self.data = pygame.transform.scale(self.data, (width, height)) 
         else:
             self.data = None
 
@@ -247,6 +250,21 @@ class Object:
                 self.__dict__[name] = value
         else:
             self.__dict__[name] = value
+
+    def image_at(self, index):
+        """
+        Get an image at the given 0 based index.
+
+            obj.sprite = sheet.image_at(0);
+        """
+        _x_ = math.floor(index % self.columns) * self.rectangle.width
+        _y_ = math.floor(index / self.columns) * self.rectangle.height
+        self.rectangle.centerx = _x_ + self.rectangle.width / 2
+        self.rectangle.centery = _y_ + self.rectangle.height / 2
+        image = Image(None)
+        image.data = pygame.Surface(self.rectangle.size, pygame.SRCALPHA, 32).convert_alpha()
+        image.data.blit(self.sheet, (0, 0), self.rectangle)
+        return image
 
     def get_transformed_rect(self):
         """
@@ -443,6 +461,51 @@ def stop():
     """
     sys.exit()
 
+
+
+def change(new_state):
+    """Requests a change in game state."""
+    Manager.current = new_state
+
+#============================================================
+#PART 3: SETUP FOR THE CREEPERCHASE GAME
+#Initializes the game window and game screen
+WINDOW_WIDTH = 800
+WINDOW_HEIGHT = 608
+WINDOW = pygame.math.Vector2(WINDOW_WIDTH, WINDOW_HEIGHT)
+SCREEN = start(WINDOW, "Creeper Chase")
+
+#load sprites
+TILE_IMAGES = [None,                     # Sky
+               Image("Assets/GroundLava.png"), # Ground
+               Image("Assets/Hazard.png"), # Hazard
+               Image("Assets/Exit.png"),   # Door
+               None,                     # Player
+               Image("Assets/Coin.png")]   # Battery
+
+LAVA_BACKGROUND_IMAGE = Image("Assets/Background.png")
+FOOD_BACKGROUND_IMAGE = Image("Assets/BackgroundFood.png")
+PLAYER_IMAGE = Image("Assets/Player.png")
+
+# Constants
+SKY = 0
+GROUND = 1
+HAZARD = 2
+DOOR = 3
+PLAYER_START = 4
+BATTERIES = 5
+
+PLAYER_START_HEALTH = 1
+PLAYER_CHALLENGE2_HEALTH = 5
+PLAYER_ACCEL = 64
+GRAVITY_ACCEL = 70
+PLAYER_DECEL = 500
+PLAYER_AIR_DECEL = 10
+PLAYER_MAX_SPEED = 128
+PLAYER_TERMINAL_VEL = 128
+
+TILE_SIZE = 16
+
 class Machine:
     """Game state machine class."""
     def __init__(self):
@@ -483,53 +546,13 @@ class Machine:
             if(MY.level_num % 2 == 0):
                 screen.blit(pygame.transform.scale(FOOD_BACKGROUND_IMAGE.data, [int(x) for x in WINDOW]), (0, 0))
             else:
+                background = LAVA_BACKGROUND_IMAGE
                 screen.blit(pygame.transform.scale(LAVA_BACKGROUND_IMAGE.data, [int(x) for x in WINDOW]), (0, 0))
 
             self.states[self.current]['draw'](screen)    
             pygame.display.flip()
 
 Manager = Machine()
-
-def change(new_state):
-    """Requests a change in game state."""
-    Manager.current = new_state
-
-#============================================================
-#PART 3: SETUP FOR THE CREEPERCHASE GAME
-#Initializes the game window and game screen
-WINDOW = pygame.math.Vector2(800, 608)
-SCREEN = start(WINDOW, "Creeper Chase")
-
-#load sprites
-TILE_IMAGES = [None,                     # Sky
-               Image("Assets/GroundLava.png"), # Ground
-               Image("Assets/Hazard.png"), # Hazard
-               Image("Assets/Exit.png"),   # Door
-               None,                     # Player
-               Image("Assets/Coin.png")]   # Battery
-
-LAVA_BACKGROUND_IMAGE = Image("Assets/Background.png")
-FOOD_BACKGROUND_IMAGE = Image("assets/BackgroundFood.png")
-PLAYER_IMAGE = Image("Assets/Player.png")
-
-# Constants
-SKY = 0
-GROUND = 1
-HAZARD = 2
-DOOR = 3
-PLAYER_START = 4
-BATTERIES = 5
-
-PLAYER_START_HEALTH = 1
-PLAYER_CHALLENGE2_HEALTH = 5
-PLAYER_ACCEL = 64
-GRAVITY_ACCEL = 70
-PLAYER_DECEL = 500
-PLAYER_AIR_DECEL = 10
-PLAYER_MAX_SPEED = 128
-PLAYER_TERMINAL_VEL = 128
-
-TILE_SIZE = 16
 
 # Loads modifiable data for gameplay
 class Data:
@@ -618,6 +641,9 @@ class Data:
 
     player = Object(paul_idle_right_sheet.image_at(0))
     player.sprite = paul_idle_right
+
+    display_intro = True
+    intro_screen = Object(Image("Assets/IntroScreen.png", WINDOW_WIDTH, WINDOW_HEIGHT))
 
     # If on challenge 2, increase health
     if(challenge_type == "CHALLENGE2"):
@@ -788,7 +814,8 @@ def draw(screen):
         MY.creeper.draw(screen)
 
 def draw_level4_message():
-    font = pygame.font.Font("./Assets/Prototype.ttf", 30)
+    path = os.path.dirname(__file__) + '/Assets/Prototype.ttf'
+    font = pygame.font.Font(path, 30)
     pt1 = "Paul's jetpack is now online!"
     pt2 = "Press the spacebar repeatedly"
     pt3 = "to fly."
@@ -802,7 +829,8 @@ def draw_level4_message():
         SCREEN.blit(message_pt3, [45, 130]) 
 
 def draw_level1_message():
-    font = pygame.font.Font("./Assets/Prototype.ttf", 30)
+    path = os.path.dirname(__file__) + '/Assets/Prototype.ttf'
+    font = pygame.font.Font(path, 30)
     pt1 = "Use the arrow keys to move"
     pt2 = "and the spacebar to jump!"
     color = (127, 0, 255)
@@ -831,6 +859,17 @@ def draw_timer():
 def reset_timer():
     MY.timer = TIME_LIMIT
 
+def check_events():
+    """
+    Checks for pygame events, including boss attacks and if you closed the window.
+    """
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            stop()
+        elif(MY.display_intro):
+            MY.display_intro = False
+            Manager.current = 3
+
 def update_level(delta_time):
     for wall in MY.walls:
         wall.update(delta_time)
@@ -851,6 +890,7 @@ def update_level(delta_time):
         MY.timer_for_level1 += delta_time
     elif(MY.level_num == 4):
         MY.timer_for_level4 += delta_time
+    check_events()
     
 def cleanup():
     """Cleans up the Platformer State."""
@@ -906,3 +946,34 @@ class Lose:
 
     def cleanup():
         """Cleans up the lose menu state."""
+
+    
+def check_intro_events():
+    for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                stop()
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                rect = pygame.Rect(0, 0, 800, 600)
+                if rect.collidepoint(event.pos):
+                    MY.player_health = PLAYER_START_HEALTH
+                    Manager.current = 1
+
+class Intro:
+
+    def initialize(window):
+        """Initializes the intro menu state."""
+        MY.intro_screen.location = window / 2
+        MY.display_intro = False
+
+    def update(delta_time):
+        """Updates the intro menu state."""
+        check_intro_events()
+
+    def cleanup():
+        """Cleans up the intro menu state."""
+
+    def draw(screen):
+        """Draws the intro menu state."""
+        MY.intro_screen.location = (WINDOW_WIDTH/2, WINDOW_HEIGHT/2)
+        MY.intro_screen.draw(screen)
+
