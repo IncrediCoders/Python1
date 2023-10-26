@@ -401,7 +401,7 @@ class ChooseHandScreen(GameState):
 					self.info_box.change_line(name, 0)
 					return
 					
-			if self.current_player == self.player2:
+			if (self.current_player == self.player2) and (self.player2.current_card is not None):
 				self.done = True
 			
 	def update(self, dt):
