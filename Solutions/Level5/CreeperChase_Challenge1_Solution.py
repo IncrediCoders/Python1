@@ -113,6 +113,7 @@ def update(delta_time):
     update_level(delta_time)
 
 # Register the states
+Manager.register(Intro)
 Manager.register(sys.modules[__name__]) # The current file 
 Manager.register(Lose)
 Manager.register(Win)
