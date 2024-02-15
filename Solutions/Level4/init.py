@@ -162,14 +162,6 @@ class Image:
     def surface(self):
         return self.data
 
-def Sound(sound_file_name):
-    """
-    Loads and returns a sound file with the given file name.
-
-        SOUND = Sound("Example.wav");
-    """
-    return pygame.mixer.Sound(get_file(sound_file_name))
-
 class SpriteSheet:
     """
     Sprite sheet class for managing sprite animations.
@@ -550,11 +542,6 @@ IMAGE_PLAYER1 = Image("Assets/Player1.png")
 IMAGE_PLAYER2 = Image("Assets/Player2.png")
 IMAGE_ASTEROID = Image("Assets/AsteroidLarge.png")
 IMAGE_ASTEROID_2 = Image("Assets/AsteroidSmall.png")
-
-sound_explosions = [Sound("Assets/Explosion1.wav"),
-                    Sound("Assets/Explosion2.wav")]
-sound_laser = [Sound("Assets/LaserShoot1.wav"),
-               Sound("Assets/LaserShoot2.wav")]
 
 SPRITESHEET_PROJECTILE = [None,
                           SpriteSheet("Assets/Player1Projectile.png", (36, 24)),
