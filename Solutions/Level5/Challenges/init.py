@@ -691,9 +691,12 @@ def jetpack_up_animation():
 
 def restart_level(level_num):
     level_name_as_string = 'Level' + str(level_num)
-    tilemap = read_file("Assets/" + level_name_as_string + ".txt")
+    if challenge_type == "CHALLENGE2":
+        tilemap = read_file("Assets/BatteryLevels/" + level_name_as_string + ".txt")
     MY.restart = True
+    health_bar(SCREEN, MY.player_health, 5, (128, 16), (MY.window.x * 0.75, 20))
     load_level(tilemap)
+
 
 def load_level(tilemap):
     """Cleans up resources and loads a specified level. Can be used to reload the same level."""
@@ -812,6 +815,9 @@ def draw(screen):
     elif 1 < MY.timer_for_creeper < 1.7:
         MY.creeper.sprite = MY.creeper_exit
         MY.creeper.draw(screen)
+
+def draw_health_bar():
+    health_bar(SCREEN, MY.player_health, 5, (128, 16), (MY.window.x * 0.75, 20))
 
 def draw_level4_message():
     path = os.path.dirname(__file__) + '/Assets/Prototype.ttf'
