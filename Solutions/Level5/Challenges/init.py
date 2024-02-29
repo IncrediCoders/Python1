@@ -680,8 +680,11 @@ def health_bar(screen, health, max_health, max_size, location):
     else:
         bar_color = RED
 
-    width = max_size[0] * (health / max_health)
-    draw_rect(screen, bar_color, location, (width, max_size[1]))
+    mini_bar_position = 0
+    bar_size = 25
+    for i in range(health):
+        draw_rect(screen, bar_color, (location[0] + mini_bar_position, location[1]), (bar_size, bar_size))
+        mini_bar_position += bar_size + 5 
 
 def jetpack_up_animation():
     if(MY.player_direction == RIGHT):
@@ -694,8 +697,10 @@ def restart_level(level_num):
     if challenge_type == "CHALLENGE2":
         tilemap = read_file("Assets/BatteryLevels/" + level_name_as_string + ".txt")
     MY.restart = True
+    MY.player_health = 5
     health_bar(SCREEN, MY.player_health, 5, (128, 16), (MY.window.x * 0.75, 20))
     load_level(tilemap)
+    
 
 
 def load_level(tilemap):
