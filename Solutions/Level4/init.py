@@ -762,11 +762,11 @@ def check_collision(i):
     if MY.bullet_owner[i] == 1 and MY.bullets[i].collides_with(MY.player2):
         MY.player2_hp = MY.player2_hp - 1
         MY.bullets[i].active = False
-        sound_explosions[random.randint(0, len(sound_explosions) - 1)].play()
+        
     elif MY.bullet_owner[i] == 2 and MY.bullets[i].collides_with(MY.player1):
         MY.player1_hp = MY.player1_hp - 1
         MY.bullets[i].active = False
-        sound_explosions[random.randint(0, len(sound_explosions) - 1)].play()
+        
 
 def check_win():
     """Check win condition and change state if a player has won the game"""
