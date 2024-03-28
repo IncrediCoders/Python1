@@ -587,7 +587,8 @@ class TextObject:
             self.__dict__[name] = pygame.math.Vector2(value[0], value[1])
         elif name == "font_size":
             self.__dict__[name] = value
-            self.font = pygame.font.Font(resource_path('Assets/FreeSansBold.ttf'), int(self.font_size))
+            path = os.path.dirname(__file__) + '/Assets/FreeSansBold.ttf'
+            self.font = pygame.font.Font(resource_path(path), int(self.font_size))            
         else:
             self.__dict__[name] = value
 
@@ -719,7 +720,7 @@ class Data:
     you_win = Animator(you_win_sheet, 0.75, False, True)
     ending_overlay = Object(game_over_sheet.image_at(0))
     restart_button = Object(Image("Assets/PlayAgain.png"))
-    intro_screen = Object(Image("Assets/Intro.png"))
+    intro_screen = Object(Image("Assets/IntroScreen.png"))
     intro_time = 0
     display_intro = True
 
