@@ -401,7 +401,7 @@ class ChooseHandScreen(GameState):
 					self.info_box.change_line(name, 0)
 					return
 					
-			if self.current_player == self.player2:
+			if (self.current_player == self.player2) and (self.player2.current_card is not None):
 				self.done = True
 			
 	def update(self, dt):
@@ -443,10 +443,10 @@ class VictoryScreen(GameState):
 		
 		self.winner = self.player2 if self.player2.winner else self.player1
 
-		self.victor_box = InfoBox(["{} has won!".format(self.winner.name)], bold_font, WHITE, (300,75), (X_CENTER, 125), 150, bg_color = BLACK)
-		self.play_button = Button("Play Again?", 250, 500, 200, 40, button_orange, button_red_orange, WHITE, round_font, self)
+		self.victor_box = InfoBox(["{} has won!".format(self.winner.name)], bold_font, WHITE, (300,75), (X_CENTER, 100), 150, bg_color = BLACK)
+		self.play_button = Button("Play Again?", 325, 150, 200, 40, button_orange, button_red_orange, WHITE, round_font, self)
 		self.play_button.action_params = "play"
-		self.exit_button = Button("Exit", 625, 500, 100, 40, button_orange, button_red_orange, WHITE, round_font, self)
+		self.exit_button = Button("Exit", 575, 150, 100, 40, button_orange, button_red_orange, WHITE, round_font, self)
 		self.exit_button.action_params = "exit"
 		
 	def get_event(self, event):
