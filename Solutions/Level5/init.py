@@ -845,8 +845,8 @@ def draw_timer():
         path = os.path.dirname(__file__) + '/Assets/Lilliput-steps.regular.ttf'
         font = pygame.font.Font(path, 32)
     else:
-       path = os.path.dirname(__file__) + '/Assets/Lilliput-steps.regular.ttf'
-       font = pygame.font.Font(path, 35) 
+        path = os.path.dirname(__file__) + '/Assets/Lilliput-steps.regular.ttf'
+        font = pygame.font.Font(path, 35) 
 
     time_remaining = 'TIME:' + str(MY.timer).split('.')[0]
     MY.text = font.render(time_remaining, True, (255, 0, 0))
