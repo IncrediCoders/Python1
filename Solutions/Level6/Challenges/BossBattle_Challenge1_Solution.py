@@ -22,7 +22,7 @@ def update(delta_time):
 
     # Wrote code here to play a sound when Paul gets hit
     if MY.player.collides_with_projectile():
-        mixer.music.load("Assets/PaulHit.wav")
+        mixer.music.load("Solutions/Level6/Challenges/Assets/PaulHit.wav")
         mixer.music.play()
         return True
 
@@ -43,7 +43,7 @@ def update(delta_time):
     # Reduce Creeper's health when he gets attacked
     if MY.player_hitbox.active and MY.boss.collides_with_hitbox():
         # Wrote code here to play a sound when Creeper is attacked
-        mixer.music.load("Assets/BossHit.wav")
+        mixer.music.load("Solutions/Level6/Challenges/Assets/BossHit.wav")
         mixer.music.set_volume(0.4)
         mixer.music.play()
         MY.boss_health -= 1
