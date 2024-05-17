@@ -29,30 +29,31 @@ while running:
             running = False
         mouse_position = pygame.mouse.get_pos()
         if event.type == pygame.MOUSEBUTTONDOWN: # If the player clicks the mouse
-            if answer_1_rect.collidepoint(mouse_position): # If the player clicks the 1st answer on the top
-                if ANSWER_CHOICES[0] == answer: # If it's the correct answer
-                    display_codala(correct_a, "correct_text") # Displays Mrs. Codala and the text for the correct answer
-                #TODO: Uncomment these two lines to display Mrs. Codala if the answer is incorrect
-                #else: # If it's an incorrect answer
-                    #display_codala(incorrect_a, "incorrect_text") # Displays Mrs. Codala and the text for an incorrect answer
-            
-            #TODO: Copy the code here for the second answer
-            
-            
-            
-            
-            
-            
-            #TODO: Write the code here for the third answer
-            
-            
-            
+            if answer_1_rect.collidepoint(mouse_position) or answer_2_rect.collidepoint(mouse_position) or answer_3_rect.collidepoint(mouse_position):
+                if answer_1_rect.collidepoint(mouse_position): # If the player clicks the 1st answer on the top
+                    if ANSWER_CHOICES[0] == answer: # If it's the correct answer
+                        display_codala(correct_a, "correct_text") # Displays Mrs. Codala and the text for the correct answer
+                    #TODO: Uncomment these two lines to display Mrs. Codala if the answer is incorrect
+                    #else: # If it's an incorrect answer
+                        #display_codala(incorrect_a, "incorrect_text") # Displays Mrs. Codala and the text for an incorrect answer
+                
+                #TODO: Copy the code here for the second answer
+                
+                
+                
+                
+                
+                
+                #TODO: Write the code here for the third answer
             
             
+            
+            
+            # We display the next question after an incorrect or correct answer has been chosen
+            line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
+        # We check to see if it's the last question and display end screen with Mrs. Codala
+        running = check_if_last_question(line_number, running, number_of_questions)
+           
 
-            # If it's the last question, we display the end screen with Mrs. Codala
-            running = check_if_last_question(line_number, running, number_of_questions)
-            # If it's the not the last question, we display the next question
-            if running:
-                line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
+                
 display_end_screen()
