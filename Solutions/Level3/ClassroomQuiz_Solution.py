@@ -29,7 +29,7 @@ while running:
             running = False
         mouse_position = pygame.mouse.get_pos() 
         if event.type == pygame.MOUSEBUTTONDOWN: # If the player clicks the mouse
-            #Check to see if player has clicked on one of the possible answers
+            # Check to see if player has clicked on one of the possible answers
             if answer_1_rect.collidepoint(mouse_position) or answer_2_rect.collidepoint(mouse_position) or answer_3_rect.collidepoint(mouse_position):     
                 if answer_1_rect.collidepoint(mouse_position): # If the player clicks the 1st answer on the top
                     if ANSWER_CHOICES[0] == answer: # If it's the correct answer
