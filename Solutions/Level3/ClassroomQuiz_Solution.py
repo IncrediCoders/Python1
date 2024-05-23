@@ -16,8 +16,9 @@ randomize_answers(ANSWER_CHOICES) # Shuffles the first set of answer choices
 line_number = 0
 number_of_questions = 12
 
-running = True 
 display_intro_screen() # Displays the intro screen
+
+running = True 
 
 # This displays the question screen until the last question or until the player closes the window
 while running:
