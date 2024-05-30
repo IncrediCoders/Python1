@@ -29,7 +29,13 @@ def read_file(fileName):
 
 #============================================================
 #PART 3: SETUP FOR THE CLASSROOM QUIZ GAME
-
+"""
+Draws border around our answer rects so user can see exactly where to click
+"""
+def draw_border(rect):
+    border_width = 2
+    padding = 10
+    pygame.draw.rect(screen, pygame.Color("Purple4"), (rect.left - padding/2, rect.top - padding/2, 600, rect.height + padding), width = border_width, border_radius = 0,border_top_left_radius=3, border_top_right_radius=3, border_bottom_left_radius=3, border_bottom_right_radius=3)
 """
 Initializes Font Objects
 """
@@ -37,14 +43,19 @@ Initializes Font Objects
 pygame.init()
 pygame.display.set_caption('Classroom Quiz') # Adds the title of game
 my_font = pygame.font.SysFont('Arial', 35)
+
 answer_1_text = my_font.render("                        ", True, (0,0,255))
 answer_1_rect = answer_1_text.get_rect(topleft=(200,230))
+answer_1_rect.width = 600
 answer_2_text = my_font.render("                         ", True, (0,0,255))
 answer_2_rect = answer_2_text.get_rect(topleft=(200,300))
+answer_2_rect.width = 600
 answer_3_text = my_font.render("                         ", True, (0,0,255))
 answer_3_rect = answer_3_text.get_rect(topleft=(200,370))
+answer_3_rect.width = 600
 start_click = my_font.render("Click here to start the game.", True, (0,0,255))
 start_click_rect = start_click.get_rect(topleft=(200,230))
+start_click_rect.width = 400
 correct_text = my_font.render("That is correct.", True, (0,128,0))
 incorrect_text = my_font.render("That is incorrect.", True, (255,0,0))
 
@@ -117,17 +128,24 @@ def display_question(question, input_list):
     
     answer_1_text = my_font.render(input_list[0], True, (0,0,255))
     answer_1_rect = answer_1_text.get_rect(topleft=(200,230))
+
+    
     answer_2_text = my_font.render(input_list[1], True, (0,0,255))
     answer_2_rect = answer_2_text.get_rect(topleft=(200,300))
+
     answer_3_text = my_font.render(input_list[2], True, (0,0,255))
     answer_3_rect = answer_3_text.get_rect(topleft=(200,370))
+
 
     screen.blit(background, (0,0))
     screen.blit(question_text, question_rect)
     screen.blit(question_text_wrap, question_wrap_rect)
     screen.blit(answer_1_text, answer_1_rect)
+    draw_border(answer_1_rect)
     screen.blit(answer_2_text, answer_2_rect)
+    draw_border(answer_2_rect)
     screen.blit(answer_3_text, answer_3_rect)
+    draw_border(answer_3_rect)
     pygame.display.update()
 
 def display_intro_screen():
