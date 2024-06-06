@@ -50,6 +50,7 @@ while running:
             
             
             
+            
             # We display the next question after an incorrect or correct answer has been chosen
             line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
         # We check to see if it's the last question and display end screen with Mrs. Codala
