@@ -55,7 +55,8 @@ while running:
                 line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
             # We check to see if it's the last question and display end screen with Mrs. Codala
             running = check_if_last_question(line_number, running, number_of_questions)
-           
+            if not running:
+                display_end_screen()
 
                 
-display_end_screen()
+
