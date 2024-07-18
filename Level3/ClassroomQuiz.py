@@ -57,6 +57,3 @@ while running:
             running = check_if_last_question(line_number, running, number_of_questions)
             if not running:
                 display_end_screen()
-
-                
-
