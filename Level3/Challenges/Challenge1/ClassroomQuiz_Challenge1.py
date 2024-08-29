@@ -31,30 +31,32 @@ while running:
             running = False
         mouse_position = pygame.mouse.get_pos()
         if event.type == pygame.MOUSEBUTTONDOWN: # If the player clicks the mouse
-            if answer_1_rect.collidepoint(mouse_position): # If the player clicks the 1st answer on the top
-                if ANSWER_CHOICES[0] == answer: # If it's the correct answer
-                    #TODO: Uncomment this line to add 1 score
-                    #score += 1 #The player gets one score
-                    display_codala(correct_a, "correct_text") # Displays codala and text for correct answer
-                else: # If it's an incorrect answer
-                    display_codala(incorrect_a, "incorrect_text") # Display codala and text for incorrect answer
-            if answer_2_rect.collidepoint(mouse_position): # If the player clicks the 2nd answer
-                if ANSWER_CHOICES[1] == answer:
-                    #TODO: Add 1 score
+             # Check to see if player has clicked on one of the possible answers
+            if answer_1_rect.collidepoint(mouse_position) or answer_2_rect.collidepoint(mouse_position) or answer_3_rect.collidepoint(mouse_position):
+                if answer_1_rect.collidepoint(mouse_position): # If the player clicks the 1st answer on the top
+                    if ANSWER_CHOICES[0] == answer: # If it's the correct answer
+                        #TODO: Uncomment this line to add 1 score
+                        #score += 1 #The player gets one score
+                        display_codala(correct_a, "correct_text") # Displays codala and text for correct answer
+                    else: # If it's an incorrect answer
+                        display_codala(incorrect_a, "incorrect_text") # Display codala and text for incorrect answer
+                if answer_2_rect.collidepoint(mouse_position): # If the player clicks the 2nd answer
+                    if ANSWER_CHOICES[1] == answer:
+                        #TODO: Add 1 score
 
-                    display_codala(correct_b, "correct_text")
-                else:
-                    display_codala(incorrect_b, "incorrect_text")
-            if answer_3_rect.collidepoint(mouse_position): # If the player clicks the 3rd answer
-                if ANSWER_CHOICES[2] == answer:
-                    #TODO: Add 1 score
+                        display_codala(correct_b, "correct_text")
+                    else:
+                        display_codala(incorrect_b, "incorrect_text")
+                if answer_3_rect.collidepoint(mouse_position): # If the player clicks the 3rd answer
+                    if ANSWER_CHOICES[2] == answer:
+                        #TODO: Add 1 score
 
-                    display_codala(correct_a, "correct_text")
-                else:
-                    display_codala(incorrect_a, "incorrect_text")
+                        display_codala(correct_a, "correct_text")
+                    else:
+                        display_codala(incorrect_a, "incorrect_text")
 
-            #TODO: Check if it's the last question and display end screen with scores
-            # Modified from the check_if_last_question function in init.py
+                #TODO: Check if it's the last question and display end screen with scores
+                # Modified from the check_if_last_question function in init.py
             
             
             
@@ -69,8 +71,8 @@ while running:
             
             
             
-
-            # If it's the not the last question, we display the next question
-            if running:
-                line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
-display_end_screen()
+            # We display the next question after an incorrect or correct answer has been chosen
+            line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
+            # If it's the last question, we display the end screen with Mrs. Codala
+            if not running:
+                display_end_screen()

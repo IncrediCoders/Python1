@@ -31,46 +31,48 @@ while running:
             running = False
         mouse_position = pygame.mouse.get_pos() 
         if event.type == pygame.MOUSEBUTTONDOWN: # If the player clicks the mouse
-            if answer_1_rect.collidepoint(mouse_position): # If the player clicks the 1st answer on the top
-                if ANSWER_CHOICES[0] == answer: # If it's the correct answer
-                    # Uncommented this line to add 1 score
-                    score += 1 # The player gets one score
-                    display_codala(correct_a, "correct_text") # Displays codala and text for correct answer
-                else: # If it's an incorrect answer
-                    display_codala(incorrect_a, "incorrect_text") # Display codala and text for incorrect answer
-            if answer_2_rect.collidepoint(mouse_position): # If the player clicks the 2nd answer
-                if ANSWER_CHOICES[1] == answer: 
-                    # Added this line to add 1 score
-                    score += 1
-                    display_codala(correct_b, "correct_text")
-                else:
-                    display_codala(incorrect_b, "incorrect_text")
-            if answer_3_rect.collidepoint(mouse_position): # If the player clicks the 3rd answer
-                if ANSWER_CHOICES[2] == answer: 
-                    # Added this line to add 1 score
-                    score += 1
-                    display_codala(correct_a, "correct_text")
-                else:
-                    display_codala(incorrect_a, "incorrect_text")
+             # Check to see if player has clicked on one of the possible answers
+            if answer_1_rect.collidepoint(mouse_position) or answer_2_rect.collidepoint(mouse_position) or answer_3_rect.collidepoint(mouse_position):
+                if answer_1_rect.collidepoint(mouse_position): # If the player clicks the 1st answer on the top
+                    if ANSWER_CHOICES[0] == answer: # If it's the correct answer
+                        # Uncommented this line to add 1 score
+                        score += 1 # The player gets one score
+                        display_codala(correct_a, "correct_text") # Displays codala and text for correct answer
+                    else: # If it's an incorrect answer
+                        display_codala(incorrect_a, "incorrect_text") # Display codala and text for incorrect answer
+                if answer_2_rect.collidepoint(mouse_position): # If the player clicks the 2nd answer
+                    if ANSWER_CHOICES[1] == answer: 
+                        # Added this line to add 1 score
+                        score += 1
+                        display_codala(correct_b, "correct_text")
+                    else:
+                        display_codala(incorrect_b, "incorrect_text")
+                if answer_3_rect.collidepoint(mouse_position): # If the player clicks the 3rd answer
+                    if ANSWER_CHOICES[2] == answer: 
+                        # Added this line to add 1 score
+                        score += 1
+                        display_codala(correct_a, "correct_text")
+                    else:
+                        display_codala(incorrect_a, "incorrect_text")
 
-            # Check if it's the last question and display end screen with scores
-            # Modified from the check_if_last_question function in init.py
-            if line_number >= (number_of_questions * 4)-4:
-                display_challenge1_end_screen()
-                # Display the final score on the end screen
-                if score == number_of_questions:
-                    score_text = my_font.render("Congratulations! You got all questions right! " + str(score) + " / " + str(number_of_questions), True, (0,128,0))
-                elif score == 0:
-                    score_text = my_font.render("Woops! All questions got wrong. " + str(score) + " / " + str(number_of_questions), True, (255,0,0))
-                else:
-                    score_text = my_font.render("You got " + str(score) + " / " + str(number_of_questions) + " right!", True, (0,128,0))
-                screen.blit(score_text, (200,90))
-                pygame.display.update()
-                pygame.event.get()
-                time.sleep(5)
-                running = False
-
-            # If it's the not the last question, we display the next question
-            if running:
+                # Check if it's the last question and display end screen with scores
+                # Modified from the check_if_last_question function in init.py
+                if line_number >= (number_of_questions * 4)-4:
+                    display_challenge1_end_screen()
+                    # Display the final score on the end screen
+                    if score == number_of_questions:
+                        score_text = my_font.render("Congratulations! You got all questions right! " + str(score) + " / " + str(number_of_questions), True, (0,128,0))
+                    elif score == 0:
+                        score_text = my_font.render("Woops! All questions got wrong. " + str(score) + " / " + str(number_of_questions), True, (255,0,0))
+                    else:
+                        score_text = my_font.render("You got " + str(score) + " / " + str(number_of_questions) + " right!", True, (0,128,0))
+                    screen.blit(score_text, (200,90))
+                    pygame.display.update()
+                    pygame.event.get()
+                    time.sleep(5)
+                    running = False
+                # We display the next question after an incorrect or correct answer has been chosen
                 line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
-display_end_screen()
+                # If it's the last question, we display the end screen with Mrs. Codala
+                if not running:
+                    display_end_screen()
