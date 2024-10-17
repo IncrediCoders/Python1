@@ -540,8 +540,6 @@ SCREEN = start(WINDOW, "Space Wars Tournament")
 IMAGE_BACKGROUND = Image("Assets/Background.jpg")
 IMAGE_PLAYER1 = Image("Assets/Player1.png")
 IMAGE_PLAYER2 = Image("Assets/Player2.png")
-IMAGE_ASTEROID = Image("Assets/AsteroidLarge.png")
-IMAGE_ASTEROID_2 = Image("Assets/AsteroidSmall.png")
 
 SPRITESHEET_PROJECTILE = [None,
                           SpriteSheet("Assets/Player1Projectile.png", (36, 24)),
@@ -566,7 +564,6 @@ class Data:
     player2 = Object(IMAGE_PLAYER2)
     player2_hp = 1
     bullets = []
-    asteroids = []
     bullet_owner = []
     maxFrameTime = 0.05
     window = pygame.math.Vector2(10, 10)
@@ -636,23 +633,6 @@ def initialize(window):
         count = count + 1
 
     count = 0
-    while count < 5:
-        if (rand(0, 1) == 0):
-            image = IMAGE_ASTEROID
-        else:
-            image = IMAGE_ASTEROID_2
-        obj = Object(image)
-        obj.location = rand_location(0, MY.window.x)
-        obj.velocity = rand_location(-50, 50)
-        obj.scale = 2
-
-        # Hides asteroids in main and challenge 1
-        if LEVEL == "CHALLENGE2":
-            obj.active = True
-        else:
-            obj.active = False
-        MY.asteroids.append(obj)
-        count = count + 1
 
 def fire_bullet(player_number):
     """fire a bullet for the player"""
@@ -693,10 +673,6 @@ def draw(screen):
         if MY.bullets[i].active:
             MY.bullets[i].draw(screen)
 
-    for i in range(len(MY.asteroids)):
-        if MY.asteroids[i].active:
-            MY.asteroids[i].draw(screen)
-    
     if(pygame.time.get_ticks() < 10000):
         pygame.font.get_fonts()
         instructions_font = pygame.font.SysFont('Arial', 35, True)
@@ -717,7 +693,6 @@ def draw(screen):
 def cleanup():
     """Cleans up the Intro State for SpaceWars."""
     MY.bullets = []
-    MY.asteroids = []
 
 class GameOver:
     """Restarter class to be loaded if Player 1 wins."""
@@ -798,9 +773,6 @@ def update_bullets(delta_time):
             if screen_wrap(MY.bullets[i], MY.window):
                 MY.bullets[i].active = False
                 continue
-            for j in range(len(MY.asteroids)):
-                if MY.bullets[i].collides_with(MY.asteroids[j]):
-                    MY.bullets[i].active = False
             # Check collisions
             check_collision(i)
 
