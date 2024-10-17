@@ -662,9 +662,9 @@ def initialize(window):
         # Hides asteroids in main and challenge 1
         if LEVEL == "CHALLENGE2":
             obj.active = True
+            MY.asteroids.append(obj)
         else:
             obj.active = False
-        MY.asteroids.append(obj)
         count = count + 1
 
 def fire_bullet(player_number):

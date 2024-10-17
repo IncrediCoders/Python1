@@ -22,11 +22,11 @@ def update(delta_time):
             stop()
         # Fires the two ships' weapons
         elif key_down(event, pygame.K_SPACE):
-            pygame.mixer.music.load("Assets/LaserShoot1.wav")
+            pygame.mixer.music.load("Solutions/Level4/Challenges/Assets/LaserShoot1.wav")
             pygame.mixer.music.play()
             fire_bullet(1)
         elif key_down(event, pygame.K_RETURN):
-            pygame.mixer.music.load("Assets/LaserShoot2.wav")
+            pygame.mixer.music.load("Solutions/Level4/Challenges/Assets/LaserShoot2.wav")
             pygame.mixer.music.play()
             fire_bullet(2)
 
