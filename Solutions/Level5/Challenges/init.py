@@ -694,6 +694,8 @@ def jetpack_up_animation():
 
 def restart_level(level_num):
     level_name_as_string = 'Level' + str(level_num)
+    if challenge_type == "CHALLENGE1":
+        tilemap = read_file("Assets/" + level_name_as_string + ".txt")
     if challenge_type == "CHALLENGE2":
         tilemap = read_file("Assets/BatteryLevels/" + level_name_as_string + ".txt")
     MY.restart = True
