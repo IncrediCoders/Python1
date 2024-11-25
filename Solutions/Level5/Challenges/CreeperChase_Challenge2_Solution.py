@@ -97,7 +97,7 @@ def update(delta_time):
             # Load and run the next level
             MY.level_num = MY.level_num + 1
             level_name_as_string = 'Level' + str(MY.level_num)
-            tilemap = read_file("Assets/" + level_name_as_string + ".txt")
+            tilemap = read_file("Assets/BatteryLevels/" + level_name_as_string + ".txt")
             load_level(tilemap)
         elif MY.level_num == 6:
             # Show the Win screen
