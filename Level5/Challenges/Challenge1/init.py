@@ -906,3 +906,32 @@ class Lose:
 
     def cleanup():
         """Cleans up the lose menu state."""
+
+def check_intro_events():
+    for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                stop()
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                rect = pygame.Rect(0, 0, 800, 600)
+                if rect.collidepoint(event.pos):
+                    MY.player_health = PLAYER_START_HEALTH
+                    Manager.current = 1
+
+class Intro:
+
+    def initialize(window):
+        """Initializes the intro menu state."""
+        MY.intro_screen.location = window / 2
+        MY.display_intro = False
+
+    def update(delta_time):
+        """Updates the intro menu state."""
+        check_intro_events()
+
+    def cleanup():
+        """Cleans up the intro menu state."""
+
+    def draw(screen):
+        """Draws the intro menu state."""
+        MY.intro_screen.location = (WINDOW_WIDTH/2, WINDOW_HEIGHT/2)
+        MY.intro_screen.draw(screen)

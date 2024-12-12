@@ -93,7 +93,7 @@ def update(delta_time):
 
     # If timer reaches 0 show lose screen
     if MY.timer <= 0:
-        change(1)
+        change(2)
     
     # Check for exit portal collision
     if MY.player.collides_with(MY.exit_portal):
@@ -107,7 +107,7 @@ def update(delta_time):
             MY.timer = 45
         elif MY.level_num == 6:
             # Show the Win screen
-            change(2) 
+            change(3) 
 
     # Update level assets
     update_level(delta_time)
