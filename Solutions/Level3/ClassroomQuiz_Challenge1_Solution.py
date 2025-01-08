@@ -16,7 +16,7 @@ randomize_answers(ANSWER_CHOICES) # Shuffles the first set of answer choices
 line_number = 0
 number_of_questions = 12
 # Uncommented this line to add the variable of score
-score = 0 # Records the correct answering
+score = 0 #Starts the score at zero
 
 display_intro_screen() # Displays the intro screen
 
