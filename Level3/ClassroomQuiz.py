@@ -36,7 +36,7 @@ while running:
                         display_codala(correct_a, "correct_text") # Displays Mrs. Codala and the text for the correct answer
                     #TODO: Uncomment these two lines to display Mrs. Codala if the answer is incorrect
                     #else: # If it's an incorrect answer
-                        #display_codala(incorrect_a, "incorrect_text") # Displays Mrs. Codala and the text for an incorrect answer
+                    #    display_codala(incorrect_a, "incorrect_text") # Displays Mrs. Codala and the text for an incorrect answer
                 
                 #TODO: Copy the code here for the second answer
                 

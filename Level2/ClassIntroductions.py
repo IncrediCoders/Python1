@@ -45,8 +45,8 @@ while running:
                 current_text = text_annie_conda
             #TODO: Uncomment these lines by removing the hashtags
             #if event.key == pygame.K_2:
-                #current_character = bayo_wolf
-                #current_text = text_bayo_wolf
+            #    current_character = bayo_wolf
+            #    current_text = text_bayo_wolf
 
             #TODO: Copy the code here, to add Grafika
             
