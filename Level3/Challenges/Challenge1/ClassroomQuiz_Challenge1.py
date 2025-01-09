@@ -59,7 +59,7 @@ while running:
                 # Modified from the check_if_last_question function in init.py
             
             
-            
+                    # Display the final score on the end screen
             
             
             
