@@ -61,9 +61,9 @@ while running:
                     display_challenge1_end_screen()
                     # Display the final score on the end screen
                     if score == number_of_questions:
-                        score_text = my_font.render("Congratulations! You got all questions right! " + str(score) + " / " + str(number_of_questions), True, (0,128,0))
+                        score_text = my_font.render("You got a perfect score! " + str(score) + " / " + str(number_of_questions), True, (0,128,0))
                     elif score == 0:
-                        score_text = my_font.render("Woops! All questions got wrong. " + str(score) + " / " + str(number_of_questions), True, (255,0,0))
+                        score_text = my_font.render("Woops! All the answers were wrong. " + str(score) + " / " + str(number_of_questions), True, (255,0,0))
                     else:
                         score_text = my_font.render("You got " + str(score) + " / " + str(number_of_questions) + " right!", True, (0,128,0))
                     screen.blit(score_text, (200,90))
@@ -71,8 +71,11 @@ while running:
                     pygame.event.get()
                     time.sleep(5)
                     running = False
+                    
                 # We display the next question after an incorrect or correct answer has been chosen
-                line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
-                # If it's the last question, we display the end screen with Mrs. Codala
-                if not running:
-                    display_end_screen()
+                if running:
+                    line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)  
+                # # If it's the last question, we display the end screen with Mrs. Codala
+                else:
+                     display_end_screen()
+                
