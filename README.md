@@ -11,8 +11,17 @@ You can click the **Wiki** tab at any time or click here to go to the online res
 Everything! We've got more helpful resources than any other book ever!!! Here's proof:
 * **Template files**. Start coding with clear sections that you need to fill in. Just follow along with the book! Example: [Level1](https://github.com/IncrediCoders/Python1/tree/IncrediCoders/Level1) > [TurtleMap.py](https://github.com/IncrediCoders/Python1/blob/IncrediCoders/Level1/TurtleMap.py).
 * **Help pages**. We go in depth to give you the help you need, beyond what's in the book. Example: [Level 1: Help](https://github.com/IncrediCoders/Python1/wiki/Level-1:-Help).
+* Setup pages
+* Download the games
+* 14 Challenges
+* Bonus Challenges
+* Online Articles
+* Learning Quizes
 * **Issues**:
-  * dd
+ * [Change Requests](https://github.com/CodaKids/Python1/issues/new?assignees=&labels=&template=CHANGE_REQUEST.yml&title=%5BChange%5D%3A+): call out inaccurate or incorrect statements, code, instructions
+ * [Suggestions and Ideas](https://github.com/CodaKids/Python1/issues/new?assignees=&labels=&template=IDEA.yml&title=%5BIDEA%5D%3A+): bring up ideas to improve the book, the online resources, or any part of the process
+ * [Questions](https://github.com/CodaKids/Python1/issues/new?assignees=&labels=&template=QUESTION.yml&title=%5BQuestion%5D%3A+): ask general (tech-related) questions
+* **Final code**: We provided you with the final code and solutions! Be sure to use the Wiki help pages (such as [Level 1: Help](https://github.com/IncrediCoders/Python1/wiki/Level-1:-Help)) before you look at the final code and solutions! We include it here just in case our best effort to help isn't helpful enough, you can still find out exactly what's needed to get your code to run! Example: [Level1](https://github.com/IncrediCoders/Python1/tree/IncrediCoders/Solutions/Level1) > [TurtleMap_Solution.py](https://github.com/IncrediCoders/Python1/blob/IncrediCoders/Solutions/Level1/TurtleMap_Solution.py)
 
 =========
 
