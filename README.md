@@ -7,10 +7,11 @@ You can click the **Wiki** tab at any time or click here to go to the online res
 * **Levels 1-7** are related to the Levels (the chapters) in the book. Each level has the code templates that you'll use with the book. You'll also find the templates for the Challenges in these folders.
 * **Solutions**: That's where you'll find the final code and solutions. Be sure to use the Wiki help pages (such as Level 1: Help) before you look at the final code and solutions! We include it here just in case our best effort to help isn't helpful enough, you can still find out exactly what's needed to get your code to run!
 
-## What's on the Wiki?
+## What's on the GitHub repo?
 Everything! We've got more helpful resources than any other book ever!!! Here's proof:
 * **Help pages**. We go in depth to give you the help you need, beyond what's in the book. Example: Level 1: Help.
-* 
+* Issues:
+*   dd
 
 =========
 
