@@ -12,15 +12,18 @@ Everything! We've got more helpful resources than any other book ever!!! Here's 
 * **Template files**. Start coding with clear sections that you need to fill in. Just follow along with the book! Example: [Level1](https://github.com/IncrediCoders/Python1/tree/IncrediCoders/Level1) > [TurtleMap.py](https://github.com/IncrediCoders/Python1/blob/IncrediCoders/Level1/TurtleMap.py).
 * **Help pages**. We go in depth to give you the help you need, beyond what's in the book. Example: [Level 1: Help](https://github.com/IncrediCoders/Python1/wiki/Level-1:-Help).
 * Setup pages
-* Download the games
-* 14 Challenges
+    * [Tips and Tricks for Visual Studio Code](https://github.com/IncrediCoders/Python1/wiki/Tips-and-Tricks-for-Visual-Studio-Code): We also included extra help so that you can be an awesome coder!
+* **Game downloads**: Play the games and try them out! We built EXE files for all the games and challenges, so you can see what they're going to be like! Head over to [Try the IncrediCoders Games](https://github.com/IncrediCoders/Python1/wiki/Try-the-IncrediCoders-Games).
+* **14 Challenges**: Every level (and there are 7 of them) has got two challenges! You can add to the games you made in the book to make them even better (and to tackle some unique challenges that game programmers face). Example: [Level 4: Challenge 2](https://github.com/IncrediCoders/Python1/wiki/Level-4:-Challenge-2). You add asteroids to the SpaceWars game!
 * Bonus Challenges
 * Online Articles
 * Learning Quizes
+* Unplugged Activities
+* Rewards
 * **Issues**:
-   * [Change Requests](https://github.com/CodaKids/Python1/issues/new?assignees=&labels=&template=CHANGE_REQUEST.yml&title=%5BChange%5D%3A+): call out inaccurate or incorrect statements, code, instructions
-   * [Suggestions and Ideas](https://github.com/CodaKids/Python1/issues/new?assignees=&labels=&template=IDEA.yml&title=%5BIDEA%5D%3A+): bring up ideas to improve the book, the online resources, or any part of the process
-   * [Questions](https://github.com/CodaKids/Python1/issues/new?assignees=&labels=&template=QUESTION.yml&title=%5BQuestion%5D%3A+): ask general (tech-related) questions
+   * [Change Requests](https://github.com/CodaKids/Python1/issues/new?assignees=&labels=&template=CHANGE_REQUEST.yml&title=%5BChange%5D%3A+): Tell us about inaccurate or incorrect statements, code, or instructions.
+   * [Suggestions and Ideas](https://github.com/CodaKids/Python1/issues/new?assignees=&labels=&template=IDEA.yml&title=%5BIDEA%5D%3A+): Tell us your ideas to improve the book, the online resources, or any part of the process.
+   * [Questions](https://github.com/CodaKids/Python1/issues/new?assignees=&labels=&template=QUESTION.yml&title=%5BQuestion%5D%3A+): Ask us any questions.
 * **Final code**: We provided you with the final code and solutions! Be sure to use the Wiki help pages (such as [Level 1: Help](https://github.com/IncrediCoders/Python1/wiki/Level-1:-Help)) before you look at the final code and solutions! We include it here just in case our best effort to help isn't helpful enough, you can still find out exactly what's needed to get your code to run! Example: [Level1](https://github.com/IncrediCoders/Python1/tree/IncrediCoders/Solutions/Level1) > [TurtleMap_Solution.py](https://github.com/IncrediCoders/Python1/blob/IncrediCoders/Solutions/Level1/TurtleMap_Solution.py)
 
 =========
