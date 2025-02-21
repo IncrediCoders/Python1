@@ -14,9 +14,13 @@ Everything! We've got more helpful resources than any other book ever!!! Here's 
 * Setup pages
     * [Tips and Tricks for Visual Studio Code](https://github.com/IncrediCoders/Python1/wiki/Tips-and-Tricks-for-Visual-Studio-Code): We also included extra help so that you can be an awesome coder!
 * **Game downloads**: Play the games and try them out! We built EXE files for all the games and challenges, so you can see what they're going to be like! Head over to [Try the IncrediCoders Games](https://github.com/IncrediCoders/Python1/wiki/Try-the-IncrediCoders-Games).
+    * **Gameplay instructions**: We provide instructions on how to play all 7 games, including gameplay additions in the Challenges that you'll build! See [Game Instructions](https://github.com/IncrediCoders/Python1/wiki/Try-the-IncrediCoders-Games#game-instructions).
 * **14 Challenges**: Every level (and there are 7 of them) has got two challenges! You can add to the games you made in the book to make them even better (and to tackle some unique challenges that game programmers face). Example: [Level 4: Challenge 2](https://github.com/IncrediCoders/Python1/wiki/Level-4:-Challenge-2). You add asteroids to the SpaceWars game!
-* Bonus Challenges
-* Online Articles
+* **Bonus Challenges**: But wait, there's more! Some levels have even more challenges!
+    * [Level 3: Bonus Challenges](https://github.com/CodaKids/Python1/wiki/Level-3:-Bonus-Challenges): Switch to a longer quiz we wrote for you, add more questions to the quiz, and/or make your own quiz, on any topic!
+    * [Level 5: Bonus Challenge](https://github.com/CodaKids/Python1/wiki/Level-5:-Bonus-Challenge): Design your own levels for the game! Then you can play your game that you designed.
+* **Extra Topics**: The goal of the book is to walk you through the process of making some great games! But there's always more to learn! These extra topics complement the book!
+* **Online Articles**:
 * Learning Quizes
 * Unplugged Activities
 * Rewards
