@@ -19,9 +19,9 @@ Everything! We've got more helpful resources than any other book ever!!! Here's 
 * **Bonus Challenges**: But wait, there's more! Some levels have even more challenges!
     * [Level 3: Bonus Challenges](https://github.com/CodaKids/Python1/wiki/Level-3:-Bonus-Challenges): Switch to a longer quiz we wrote for you, add more questions to the quiz, and/or make your own quiz, on any topic!
     * [Level 5: Bonus Challenge](https://github.com/CodaKids/Python1/wiki/Level-5:-Bonus-Challenge): Design your own levels for the game! Then you can play your game that you designed.
-* **Extra Topics**: The goal of the book is to walk you through the process of making some great games! But there's always more to learn! These extra topics complement the book!
-* **Online Articles**:
-* Learning Quizes
+* **Extra Topics**: The goal of the book is to walk you through the process of making some great games! But there's always more to learn! These extra topics complement the book! Example: [Level 3: While Loops](https://github.com/IncrediCoders/Python1/wiki/Level-3:-While-Loops).
+* **Online Articles**: Next, we provided these pages that feature explanation articles, videos, and tutorials that further teach the topics that we cover in each level! Example: [Level 1: Online Articles](https://github.com/IncrediCoders/Python1/wiki/Level-1:-Online-Articles).
+* Learning Quizes: If you're a teacher or parent, you might want to check and see how well your student has learned the topics in each level. Sometimes, taking quizzes helps teach lessons beyond what you'd get from instructions and activities. Each Learning Quiz features 10 questions. The answers to the quizes are in the main Solutions folder in this GitHub repo. Example: [Level 1: Learning Quiz](https://github.com/IncrediCoders/Python1/wiki/Level-1:-Learning-Quiz)).
 * Unplugged Activities
 * Rewards
 * **Issues**:
