@@ -8,7 +8,7 @@ You can click the **Wiki** tab at any time or click here to go to the online res
 * **Solutions**: That's where you'll find the final code and solutions. Be sure to use the Wiki help pages (such as [Level 1: Help](https://github.com/IncrediCoders/Python1/wiki/Level-1:-Help)) before you look at the final code and solutions! We include it here just in case our best effort to help isn't helpful enough, you can still find out exactly what's needed to get your code to run!
 
 ## What's on the GitHub repo?
-Everything! We've got more helpful resources than any other book ever!!! Here's proof:
+Everything! We've got more helpful resources than any other book ever!!! Don't believe us? Here's proof:
 * **Template files**. Start coding with clear sections that you need to fill in. Just follow along with the book! Example: [Level1](https://github.com/IncrediCoders/Python1/tree/IncrediCoders/Level1) > [TurtleMap.py](https://github.com/IncrediCoders/Python1/blob/IncrediCoders/Level1/TurtleMap.py).
 * **Help pages**. We go in depth to give you the help you need, beyond what's in the book. Example: [Level 1: Help](https://github.com/IncrediCoders/Python1/wiki/Level-1:-Help).
 * Setup pages
