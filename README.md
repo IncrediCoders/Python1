@@ -41,8 +41,13 @@ Everything! We've got more helpful resources than any other book ever!!! Don't b
    * [Questions](https://github.com/CodaKids/Python1/issues/new?assignees=&labels=&template=QUESTION.yml&title=%5BQuestion%5D%3A+): Ask us any questions.
 * **Final code**: We provided you with the final code and solutions! Be sure to use the Wiki help pages (such as [Level 1: Help](https://github.com/IncrediCoders/Python1/wiki/Level-1:-Help)) before you look at the final code and solutions! We include it here just in case our best effort to help isn't helpful enough, you can still find out exactly what's needed to get your code to run! You can also find the answers to the quizes. Example: [Level1](https://github.com/IncrediCoders/Python1/tree/IncrediCoders/Solutions/Level1) > [TurtleMap_Solution.py](https://github.com/IncrediCoders/Python1/blob/IncrediCoders/Solutions/Level1/TurtleMap_Solution.py)
 
-And our book itself features:
-* 
+**And our book itself features**:
+* **Digital Leaps**: Short URLs and QR codes to right from the book to the right GitHub Wiki page and to the other resources that we provide. We also describe a lot of the resources at the end of each Level, so that you know how to dig deeper and keep learning the concepts from each Level.
+* **Learning Checklist**: Each Level ends with a Learning Checklist for you (or a parent or teacher) to test your knowledge
+* **Core Programming Concepts**: We also have a section in the back of the book to teach the readers some core concepts, which act as review to what they learned while following the instructions in the book. And these concepts then link out to the Extra Topics pages that are on the Wiki, so that the reader can continue learning!
+* **Big Book Quiz**: At the end of the book, this quiz provides 15 questions to test your knowledge (or for a parent or teacher to test the student's knowledge). The answers are in one of the Big Book Buddies pages.
+* **Character Index**: In addition to the usual Index, we feature a Character Index in the back of the book, so you can find where the heroes and villains show up throughout the book.
+* **Nerdy Notes**: The back of the book features a page that lists all our inside jokes and references from each page of the book!
 
 =========
 
