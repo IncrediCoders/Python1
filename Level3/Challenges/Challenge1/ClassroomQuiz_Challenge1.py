@@ -72,7 +72,8 @@ while running:
             
             
             # We display the next question after an incorrect or correct answer has been chosen
-            line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
+            if running:
+                line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
             # If it's the last question, we display the end screen with Mrs. Codala
-            if not running:
+            else:
                 display_end_screen()
