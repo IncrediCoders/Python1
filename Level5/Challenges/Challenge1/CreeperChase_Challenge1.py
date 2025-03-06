@@ -107,7 +107,7 @@ def update(delta_time):
 
         elif MY.level_num == 6:
             # Show the Win screen
-            change(2) 
+            change(3) 
 
     # Update level assets
     update_level(delta_time)
