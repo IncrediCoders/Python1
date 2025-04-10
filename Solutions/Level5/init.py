@@ -692,6 +692,8 @@ def jetpack_up_animation():
 def restart_level(level_num):
     level_name_as_string = 'Level' + str(level_num)
     tilemap = read_file("Assets/" + level_name_as_string + ".txt")
+    if challenge_type == 'BONUS':
+        tilemap = read_file("Assets/" + "LevelCustom.txt")
     MY.restart = True
     load_level(tilemap)
 
@@ -768,6 +770,9 @@ def initialize(window):
         tilemap = read_file("Assets/" + level_name_as_string + ".txt")
         load_level(tilemap)
     
+    if challenge_type == "BONUS":
+        tilemap = read_file("Assets/LevelCustom.txt")
+        load_level(tilemap)
     MY.window = window
 
 def draw(screen):
