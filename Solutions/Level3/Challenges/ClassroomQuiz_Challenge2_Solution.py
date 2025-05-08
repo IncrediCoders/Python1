@@ -20,7 +20,7 @@ display_intro_screen() # Displays the intro screen
 
 running = True 
 
-# This displays question screen until the last question or the player closes the window
+# This displays the question screen until the player closes the window
 while running:
     display_question(question, ANSWER_CHOICES) # Displays the new question and the three answer choices
     EVENTS = pygame.event.get()
