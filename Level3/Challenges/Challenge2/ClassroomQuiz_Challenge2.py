@@ -20,7 +20,7 @@ display_intro_screen() # Displays the intro screen
 
 running = True
 
-# This displays the question screen until the last question or until the player closes the window
+# This displays the question screen until the player closes the window
 while running:
     display_question(question, ANSWER_CHOICES) # Displays the new question and the three answer choices
     EVENTS = pygame.event.get()
@@ -29,7 +29,7 @@ while running:
             running = False
         mouse_position = pygame.mouse.get_pos()
         if event.type == pygame.MOUSEBUTTONDOWN: # If the player clicks the mouse
-            # Check to see if player has clicked on one of the possible answers
+            # Check to see if the player has clicked on one of the possible answers
             if answer_1_rect.collidepoint(mouse_position) or answer_2_rect.collidepoint(mouse_position) or answer_3_rect.collidepoint(mouse_position):
                 if answer_1_rect.collidepoint(mouse_position): # If the player clicks the 1st answer on the top
                     if ANSWER_CHOICES[0] == answer: # If it's the correct answer
@@ -42,8 +42,8 @@ while running:
                         #time.sleep(1)
                         display_codala(correct_a, "correct_text") # Displays codala and text for correct answer
                     else: # If it's an incorrect answer
-                        #TODO: Add interactive effect
-                        # Change color from blue to red
+                        #TODO: Add the interactive effect
+                        # Change the color from blue to red
                         
                         
                         
@@ -52,8 +52,8 @@ while running:
                         display_codala(incorrect_a, "incorrect_text") # Display codala and text for incorrect answer
                 if answer_2_rect.collidepoint(mouse_position): # If the player clicks the 2nd answer
                     if ANSWER_CHOICES[1] == answer:
-                        #TODO: Add interactive effect
-                        # Change color from blue to green
+                        #TODO: Add the interactive effect
+                        # Change the color from blue to green
                         
                     
                     
@@ -61,8 +61,8 @@ while running:
                 
                         display_codala(correct_b, "correct_text")
                     else:
-                        #TODO: Add interactive effect
-                        # Change color from blue to red
+                        #TODO: Add the interactive effect
+                        # Change the color from blue to red
                     
                         
                         
@@ -71,8 +71,8 @@ while running:
                         display_codala(incorrect_b, "incorrect_text")
                 if answer_3_rect.collidepoint(mouse_position): # If the player clicks the 3rd answer
                     if ANSWER_CHOICES[2] == answer:
-                        #TODO: Add interactive effect
-                        # Change color from blue to green
+                        #TODO: Add the interactive effect
+                        # Change the color from blue to green
                         
                         
                         
@@ -80,8 +80,8 @@ while running:
                         
                         display_codala(correct_a, "correct_text")
                     else:
-                        #TODO: Add interactive effect
-                        # Change color from blue to red
+                        #TODO: Add the interactive effect
+                        # Change the color from blue to red
                         
                         
                     
