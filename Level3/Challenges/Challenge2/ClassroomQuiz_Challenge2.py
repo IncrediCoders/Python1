@@ -40,7 +40,7 @@ while running:
                         #pygame.display.update()
                         #pygame.event.get()
                         #time.sleep(1)
-                        display_codala(correct_a, "correct_text") # Displays the image for Mrs. Codala and the text for the correct answer
+                        display_codala(correct_a, "correct_text") # Displays the image of Mrs. Codala and her text for the correct answer
                     else: # If it's an incorrect answer
                         #TODO: Add the interactive effect
                         # Change the color from blue to red
