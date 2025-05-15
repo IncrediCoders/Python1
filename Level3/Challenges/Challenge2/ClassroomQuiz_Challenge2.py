@@ -34,7 +34,7 @@ while running:
                 if answer_1_rect.collidepoint(mouse_position): # If the player clicks the 1st answer on the top
                     if ANSWER_CHOICES[0] == answer: # If it's the correct answer
                         #TODO: Uncomment these lines to add interactive effect
-                        # Change color from blue to green
+                        # Change the color from blue to green
                         #answer_1_text = my_font.render(answer, True, (0,128,0))
                         #screen.blit(answer_1_text, answer_1_rect)
                         #pygame.display.update()
