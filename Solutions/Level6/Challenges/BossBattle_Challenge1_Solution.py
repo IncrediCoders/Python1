@@ -19,12 +19,14 @@ def update(delta_time):
         player_pain_anim()
         MY.player_health -= 1
         MY.player_hitbox.active = False
+        
 
     # Wrote code here to play a sound when Paul gets hit
     if MY.player.collides_with_projectile():
         mixer.music.load(get_file("Assets/PaulHit.wav"))
         mixer.music.play()
-        return True
+        MY.player_hitbox.active = False
+
 
     # Add Paul's hitbox depending on his direction
     if MY.player_dir == UP:
