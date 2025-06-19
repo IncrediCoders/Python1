@@ -49,7 +49,7 @@ while running:
                         pygame.display.update()
                         pygame.event.get()
                         time.sleep(1)
-                        display_codala(incorrect_a, "incorrect_text") # Display codala and text for incorrect answer
+                        display_codala(incorrect_a, "incorrect_text") # Displays the image of Mrs. Codala and her text for the incorrect answer
                 if answer_2_rect.collidepoint(mouse_position): # If the player clicks the 2nd answer
                     if ANSWER_CHOICES[1] == answer: 
                         # Added the interactive effect
