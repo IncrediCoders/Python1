@@ -770,7 +770,8 @@ def initialize(window):
 
     MY.level_num = 1
     level_name_as_string = 'Level' + str(MY.level_num)
-
+    if MY.level_num >= 4:
+        TIME_LIMIT = 23
     # Load more difficult levels if in challenge 2
     if challenge_type == "CHALLENGE2":
         tilemap = read_file("Assets/BatteryLevels/" + level_name_as_string + ".txt")

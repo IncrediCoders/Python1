@@ -3,9 +3,12 @@ from init import *
 
 # Set timer for 45 seconds
 MY.timer = 45
+if MY.level_num >= 4:
+    MY.timer = 23
 
 # Checks for player input and updates the game
 def update(delta_time):
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             stop()
@@ -97,7 +100,7 @@ def update(delta_time):
     
     # Check for exit portal collision
     if MY.player.collides_with(MY.exit_portal):
-        if MY.level_num >= 1 and MY.level_num < 6:
+        if MY.level_num <= 2:
             # Load and run the next level
             MY.level_num = MY.level_num + 1
             level_name_as_string = 'Level' + str(MY.level_num)
@@ -105,6 +108,14 @@ def update(delta_time):
             load_level(tilemap)
             # Reset timer 
             MY.timer = 45
+        elif MY.level_num >= 3 and MY.level_num < 6:
+            # Load and run the next level
+            MY.level_num = MY.level_num + 1
+            level_name_as_string = 'Level' + str(MY.level_num)
+            tilemap = read_file("Assets/" + level_name_as_string + ".txt")
+            load_level(tilemap)
+            # Reset timer 
+            MY.timer = 23
         elif MY.level_num == 6:
             # Show the Win screen
             change(3) 
