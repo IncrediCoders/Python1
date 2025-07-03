@@ -697,7 +697,8 @@ def restart_level(level_num):
     if challenge_type == "CHALLENGE1":
         tilemap = read_file("Assets/" + level_name_as_string + ".txt")
     if challenge_type == "CHALLENGE2":
-        tilemap = read_file("Assets/BatteryLevels/" + level_name_as_string + ".txt")
+        MY.level_num = 1
+        tilemap = read_file("Assets/BatteryLevels/Level1.txt")
     MY.restart = True
     MY.player_health = 5
     health_bar(SCREEN, MY.player_health, 5, (128, 16), (MY.window.x * 0.75, 20))
