@@ -54,8 +54,8 @@ def update(delta_time):
     # Check for hazard collisions
     for hazard in MY.hazards:
         if MY.player.collides_with(hazard):
-            MY.player_health -= 2
-            if MY.player_health <= 0:
+            MY.player_health -= 1
+            if MY.player_health == 0:
                 restart_level(MY.level_num)
             else:
                 MY.player.sprite = MY.paul_pain_right
@@ -97,14 +97,24 @@ def update(delta_time):
     
     # Check for exit portal collision
     if MY.player.collides_with(MY.exit_portal):
-        if MY.level_num >= 1 and MY.level_num < 6:
+        if MY.level_num <= 2:
             # Load and run the next level
             MY.level_num = MY.level_num + 1
             level_name_as_string = 'Level' + str(MY.level_num)
             tilemap = read_file("Assets/" + level_name_as_string + ".txt")
             load_level(tilemap)
+            # Reset timer
             #TODO: Write code to reset the timer 
-
+            
+        elif MY.level_num >= 3 and MY.level_num < 6:
+            # Load and run the next level
+            MY.level_num = MY.level_num + 1
+            level_name_as_string = 'Level' + str(MY.level_num)
+            tilemap = read_file("Assets/" + level_name_as_string + ".txt")
+            load_level(tilemap)
+            # Reset timer
+            #TODO: Write code to reset the timer  
+        
         elif MY.level_num == 6:
             # Show the Win screen
             change(3) 
