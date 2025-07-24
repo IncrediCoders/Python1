@@ -233,7 +233,7 @@ def move_to_next_question(input_list, question, line_number, input_list2):
     # Return new line number, next question, correct answer and answer choice list
     return line_number, question, answer, input_list2
 
-def check_if_last_question(line_number, running_status, number_of_questions):
+def check_if_not_last_question(line_number, running_status, number_of_questions):
     """
     Checks if it's the last question and displays end screen if so
     """
