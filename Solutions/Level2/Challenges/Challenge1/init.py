@@ -19,7 +19,7 @@ def display_text(screen, current_text):
     Displays text to the screen
     """
     if(pygame.time.get_ticks() < 10000):
-        pt1 = "Use the 0-9, Q, and W keys to switch characters"
+        pt1 = "Use the 0-9, Q, W, E, and R keys to switch characters"
         pt2 = "and learn about your classmates!"
         message_pt1 = instructions_font.render(pt1, True, PURPLE)
         message_pt2 = instructions_font.render(pt2, True, PURPLE)

@@ -536,7 +536,7 @@ Manager = Machine()
 WINDOW = pygame.math.Vector2(900, 500)
 SCREEN = start(WINDOW, "Space Wars Tournament")
 
-# Loads sprites, sounds, and images
+# Loads sprites and images
 IMAGE_BACKGROUND = Image("Assets/Background.jpg")
 IMAGE_PLAYER1 = Image("Assets/Player1.png")
 IMAGE_PLAYER2 = Image("Assets/Player2.png")
