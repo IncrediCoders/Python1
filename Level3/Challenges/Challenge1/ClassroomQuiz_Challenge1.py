@@ -71,7 +71,7 @@ while running:
             
             
             
-            
+            pygame.event.get()
             # We display the next question after an incorrect or correct answer has been chosen
             if running:
                 line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
