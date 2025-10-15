@@ -71,5 +71,5 @@ def update(delta_time):
 Manager.register(sys.modules[__name__]) # The current file
 Manager.register(GameOver)
 
-# Run the game!
+# Runs the game
 Manager.run(SCREEN, WINDOW, BLACK, "CHALLENGE2")
