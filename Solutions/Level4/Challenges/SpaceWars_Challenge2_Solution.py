@@ -63,11 +63,11 @@ def update(delta_time):
     # Called the method that updates the position of the asteroids in the game window
     update_asteroids(delta_time)
 
-    # Check win condition
+    # Checks win condition
     check_win()   
 
 
-# Registering the states
+# Regists the states
 Manager.register(sys.modules[__name__]) # The current file
 Manager.register(GameOver)
 
