@@ -11,7 +11,7 @@ You can click the **Wiki** tab at any time or click here to go to the online res
 Everything! We've got more helpful resources than any other book ever!!! Don't believe us? Here's proof:
 * **Template files**. Start coding with clear sections that you need to fill in. Just follow along with the book! Example: [Level1](https://github.com/IncrediCoders/Python1/tree/IncrediCoders/Level1) > [TurtleMap.py](https://github.com/IncrediCoders/Python1/blob/IncrediCoders/Level1/TurtleMap.py).
 * **Help pages**. We go in depth to give you the help you need, beyond what's in the book. Example: [Level 1: Help](https://github.com/IncrediCoders/Python1/wiki/Level-1:-Help).
-* **Setup pages**: Learn how to set up Visual Studio Code and Replit, so that you can code the games! See [Set up the files](https://github.com/IncrediCoders/Python1/wiki/Set-up-the-files).
+* **Setup pages**: Learn how to set up Visual Studio Code, so that you can code the games! See [Set up the files](https://github.com/IncrediCoders/Python1/wiki/Set-up-the-files).
     * [Tips and Tricks for Visual Studio Code](https://github.com/IncrediCoders/Python1/wiki/Tips-and-Tricks-for-Visual-Studio-Code): We also included extra help so that you can be an awesome coder!
 * **Game downloads**: Play the games and try them out! We built EXE files for all the games and challenges, so you can see what they're going to be like! Head over to [Try the IncrediCoders Games](https://github.com/IncrediCoders/Python1/wiki/Try-the-IncrediCoders-Games).
     * **Gameplay instructions**: We provide instructions on how to play all 7 games, including gameplay additions in the Challenges that you'll build! See [Game Instructions](https://github.com/IncrediCoders/Python1/wiki/Try-the-IncrediCoders-Games#game-instructions).
