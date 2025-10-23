@@ -1,2 +1,0 @@
-language = "pygame"
-run = "python3 Solutions/Level1/TurtleMap_Solution.py"
