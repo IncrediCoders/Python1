@@ -4,7 +4,7 @@ from init import *
 def update_asteroids(delta_time):
     #TODO: Write code to update the position of the asteroids in the game window
 
-        if asteroid.active:
+        # Updates the state of each asteroid
 
 
 
