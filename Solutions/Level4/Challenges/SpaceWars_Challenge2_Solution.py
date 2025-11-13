@@ -4,9 +4,9 @@ from init import *
 def update_asteroids(delta_time):
     # Updated the position of the asteroids in the game window
     for asteroid in MY.asteroids:
-        if asteroid.active:
-            asteroid.update(delta_time)
-            screen_wrap(asteroid, MY.window)
+        # Updates the state of each asteroid
+        asteroid.update(delta_time)
+        screen_wrap(asteroid, MY.window)
         if MY.player1.collides_with(asteroid):
             MY.player1.velocity = pygame.math.Vector2(0, 0)
         if MY.player2.collides_with(asteroid):
