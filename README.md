@@ -36,9 +36,9 @@ Everything! We've got more helpful resources than any other book ever!!! Don't b
     * **[The Feedback Loop](https://github.com/IncrediCoders/Python1/wiki/The-Feedback-Loop)**: Learn about how to ask questions, submit issues, or share ideas with us and the book community!
     * **[What's in the Book: Super TOC](https://github.com/CodaKids/Python1/wiki/What's-in-the-Book)** - This table of contents (TOC) explains what's in each Level and what you'll learn!
     * **[Glossary + Index](https://github.com/IncrediCoders/Python1/wiki/Glossary-&-Index)**: See page numbers and definitions of all the terms that are in the Index.
-* **[Character Glossary + Index](https://github.com/IncrediCoders/Python1/wiki/Character-Glossary-&-Index)**: See page numbers and information about all of the heroes and villains in the book!
-* **[My Badges Collection Page](https://github.com/IncrediCoders/Python1/wiki/My-Badges-Collection-Page)**: As you complete each level, attach that level's award badge to your My Badges page! You can print out the page and the badges.
-* **[Total Learning Checklist](https://github.com/IncrediCoders/Python1/wiki/Total-Learning-Checklist)**: This page includes all the Learning Checklists from each Level in the book, so that you can check your knowledge (or your student's knowledge).
+    * **[Character Glossary + Index](https://github.com/IncrediCoders/Python1/wiki/Character-Glossary-&-Index)**: See page numbers and information about all of the heroes and villains in the book!
+    * **[My Badges Collection Page](https://github.com/IncrediCoders/Python1/wiki/My-Badges-Collection-Page)**: As you complete each level, attach that level's award badge to your My Badges page! You can print out the page and the badges.
+    * **[Total Learning Checklist](https://github.com/IncrediCoders/Python1/wiki/Total-Learning-Checklist)**: This page includes all the Learning Checklists from each Level in the book, so that you can check your knowledge (or your student's knowledge).
     * **Total Learning Checklist** - Each level in the book ends with a Learning Checklist to check your knowledge (or your student's knowledge). This page is one big checklist of all the levels in the book! Head here to make sure you learned from the book (or to make sure your student did)!
     * **[Answers to the Big Book Quiz](https://github.com/CodaKids/Python1/wiki/Answers-to-the-Big-Book-Quiz)** - These are the answers to the Big Book Quiz, which is in the back of the book.
 * **Issues**:
