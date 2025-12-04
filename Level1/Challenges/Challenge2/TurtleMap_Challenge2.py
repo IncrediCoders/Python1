@@ -18,32 +18,38 @@ turtle.setx(460)
 turtle.sety(-275)
 turtle.pendown()
 
-#TODO: Write a loop to go back and forth 5 times
-# To learn more about loops, follow the instructions on the wiki page
+#The try block catches any exception if we end the game before the loop ends
+try:
+    #TODO: Write a loop to go back and forth 5 times
+    # To learn more about loops, follow the instructions on the wiki page
 
-    #TODO: In your loop, write the code to go to the school and then to get back
-    # (You can use your code you wrote from the instructions in the book!)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    # After you reach the school, go back to the house
-    
-    
-    
-    
-    
-    
-    
-    
-    
-# End the loop here
+        #TODO: In your loop, write the code to go to the school and then to get back
+        # (You can use your code you wrote from the instructions in the book!)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        # After you reach the school, go back to the house
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    # End the loop here
 
-# This line stops the window from closing once we make it to the end
-turtle.done()
+    # This line stops the window from closing once we make it to the end
+    turtle.done()
+
+#If the game ends early before the loop finishes, we print to the console
+except:
+    print("Ended early")
