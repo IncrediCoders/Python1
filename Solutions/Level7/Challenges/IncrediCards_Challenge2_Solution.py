@@ -185,11 +185,11 @@ class PlayScreen(GameState):
 						# Added the code to switch the active player
 						self.switch_active_player()
 					
-					# Opponent Tails - This forces the next roll to be a 'Tails' and switches the active player
+					# Opponent Tails - This forces the next spin to be a 'Tails' and switches the active player
 					if offense_card.coded_type == 'opponent_tails':
 						# Added the code to set the game's attribute for forcing tails to be 'True'
 						self.force_tails = True
-						turn_msg = "{}'{} {} strikes - {} will roll tails on the next turn!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, defense_card.name)
+						turn_msg = "{}'{} {} strikes - {} will land on tails on the next turn!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, defense_card.name)
 						# Added the code to switch the active player
 						self.switch_active_player()
 
