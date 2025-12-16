@@ -50,6 +50,6 @@ try:
     # This line stops the window from closing once we make it to the end
     turtle.done()
 
-#If the game ends early before the loop finishes, we print to the console
+# If the game ends early before the loop finishes, we print to the console
 except:
     print("Ended early")
