@@ -54,8 +54,9 @@ def update(delta_time):
             MY.player.sprite = MY.paul_pain_right
             # Reset location to starting point
             MY.player.location = MY.player_start_position
+            # Set speed to 0 in both directions
             MY.player.set_velocity(0, 0)
-            print("im hurt", MY.player_health)         
+                 
     
     # Update Paul's location
     MY.player.update(delta_time)
