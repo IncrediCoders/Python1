@@ -48,13 +48,13 @@ def update(delta_time):
 
     # Check for hazards
     for hazard in MY.hazards:
-        # Check if player has touched a hazard
+        # Check if the player has touched a hazard
         if MY.player.collides_with(hazard):
-            # Show animation for Paul getting injured
+            # Show the animation for Paul getting injured
             MY.player.sprite = MY.paul_pain_right
-            # Reset location to starting point
+            # Reset the location to the starting point
             MY.player.location = MY.player_start_position
-            # Set speed to 0 in both directions
+            # Set the speed to 0 in both directions
             MY.player.set_velocity(0, 0)
                  
     # Update Paul's location
