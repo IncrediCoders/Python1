@@ -57,7 +57,6 @@ def update(delta_time):
             # Set speed to 0 in both directions
             MY.player.set_velocity(0, 0)
                  
-
     # Update Paul's location
     MY.player.update(delta_time)
 
