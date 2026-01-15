@@ -46,16 +46,16 @@ def update(delta_time):
     # Gravity
     MY.player.velocity.y = min(MY.player.velocity.y + GRAVITY_ACCEL, PLAYER_TERMINAL_VEL)
 
-    # Check for hazard collisions
+    # Check for hazards
     for hazard in MY.hazards:
+        # Check if player has touched a hazard
         if MY.player.collides_with(hazard):
-            MY.player_health -= 1
-            if MY.player_health == 0:
-                restart_level(MY.level_num)
-            else:
-                MY.player.sprite = MY.paul_pain_right
-                MY.player.location = MY.player_start_position
-                MY.player.set_velocity(0, 0)         
+            # Show animation for Paul getting injured
+            MY.player.sprite = MY.paul_pain_right
+            # Reset location to starting point
+            MY.player.location = MY.player_start_position
+            MY.player.set_velocity(0, 0)
+            print("im hurt", MY.player_health)         
     
     # Update Paul's location
     MY.player.update(delta_time)
