@@ -4,6 +4,8 @@ from init import *
 #TODO: Write code to set the timer for 45 seconds
 
 
+
+
 # Checks for player input and updates the game
 def update(delta_time):
     for event in pygame.event.get():
@@ -104,8 +106,7 @@ def update(delta_time):
             tilemap = read_file("Assets/" + level_name_as_string + ".txt")
             load_level(tilemap)
             # Reset timer
-            #TODO: Write code to reset the timer 
-            
+            #TODO: Write code to reset the timer     
         elif MY.level_num >= 3 and MY.level_num < 6:
             # Load and run the next level
             MY.level_num = MY.level_num + 1
@@ -114,7 +115,6 @@ def update(delta_time):
             load_level(tilemap)
             # Reset timer
             #TODO: Write code to reset the timer  
-        
         elif MY.level_num == 6:
             # Show the Win screen
             change(3) 
