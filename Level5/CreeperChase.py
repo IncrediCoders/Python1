@@ -48,13 +48,13 @@ def update(delta_time):
 
     #TODO: Write the code here to check for hazard collisions
 
+        # Check if the player has touched a hazard
 
+            # Show the animation for Paul getting injured
 
+            # Reset the location to the starting point                
 
-
-
-
-
+            # Set the speed to 0 in both directions
 
     
     # Update Paul's location
