@@ -8,7 +8,6 @@ if MY.level_num >= 4:
 
 # Checks for player input and updates the game
 def update(delta_time):
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             stop()
