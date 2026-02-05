@@ -46,7 +46,7 @@ def update(delta_time):
     # Gravity
     MY.player.velocity.y = min(MY.player.velocity.y + GRAVITY_ACCEL, PLAYER_TERMINAL_VEL)
 
-    # Check for hazards
+    # Wrote code here to check for hazard collisions
     for hazard in MY.hazards:
         # Check if the player has touched a hazard
         if MY.player.collides_with(hazard):
