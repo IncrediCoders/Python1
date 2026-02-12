@@ -51,9 +51,10 @@ while running:
             
             
             
-                # We display the next question after an incorrect or correct answer has been chosen
+                # We clear the queue of events before we move to the next question
+                pygame.event.get()
+                # We display the next question after an incorrect or correct answer has been chosen 
                 line_number, question, answer, ANSWER_CHOICES = move_to_next_question(TRIVIA, question, line_number, ANSWER_CHOICES)
-            pygame.event.get() 
             # We check to see if it's the last question and display end screen with Mrs. Codala
             running = check_if_not_last_question(line_number, running, number_of_questions)
             if not running:
