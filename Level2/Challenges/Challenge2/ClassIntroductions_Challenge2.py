@@ -74,7 +74,7 @@ TEXT.append(text_annie_conda)
 
 
 running = True
-#Starts at the first character in the list
+# Starts at the first character in the list
 index_number = 0
 while running:
     current_character = CHARACTERS[index_number]
@@ -94,7 +94,7 @@ while running:
             
 
 
-    #If we reach the end of the list, we start from the beginning again
+    # If we reach the end of the list, we start from the beginning again
     if index_number == #TODO: Finish this if-statement to check if "index_number" equals the last character in the list
         #TODO: Add a statement to set "index_number" back to the first character in the list
     if index_number == #TODO: Finish this if-statement to check if "index_number" equals the first character in the list
