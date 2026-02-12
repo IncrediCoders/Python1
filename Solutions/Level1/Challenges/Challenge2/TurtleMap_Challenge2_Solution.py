@@ -35,7 +35,7 @@ try:
         turtle.right(90)
         turtle.forward(250)
 
-        # Reached the school, and then go back to the house
+        # Wrote the code for after you reach the school, and then go back to the house
         turtle.left(180)
         turtle.forward(250)    
         turtle.left(90)
