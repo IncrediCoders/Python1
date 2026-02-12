@@ -22,19 +22,19 @@ turtle.pendown()
 turtle.left(180)
 turtle.forward(125)
 
-# Turned right 90 degrees and moved forward 105 steps
+# Wrote the code that turned right 90 degrees and moved forward 105 steps
 turtle.right(90)
 turtle.forward(105)
 
-# Turned right 90 degrees and moved forward 185 steps
+# Wrote the code that turned right 90 degrees and moved forward 185 steps
 turtle.right(90)
 turtle.forward(185)
 
-# Turned left and moved to the end of the road
+# Wrote the code that turned left and moved to the end of the road
 turtle.left(90)
 turtle.forward(385)
 
-# Turned left and moved to the intersection
+# Wrote the code that turned left and moved to the intersection
 turtle.left(90)
 turtle.forward(65)
 

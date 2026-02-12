@@ -58,5 +58,5 @@ turtle.pendown()
 
 
 
-#This line stops the window from closing once we make it to the end
+# This line stops the window from closing once we make it to the end
 turtle.done()
