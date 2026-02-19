@@ -16,7 +16,7 @@ def update(delta_time):
 
             fire_bullet(1)
         elif key_down(event, pygame.K_RETURN):
-            #TODO: Write code here to add sound when firing the Player 1 weapon
+            #TODO: Write code here to add sound when firing the Player 2 weapon
             
 
             fire_bullet(2)
