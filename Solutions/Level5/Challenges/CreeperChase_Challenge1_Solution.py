@@ -1,7 +1,7 @@
 # Runs the init.py file and imports the libraries
 from init import *
 
-# Set timer for 45 seconds
+# Wrote code to set timer for 45 seconds
 MY.timer = 45
 if MY.level_num >= 4:
     MY.timer = 23
@@ -90,10 +90,10 @@ def update(delta_time):
     if not touching:
         MY.grounded = False
     
-    # Subtract delta time (milliseconds) from timer total
+    # Wrote code to subtract delta time (milliseconds) from timer total
     MY.timer -= delta_time 
 
-    # If timer reaches 0 show lose screen
+    # Wrote code to show the Lose screen if the timer reaches 0
     if MY.timer <= 0:
         change(2)
     
