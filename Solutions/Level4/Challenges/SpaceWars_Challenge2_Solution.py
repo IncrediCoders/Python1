@@ -2,7 +2,7 @@
 from init import *
 
 def update_asteroids(delta_time):
-    # Updated the position of the asteroids in the game window
+    # Wrote code to update the position of the asteroids in the game window
     for asteroid in MY.asteroids:
         # Updates the state of each asteroid
         asteroid.update(delta_time)
@@ -60,7 +60,7 @@ def update(delta_time):
     # Checks if bullets have been fired and updates their behavior on screen
     update_bullets(delta_time)
 
-    # Called the method that updates the position of the asteroids in the game window
+    # Wrote code that called the method that updates the position of the asteroids in the game window
     update_asteroids(delta_time)
 
     # Checks win condition
