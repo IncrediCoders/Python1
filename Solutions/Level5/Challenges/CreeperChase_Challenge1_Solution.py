@@ -1,7 +1,7 @@
 # Runs the init.py file and imports the libraries
 from init import *
 
-# Wrote code to set timer for 45 seconds
+# Wrote code to set the timer for 45 seconds
 MY.timer = 45
 if MY.level_num >= 4:
     MY.timer = 23
@@ -29,21 +29,21 @@ def update(delta_time):
         MY.player.sprite = MY.paul_run_right
     else:
         if MY.grounded: 
-            # Track and control velocity when grounded
+            # Track and control the velocity when grounded
             if MY.player.velocity.x > 0:
                 MY.player.velocity.x = max(0, MY.player.velocity.x - PLAYER_DECEL)
                 MY.player.sprite = MY.paul_idle_right
             elif MY.player.velocity.x < 0:
                 MY.player.velocity.x = min(0, MY.player.velocity.x + PLAYER_DECEL)
                 MY.player.sprite = MY.paul_idle_left
-        # Track and control velocity when falling
+        # Track and control the velocity when falling
         else:
             if MY.player.velocity.x > 0:
                 MY.player.velocity.x = max(0, MY.player.velocity.x - PLAYER_AIR_DECEL)
             elif MY.player.velocity.x < 0:
                 MY.player.velocity.x = min(0, MY.player.velocity.x + PLAYER_AIR_DECEL)
     
-    # Track and control velocity when flying
+    # Track and control the velocity when flying
     if not MY.grounded:      
         if MY.player.velocity.x > 0:
             MY.player.sprite = MY.paul_jetpack_right
@@ -90,14 +90,14 @@ def update(delta_time):
     if not touching:
         MY.grounded = False
     
-    # Wrote code to subtract delta time (milliseconds) from timer total
+    # Wrote code to subtract delta time (milliseconds) from the timer total
     MY.timer -= delta_time 
 
     # Wrote code to show the Lose screen if the timer reaches 0
     if MY.timer <= 0:
         change(2)
     
-    # Check for exit portal collision
+    # Check for an exit portal collision
     if MY.player.collides_with(MY.exit_portal):
         if MY.level_num <= 2:
             # Load and run the next stage
@@ -105,7 +105,7 @@ def update(delta_time):
             level_name_as_string = 'Level' + str(MY.level_num)
             tilemap = read_file("Assets/" + level_name_as_string + ".txt")
             load_level(tilemap)
-            # Reset timer 
+            # Reset the timer 
             MY.timer = 45
         elif MY.level_num >= 3 and MY.level_num < 6:
             # Load and run the next stage
@@ -113,13 +113,13 @@ def update(delta_time):
             level_name_as_string = 'Level' + str(MY.level_num)
             tilemap = read_file("Assets/" + level_name_as_string + ".txt")
             load_level(tilemap)
-            # Reset timer 
+            # Reset the timer 
             MY.timer = 23
         elif MY.level_num == 6:
             # Show the Win screen
             change(3) 
 
-    # Update stage assets
+    # Update the stage assets
     update_level(delta_time)
 
 # Register the states
