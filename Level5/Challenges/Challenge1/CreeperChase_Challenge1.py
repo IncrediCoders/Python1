@@ -29,21 +29,21 @@ def update(delta_time):
         MY.player.sprite = MY.paul_run_right
     else:
         if MY.grounded: 
-            # Track and control velocity when grounded
+            # Track and control the velocity when grounded
             if MY.player.velocity.x > 0:
                 MY.player.velocity.x = max(0, MY.player.velocity.x - PLAYER_DECEL)
                 MY.player.sprite = MY.paul_idle_right
             elif MY.player.velocity.x < 0:
                 MY.player.velocity.x = min(0, MY.player.velocity.x + PLAYER_DECEL)
                 MY.player.sprite = MY.paul_idle_left
-        # Track and control velocity when falling
+        # Track and control the velocity when falling
         else:
             if MY.player.velocity.x > 0:
                 MY.player.velocity.x = max(0, MY.player.velocity.x - PLAYER_AIR_DECEL)
             elif MY.player.velocity.x < 0:
                 MY.player.velocity.x = min(0, MY.player.velocity.x + PLAYER_AIR_DECEL)
     
-    # Track and control velocity when flying
+    # Track and control the velocity when flying
     if not MY.grounded:      
         if MY.player.velocity.x > 0:
             MY.player.sprite = MY.paul_jetpack_right
@@ -97,7 +97,7 @@ def update(delta_time):
 
 
     
-    # Check for exit portal collision
+    # Check for an exit portal collision
     if MY.player.collides_with(MY.exit_portal):
         if MY.level_num <= 2:
             # Load and run the next stage
@@ -119,7 +119,7 @@ def update(delta_time):
             # Show the Win screen
             change(3) 
 
-    # Update stage assets
+    # Update the stage assets
     update_level(delta_time)
 
 # Register the states
