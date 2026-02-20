@@ -105,7 +105,7 @@ def update(delta_time):
             level_name_as_string = 'Level' + str(MY.level_num)
             tilemap = read_file("Assets/" + level_name_as_string + ".txt")
             load_level(tilemap)
-            # Reset timer
+            # Reset the timer
             #TODO: Write code to reset the timer     
         elif MY.level_num >= 3 and MY.level_num < 6:
             # Load and run the next stage
@@ -113,7 +113,7 @@ def update(delta_time):
             level_name_as_string = 'Level' + str(MY.level_num)
             tilemap = read_file("Assets/" + level_name_as_string + ".txt")
             load_level(tilemap)
-            # Reset timer
+            # Reset the timer
             #TODO: Write code to reset the timer  
         elif MY.level_num == 6:
             # Show the Win screen
