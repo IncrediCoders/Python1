@@ -100,7 +100,7 @@ def update(delta_time):
     # Check for exit portal collision
     if MY.player.collides_with(MY.exit_portal):
         if MY.level_num <= 2:
-            # Load and run the next level
+            # Load and run the next stage
             MY.level_num = MY.level_num + 1
             level_name_as_string = 'Level' + str(MY.level_num)
             tilemap = read_file("Assets/" + level_name_as_string + ".txt")
@@ -108,7 +108,7 @@ def update(delta_time):
             # Reset timer
             #TODO: Write code to reset the timer     
         elif MY.level_num >= 3 and MY.level_num < 6:
-            # Load and run the next level
+            # Load and run the next stage
             MY.level_num = MY.level_num + 1
             level_name_as_string = 'Level' + str(MY.level_num)
             tilemap = read_file("Assets/" + level_name_as_string + ".txt")
@@ -119,7 +119,7 @@ def update(delta_time):
             # Show the Win screen
             change(3) 
 
-    # Update level assets
+    # Update stage assets
     update_level(delta_time)
 
 # Register the states
@@ -128,5 +128,5 @@ Manager.register(sys.modules[__name__]) # The current file
 Manager.register(Lose)
 Manager.register(Win)
 
-# Run the game!
+# Run the game
 Manager.run(SCREEN, WINDOW, BLUE, "CHALLENGE1")
