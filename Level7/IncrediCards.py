@@ -58,7 +58,6 @@ class PlayScreen(GameState):
 
 		self.tech_attack_button = Button("TechType Attack", X_CENTER-105, 575, 210, 40, ondeck_teal, round_dark_blue, parent = self)		
 		self.instructions_box = InfoBox(INSTRUCTIONS, dialog_inst, BLACK, (200, 300), (X_CENTER, 200), 200)
-
 		self.coin = Coin(coin_img, (X_CENTER, 475))
 		self.turn_counter = 1
 		self.flipping = False
@@ -66,6 +65,7 @@ class PlayScreen(GameState):
 		self.side_up = None
 		
 	def start(self, players):
+		#TODO Uncomment lines 69-85 to setup player start values
 		#self.players = players
 		#self.player1 = players["player1"]
 		#self.player2 = players["player2"]
