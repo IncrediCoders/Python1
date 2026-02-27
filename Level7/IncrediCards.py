@@ -65,7 +65,7 @@ class PlayScreen(GameState):
 		self.side_up = None
 		
 	def start(self, players):
-		#TODO Uncomment lines 69-85 to setup player start values
+		#TODO: Uncomment Lines 69-85 to set up the player start values
 		#self.players = players
 		#self.player1 = players["player1"]
 		#self.player2 = players["player2"]
