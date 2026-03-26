@@ -71,7 +71,7 @@ class PlayScreen(GameState):
 		self.attacker = self.player1 if self.player1.active_turn else self.player2
 		self.defender = self.player1 if not self.player1.active_turn else self.player2
 		
-		#TODO: Update the card display data for both players (Hint: look at lines 585-624 in the init.py file)
+		#TODO: Update the card display data for both players (Hint: look at lines 587-626 in the init.py file)
 		self.player1_card_display = CardDisplay(self.player1, player1_card_display_data)
 		self.player2_card_display = CardDisplay(self.player2, player2_card_display_data) 
 
