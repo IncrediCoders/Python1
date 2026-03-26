@@ -78,7 +78,7 @@ class PlayScreen(GameState):
 		self.player1_healthbar = Healthbar(self.player1, player1_healthbar_data)
 		self.player2_healthbar = Healthbar(self.player2, player2_healthbar_data)
 		
-		#TODO: Update the on deck data for both players (Hint: look at lines 626-677 in the init.py file)
+		#TODO: Update the on deck data for both players (Hint: look at lines 628-679 in the init.py file)
 		self.player1_ondeck = OnDeck(self.player1, player1_ondeck_data)
 		self.player2_ondeck = OnDeck(self.player2, player2_ondeck_data) 
 
