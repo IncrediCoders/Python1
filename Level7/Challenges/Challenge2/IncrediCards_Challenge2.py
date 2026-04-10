@@ -174,7 +174,7 @@ class PlayScreen(GameState):
 					# Extra Turn - This gives the active player an extra turn, does not switch active player
 					if offense_card.coded_type == 'extra_turn':
 						turn_msg = "{}'{} {} hit - {} took 1 damage and {} gets another turn!\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, defense_card.name, self.attacker.name)
-					# Gain Health - This adds 1 health to the active card if it has damage (or to any other card in the player's hand with damage) and then it switches active player
+					# Gain Health - This adds 1 health to the active card if it has damage (or to any other card in the player's hand with damage) and then it switches the active player
 					if offense_card.coded_type == 'gain_health':
 						#TODO: Add the code to make the offense player gain 1 health point (Hint: Players have a method called gain_health())
 						healed_card = # Add code here
