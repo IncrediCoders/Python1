@@ -199,7 +199,7 @@ class PlayScreen(GameState):
 					# Added the code to switch the active player
 					self.switch_active_player()
 
-				# The following logic needs to happen for every coded attack scenario
+				# The following needs to happen for every Coded Attack scenario
 				message = add_to_message(message, turn_msg, defense_card)
 				self.dialog_box.set_message(message)
 				
