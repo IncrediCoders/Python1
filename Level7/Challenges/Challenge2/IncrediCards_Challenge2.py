@@ -194,7 +194,7 @@ class PlayScreen(GameState):
 
 
 				else: 
-					# Coded attack fails, defense still takes 1 damage and switch active player
+					# Coded attack fails; defense still takes 1 damage, and the game switches the active player
 					turn_msg = "{}'{} {} missed - {} took 1 damage.\n".format(offense_card.name, offense_card.s_flag, offense_card.coded_attack, defense_card.name)
 					#TODO: Add the code to switch the active player
 
