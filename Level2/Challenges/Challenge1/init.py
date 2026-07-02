@@ -34,7 +34,7 @@ def display_text(screen, current_text):
         y = y + 30
 
 #============================================================
-#PART 3: SETUP FOR THE CLASS INTRODUCTIONS GAME
+#PART 3: SETUP FOR THE CLASS INTRODUCTIONS PROGRAM
 
 """
 Initializes pygame, the font object, and the window's title
